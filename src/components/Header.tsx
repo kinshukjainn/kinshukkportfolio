@@ -5,7 +5,7 @@ const Header = () => {
     <header className="bg-black border border-gray-700 rounded-xl mt-2 mx-2 p-4 flex flex-wrap justify-between items-center shadow-lg font-poppins">
       
       {/* Portfolio Name */}
-      <h1 className="text-2xl font-bold text-yellow-500 tracking-wide">
+      <h1 className="text-2xl font-bold text-white tracking-wide">
         kinshukjain / Profile
       </h1>
 
