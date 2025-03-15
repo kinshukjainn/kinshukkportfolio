@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 flex flex-col items-center text-center">
         
         {/* Name & Tagline */}
-        <h2 className="text-2xl font-bold text-yellow-500">Kinshuk Jain</h2>
+        <h2 className="text-2xl font-bold text-blue-500">Kinshuk Jain / cloud </h2>
         <p className="text-gray-400 mt-2 max-w-lg">
           Cloud Engineer / DevOps & Infrastructure Automation  
         </p>

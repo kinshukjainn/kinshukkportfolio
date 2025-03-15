@@ -10,11 +10,11 @@ const LeftContent = ({ className = "" }) => {
     <div className={`bg-black border border-gray-800 font-inter shadow-lg p-4 md:p-6 rounded-2xl w-full max-w-3xl mx-auto lg:mx-0 ${className}`}>
       
       {/* About Me Section */}
-      <h2 className="text-2xl font-bold mb-3 pb-2 border-b border-gray-600 text-yellow-600 flex items-center gap-2">
-        <MdOutlineKeyboardDoubleArrowRight className="text-white text-3xl" /> About Me
+      <h2 className="text-2xl font-bold mb-3 pb-2 border-b border-gray-600 text-blue-500 flex items-center gap-2">
+        <MdOutlineKeyboardDoubleArrowRight className="text-blue-500 text-3xl" /> About Me
       </h2>
       <p className="text-white leading-relaxed text-base md:text-lg">
-        Hey there! I'm <span className="font-semibold text-yellow-600">Kinshuk Jain</span>, 
+        Hey there! I'm <span className="font-semibold text-blue-500">Kinshuk Jain</span>, 
         passionate about building scalable cloud architectures and securing cloud infrastructure.
         My expertise lies in AWS, infrastructure automation, and cybersecurity.
         I thrive on optimizing cloud environments, automating deployments, and implementing security best practices.
@@ -23,8 +23,8 @@ const LeftContent = ({ className = "" }) => {
       <div className="my-4 border-t border-gray-600"></div>
       
       {/* Tech Stack Section */}
-      <h2 className="text-2xl font-bold mb-3 pb-2 border-b border-gray-600 text-yellow-600 flex items-center gap-2">
-        <MdOutlineKeyboardDoubleArrowRight className="text-white text-3xl" /> Tech Stack
+      <h2 className="text-2xl font-bold mb-3 pb-2 border-b border-gray-600 text-blue-500 flex items-center gap-2">
+        <MdOutlineKeyboardDoubleArrowRight className="text-blue-500 text-3xl" /> Tech Stack
       </h2>
       <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-white text-lg md:text-xl">
         <li className="flex items-center gap-3"><FaAws className="text-yellow-500 text-3xl" /> AWS Cloud</li>
@@ -37,8 +37,8 @@ const LeftContent = ({ className = "" }) => {
       <div className="my-4 border-t border-gray-600"></div>
       
       {/* Tools & Collaboration Section */}
-      <h2 className="text-2xl font-bold mb-3 pb-2 border-b border-gray-600 text-yellow-600 flex items-center gap-2">
-        <MdOutlineKeyboardDoubleArrowRight className="text-white text-3xl" /> Tools & Collaboration
+      <h2 className="text-2xl font-bold mb-3 pb-2 border-b border-gray-600 text-blue-500 flex items-center gap-2">
+        <MdOutlineKeyboardDoubleArrowRight className="text-blue-500 text-3xl" /> Tools & Collaboration
       </h2>
       <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-white text-lg md:text-xl">
         <li className="flex items-center gap-3"><FaGitAlt className="text-orange-500 text-3xl" /> Git</li>

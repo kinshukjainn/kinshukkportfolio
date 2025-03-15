@@ -4,8 +4,8 @@ import { useState } from "react";
 
 const SocialMedia = () => {
   const email = "kinshuk25jan04@gmail.com";
-  const phone = "+91 9172702501"; // Replace with actual phone number
-  const upiId = "kinshuk25jan04@oksbi"; // Replace with your actual UPI ID
+  const phone = "+91 9172702501"; 
+  const upiId = "kinshuk25jan04@oksbi";
 
   const [copied, setCopied] = useState(false);
 
@@ -19,8 +19,8 @@ const SocialMedia = () => {
     <div className="bg-black border border-gray-700 font-inter shadow-lg p-6 mt-6 rounded-2xl w-full md:w-1/2 flex-grow">
       
       {/* Heading */}
-      <h2 className="text-2xl font-semibold mb-4 text-yellow-600 flex items-center gap-2">
-        <FaConnectdevelop className="text-yellow-200" /> Connect With Me
+      <h2 className="text-2xl font-semibold mb-4 text-blue-500 flex items-center gap-2">
+        <FaConnectdevelop className="text-blue-500" /> Connect With Me
       </h2>
 
       {/* Message */}
@@ -33,7 +33,7 @@ const SocialMedia = () => {
         
         {/* Email */}
         <div className="flex items-center gap-3">
-          <MdAlternateEmail className="text-yellow-400 text-2xl" />
+          <MdAlternateEmail className="text-blue-500 text-2xl" />
           <a href={`mailto:${email}`} className="hover:text-blue-400 transition-all">
             {email}
           </a>
@@ -41,7 +41,7 @@ const SocialMedia = () => {
 
         {/* Phone */}
         <div className="flex items-center gap-3">
-          <FaPhoneAlt className="text-green-400 text-2xl" />
+          <FaPhoneAlt className="text-blue-500 text-2xl" />
           <a href={`tel:${phone}`} className="hover:text-green-400 transition-all">
             {phone}
           </a>
@@ -51,9 +51,9 @@ const SocialMedia = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => copyToClipboard(upiId)}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-all shadow-md"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-gray-900 transition-all shadow-md"
           >
-            <FaCopy className="text-yellow-400" />
+            <FaCopy className="text-white" />
             {copied ? "UPI ID Copied!" : "Copy UPI ID"}
           </button>
         </div>
