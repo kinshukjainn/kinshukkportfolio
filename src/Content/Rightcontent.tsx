@@ -1,6 +1,6 @@
 import { 
-  FaGraduationCap, FaCloud, FaLock, FaUniversity, 
-  FaTools, FaCertificate, FaBookOpen, FaServer
+  FaGraduationCap, FaLock, FaUniversity, 
+   FaCertificate, FaBookOpen
 } from "react-icons/fa";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
@@ -37,26 +37,6 @@ const RightContent = ({ className = "" }) => {
       </ul>
       <div className="my-4 border-t border-gray-600"></div>
       
-      {/* 🛠️ Skills & Expertise */}
-      <h2 className="text-2xl font-semibold mb-3 text-yellow-500 flex items-center gap-3">
-        <FaTools className="text-4xl text-green-500" />
-        <MdOutlineKeyboardDoubleArrowRight className="text-white text-4xl" /> Skills & Expertise
-      </h2>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-300 text-base md:text-lg">
-        <li className="flex items-center gap-3">
-          <FaCloud className="text-4xl text-yellow-400" /> 
-          Cloud Computing & Infrastructure as Code
-        </li>
-        <li className="flex items-center gap-3">
-          <FaServer className="text-4xl text-yellow-400" /> 
-          Scalable and Efficient Cloud Infrastructure
-        </li>
-        <li className="flex items-center gap-3">
-          <FaTools className="text-4xl text-yellow-400" /> 
-          DevOps & CI/CD Automation
-        </li>
-      </ul>
-      <div className="my-4 border-t border-gray-600"></div>
       
       {/* 🏆 Certifications */}
       <h2 className="text-2xl font-semibold mb-3 text-yellow-500 flex items-center gap-3">

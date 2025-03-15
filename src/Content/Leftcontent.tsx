@@ -1,8 +1,7 @@
 import { 
-  FaAws, FaSlack, FaDocker, FaPython, FaGitAlt, FaDiscord, FaGithub, FaServer, FaLock 
+  FaAws, FaSlack, FaDocker, FaPython, FaGitAlt, FaDiscord, FaGithub 
 } from "react-icons/fa";
-import { 
-  SiTerraform, SiKubernetes, SiGithubactions, SiNumpy, SiPandas, SiLinux, SiAnsible 
+import {  SiKubernetes, SiGithubactions
 } from "react-icons/si";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
@@ -29,17 +28,10 @@ const LeftContent = ({ className = "" }) => {
       </h2>
       <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-white text-lg md:text-xl">
         <li className="flex items-center gap-3"><FaAws className="text-yellow-500 text-3xl" /> AWS Cloud</li>
-        <li className="flex items-center gap-3"><SiTerraform className="text-purple-500 text-3xl" /> Infrastructure as Code</li>
         <li className="flex items-center gap-3"><FaDocker className="text-blue-500 text-3xl" /> Docker</li>
         <li className="flex items-center gap-3"><SiKubernetes className="text-blue-600 text-3xl" /> Kubernetes</li>
         <li className="flex items-center gap-3"><SiGithubactions className="text-green-600 text-3xl" /> DevOps</li>
-        <li className="flex items-center gap-3"><SiAnsible className="text-red-500 text-3xl" /> Configuration Management</li>
-        <li className="flex items-center gap-3"><SiLinux className="text-gray-400 text-3xl" /> Linux</li>
-        <li className="flex items-center gap-3"><FaLock className="text-yellow-300 text-3xl" /> Security & IAM</li>
-        <li className="flex items-center gap-3"><FaServer className="text-yellow-600 text-3xl" /> Scalable Architecture</li>
         <li className="flex items-center gap-3"><FaPython className="text-yellow-400 text-3xl" /> Python (Boto3 / Automation)</li>
-        <li className="flex items-center gap-3"><SiNumpy className="text-blue-400 text-3xl" /> NumPy</li>
-        <li className="flex items-center gap-3"><SiPandas className="text-blue-600 text-3xl" /> Pandas</li>
       </ul>
       
       <div className="my-4 border-t border-gray-600"></div>
