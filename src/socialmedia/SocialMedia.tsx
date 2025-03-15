@@ -25,7 +25,7 @@ const SocialMedia = () => {
 
       {/* Message */}
       <p className="text-white leading-relaxed mb-4">
-        Feel free to reach out to me via email, phone, or support me using UPI.
+        Feel free to reach out to me via email, phone, or support me using UPI.(I know you will)
       </p>
 
       {/* Contact Details */}
