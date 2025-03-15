@@ -30,16 +30,16 @@ import {
         <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-white text-base md:text-lg">
           <li className="flex items-center gap-2"><FaAws className="text-yellow-500" /> AWS Cloud</li>
           <li className="flex items-center gap-2"><SiTerraform className="text-purple-500" /> Infrastructure as Code</li>
-          <li className="flex items-center gap-2"><FaDocker className="text-blue-500" /> Docker & Containers</li>
-          <li className="flex items-center gap-2"><SiKubernetes className="text-blue-600" /> Kubernetes & Orchestration</li>
-          <li className="flex items-center gap-2"><SiGithubactions className="text-green-600" /> CI/CD & DevOps</li>
+          <li className="flex items-center gap-2"><FaDocker className="text-blue-500" /> Docker</li>
+          <li className="flex items-center gap-2"><SiKubernetes className="text-blue-600" /> Kubernetes</li>
+          <li className="flex items-center gap-2"><SiGithubactions className="text-green-600" />DevOps</li>
           <li className="flex items-center gap-2"><SiAnsible className="text-red-500" /> Configuration Management</li>
           <li className="flex items-center gap-2"><SiLinux className="text-gray-400" /> Linux</li>
           <li className="flex items-center gap-2"><FaLock className="text-yellow-300" />Security& IAM</li>
           <li className="flex items-center gap-2"><FaServer className="text-yellow-600" /> Scalable Architecture Design</li>
           <li className="flex items-center gap-2"><FaPython className="text-yellow-400" /> Python (Boto3 / Automation)</li>
-          <li className="flex items-center gap-2"><SiNumpy className="text-blue-400" /> NumPy for Data Processing</li>
-          <li className="flex items-center gap-2"><SiPandas className="text-blue-600" /> Pandas for Data Analysis</li>
+          <li className="flex items-center gap-2"><SiNumpy className="text-blue-400" /> NumPy</li>
+          <li className="flex items-center gap-2"><SiPandas className="text-blue-600" /> Pandas</li>
         </ul>
   
         <div className="my-6 border-t border-gray-600"></div>
@@ -49,10 +49,10 @@ import {
           <MdOutlineKeyboardDoubleArrowRight className="text-white" /> Tools & Collaboration
         </h2>
         <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-white text-base md:text-lg">
-          <li className="flex items-center gap-2"><FaGitAlt className="text-orange-500" /> Git & Version Control</li>
-          <li className="flex items-center gap-2"><FaGithub className="text-gray-400" /> GitHub & Codespaces</li>
-          <li className="flex items-center gap-2"><FaSlack className="text-yellow-200" /> Slack for Communication</li>
-          <li className="flex items-center gap-2"><FaDiscord className="text-green-700" /> Discord for Tech Communities</li>
+          <li className="flex items-center gap-2"><FaGitAlt className="text-orange-500" /> Git</li>
+          <li className="flex items-center gap-2"><FaGithub className="text-gray-400" /> GitHub</li>
+          <li className="flex items-center gap-2"><FaSlack className="text-yellow-200" /> Slack</li>
+          <li className="flex items-center gap-2"><FaDiscord className="text-green-700" /> Discord</li>
         </ul>
       </div>
     );
