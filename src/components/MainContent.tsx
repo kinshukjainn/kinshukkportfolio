@@ -1,15 +1,13 @@
 import Rightcontent from "../Content/Rightcontent";
 import Leftcontent from "../Content/Leftcontent";
+
 const MainContent = () => {
   return (
-    <>
-    <div className="flex flex-col font-inter bg-black mr-2 ml-2 mt-2 mb-2 rounded-lg font-sans md:flex-row justify-center items-start p-6 gap-6">
-        
-        <Rightcontent/>
-        <Leftcontent/>
+    <div className="flex flex-col md:flex-row justify-center items-start p-4 gap-4 bg-black rounded-lg w-full max-w-7xl mx-auto font-inter">
+      <Rightcontent className="w-full md:w-1/2" />
+      <Leftcontent className="w-full md:w-1/2" />
     </div>
-    </>
-  )
-}
+  );
+};
 
-export default MainContent
+export default MainContent;
