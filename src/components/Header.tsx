@@ -2,7 +2,7 @@ import { FaDiscord, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <header className="bg-gray-300 border border-gray-700 rounded-xl mt-2 mx-2 p-4 flex flex-wrap justify-between items-center shadow-lg font-poppins">
+    <header className="bg-white   mt-2 mx-2 p-4 flex flex-wrap justify-between items-center shadow-lg font-poppins">
       
       {/* Portfolio Name */}
       <h1 className="text-xl font-semibold text-black tracking-wide">
