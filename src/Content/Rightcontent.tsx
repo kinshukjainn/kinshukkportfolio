@@ -9,7 +9,7 @@ const RightContent = ({ className = "" }) => {
     <div className={`bg-gray-200 border border-gray-700 font-poppins shadow-lg p-4 md:p-6  w-full lg:w-1/2 flex-shrink-0 max-w-3xl mx-auto lg:mx-0 ${className}`}>
       
       {/* 🚀 Introduction Section */}
-      <h2 className="text-3xl font-bold mb-3 text-gray-800 flex items-center gap-3">
+      <h2 className="text-3xl font-semibold mb-3 text-purple-800 flex items-center gap-3">
         Hey Folks!! 🚀
       </h2>
       <p className="text-black leading-relaxed text-base md:text-lg">
@@ -39,7 +39,7 @@ const RightContent = ({ className = "" }) => {
       
       
       {/* 🏆 Certifications */}
-      <h2 className="text-2xl font-semibold mb-3 text-blue-500 flex items-center gap-3">
+      <h2 className="text-2xl font-semibold mb-3 text-purple-800 flex items-center gap-3">
         <FaCertificate className="text-2xl text-black" />
         <MdOutlineKeyboardDoubleArrowRight className="text-black text-4xl" /> Certifications
       </h2>

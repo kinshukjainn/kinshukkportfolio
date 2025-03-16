@@ -10,7 +10,7 @@ const LeftContent = ({ className = "" }) => {
     <div className={`bg-gray-200 border border-gray-800 font-inter hover:shadow-lg p-4 md:p-6  w-full max-w-3xl mx-auto lg:mx-0 ${className}`}>
       
       {/* About Me Section */}
-      <h2 className="text-xl font-bold mb-3 pb-2 border-b border-gray-600 text-blue-500 flex items-center gap-2">
+      <h2 className="text-xl font-semibold mb-3 pb-2 border-b border-gray-600 text-purple-800 flex items-center gap-2">
         <MdOutlineKeyboardDoubleArrowRight className="text-black text-3xl" /> About Me
       </h2>
       <p className="text-black leading-relaxed text-base md:text-lg">
@@ -23,7 +23,7 @@ const LeftContent = ({ className = "" }) => {
       <div className="my-4 border-t border-gray-600"></div>
       
       {/* Tech Stack Section */}
-      <h2 className="text-xl font-bold mb-3 pb-2 border-b border-gray-600 text-blue-500 flex items-center gap-2">
+      <h2 className="text-xl font-semibold mb-3 pb-2 border-b border-gray-600 text-purple-800 flex items-center gap-2">
         <MdOutlineKeyboardDoubleArrowRight className="text-black text-3xl" /> Tech Stack
       </h2>
       <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-black text-lg md:text-xl">
@@ -37,7 +37,7 @@ const LeftContent = ({ className = "" }) => {
       <div className="my-4 border-t border-gray-600"></div>
       
       {/* Tools & Collaboration Section */}
-      <h2 className="text-xl font-bold mb-3 pb-2 border-b border-gray-600 text-blue-500 flex items-center gap-2">
+      <h2 className="text-xl font-semibold mb-3 pb-2 border-b border-gray-600 text-purple-800 flex items-center gap-2">
         <MdOutlineKeyboardDoubleArrowRight className="text-black text-3xl" /> Tools & Collaboration
       </h2>
       <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-black text-lg md:text-xl">
