@@ -6,7 +6,7 @@ const Header = () => {
       
       {/* Portfolio Name */}
       <h1 className="text-xl font-semibold text-black tracking-wide">
-        kinshukjain / Profile
+        Kinshuk Jain / Profile
       </h1>
 
       {/* Social Links Section */}
