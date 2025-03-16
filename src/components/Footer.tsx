@@ -2,12 +2,12 @@ import SocialMedia from "../socialmedia/SocialMedia";
 
 const Footer = () => {
   return (
-    <footer className="bg-black border-t border-gray-700 rounded-xl shadow-lg font-poppins text-white py-8">
+    <footer className="bg-gray-200 border-t border-gray-700 rounded-xl shadow-lg font-poppins text-black py-8">
       <div className="container mx-auto px-6 flex flex-col items-center text-center">
         
         {/* Name & Tagline */}
-        <h2 className="text-2xl font-bold text-blue-500">Kinshuk Jain / cloud </h2>
-        <p className="text-gray-400 mt-2 max-w-lg">
+        <h2 className="text-2xl font-semibold text-black">Kinshuk Jain / cloud </h2>
+        <p className="text-black mt-2 max-w-lg">
           Cloud Engineer / DevOps & Infrastructure Automation  
         </p>
 
@@ -17,13 +17,13 @@ const Footer = () => {
         </div>
 
         {/* Call-to-Action */}
-        <p className="text-sm text-gray-500 mt-6">
+        <p className="text-sm text-black mt-6">
           Open to opportunities in cloud engineering, DevOps, and security.  
-          <span className="text-yellow-400 font-medium"> Let's build something amazing together!</span>
+          <span className="text-black font-medium"> Let's build something amazing together!</span>
         </p>
 
         {/* Copyright */}
-        <p className="text-gray-500 text-xs mt-4">
+        <p className="text-black text-xs mt-4">
           © {new Date().getFullYear()} Kinshuk Jain. All rights reserved.
         </p>
       </div>
