@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, JSX } from "react";
 import { FaDatabase, FaArchive, FaCloud } from "react-icons/fa";
 import { PiComputerTowerFill } from "react-icons/pi";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
@@ -9,7 +9,7 @@ const awsCategories: Record<
   { icon: JSX.Element; services: { name: string; description: string; link: string }[] }
 > = {
   Compute: {
-    icon: <PiComputerTowerFill className="text-xl mr-2" />,
+    icon: <PiComputerTowerFill className="text-xl mr-2" />, 
     services: [
       {
         name: "Amazon EC2",
@@ -104,7 +104,7 @@ export const AwsDocs = () => {
           {awsCategories[selectedCategory]?.services?.map((service) => (
             <div
               key={service.name}
-              className="bg-gray-200 p-5 shadow-md border border-black transition-transform transform hover:scale-105 "
+              className="bg-gray-200 p-5 shadow-md border border-black transition-transform transform hover:scale-105 rounded-lg"
             >
               <h3 className="text-lg md:text-xl font-semibold mb-2">{service.name}</h3>
               <p className="text-gray-700 mb-3">{service.description}</p>
