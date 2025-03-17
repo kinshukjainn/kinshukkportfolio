@@ -15,6 +15,7 @@
     "@mui/material": "^6.4.7",
     "@shadcn/ui": "^0.0.4",
     "@tailwindcss/vite": "^4.0.14",
+    "framer-motion": "^12.5.0",
     "lucide-react": "^0.482.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

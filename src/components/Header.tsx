@@ -1,17 +1,30 @@
+"use client";
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes, FaDiscord, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiDocsdotrs } from "react-icons/si";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-md mt-2 mx-2 p-4 flex justify-between items-center font-poppins relative">
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className="bg-white shadow-md mt-2 mx-2 p-4 flex justify-between items-center font-poppins relative"
+    >
       {/* Portfolio Name */}
-      <h1 className="text-lg sm:text-xl font-semibold text-black tracking-wide">
+      <motion.h1
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="text-lg sm:text-xl font-semibold text-black tracking-wide"
+      >
         <Link to="/">Kinshuk Jain / Profile</Link>
-      </h1>
+      </motion.h1>
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-6">
@@ -19,32 +32,46 @@ const Header = () => {
       </nav>
 
       {/* Mobile Menu Button */}
-      <button
+      <motion.button
+        whileTap={{ scale: 0.9 }}
         className="md:hidden text-2xl text-black focus:outline-none"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         {menuOpen ? <FaTimes /> : <FaBars />}
-      </button>
+      </motion.button>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white shadow-md p-4 flex flex-col items-center gap-4 md:hidden">
-          <NavLinks />
-        </div>
-      )}
-    </header>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4 }}
+            className="absolute top-full left-0 w-full bg-white shadow-md p-4 flex flex-col items-center gap-4 md:hidden"
+          >
+            <NavLinks />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 
 // Navigation Links Component
 const NavLinks = () => (
   <div className="flex flex-col md:flex-row items-center gap-6">
-    <Link to="/" className="text-black hover:text-gray-600 font-medium">
-      Back
-    </Link>
-    <Link to="/awsdocs" className="text-black hover:text-gray-600 flex items-center gap-2 font-medium">
-      <SiDocsdotrs className="text-lg" /> AWS Docs
-    </Link>
+    <motion.div whileHover={{ scale: 1.1 }}>
+      <Link to="/" className="text-black hover:text-gray-600 font-medium">
+        Back
+      </Link>
+    </motion.div>
+    
+    <motion.div whileHover={{ scale: 1.1 }}>
+      <Link to="/awsdocs" className="text-black hover:text-gray-600 flex items-center gap-2 font-medium">
+        <SiDocsdotrs className="text-lg" /> AWS Docs
+      </Link>
+    </motion.div>
 
     {/* Social Links */}
     <div className="flex gap-4 mt-2 md:mt-0">
@@ -58,7 +85,9 @@ const NavLinks = () => (
 
 // Social Link Component
 const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
-  <a
+  <motion.a
+    whileHover={{ scale: 1.1, rotate: 5 }}
+    whileTap={{ scale: 0.9 }}
     href={href}
     target="_blank"
     rel="noopener noreferrer"
@@ -66,7 +95,7 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
   >
     {icon}
     <span className="font-semibold hidden sm:inline">{label}</span>
-  </a>
+  </motion.a>
 );
 
 export default Header;

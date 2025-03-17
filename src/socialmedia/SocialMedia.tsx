@@ -1,3 +1,5 @@
+"use client";
+
 import { FaConnectdevelop, FaPhoneAlt, FaCopy } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 import { useState } from "react";
@@ -57,7 +59,6 @@ const SocialMedia = () => {
             {copied ? "UPI ID Copied!" : "Copy UPI ID"}
           </button>
         </div>
-
       </div>
     </div>
   );

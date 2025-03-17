@@ -1,5 +1,5 @@
 import { useState, JSX } from "react";
-import { FaDatabase, FaArchive, FaCloud } from "react-icons/fa";
+import { FaDatabase, FaDocker,  FaArchive, FaCloud } from "react-icons/fa";
 import { PiComputerTowerFill } from "react-icons/pi";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
@@ -17,7 +17,17 @@ const awsCategories: Record<
         link: "https://docs.aws.amazon.com/ec2/",
       },
       {
-        name: "AWS Lambda",
+        name: "Amazon Elastic Beanstalk",
+        description: "Scalable compute capacity in the AWS cloud.",
+        link: "https://docs.aws.amazon.com/ec2/",
+      },
+      {
+        name: "Amazon LightSail",
+        description: "Scalable compute capacity in the AWS cloud.",
+        link: "https://docs.aws.amazon.com/ec2/",
+      },
+      {
+        name: "AWS Fargate",
         description: "Serverless compute service to run code without servers.",
         link: "https://docs.aws.amazon.com/lambda/",
       },
@@ -63,6 +73,21 @@ const awsCategories: Record<
       },
       {
         name: "AWS Route 53",
+        description: "Scalable domain name system (DNS) for traffic routing.",
+        link: "https://docs.aws.amazon.com/route53/",
+      },
+    ],
+  },
+  Containerization: {
+    icon: <FaDocker className="text-xl mr-2" />,
+    services: [
+      {
+        name: "Amazon Elastic kubernetes Services",
+        description: "Isolated cloud environment for AWS resources.",
+        link: "https://docs.aws.amazon.com/vpc/",
+      },
+      {
+        name: "AWS Elastic container Service",
         description: "Scalable domain name system (DNS) for traffic routing.",
         link: "https://docs.aws.amazon.com/route53/",
       },

@@ -1,33 +1,67 @@
+"use client";
+
+import { motion } from "framer-motion";
 import SocialMedia from "../socialmedia/SocialMedia";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-200 border-t border-gray-700 rounded-xl shadow-lg font-poppins text-black py-8">
+    <motion.footer
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className="bg-gray-900 text-white border-t border-gray-700 rounded-t-2xl shadow-lg font-poppins py-8"
+    >
       <div className="container mx-auto px-6 flex flex-col items-center text-center">
-        
         {/* Name & Tagline */}
-        <h2 className="text-2xl font-semibold text-black">Kinshuk Jain / cloud </h2>
-        <p className="text-black mt-2 max-w-lg">
-          Cloud Engineer / DevOps & Infrastructure Automation  
-        </p>
+        <motion.h2
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="text-2xl font-semibold"
+        >
+          Kinshuk Jain / Cloud
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="mt-2 max-w-lg text-gray-300"
+        >
+          Cloud Engineer / DevOps & Infrastructure Automation
+        </motion.p>
 
         {/* Social Media Links */}
-        <div className="flex space-x-6 mt-4">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="flex space-x-6 mt-4"
+        >
           <SocialMedia />
-        </div>
+        </motion.div>
 
         {/* Call-to-Action */}
-        <p className="text-sm text-black mt-6">
-          Open to opportunities in cloud engineering, DevOps, and security.  
-          <span className="text-black font-medium"> Let's build something amazing together!</span>
-        </p>
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="text-sm text-gray-400 mt-6"
+        >
+          Open to opportunities in cloud engineering, DevOps, and security. {" "}
+          <span className="text-white font-medium">Let's build something amazing together!</span>
+        </motion.p>
 
         {/* Copyright */}
-        <p className="text-black text-xs mt-4">
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
+          className="text-xs text-gray-500 mt-4"
+        >
           © {new Date().getFullYear()} Kinshuk Jain. All rights reserved.
-        </p>
+        </motion.p>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 
