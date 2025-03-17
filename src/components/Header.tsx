@@ -9,6 +9,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false); // Close menu on navigation
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -23,19 +26,19 @@ const Header = () => {
         transition={{ delay: 0.2, duration: 0.5 }}
         className="text-lg sm:text-xl font-semibold text-black tracking-wide"
       >
-        <Link to="/">Kinshuk Jain / Profile</Link>
+        <Link to="/" onClick={closeMenu}>Kinshuk Jain / Profile</Link>
       </motion.h1>
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-6">
-        <NavLinks />
+        <NavLinks closeMenu={closeMenu} />
       </nav>
 
       {/* Mobile Menu Button */}
       <motion.button
         whileTap={{ scale: 0.9 }}
         className="md:hidden text-2xl text-black focus:outline-none"
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={toggleMenu}
       >
         {menuOpen ? <FaTimes /> : <FaBars />}
       </motion.button>
@@ -44,13 +47,14 @@ const Header = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            key="mobile-menu"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
             className="absolute top-full left-0 w-full bg-white shadow-md p-4 flex flex-col items-center gap-4 md:hidden"
           >
-            <NavLinks />
+            <NavLinks closeMenu={closeMenu} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -59,16 +63,16 @@ const Header = () => {
 };
 
 // Navigation Links Component
-const NavLinks = () => (
+const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => (
   <div className="flex flex-col md:flex-row items-center gap-6">
     <motion.div whileHover={{ scale: 1.1 }}>
-      <Link to="/" className="text-black hover:text-gray-600 font-medium">
+      <Link to="/" className="text-black hover:text-gray-600 font-medium" onClick={closeMenu}>
         Back
       </Link>
     </motion.div>
     
     <motion.div whileHover={{ scale: 1.1 }}>
-      <Link to="/awsdocs" className="text-black hover:text-gray-600 flex items-center gap-2 font-medium">
+      <Link to="/awsdocs" className="text-black hover:text-gray-600 flex items-center gap-2 font-medium" onClick={closeMenu}>
         <SiDocsdotrs className="text-lg" /> AWS Docs
       </Link>
     </motion.div>
