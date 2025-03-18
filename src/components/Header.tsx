@@ -73,7 +73,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => (
     
     <motion.div whileHover={{ scale: 1.1 }}>
       <Link to="/awsdocs" className="text-black hover:text-gray-600 flex items-center gap-2 font-medium" onClick={closeMenu}>
-        <SiDocsdotrs className="text-lg" /> AWS Docs
+        <SiDocsdotrs className="text-lg" /> AWS Learning resources
       </Link>
     </motion.div>
 

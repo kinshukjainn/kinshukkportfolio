@@ -1,150 +1,92 @@
-import { useState, JSX } from "react";
-import { FaDatabase, FaDocker,  FaArchive, FaCloud } from "react-icons/fa";
-import { PiComputerTowerFill } from "react-icons/pi";
-import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-
-// AWS Service Categories with Icons
-const awsCategories: Record<
-  string,
-  { icon: JSX.Element; services: { name: string; description: string; link: string }[] }
-> = {
-  Compute: {
-    icon: <PiComputerTowerFill className="text-xl mr-2" />, 
-    services: [
-      {
-        name: "Amazon EC2",
-        description: "Scalable compute capacity in the AWS cloud.",
-        link: "https://docs.aws.amazon.com/ec2/",
-      },
-      {
-        name: "Amazon Elastic Beanstalk",
-        description: "Scalable compute capacity in the AWS cloud.",
-        link: "https://docs.aws.amazon.com/ec2/",
-      },
-      {
-        name: "Amazon LightSail",
-        description: "Scalable compute capacity in the AWS cloud.",
-        link: "https://docs.aws.amazon.com/ec2/",
-      },
-      {
-        name: "AWS Fargate",
-        description: "Serverless compute service to run code without servers.",
-        link: "https://docs.aws.amazon.com/lambda/",
-      },
-    ],
-  },
-  Storage: {
-    icon: <FaArchive className="text-xl mr-2" />,
-    services: [
-      {
-        name: "Amazon S3",
-        description: "Object storage service with high security and scalability.",
-        link: "https://docs.aws.amazon.com/s3/",
-      },
-      {
-        name: "Amazon S3 Glacier",
-        description: "Long-term archival storage with flexible retrieval.",
-        link: "https://docs.aws.amazon.com/s3/",
-      },
-    ],
-  },
-  Database: {
-    icon: <FaDatabase className="text-xl mr-2" />,
-    services: [
-      {
-        name: "Amazon RDS",
-        description: "Managed relational database supporting multiple engines.",
-        link: "https://docs.aws.amazon.com/rds/",
-      },
-      {
-        name: "Amazon DynamoDB",
-        description: "Managed NoSQL database for high-performance applications.",
-        link: "https://docs.aws.amazon.com/dynamodb/",
-      },
-    ],
-  },
-  Networking: {
-    icon: <FaCloud className="text-xl mr-2" />,
-    services: [
-      {
-        name: "Amazon VPC",
-        description: "Isolated cloud environment for AWS resources.",
-        link: "https://docs.aws.amazon.com/vpc/",
-      },
-      {
-        name: "AWS Route 53",
-        description: "Scalable domain name system (DNS) for traffic routing.",
-        link: "https://docs.aws.amazon.com/route53/",
-      },
-    ],
-  },
-  Containerization: {
-    icon: <FaDocker className="text-xl mr-2" />,
-    services: [
-      {
-        name: "Amazon Elastic kubernetes Services",
-        description: "Isolated cloud environment for AWS resources.",
-        link: "https://docs.aws.amazon.com/vpc/",
-      },
-      {
-        name: "AWS Elastic container Service",
-        description: "Scalable domain name system (DNS) for traffic routing.",
-        link: "https://docs.aws.amazon.com/route53/",
-      },
-    ],
-  },
-};
+// AwsDocs.tsx
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import type { BlogPost} from '../types/blog';
+import Sidebar from './Sidebar';
+import PostList from './PostList';
+import BlogPostComponent from './BlogPost';
+import UploadModal from './UploadModal';
+import NoPostsView from './NoPostsView';
+import LoadingSpinner from './LoadingSpinner';
 
 export const AwsDocs = () => {
-  const [selectedCategory, setSelectedCategory] = useState<keyof typeof awsCategories>("Compute");
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [showUploadForm, setShowUploadForm] = useState(false);
+  
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        // In a real app, this would be an API call
+        setPosts([]);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch posts:', error);
+        setIsLoading(false);
+      }
+    };
+    
+    fetchPosts();
+  }, []);
+
+  const categories = Array.from(new Set(posts.map(post => post.category)));
+  const filteredPosts = selectedCategory === 'all' 
+    ? posts 
+    : posts.filter(post => post.category === selectedCategory);
+
+  const handlePostCreate = (newPost: BlogPost) => {
+    setPosts(prev => [newPost, ...prev]);
+    setShowUploadForm(false);
+  };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (selectedPost) {
+    return (
+      <BlogPostComponent 
+        post={selectedPost} 
+        onBack={() => setSelectedPost(null)} 
+      />
+    );
+  }
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-white p-4 md:p-6">
-      {/* Sidebar */}
-      <aside className="md:w-1/4 w-full bg-gray-200 border border-black shadow-lg p-4 mb-4 md:mb-0">
-        <h2 className="text-xl font-bold mb-4 flex items-center">
-          <MdOutlineKeyboardDoubleArrowRight className="mr-2" /> AWS Categories
-        </h2>
-        <ul className="space-y-2">
-          {Object.entries(awsCategories).map(([category, { icon }]) => (
-            <li
-              key={category}
-              className={`cursor-pointer flex items-center p-3 text-lg font-medium transition 
-                ${selectedCategory === category ? "bg-black text-white" : "hover:font-bold"}`}
-              onClick={() => setSelectedCategory(category as keyof typeof awsCategories)}
-            >
-              {icon}
-              {category}
-            </li>
-          ))}
-        </ul>
-      </aside>
+    <div className="flex flex-col md:flex-row gap-6">
+      <Sidebar 
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategorySelect={setSelectedCategory}
+        onUploadClick={() => setShowUploadForm(true)}
+      />
+      
+      <motion.main 
+        className="md:w-3/4 bg-white p-6 rounded-lg shadow-lg"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        {posts.length > 0 ? (
+          <PostList
+            posts={filteredPosts}
+            selectedCategory={selectedCategory}
+            onPostSelect={setSelectedPost}
+          />
+        ) : (
+          <NoPostsView onUploadClick={() => setShowUploadForm(true)} />
+        )}
+      </motion.main>
 
-      {/* Content Section */}
-      <main className="md:w-3/4 w-full p-4 md:p-6 bg-gray-100 border border-black shadow-lg">
-        <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 flex items-center">
-          <MdOutlineKeyboardDoubleArrowRight className="mr-2" /> {selectedCategory} Services
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {awsCategories[selectedCategory]?.services?.map((service) => (
-            <div
-              key={service.name}
-              className="bg-gray-200 p-5 shadow-md border border-black transition-transform transform hover:scale-105 rounded-lg"
-            >
-              <h3 className="text-lg md:text-xl font-semibold mb-2">{service.name}</h3>
-              <p className="text-gray-700 mb-3">{service.description}</p>
-              <a
-                href={service.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 font-medium hover:underline"
-              >
-                Learn More →
-              </a>
-            </div>
-          ))}
-        </div>
-      </main>
+      {showUploadForm && (
+        <UploadModal
+          onClose={() => setShowUploadForm(false)}
+          onPostCreate={handlePostCreate}
+        />
+      )}
     </div>
   );
 };
+
+export default AwsDocs;
