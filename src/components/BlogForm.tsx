@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import {motion} from "framer-motion";
 import type { FormData } from '../types/blog';
 
 interface BlogFormProps {

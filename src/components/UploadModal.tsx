@@ -1,7 +1,6 @@
-// UploadModal.tsx
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import type { BlogPost, FormData } from '../types/blog';
+import type { BlogPost, FormData, BlogContent } from '../types/blog';
 import AuthForm from './AuthForm';
 import BlogForm from './BlogForm';
 
@@ -19,7 +18,12 @@ const UploadModal = ({ onClose, onPostCreate }: UploadModalProps) => {
     category: '',
     summary: '',
     authorName: '',
-    contentBlocks: [{ type: 'text', content: '' }]
+    contentBlocks: [
+      {
+        type: 'text',
+        content: ''
+      }
+    ] satisfies BlogContent[]
   });
 
   const handleAuthenticated = (email: string, secretCode: string, authorName: string) => {
@@ -46,7 +50,7 @@ const UploadModal = ({ onClose, onPostCreate }: UploadModalProps) => {
       summary: data.summary,
       content: data.contentBlocks
     };
-    
+
     onPostCreate(newPost);
   };
 
