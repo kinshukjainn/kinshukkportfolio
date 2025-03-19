@@ -1,6 +1,6 @@
-// AwsDocs.tsx
 import { useState } from "react";
-import { FaBook, FaVideo, FaServer, FaExternalLinkAlt, FaSearch } from "react-icons/fa";
+import { FaBook, FaCopy, FaVideo, FaServer, FaExternalLinkAlt, FaSearch } from "react-icons/fa";
+import { MdOutlineSpeakerNotes } from "react-icons/md";
 
 const resources = [
   {
@@ -175,6 +175,7 @@ const resources = [
 export const AwsDocs = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [copied, setCopied] = useState(false); // Moved to correct place
 
   const categories = [
     { id: "all", label: "All Resources" },
@@ -204,16 +205,43 @@ export const AwsDocs = () => {
     }
   };
 
+  const upicopy = () => {
+    const upiId = "kinshuk25jan04@oksbi";
+    navigator.clipboard.writeText(upiId);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+      <div className="mb-4 p-4 text-white bg-black">
+        <h1 className="font-semibold text-2xl flex items-center">
+          <MdOutlineSpeakerNotes className="text-white mr-2" /> Note:
+        </h1>
+        <p className="text-sm">
+          As you explore my website and get to know me a bit more, I’d like to share a small request. If you’ve found the resources and content helpful and would like to support my work, I’d greatly appreciate any donations to help cover the server costs. Your support would go a long way in helping me continue to improve and maintain this site.
+          <br />
+          <br />
+          Thank you so much for your consideration! 😊
+        </p>
+        <button
+          onClick={upicopy} // Corrected function call
+          className="flex items-center cursor-pointer text-sm gap-2 text-black hover:font-semibold px-2 py-1 bg-yellow-500   transition-all shadow-md"
+        >
+          <FaCopy className="text-white" />
+          {copied ? "UPI ID Copied!" : "Copy UPI ID"}
+        </button>
+        <span>AND I KNOW YOU WILL DO IT BUDDY</span>
+      </div>
+
       <div className="max-w-6xl mx-auto">
         {/* Search Bar */}
         <div className="mb-6 relative z-10">
-          <div className="relative bg-white text-black border border-black font-semibold  shadow-md p-3 flex items-center">
-            <FaSearch className="text-blue-500 mr-3" />
+          <div className="relative bg-white text-black border border-black font-semibold shadow-md p-3 flex items-center">
+            <FaSearch className="text-black mr-3" />
             <input
               type="text"
-              placeholder="Search AWS resources..."
+              placeholder="Search your respective resources..."
               className="flex-1 outline-none bg-transparent"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
