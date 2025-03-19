@@ -1,3 +1,4 @@
+// Header.tsx
 "use client";
 
 import { useState } from "react";
@@ -17,7 +18,7 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
-      className="bg-white shadow-md mt-2 mx-2 p-4 flex justify-between items-center font-poppins relative"
+      className="bg-white shadow-md mt-2 mx-2 p-4 flex justify-between items-center font-poppins relative z-50"
     >
       {/* Portfolio Name */}
       <motion.h1
@@ -52,7 +53,7 @@ const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4 }}
-            className="absolute top-full left-0 w-full bg-white shadow-md p-4 flex flex-col items-center gap-4 md:hidden"
+            className="absolute top-full left-0 w-full bg-white shadow-md p-4 flex flex-col items-center gap-4 md:hidden z-50"
           >
             <NavLinks closeMenu={closeMenu} />
           </motion.div>
@@ -73,10 +74,9 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => (
     
     <motion.div whileHover={{ scale: 1.1 }}>
       <Link to="/awsdocs" className="text-black hover:text-gray-600 flex items-center gap-2 font-medium" onClick={closeMenu}>
-        <SiDocsdotrs className="text-lg" /> AWS Learning resources
+        <SiDocsdotrs className="text-lg" /> My Learning resources
       </Link>
     </motion.div>
-
     {/* Social Links */}
     <div className="flex gap-4 mt-2 md:mt-0">
       <SocialLink href="https://discord.gg/vA92jrVC" icon={<FaDiscord />} label="Discord" />
