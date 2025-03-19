@@ -52,7 +52,7 @@ const LeftContent: React.FC<LeftContentProps> = ({ className = "" }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`bg-gray-200 border border-gray-800 font-inter hover:shadow-lg p-4 md:p-6 w-full max-w-3xl mx-auto lg:mx-0 ${className}`}
+      className={`bg-gray-200 border border-gray-800 rounded-lg font-inter hover:shadow-lg p-4 md:p-6 w-full max-w-3xl mx-auto lg:mx-0 ${className}`}
     >
       {loading ? (
         <div className="animate-pulse">
@@ -117,7 +117,7 @@ const LeftContent: React.FC<LeftContentProps> = ({ className = "" }) => {
                 href={`https://github.com/${githubData?.login}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 flex items-center gap-1 mt-2"
+                className="text-white bg-black w-max p-2 rounded-sm text-sm flex items-center gap-1 mt-2"
               >
                 View Profile <FiExternalLink />
               </a>
@@ -125,7 +125,6 @@ const LeftContent: React.FC<LeftContentProps> = ({ className = "" }) => {
           ) : (
             <p className="text-red-600">Failed to fetch GitHub profile data.</p>
           )}
-
           {/* GitHub Repositories Section */}
           <motion.h2
             className="text-xl font-semibold mt-6 mb-3 pb-2 border-b border-gray-600 text-purple-800 flex items-center gap-2"
@@ -150,6 +149,23 @@ const LeftContent: React.FC<LeftContentProps> = ({ className = "" }) => {
           ) : (
             <p className="text-red-600">No repositories found.</p>
           )}
+
+          {/* Open Source Portfolio Section */}
+          <div className="mt-6 p-4 bg-gray-100 rounded-sm border border-gray-600 ">
+            <h3 className="text-lg font-semibold text-purple-800">Build Your Own Portfolio 🚀</h3>
+            <p className="text-black mt-2">
+              I made my portfolio open-source, so if you like it, feel free to use it as a template for your own site.
+              No need to reinvent the wheel—just tweak it to match your vibe.
+            </p>
+            <a
+              href="https://github.com/kinshukjainn/kinshukkportfolio" // Replace with the actual repo link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-yellow-200 border-3 border-black text-black font-semibold rounded-lg  shadow-md hover:font-bold transition"
+            >
+              Get the Source Code <FiExternalLink className="text-black text-semibold" />
+            </a>
+          </div>
         </>
       )}
     </motion.div>

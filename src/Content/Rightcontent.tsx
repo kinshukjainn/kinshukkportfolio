@@ -20,7 +20,7 @@ const RightContent = ({ className = "" }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`bg-gray-200 border border-gray-700 font-poppins shadow-lg p-4 md:p-6  w-full lg:w-1/2 flex-shrink-0 max-w-3xl mx-auto lg:mx-0 ${className}`}
+      className={`bg-gray-200 border border-gray-70 rounded-lg 0 font-poppins shadow-lg p-4 md:p-6  w-full lg:w-1/2 flex-shrink-0 max-w-3xl mx-auto lg:mx-0 ${className}`}
     >
       {loading ? (
         <div className="animate-pulse">
@@ -79,27 +79,41 @@ const RightContent = ({ className = "" }) => {
             </li>
           </motion.ul>
           <div className="my-4 border-t border-gray-600"></div>
-
           <motion.h2 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-2xl font-semibold mb-3 text-purple-800 flex items-center gap-3"
-          >
-            <FaCertificate className="text-2xl text-black" />
-            <MdOutlineKeyboardDoubleArrowRight className="text-black text-4xl" /> Certifications
-          </motion.h2>
-          <motion.ul 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="space-y-3 text-black text-base md:text-lg"
-          >
-            <li className="flex items-center gap-3">
-              <FaLock className="text-2xl text-black" /> 
-              AWS Certified Cloud Practitioner (Attempted, Preparing for Retake)
-            </li>
-          </motion.ul>
+  initial={{ opacity: 0, x: -20 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.5, delay: 0.4 }}
+  className="text-2xl font-semibold mb-3 text-purple-800 flex items-center gap-3"
+>
+  <FaCertificate className="text-2xl text-black" />
+  <MdOutlineKeyboardDoubleArrowRight className="text-black text-4xl" /> Certifications
+</motion.h2>
+<motion.ul 
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.5 }}
+  className="space-y-3 text-black text-base md:text-lg"
+>
+  <li className="flex flex-col gap-2">
+    <div className="flex items-center gap-3">
+      <FaLock className="text-2xl text-black" /> 
+      <span>AWS Certified Cloud Practitioner (CLF-C02) – Attempted, Preparing for Retake</span>
+    </div>
+    <div className="pl-9 text-sm text-gray-800">
+      <p><span className="font-semibold">First Attempt:</span> January 24 2025</p>
+      <p><span className="font-semibold">Score:</span> 679/1000 (Passing: 700)</p>
+    </div>
+  </li>
+  <li className="flex items-center gap-3">
+    <FaLock className="text-2xl text-black" /> 
+    AWS Certified Solutions Architect – Associate (Upcoming)
+  </li>
+  <li className="flex items-center gap-3">
+    <FaLock className="text-2xl text-black" /> 
+    AWS Certified Solutions Architect – Professional (Upcoming)
+  </li>
+</motion.ul>
+
         </>
       )}
     </motion.div>

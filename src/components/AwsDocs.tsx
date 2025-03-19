@@ -213,12 +213,12 @@ export const AwsDocs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
-      <div className="mb-4 p-4 text-white bg-black">
-        <h1 className="font-semibold text-2xl flex items-center">
-          <MdOutlineSpeakerNotes className="text-white mr-2" /> Note:
+    <div className="min-h-screen rounded-sm bg-gray-50 p-4 md:p-8">
+      <div className="mb-4 p-4 rounded-lg border-2 border-black text-black bg-blue-200">
+        <h1 className="font-semibold text-2xl  flex items-center">
+          <MdOutlineSpeakerNotes className="text-black rounded-sm mr-2" /> Note:
         </h1>
-        <p className="text-sm">
+        <p className="text-sm font-semibold ">
           As you explore my website and get to know me a bit more, I’d like to share a small request. If you’ve found the resources and content helpful and would like to support my work, I’d greatly appreciate any donations to help cover the server costs. Your support would go a long way in helping me continue to improve and maintain this site.
           <br />
           <br />
@@ -226,18 +226,18 @@ export const AwsDocs = () => {
         </p>
         <button
           onClick={upicopy} // Corrected function call
-          className="flex items-center cursor-pointer text-sm gap-2 text-black hover:font-semibold px-2 py-1 bg-yellow-500   transition-all shadow-md"
+          className="flex items-center font-semibold  cursor-pointer text-sm gap-2 rounded-lg text-white hover:font-semibold mt-2 px-4 py-1 bg-blue-500   transition-all shadow-md"
         >
           <FaCopy className="text-white" />
           {copied ? "UPI ID Copied!" : "Copy UPI ID"}
         </button>
-        <span>AND I KNOW YOU WILL DO IT BUDDY</span>
+        <span className="mt-3 mb-3 font-semibold">Please Dont transfer more than 500Rs Its a humble reuqest to everyone </span>
       </div>
 
       <div className="max-w-6xl mx-auto">
         {/* Search Bar */}
-        <div className="mb-6 relative z-10">
-          <div className="relative bg-white text-black border border-black font-semibold shadow-md p-3 flex items-center">
+        <div className="mb-6  relative z-10">
+          <div className="relative rounded-xl bg-white text-black border border-black font-semibold shadow-md p-3 flex items-center">
             <FaSearch className="text-black mr-3" />
             <input
               type="text"
@@ -250,15 +250,15 @@ export const AwsDocs = () => {
         </div>
 
         {/* Category Filters */}
-        <div className="mb-6 flex flex-wrap gap-2">
+        <div className="mb-6  flex flex-wrap gap-2">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-4 py-2 text-sm transition ${
+              className={`px-4 py-2 text-sm rounded-lg  transition ${
                 selectedCategory === category.id
-                  ? "bg-black text-white shadow-md"
-                  : "bg-white text-gray-600 hover:bg-gray-100"
+                  ? "bg-black text-white font-semibold shadow-md"
+                  : "bg-white text-black hover:bg-gray-100"
               }`}
             >
               {category.label}
@@ -271,9 +271,9 @@ export const AwsDocs = () => {
           {filteredResources.map((resource, index) => (
             <div
               key={index}
-              className="bg-gray-200 text-black p-4 shadow-md hover:shadow-lg transition-all"
+              className="bg-gray-200 rounded-xl text-black p-4 shadow-md hover:shadow-lg transition-all"
             >
-              <div className="flex items-start mb-3">
+              <div className="flex  items-start mb-3">
                 <div className="text-xl mr-3">{getIcon(resource.categories[0])}</div>
                 <div className="flex-1">
                   <h3 className="font-medium text-lg">{resource.title}</h3>
