@@ -10,6 +10,30 @@ const resources = [
     categories: ["docs"],
   },
   {
+    title: "python code with harry : Oneshot",
+    description:"This video is available on youtube channel name codewithharry ",
+    urls: ["https://youtu.be/v9bOWjwdTlg?si=T5U3hBCowfEtBLTo"],
+    categories: ["videos"],
+  },
+  {
+    title : "ReactJs Complete Tutorial in Oneshot 2 video Series",
+    description : "These 2 videos on youtube will teach you complete reaactjs in oneshot",
+    urls : ["https://youtu.be/FxgM9k1rg0Q?si=fMOPeD86CT8h5tQl" , "https://youtu.be/IdlF1zsUN3M?si=kumuPwXx72VMldCC"],
+    categories : ["videos"],
+  },
+  {
+    title : "Reactjs Complete Tutorial From thier own Documentation",
+    description: "This is the direct link to learn react ( vite ) from ther own documentation",
+    urls : ["https://vite.dev/guide/"],
+    categories : ["docs"],
+  },
+  {
+    title: "python From thier own Documentation",
+    description:"This video is available on youtube channel name codewithharry ",
+    urls: ["https://docs.python.org/3/whatsnew/3.13.html"],
+    categories: ["docs"],
+  },
+  {
     title: "AWS Free Tier Explained",
     description: "Learn what AWS Free Tier includes and how to use it effectively.",
     urls: ["https://aws.amazon.com/free/"],
