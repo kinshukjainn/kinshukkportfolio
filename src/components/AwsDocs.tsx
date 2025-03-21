@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { FaBook, FaCopy, FaVideo, FaServer, FaExternalLinkAlt, FaSearch } from "react-icons/fa";
+import {
+  FaBook,
+  FaCopy,
+  FaVideo,
+  FaServer,
+  FaExternalLinkAlt,
+  FaSearch
+} from "react-icons/fa";
 import { MdOutlineSpeakerNotes } from "react-icons/md";
 
 const resources = [
@@ -255,7 +262,7 @@ export const AwsDocs = () => {
           <FaCopy className="text-white" />
           {copied ? "UPI ID Copied!" : "Copy UPI ID"}
         </button>
-        <span className="mt-3 mb-3 text-white font-semibold">Please Dont transfer more than 500Rs Its a humble reuqest to everyone </span>
+        <span className="mt-3 mb-3 text-white font-semibold">Please don't transfer more than 500Rs. Its a humble request to everyone </span>
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -295,7 +302,7 @@ export const AwsDocs = () => {
           {filteredResources.map((resource, index) => (
             <div
               key={index}
-              className="tracking-wide bg-gradient-to-r from-gray-900 via-black via-gray-700 via-gray-800 to-gray-900 rounded-xl text-white p-4 shadow-md hover:shadow-lg transition-all"
+              className="tracking-wide bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl text-white p-4 shadow-md hover:shadow-lg transition-all"
             >
               <div className="flex  items-start mb-3">
                 <div className="text-xl mr-3">{getIcon(resource.categories[0])}</div>
