@@ -48,7 +48,7 @@ const Footer = () => {
           className="text-sm font-semibold text-white mt-6"
         >
           Open to opportunities in cloud engineering, DevOps, and security. {" "}
-          <span className="text-white font-semibold font-medium">Let's build something amazing together!</span>
+          <span className="text-white font-medium">Let's build something amazing together!</span>
         </motion.p>
 
         {/* Copyright */}
