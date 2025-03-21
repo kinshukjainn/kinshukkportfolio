@@ -237,12 +237,12 @@ export const AwsDocs = () => {
   };
 
   return (
-    <div className="min-h-screen rounded-sm bg-gray-50 p-4 md:p-8">
-      <div className="mb-4 p-4 rounded-lg border-2 border-black text-black bg-blue-200">
-        <h1 className="font-semibold text-2xl  flex items-center">
-          <MdOutlineSpeakerNotes className="text-black rounded-sm mr-2" /> Note:
+    <div className="min-h-screen rounded-sm bg-gradient-to-t from-gray-900 to-black p-4 md:p-8">
+      <div className="mb-4 p-4 rounded-lg border-2 border-black white bg-gradient-to-br from-black to-gray-900">
+        <h1 className="font-semibold text-2xl text-yellow-500  flex items-center">
+          <MdOutlineSpeakerNotes className="text-yellow-500 rounded-sm mr-2" /> Note:
         </h1>
-        <p className="text-sm font-semibold ">
+        <p className="text-sm text-white font-semibold ">
           As you explore my website and get to know me a bit more, I’d like to share a small request. If you’ve found the resources and content helpful and would like to support my work, I’d greatly appreciate any donations to help cover the server costs. Your support would go a long way in helping me continue to improve and maintain this site.
           <br />
           <br />
@@ -250,19 +250,19 @@ export const AwsDocs = () => {
         </p>
         <button
           onClick={upicopy} // Corrected function call
-          className="flex items-center font-semibold  cursor-pointer text-sm gap-2 rounded-lg text-white hover:font-semibold mt-2 px-4 py-1 bg-blue-500   transition-all shadow-md"
+          className="flex items-center font-semibold  cursor-pointer text-sm gap-2 rounded-full text-white hover:font-semibold mt-2 px-4 py-2 bg-blue-500 hover:shadow-white transition-all shadow-md"
         >
           <FaCopy className="text-white" />
           {copied ? "UPI ID Copied!" : "Copy UPI ID"}
         </button>
-        <span className="mt-3 mb-3 font-semibold">Please Dont transfer more than 500Rs Its a humble reuqest to everyone </span>
+        <span className="mt-3 mb-3 text-white font-semibold">Please Dont transfer more than 500Rs Its a humble reuqest to everyone </span>
       </div>
 
       <div className="max-w-6xl mx-auto">
         {/* Search Bar */}
         <div className="mb-6  relative z-10">
-          <div className="relative rounded-xl bg-white text-black border border-black font-semibold shadow-md p-3 flex items-center">
-            <FaSearch className="text-black mr-3" />
+          <div className="relative rounded-xl bg-gradient-to-r from-gray-800 to-gray-600 text-white border border-black font-semibold shadow-md p-3 flex items-center">
+            <FaSearch className="text-yellow-500 mr-3" />
             <input
               type="text"
               placeholder="Search your respective resources..."
@@ -281,8 +281,8 @@ export const AwsDocs = () => {
               onClick={() => setSelectedCategory(category.id)}
               className={`px-4 py-2 text-sm rounded-lg  transition ${
                 selectedCategory === category.id
-                  ? "bg-black text-white font-semibold shadow-md"
-                  : "bg-white text-black hover:bg-gray-100"
+                  ? "bg-gray-900 text-white font-semibold shadow-md"
+                  : "tracking-widebg-gradient-to-br from-gray-800 via-black to-gray-700 text-white k hover:bg-gray-900"
               }`}
             >
               {category.label}
@@ -295,17 +295,17 @@ export const AwsDocs = () => {
           {filteredResources.map((resource, index) => (
             <div
               key={index}
-              className="bg-gray-200 rounded-xl text-black p-4 shadow-md hover:shadow-lg transition-all"
+              className="tracking-wide bg-gradient-to-r from-gray-900 via-black via-gray-700 via-gray-800 to-gray-900 rounded-xl text-white p-4 shadow-md hover:shadow-lg transition-all"
             >
               <div className="flex  items-start mb-3">
                 <div className="text-xl mr-3">{getIcon(resource.categories[0])}</div>
                 <div className="flex-1">
                   <h3 className="font-medium text-lg">{resource.title}</h3>
-                  <p className="text-sm text-gray-600">{resource.description}</p>
+                  <p className="text-sm text-gray-200">{resource.description}</p>
                 </div>
               </div>
               <div className="flex items-center justify-between border-t pt-3">
-                <span className="text-xs text-gray-500 capitalize">
+                <span className="text-sm bg-gray-700 p-1 px-2 rounded-full text-white capitalize">
                   {resource.categories.join(", ")}
                 </span>
                 <div className="space-x-2">

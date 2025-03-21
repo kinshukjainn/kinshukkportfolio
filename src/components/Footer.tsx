@@ -9,7 +9,7 @@ const Footer = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
-      className="bg-gray-200 text-black border-t border-gray-200 shadow-lg font-poppins py-8"
+      className="bg-gray-900 text-white  shadow-lg font-poppins py-8"
     >
       <div className="container mx-auto px-6 flex flex-col items-center text-center">
         {/* Name & Tagline */}
@@ -25,7 +25,7 @@ const Footer = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.5 }}
-          className="mt-2 max-w-lg font-semibold text-gray-900"
+          className="mt-2 max-w-lg font-semibold text-yellow-400"
         >
           Cloud Engineer / DevOps & Infrastructure Automation
         </motion.p>
@@ -45,10 +45,10 @@ const Footer = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="text-sm font-semibold text-gray-900 mt-6"
+          className="text-sm font-semibold text-white mt-6"
         >
           Open to opportunities in cloud engineering, DevOps, and security. {" "}
-          <span className="text-black font-semibold font-medium">Let's build something amazing together!</span>
+          <span className="text-white font-semibold font-medium">Let's build something amazing together!</span>
         </motion.p>
 
         {/* Copyright */}
@@ -56,7 +56,7 @@ const Footer = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.5 }}
-          className="text-xs font-semibold text-gray-900 mt-4"
+          className="text-xs font-semibold text-white mt-4"
         >
           © {new Date().getFullYear()} Kinshuk Jain. All rights reserved.
         </motion.p>
