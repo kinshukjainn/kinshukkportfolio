@@ -16,6 +16,12 @@ const resources = [
     categories: ["videos"],
   },
   {
+    title: "Linux Complete Documentation Tutorial",
+    description:"You can learn linux from the official documentation of linux right now  ",
+    urls: ["https://www.kernel.org/doc/html/v4.10/dev-tools/index.html"],
+    categories: ["docs"],
+  },
+  {
     title : "ReactJs Complete Tutorial in Oneshot 2 video Series",
     description : "These 2 videos on youtube will teach you complete reaactjs in oneshot",
     urls : ["https://youtu.be/FxgM9k1rg0Q?si=fMOPeD86CT8h5tQl" , "https://youtu.be/IdlF1zsUN3M?si=kumuPwXx72VMldCC"],
