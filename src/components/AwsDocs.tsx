@@ -246,7 +246,7 @@ export const AwsDocs = () => {
 
   return (
     <div className="min-h-screen bg-[#272822] p-4 md:p-8 text-[#F8F8F2]">
-      <div className="mb-6 p-5 rounded-lg border-2 border-[#A6E22E] bg-[#1E1F1C]">
+      <div className="mb-6 p-5  border-2 border-[#A6E22E] bg-[#1E1F1C]">
         <h1 className="font-semibold text-2xl text-[#FD971F] flex items-center">
           <MdOutlineSpeakerNotes className="text-[#FD971F] mr-2" /> Note:
         </h1>
@@ -258,7 +258,7 @@ export const AwsDocs = () => {
         </p>
         <button
           onClick={upicopy}
-          className="flex items-center font-semibold cursor-pointer gap-2 rounded-md text-[#272822] mt-2 px-4 py-2 bg-[#66D9EF] hover:bg-[#A1EFE4] transition-all"
+          className="flex items-center font-semibold cursor-pointer gap-2  text-[#272822] mt-2 px-4 py-2 bg-[#66D9EF] hover:bg-[#A1EFE4] transition-all"
         >
           <FaCopy />
           {copied ? "UPI ID Copied!" : "Copy UPI ID"}
@@ -269,7 +269,7 @@ export const AwsDocs = () => {
       <div className="max-w-6xl mx-auto">
         {/* Search Bar */}
         <div className="mb-6 relative">
-          <div className="relative rounded-lg bg-[#1E1F1C] border border-[#F92672] shadow-md p-3 flex items-center">
+          <div className="relative  bg-[#1E1F1C] border border-[#F92672] shadow-md p-3 flex items-center">
             <FaSearch className="text-[#FD971F] mr-3" />
             <input
               type="text"
@@ -287,7 +287,7 @@ export const AwsDocs = () => {
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-4 py-2 rounded-md transition ${
+              className={`px-4 py-2  transition ${
                 selectedCategory === category.id
                   ? "bg-[#F92672] text-[#F8F8F2] font-semibold shadow-md"
                   : "bg-[#383830] text-[#F8F8F2] hover:bg-[#49483E]"
@@ -303,7 +303,7 @@ export const AwsDocs = () => {
           {filteredResources.map((resource, index) => (
             <div
               key={index}
-              className="bg-[#1E1F1C] border border-[#383830] rounded-lg p-4 shadow-md hover:shadow-lg hover:border-[#A6E22E] transition-all"
+              className="bg-[#1E1F1C] border border-[#383830]  p-4 shadow-md hover:shadow-lg hover:border-[#A6E22E] transition-all"
             >
               <div className="flex items-start mb-3">
                 <div className="text-xl mr-3">{getIcon(resource.categories[0])}</div>
@@ -313,7 +313,7 @@ export const AwsDocs = () => {
                 </div>
               </div>
               <div className="flex items-center justify-between border-t border-[#383830] pt-3">
-                <span className="text-xs bg-[#383830] px-2 py-1 rounded-md text-[#A6E22E] capitalize">
+                <span className="text-xs bg-[#383830] px-2 py-1 text-[#A6E22E] capitalize">
                   {resource.categories.join(", ")}
                 </span>
                 <div className="space-x-2">

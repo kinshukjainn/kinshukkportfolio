@@ -18,7 +18,7 @@ const SocialMedia = () => {
   };
 
   return (
-    <div className="bg-[#272822] shadow-lg border border-[#3E3D32] rounded-xl p-6 mt-6 w-full md:w-1/2 flex-grow">
+    <div className="bg-[#272822] shadow-lg border border-[#3E3D32]  p-6 mt-6 w-full md:w-1/2 flex-grow">
       {/* Heading */}
       <h2 className="text-xl font-semibold mb-4 text-[#A6E22E] flex items-center gap-2">
         <FaConnectdevelop className="text-[#F92672]" /> Connect With Me
@@ -51,7 +51,7 @@ const SocialMedia = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => copyToClipboard(upiId)}
-            className="flex rounded-lg items-center cursor-pointer text-sm gap-2 px-3 py-1 bg-[#3E3D32] shadow-sm border border-[#75715E] hover:border-[#F92672] text-[#F8F8F2] transition-all"
+            className="flex  items-center cursor-pointer text-sm gap-2 px-3 py-1 bg-[#3E3D32] shadow-sm border border-[#75715E] hover:border-[#F92672] text-[#F8F8F2] transition-all"
           >
             <FaCopy className="text-[#F92672]" />
             {copied ? "UPI ID Copied!" : "Copy UPI ID"}

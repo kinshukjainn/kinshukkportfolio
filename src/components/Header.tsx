@@ -6,7 +6,7 @@ import { FaBars, FaTimes, FaDiscord, FaInstagram, FaLinkedin, FaGithub } from "r
 import { SiDocsdotrs } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 import { CiLogout } from "react-icons/ci";
-import profile from "../assets/profile.webp";
+import profile from "../assets/image.jpg";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,7 +30,7 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
-      className={`bg-[#272822] text-[#f8f8f2] mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center font-mono rounded-lg shadow-lg border border-[#75715e] relative z-50 ${
+      className={`bg-[#272822] text-[#f8f8f2] mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center font-mono  shadow-lg border border-[#75715e] relative z-50 ${
         scrolled ? "sticky top-2 backdrop-blur-sm bg-opacity-95" : ""
       }`}
     >
@@ -44,7 +44,7 @@ const Header = () => {
         >
           <motion.div
             whileHover={{ scale: 1.05, rotate: 3 }}
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#a6e22e] shadow-lg"
+            className="w-10 h-10 sm:w-12 sm:h-12  overflow-hidden  shadow-lg"
           >
             <img
               src={profile}
@@ -67,7 +67,7 @@ const Header = () => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, type: "spring" }}
-            className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-[#272822]" 
+            className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500  border-2 border-[#272822]" 
             title="Online"
           />
         </motion.div>
@@ -132,7 +132,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => (
         className="flex items-center gap-2 text-[#fd971f] text-sm md:text-base" 
         onClick={closeMenu}
       >
-        <SiDocsdotrs className="text-lg" /> My Learning Resources
+        <SiDocsdotrs className="text-lg" /> Resources
       </Link>
     </motion.div>
     {/* Social Links */}
@@ -153,7 +153,7 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center gap-1 px-2 sm:px-3 py-1 text-[#f8f8f2] bg-[#414339] border border-[#75715e] rounded-lg hover:bg-[#66d9ef] hover:text-[#272822] transition-all duration-300 shadow-md text-sm md:text-base"
+    className="flex items-center gap-1 px-2 sm:px-3 py-1 text-[#f8f8f2] bg-[#414339] border border-[#75715e]  hover:bg-[#66d9ef] hover:text-[#272822] transition-all duration-300 shadow-md text-sm md:text-base"
   >
     {icon}
     <span className="font-semibold hidden md:inline">{label}</span>
