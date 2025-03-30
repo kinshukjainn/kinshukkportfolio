@@ -1,5 +1,6 @@
 @import "tailwindcss";
-
-body { 
-  background-color: black;
+body {
+  background-color: #272822; /* Dark background */
+  color: #F8F8F2; /* Default text color */
+  font-family: 'Fira Code', monospace;
 }

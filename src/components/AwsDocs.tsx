@@ -205,7 +205,7 @@ const resources = [
 export const AwsDocs = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [copied, setCopied] = useState(false); // Moved to correct place
+  const [copied, setCopied] = useState(false);
 
   const categories = [
     { id: "all", label: "All Resources" },
@@ -225,13 +225,13 @@ export const AwsDocs = () => {
   const getIcon = (category: string) => {
     switch (category) {
       case "docs":
-        return <FaBook className="text-blue-500" />;
+        return <FaBook className="text-yellow-300" />;
       case "videos":
-        return <FaVideo className="text-red-500" />;
+        return <FaVideo className="text-pink-500" />;
       case "services":
-        return <FaServer className="text-green-500" />;
+        return <FaServer className="text-green-400" />;
       default:
-        return <FaExternalLinkAlt className="text-gray-500" />;
+        return <FaExternalLinkAlt className="text-purple-400" />;
     }
   };
 
@@ -242,37 +242,39 @@ export const AwsDocs = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Monokai theme colors (removed unused 'colors' constant)
+
   return (
-    <div className="min-h-screen rounded-sm bg-gradient-to-t from-gray-900 to-black p-4 md:p-8">
-      <div className="mb-4 p-4 rounded-lg border-2 border-black white bg-gradient-to-br from-black to-gray-900">
-        <h1 className="font-semibold text-2xl text-yellow-500  flex items-center">
-          <MdOutlineSpeakerNotes className="text-yellow-500 rounded-sm mr-2" /> Note:
+    <div className="min-h-screen bg-[#272822] p-4 md:p-8 text-[#F8F8F2]">
+      <div className="mb-6 p-5 rounded-lg border-2 border-[#A6E22E] bg-[#1E1F1C]">
+        <h1 className="font-semibold text-2xl text-[#FD971F] flex items-center">
+          <MdOutlineSpeakerNotes className="text-[#FD971F] mr-2" /> Note:
         </h1>
-        <p className="text-sm text-white font-semibold ">
-          As you explore my website and get to know me a bit more, I’d like to share a small request. If you’ve found the resources and content helpful and would like to support my work, I’d greatly appreciate any donations to help cover the server costs. Your support would go a long way in helping me continue to improve and maintain this site.
+        <p className="text-[#F8F8F2] my-3">
+          As you explore my website and get to know me a bit more, I'd like to share a small request. If you've found the resources and content helpful and would like to support my work, I'd greatly appreciate any donations to help cover the server costs. Your support would go a long way in helping me continue to improve and maintain this site.
           <br />
           <br />
           Thank you so much for your consideration! 😊
         </p>
         <button
-          onClick={upicopy} // Corrected function call
-          className="flex items-center font-semibold  cursor-pointer text-sm gap-2 rounded-full text-white hover:font-semibold mt-2 px-4 py-2 bg-blue-500 hover:shadow-white transition-all shadow-md"
+          onClick={upicopy}
+          className="flex items-center font-semibold cursor-pointer gap-2 rounded-md text-[#272822] mt-2 px-4 py-2 bg-[#66D9EF] hover:bg-[#A1EFE4] transition-all"
         >
-          <FaCopy className="text-white" />
+          <FaCopy />
           {copied ? "UPI ID Copied!" : "Copy UPI ID"}
         </button>
-        <span className="mt-3 mb-3 text-white font-semibold">Please Dont transfer more than 500Rs Its a humble reuqest to everyone </span>
+        <div className="mt-3 text-[#E6DB74] font-medium">Please don't transfer more than 500Rs. It's a humble request to everyone.</div>
       </div>
 
       <div className="max-w-6xl mx-auto">
         {/* Search Bar */}
-        <div className="mb-6  relative z-10">
-          <div className="relative rounded-xl bg-gradient-to-r from-gray-800 to-gray-600 text-white border border-black font-semibold shadow-md p-3 flex items-center">
-            <FaSearch className="text-yellow-500 mr-3" />
+        <div className="mb-6 relative">
+          <div className="relative rounded-lg bg-[#1E1F1C] border border-[#F92672] shadow-md p-3 flex items-center">
+            <FaSearch className="text-[#FD971F] mr-3" />
             <input
               type="text"
               placeholder="Search your respective resources..."
-              className="flex-1 outline-none bg-transparent"
+              className="flex-1 outline-none bg-transparent text-[#F8F8F2] placeholder-[#75715E]"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -280,15 +282,15 @@ export const AwsDocs = () => {
         </div>
 
         {/* Category Filters */}
-        <div className="mb-6  flex flex-wrap gap-2">
+        <div className="mb-6 flex flex-wrap gap-2">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-4 py-2 text-sm rounded-lg  transition ${
+              className={`px-4 py-2 rounded-md transition ${
                 selectedCategory === category.id
-                  ? "bg-gray-900 text-white font-semibold shadow-md"
-                  : "tracking-widebg-gradient-to-br from-gray-800 via-black to-gray-700 text-white k hover:bg-gray-900"
+                  ? "bg-[#F92672] text-[#F8F8F2] font-semibold shadow-md"
+                  : "bg-[#383830] text-[#F8F8F2] hover:bg-[#49483E]"
               }`}
             >
               {category.label}
@@ -301,17 +303,17 @@ export const AwsDocs = () => {
           {filteredResources.map((resource, index) => (
             <div
               key={index}
-              className="tracking-wide bg-gradient-to-r from-gray-900 via-black via-gray-700 via-gray-800 to-gray-900 rounded-xl text-white p-4 shadow-md hover:shadow-lg transition-all"
+              className="bg-[#1E1F1C] border border-[#383830] rounded-lg p-4 shadow-md hover:shadow-lg hover:border-[#A6E22E] transition-all"
             >
-              <div className="flex  items-start mb-3">
+              <div className="flex items-start mb-3">
                 <div className="text-xl mr-3">{getIcon(resource.categories[0])}</div>
                 <div className="flex-1">
-                  <h3 className="font-medium text-lg">{resource.title}</h3>
-                  <p className="text-sm text-gray-200">{resource.description}</p>
+                  <h3 className="font-medium text-lg text-[#66D9EF]">{resource.title}</h3>
+                  <p className="text-sm text-[#F8F8F2] opacity-90">{resource.description}</p>
                 </div>
               </div>
-              <div className="flex items-center justify-between border-t pt-3">
-                <span className="text-sm bg-gray-700 p-1 px-2 rounded-full text-white capitalize">
+              <div className="flex items-center justify-between border-t border-[#383830] pt-3">
+                <span className="text-xs bg-[#383830] px-2 py-1 rounded-md text-[#A6E22E] capitalize">
                   {resource.categories.join(", ")}
                 </span>
                 <div className="space-x-2">
@@ -321,7 +323,7 @@ export const AwsDocs = () => {
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-blue-500"
+                      className="inline-block text-[#AE81FF] hover:text-[#FD5FF0]"
                     >
                       <FaExternalLinkAlt />
                     </a>
@@ -334,7 +336,9 @@ export const AwsDocs = () => {
 
         {/* Empty State */}
         {filteredResources.length === 0 && (
-          <div className="text-center py-12 text-gray-500">No resources found matching your search</div>
+          <div className="text-center py-12 text-[#75715E]">
+            No resources found matching your search
+          </div>
         )}
       </div>
     </div>
