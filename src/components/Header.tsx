@@ -128,7 +128,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => (
     </motion.div>
     <motion.div whileHover={{ scale: 1.05 }}>
       <Link 
-        to="/awsdocs" 
+        to="/docs" 
         className="flex items-center gap-2 text-[#fd971f] text-sm md:text-base" 
         onClick={closeMenu}
       >

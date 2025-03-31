@@ -10,9 +10,15 @@ const resources = [
     categories: ["docs"],
   },
   {
-    title: "python code with harry : Oneshot",
+    title: "Learn Numpy !!!! ",
+    description: "Go and programme maths in a new way !!.",
+    urls: ["https://youtu.be/x7ULDYs4X84?si=HyIfJ6PZ0I6B3qen"],
+    categories: ["docs"],
+  },
+  {
+    title: "python Hitesh chaudhary : Oneshot",
     description:"This video is available on youtube channel name codewithharry ",
-    urls: ["https://youtu.be/v9bOWjwdTlg?si=T5U3hBCowfEtBLTo"],
+    urls: ["https://youtu.be/v9bOWjwdTlg?si=T5U3hBCowfEtBLTo" , "https://youtu.be/Cri8__uGk-g?si=vhyp2e7xApe0kvGQ"],
     categories: ["videos"],
   },
   {
@@ -62,7 +68,7 @@ const resources = [
     description: "IAM helps you securely control access to AWS resources. Learn how to create and manage AWS users, groups, and permissions.",
     urls: [
       "https://aws.amazon.com/iam/",
-      "https://www.youtube.com/watch?v=UrsmFxEIp5k&pp=ygUWY29kZSB3aXRoIGhhcnJ5IHB5dGhvbg%3D%3D"
+      "https://youtu.be/MDM8AraFgUE?si=ucaDXDStdAegOKpI"
     ],
     categories: ["services", "videos"],
   },
@@ -119,9 +125,25 @@ const resources = [
   },
   {
     title: "JavaScript Full Course - Learn JavaScript in 12 Hours",
-    description: "Complete JavaScript tutorial for beginners by freeCodeCamp.",
+    description: "Complete JavaScript tutorial",
     urls: [
       "https://www.youtube.com/watch?v=PkZNo7MFNFg"
+    ],
+    categories: ["videos", "programming"],
+  },
+  {
+    title: "JavaScript Full Course - Playlist",
+    description: "Complete JavaScript tutorial for beginners",
+    urls: [
+      "https://youtube.com/playlist?list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37&si=NSNlHw-5cpjOFWdk"
+    ],
+    categories: ["videos", "programming"],
+  },
+  {
+    title: "JavaScript Full Course - Oneshot video",
+    description: "Complete JavaScript tutorial for beginners .",
+    urls: [
+      "https://youtu.be/sscX432bMZo?si=0flk6bJ_vvsYvxYE" , "https://youtu.be/_TjtAyMkiTI?si=Q4Rbt2TdARav5jwm"
     ],
     categories: ["videos", "programming"],
   },
@@ -199,6 +221,14 @@ const resources = [
       "https://www.youtube.com/watch?v=YNZ2ljrGl2I"
     ],
     categories: ["videos", "services"],
+  },
+  {
+    title: "Reactjs Tutorial for Begineners",
+    description: "Learn Reactjs from the video tutorial available on youtube.",
+    urls: [
+      "https://youtube.com/playlist?list=PLu71SKxNbfoDqgPchmvIsL4hTnJIrtige&si=Kb8QEHNkjSL38wAw" , "https://youtu.be/eILUmCJhl64?si=oPR-sr43ENDFYo1a"
+    ],
+    categories: ["videos"],
   },
 ];
 

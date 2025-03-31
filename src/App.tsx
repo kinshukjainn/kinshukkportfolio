@@ -9,7 +9,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainContent />} />
-        <Route path="/awsdocs" element={<AwsDocs />} />
+        <Route path="/docs" element={<AwsDocs />} />
       </Routes>
       <Footer />
     </Router>
