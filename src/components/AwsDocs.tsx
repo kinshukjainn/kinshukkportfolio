@@ -13,7 +13,7 @@ const resources = [
     title: "Learn Numpy !!!! ",
     description: "Go and programme maths in a new way !!.",
     urls: ["https://youtu.be/x7ULDYs4X84?si=HyIfJ6PZ0I6B3qen"],
-    categories: ["docs"],
+    categories: ["videos"],
   },
   {
     title: "python Hitesh chaudhary : Oneshot",
