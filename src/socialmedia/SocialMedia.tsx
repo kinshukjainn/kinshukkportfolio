@@ -1,60 +1,84 @@
 "use client";
 
+import { useState } from "react";
 import { FaConnectdevelop, FaPhoneAlt, FaCopy } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
-import { useState } from "react";
 
 const SocialMedia = () => {
   const email = "kinshuk25jan04@gmail.com";
-  const phone = "+91 9172702501"; 
-  const upiId = "kinshuk25jan04@oksbi";
+  const phone = "+91 9172702501";
+  
+  const [copiedItem, setCopiedItem] = useState("");
 
-  const [copied, setCopied] = useState(false);
+  interface CopyToClipboardParams {
+    text: string;
+    item: "email" | "phone";
+  }
 
-  const copyToClipboard = (text: string) => {
+  const copyToClipboard = (text: CopyToClipboardParams["text"], item: CopyToClipboardParams["item"]): void => {
     navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopiedItem(item);
+    setTimeout(() => setCopiedItem(""), 2000);
   };
 
   return (
-    <div className="bg-[#272822] shadow-lg border border-[#3E3D32]  p-6 mt-6 w-full md:w-1/2 flex-grow">
+    <div className="bg-gray-900 p-6 rounded-lg shadow-xl border border-gray-800">
       {/* Heading */}
-      <h2 className="text-xl font-semibold mb-4 text-[#A6E22E] flex items-center gap-2">
-        <FaConnectdevelop className="text-[#F92672]" /> Connect With Me
-      </h2>
+      <div className="flex items-center gap-2 mb-4">
+        <FaConnectdevelop className="text-purple-500 text-2xl" />
+        <h2 className="text-2xl font-bold text-white">Connect With Me</h2>
+      </div>
 
       {/* Message */}
-      <p className="text-[#F8F8F2] leading-relaxed mb-4">
-        Feel free to reach out to me via email, phone, or support me using UPI. (I know you will)
+      <p className="text-gray-400 mb-6 text-sm">
+        Feel free to reach out to me via email, phone, or support me using UPI.
       </p>
 
       {/* Contact Details */}
-      <div className="flex flex-col space-y-4 text-lg">
+      <div className="space-y-4">
         {/* Email */}
-        <div className="flex items-center gap-3">
-          <MdAlternateEmail className="text-[#66D9EF] text-2xl" />
-          <a href={`mailto:${email}`} className="text-[#E6DB74] hover:text-[#F92672] transition-all">
-            {email}
-          </a>
+        <div className="group flex items-center justify-between bg-gray-800 p-3 rounded-lg transition-all hover:bg-gray-700 border border-gray-700 hover:border-purple-500">
+          <div className="flex items-center gap-3">
+            <div className="bg-gray-700 p-2 rounded-md">
+              <MdAlternateEmail className="text-purple-400 text-xl" />
+            </div>
+            <div>
+              <p className="text-gray-400 text-xs">Email</p>
+              <p className="text-white">{email}</p>
+            </div>
+          </div>
+          <button 
+            onClick={() => copyToClipboard(email, "email")}
+            className="bg-gray-700 hover:bg-purple-600 text-white p-2 rounded-md transition-colors"
+          >
+            {copiedItem === "email" ? (
+              <span className="text-xs">Copied!</span>
+            ) : (
+              <FaCopy />
+            )}
+          </button>
         </div>
 
         {/* Phone */}
-        <div className="flex items-center gap-3">
-          <FaPhoneAlt className="text-[#AE81FF] text-2xl" />
-          <a href={`tel:${phone}`} className="text-[#E6DB74] hover:text-[#F92672] transition-all">
-            {phone}
-          </a>
-        </div>
-
-        {/* UPI ID */}
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => copyToClipboard(upiId)}
-            className="flex  items-center cursor-pointer text-sm gap-2 px-3 py-1 bg-[#3E3D32] shadow-sm border border-[#75715E] hover:border-[#F92672] text-[#F8F8F2] transition-all"
+        <div className="group flex items-center justify-between bg-gray-800 p-3 rounded-lg transition-all hover:bg-gray-700 border border-gray-700 hover:border-purple-500">
+          <div className="flex items-center gap-3">
+            <div className="bg-gray-700 p-2 rounded-md">
+              <FaPhoneAlt className="text-purple-400 text-xl" />
+            </div>
+            <div>
+              <p className="text-gray-400 text-xs">Phone</p>
+              <p className="text-white">{phone}</p>
+            </div>
+          </div>
+          <button 
+            onClick={() => copyToClipboard(phone, "phone")}
+            className="bg-gray-700 hover:bg-purple-600 text-white p-2 rounded-md transition-colors"
           >
-            <FaCopy className="text-[#F92672]" />
-            {copied ? "UPI ID Copied!" : "Copy UPI ID"}
+            {copiedItem === "phone" ? (
+              <span className="text-xs">Copied!</span>
+            ) : (
+              <FaCopy />
+            )}
           </button>
         </div>
       </div>

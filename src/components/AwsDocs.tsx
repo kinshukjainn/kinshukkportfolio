@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { FaBook, FaCopy, FaVideo, FaServer, FaExternalLinkAlt, FaSearch } from "react-icons/fa";
-import { MdOutlineSpeakerNotes } from "react-icons/md";
+import { useState, useEffect } from "react";
+import { FaBook, FaVideo, FaServer, FaExternalLinkAlt, FaSearch } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const resources = [
   {
@@ -235,7 +235,45 @@ const resources = [
 export const AwsDocs = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [copied, setCopied] = useState(false);
+  const [contentLoaded, setContentLoaded] = useState(false);
+  const [particles, setParticles] = useState<{ x: number; y: number; size: number; vx: number; vy: number }[]>([]);
+
+  // Set content loaded after a small delay to ensure smooth animations
+  useEffect(() => {
+    const timer = setTimeout(() => setContentLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Particles animation effect for background
+  useEffect(() => {
+    const createParticles = () => {
+      const newParticles = [];
+      for (let i = 0; i < 30; i++) {
+        newParticles.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          size: Math.random() * 3 + 1,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5
+        });
+      }
+      setParticles(newParticles);
+    };
+
+    createParticles();
+    
+    const updateParticles = setInterval(() => {
+      setParticles(prevParticles => 
+        prevParticles.map(particle => ({
+          ...particle,
+          x: (particle.x + particle.vx + window.innerWidth) % window.innerWidth,
+          y: (particle.y + particle.vy + window.innerHeight) % window.innerHeight
+        }))
+      );
+    }, 50);
+    
+    return () => clearInterval(updateParticles);
+  }, []);
 
   const categories = [
     { id: "all", label: "All Resources" },
@@ -255,122 +293,172 @@ export const AwsDocs = () => {
   const getIcon = (category: string) => {
     switch (category) {
       case "docs":
-        return <FaBook className="text-yellow-300" />;
+        return <FaBook className="text-cyan-300" />;
       case "videos":
-        return <FaVideo className="text-pink-500" />;
+        return <FaVideo className="text-blue-400" />;
       case "services":
-        return <FaServer className="text-green-400" />;
+        return <FaServer className="text-cyan-400" />;
       default:
-        return <FaExternalLinkAlt className="text-purple-400" />;
+        return <FaExternalLinkAlt className="text-blue-300" />;
     }
   };
 
-  const upicopy = () => {
-    const upiId = "kinshuk25jan04@oksbi";
-    navigator.clipboard.writeText(upiId);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05
+      }
+    }
   };
 
-  // Monokai theme colors (removed unused 'colors' constant)
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12
+      }
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-[#272822] p-4 md:p-8 text-[#F8F8F2]">
-      <div className="mb-6 p-5  border-2 border-[#A6E22E] bg-[#1E1F1C]">
-        <h1 className="font-semibold text-2xl text-[#FD971F] flex items-center">
-          <MdOutlineSpeakerNotes className="text-[#FD971F] mr-2" /> Note:
-        </h1>
-        <p className="text-[#F8F8F2] my-3">
-          As you explore my website and get to know me a bit more, I'd like to share a small request. If you've found the resources and content helpful and would like to support my work, I'd greatly appreciate any donations to help cover the server costs. Your support would go a long way in helping me continue to improve and maintain this site.
-          <br />
-          <br />
-          Thank you so much for your consideration! 😊
-        </p>
-        <button
-          onClick={upicopy}
-          className="flex items-center font-semibold cursor-pointer gap-2  text-[#272822] mt-2 px-4 py-2 bg-[#66D9EF] hover:bg-[#A1EFE4] transition-all"
-        >
-          <FaCopy />
-          {copied ? "UPI ID Copied!" : "Copy UPI ID"}
-        </button>
-        <div className="mt-3 text-[#E6DB74] font-medium">Please don't transfer more than 500Rs. It's a humble request to everyone.</div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-100 font-mono p-4 md:p-8 relative overflow-hidden">
+      {/* Animated particles background */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {particles.map((particle, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-blue-500 opacity-20"
+            style={{
+              width: particle.size,
+              height: particle.size,
+              left: particle.x,
+              top: particle.y,
+            }}
+            initial={false}
+            animate={{
+              x: particle.vx * 10,
+              y: particle.vy * 10,
+              transition: { repeat: Infinity, duration: 2, ease: "linear" }
+            }}
+          />
+        ))}
       </div>
+      
+      {/* Glowing cloud effect */}
+      <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-10 animate-pulse z-0"></div>
+      <div className="absolute -bottom-32 -left-20 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl opacity-10 animate-pulse z-0"></div>
 
-      <div className="max-w-6xl mx-auto">
-        {/* Search Bar */}
-        <div className="mb-6 relative">
-          <div className="relative  bg-[#1E1F1C] border border-[#F92672] shadow-md p-3 flex items-center">
-            <FaSearch className="text-[#FD971F] mr-3" />
-            <input
-              type="text"
-              placeholder="Search your respective resources..."
-              className="flex-1 outline-none bg-transparent text-[#F8F8F2] placeholder-[#75715E]"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-        </div>
-
-        {/* Category Filters */}
-        <div className="mb-6 flex flex-wrap gap-2">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-4 py-2  transition ${
-                selectedCategory === category.id
-                  ? "bg-[#F92672] text-[#F8F8F2] font-semibold shadow-md"
-                  : "bg-[#383830] text-[#F8F8F2] hover:bg-[#49483E]"
-              }`}
-            >
-              {category.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Resources Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filteredResources.map((resource, index) => (
-            <div
-              key={index}
-              className="bg-[#1E1F1C] border border-[#383830]  p-4 shadow-md hover:shadow-lg hover:border-[#A6E22E] transition-all"
-            >
-              <div className="flex items-start mb-3">
-                <div className="text-xl mr-3">{getIcon(resource.categories[0])}</div>
-                <div className="flex-1">
-                  <h3 className="font-medium text-lg text-[#66D9EF]">{resource.title}</h3>
-                  <p className="text-sm text-[#F8F8F2] opacity-90">{resource.description}</p>
-                </div>
-              </div>
-              <div className="flex items-center justify-between border-t border-[#383830] pt-3">
-                <span className="text-xs bg-[#383830] px-2 py-1 text-[#A6E22E] capitalize">
-                  {resource.categories.join(", ")}
-                </span>
-                <div className="space-x-2">
-                  {resource.urls.map((url, index) => (
-                    <a
-                      key={index}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block text-[#AE81FF] hover:text-[#FD5FF0]"
-                    >
-                      <FaExternalLinkAlt />
-                    </a>
-                  ))}
-                </div>
-              </div>
+      <motion.div
+        initial="hidden"
+        animate={contentLoaded ? "visible" : "hidden"}
+        variants={containerVariants}
+        className="relative z-10"
+      >
+        
+        <div className="max-w-6xl mx-auto">
+          {/* Search Bar */}
+          <motion.div 
+            className="mb-6 relative"
+            variants={itemVariants}
+          >
+            <div className="relative backdrop-blur-sm bg-gray-900/70 border border-gray-700 hover:border-cyan-500/50 transition-all rounded-lg shadow-md p-4 flex items-center">
+              <FaSearch className="text-cyan-400 mr-3 text-xl" />
+              <input
+                type="text"
+                placeholder="Search your respective resources..."
+                className="flex-1 outline-none bg-transparent text-gray-100 placeholder-gray-400"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
             </div>
-          ))}
-        </div>
+          </motion.div>
 
-        {/* Empty State */}
-        {filteredResources.length === 0 && (
-          <div className="text-center py-12 text-[#75715E]">
-            No resources found matching your search
-          </div>
-        )}
-      </div>
+          {/* Category Filters */}
+          <motion.div 
+            className="mb-6 flex flex-wrap gap-2"
+            variants={itemVariants}
+          >
+            {categories.map((category) => (
+              <motion.button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                  selectedCategory === category.id
+                    ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold shadow-md"
+                    : "bg-gray-800/60 backdrop-blur-sm text-gray-300 border border-gray-700 hover:border-cyan-500/50"
+                }`}
+              >
+                {category.label}
+              </motion.button>
+            ))}
+          </motion.div>
+
+          {/* Resources Grid */}
+          <motion.div 
+            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            variants={containerVariants}
+          >
+            {filteredResources.map((resource, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.02, backgroundColor: "rgba(8, 145, 178, 0.1)" }}
+                className="backdrop-blur-sm bg-gray-900/70 border border-gray-700 hover:border-cyan-500/50 transition-all rounded-lg p-5 shadow-lg"
+              >
+                <div className="flex items-start mb-4">
+                  <div className="text-2xl mr-3">{getIcon(resource.categories[0])}</div>
+                  <div className="flex-1">
+                    <h3 className="font-medium text-lg text-cyan-400">{resource.title}</h3>
+                    <p className="text-sm text-gray-300 mt-1">{resource.description}</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between border-t border-gray-700 pt-3">
+                  <div className="flex flex-wrap gap-1">
+                    {resource.categories.map((category, idx) => (
+                      <span key={idx} className="text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700 px-2 py-1">
+                        {category}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="space-x-2">
+                    {resource.urls.map((url, idx) => (
+                      <motion.a
+                        key={idx}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block text-cyan-400 hover:text-cyan-300 p-1"
+                        whileHover={{ scale: 1.2, rotate: 5 }}
+                      >
+                        <FaExternalLinkAlt />
+                      </motion.a>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Empty State */}
+          {filteredResources.length === 0 && (
+            <motion.div 
+              variants={itemVariants}
+              className="backdrop-blur-sm bg-gray-900/70 border border-gray-700 rounded-lg text-center py-12 text-gray-400"
+            >
+              No resources found matching your search
+            </motion.div>
+          )}
+        </div>
+      </motion.div>
     </div>
   );
 };
