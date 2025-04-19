@@ -328,7 +328,7 @@ export const AwsDocs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-100 font-mono p-4 md:p-8 relative overflow-hidden">
+    <div className="min-h-screen font-poppins bg-gradient-to-br from-gray-900 to-black text-gray-100  p-4 md:p-8 relative overflow-hidden">
       {/* Animated particles background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {particles.map((particle, i) => (

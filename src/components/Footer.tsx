@@ -23,7 +23,7 @@ const Footer = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="bg-gradient-to-b from-slate-900 to-gray-900 text-gray-300 shadow-xl font-mono py-10 relative overflow-hidden"
+      className="bg-gradient-to-b font-poppins from-slate-900 to-gray-900 text-gray-300 shadow-xl  py-10 relative overflow-hidden"
     >
       {/* Decorative Cloud Elements */}
       <motion.div 

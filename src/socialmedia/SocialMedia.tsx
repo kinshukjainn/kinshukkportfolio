@@ -22,7 +22,7 @@ const SocialMedia = () => {
   };
 
   return (
-    <div className="bg-gray-900 p-6 rounded-lg shadow-xl border border-gray-800">
+    <div className="bg-gray-900 font-poppins p-6 rounded-lg shadow-xl border border-gray-800">
       {/* Heading */}
       <div className="flex items-center gap-2 mb-4">
         <FaConnectdevelop className="text-purple-500 text-2xl" />

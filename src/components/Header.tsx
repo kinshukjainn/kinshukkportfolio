@@ -44,7 +44,7 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`bg-gradient-to-r from-gray-900 to-slate-900 text-gray-300 mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center font-mono rounded-xl shadow-xl border border-gray-800 relative z-50 overflow-hidden ${
+      className={`bg-gradient-to-r font-poppins from-gray-900 to-slate-900 text-gray-300 mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center  rounded-xl shadow-xl border border-gray-800 relative z-50 overflow-hidden ${
         scrolled ? "sticky top-2 backdrop-blur-md bg-opacity-95" : ""
       }`}
     >

@@ -117,7 +117,7 @@ const MainContent: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-black text-gray-100 font-mono min-h-screen flex flex-col justify-between p-4 sm:p-6 relative overflow-hidden">
+    <div className="bg-gradient-to-br font-poppins from-gray-900 to-black text-gray-100 min-h-screen flex flex-col justify-between p-4 sm:p-6 relative overflow-hidden">
       {/* Animated particles background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {particles.map((particle, i) => (
