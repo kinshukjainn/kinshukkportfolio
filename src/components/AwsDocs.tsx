@@ -328,8 +328,18 @@ export const AwsDocs = () => {
   };
 
   return (
-    <div className="min-h-screen font-poppins bg-gradient-to-br from-gray-900 to-black text-gray-100  p-4 md:p-8 relative overflow-hidden">
+    <>
+    <motion.footer
+        className="backdrop-blur-sm bg-gray-900/70 border-t border-gray-800 p-4 sm:p-5 text-center text-cyan-400 mt-6 sm:mt-8 shadow-lg text-xs sm:text-sm md:text-base w-full relative z-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8 }}
+      >
+        <p>Want to explore my learning journey? Check out the <strong className="text-yellow-100">Blogs</strong> tab in the header!</p>
+      </motion.footer>
+        <div className="min-h-screen font-poppins bg-gradient-to-br from-gray-900 to-black text-gray-100  p-4 md:p-8 relative overflow-hidden">
       {/* Animated particles background */}
+      
       <div className="absolute inset-0 z-0 overflow-hidden">
         {particles.map((particle, i) => (
           <motion.div
@@ -460,5 +470,7 @@ export const AwsDocs = () => {
         </div>
       </motion.div>
     </div>
+    </>
+
   );
 };

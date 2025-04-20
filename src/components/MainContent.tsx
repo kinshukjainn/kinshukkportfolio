@@ -269,6 +269,26 @@ const MainContent: React.FC = () => {
           
           {/* Project 1 */}
           <div className="p-4 rounded-lg bg-gray-800/60 backdrop-blur-sm border border-gray-700 hover:border-cyan-500/50 transition-all">
+            <a href="https://cloudkinshuk.in" className="text-lg sm:text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center">
+              <span className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-blue-500 rounded mr-3"></span>
+              Portfolio Website
+            </a>
+            <p className="text-gray-300 mt-3 text-sm sm:text-base">
+              A scalable portfolio website made on react , typescript and is been deployed on aws cloud  using the service  aws amplify for serverless archietecture and used aws service amazon route 53 for hosted zones and url redirection to custom domain which was purchased from hostinger         
+            </p>
+            <div className="flex flex-wrap gap-2 mt-3">
+              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">AWS amplify</span>
+              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">React 19</span>
+              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">Typescript</span>
+              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">Hostinger</span>
+              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">scalable</span>
+              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">CDN</span>
+              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">serverless</span>
+            </div>
+          </div>
+          
+          {/* Project 1 */}
+          <div className="p-4 rounded-lg bg-gray-800/60 backdrop-blur-sm border border-gray-700 gap-2 hover:border-cyan-500/50 transition-all">
             <a href="https://blog.cloudkinshuk.in" className="text-lg sm:text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center">
               <span className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-blue-500 rounded mr-3"></span>
               Cloud Architecture Blog

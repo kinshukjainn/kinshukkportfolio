@@ -16,6 +16,8 @@
     "@shadcn/ui": "^0.0.4",
     "@tailwindcss/vite": "^4.0.14",
     "framer-motion": "^12.5.0",
+    "graphql": "^16.10.0",
+    "graphql-request": "^7.1.2",
     "lucide-react": "^0.482.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

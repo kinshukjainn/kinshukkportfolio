@@ -246,6 +246,26 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
           </span>
         </Link>
       </motion.div>
+      <motion.div 
+        whileHover="hover" 
+        variants={linkVariants}
+      >
+        <Link 
+          to="/blogs" 
+          className="flex items-center gap-2 text-slate-400 text-sm md:text-base hover:text-slate-300 transition-colors duration-300" 
+          onClick={closeMenu}
+        >
+          <SiDocsdotrs className="text-lg" /> 
+          <span className="relative">
+            Blogs
+            <motion.span 
+              className="absolute -bottom-1 left-0 w-0 h-0.5 bg-slate-600"
+              whileHover={{ width: "100%" }}
+              transition={{ duration: 0.3 }}
+            />
+          </span>
+        </Link>
+      </motion.div>
       
       {/* Social Links with cloud-themed hover effects */}
       <div className="flex flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
