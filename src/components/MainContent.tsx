@@ -1,8 +1,14 @@
-import { FaAws, FaDocker, FaGithub, FaLinux, FaPython, FaReact } from "react-icons/fa";
+import {
+  FaAws,
+  FaDocker,
+  FaGithub,
+  FaLinux,
+  FaPython,
+  FaReact,
+} from "react-icons/fa";
 import { SiKubernetes, SiTerraform, SiTailwindcss } from "react-icons/si";
 import { motion } from "framer-motion";
 import { useState, useEffect, ReactNode } from "react";
-import kinshuk from "../assets/kinshukjain_resume.pdf"; 
 
 // Define types for technology items
 type TechItem = {
@@ -24,9 +30,9 @@ const MainContent: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15
-      }
-    }
+        staggerChildren: 0.15,
+      },
+    },
   };
 
   const itemVariants = {
@@ -37,14 +43,16 @@ const MainContent: React.FC = () => {
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 12
-      }
-    }
+        damping: 12,
+      },
+    },
   };
 
   // Particles animation effect for background
-  const [particles, setParticles] = useState<{ x: number; y: number; size: number; vx: number; vy: number }[]>([]);
-  
+  const [particles, setParticles] = useState<
+    { x: number; y: number; size: number; vx: number; vy: number }[]
+  >([]);
+
   useEffect(() => {
     const createParticles = () => {
       const newParticles = [];
@@ -54,56 +62,61 @@ const MainContent: React.FC = () => {
           y: Math.random() * window.innerHeight,
           size: Math.random() * 3 + 1,
           vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5
+          vy: (Math.random() - 0.5) * 0.5,
         });
       }
       setParticles(newParticles);
     };
 
     createParticles();
-    
+
     const updateParticles = setInterval(() => {
-      setParticles(prevParticles => 
-        prevParticles.map(particle => ({
+      setParticles((prevParticles) =>
+        prevParticles.map((particle) => ({
           ...particle,
           x: (particle.x + particle.vx + window.innerWidth) % window.innerWidth,
-          y: (particle.y + particle.vy + window.innerHeight) % window.innerHeight
+          y:
+            (particle.y + particle.vy + window.innerHeight) %
+            window.innerHeight,
         }))
       );
     }, 50);
-    
+
     return () => clearInterval(updateParticles);
   }, []);
 
   // Tech stack items
   const techStack: TechItem[] = [
-    { icon: <FaAws className="text-2xl" />, name: "AWS cloud" },
-    { icon: <FaReact className="text-2xl" />, name: "React 19" },
-    { icon: <FaPython className="text-2xl" />, name: "Python / Boto3" },
-    { icon: <SiTailwindcss className="text-2xl" />, name: "TailwindCSS" },
-    { icon: <FaDocker className="text-2xl" />, name: "Docker" },
-    { icon: <SiKubernetes className="text-2xl" />, name: "Kubernetes" },
-    { icon: <SiTerraform className="text-2xl" />, name: "Terraform " },
-    { icon: <FaGithub className="text-2xl" />, name: "GitHub Actions" },
-    { icon: <FaLinux className="text-2xl" />, name: "Linux, Bash" }
+    { icon: <FaAws className="text-3xl" />, name: "AWS cloud" },
+    { icon: <FaReact className="text-3xl" />, name: "React 19" },
+    { icon: <FaPython className="text-3xl" />, name: "Python / Boto3" },
+    { icon: <SiTailwindcss className="text-3xl" />, name: "TailwindCSS" },
+    { icon: <FaDocker className="text-3xl" />, name: "Docker" },
+    { icon: <SiKubernetes className="text-3xl" />, name: "Kubernetes" },
+    { icon: <SiTerraform className="text-3xl" />, name: "Terraform " },
+    { icon: <FaGithub className="text-3xl" />, name: "GitHub Actions" },
+    { icon: <FaLinux className="text-3xl" />, name: "Linux, Bash" },
   ];
 
   // Certifications data
   const certifications: Certification[] = [
     {
       title: "AWS Certified Cloud Practitioner",
-      description: "Foundation-level certification validating my cloud fluency and basic AWS knowledge. Will be completed by May 2025 as part of my professional cloud journey roadmap.",
-      link: "https://github.com/kinshukjainn/"
+      description:
+        "Foundation-level certification validating my cloud fluency and basic AWS knowledge. Will be completed by May 2025 as part of my professional cloud journey roadmap.",
+      link: "https://github.com/kinshukjainn/",
     },
     {
       title: "AWS Serverless Cloud Badge",
-      description: "Specialized recognition for proficiency in serverless architecture patterns, Lambda functions, API Gateway, and DynamoDB. Earned through AWS Educate emerging talent program.",
-      link: "https://www.credly.com/badges/0bcd1190-2d68-45ff-91d9-32b65aa93ed8/public_url"
+      description:
+        "Specialized recognition for proficiency in serverless architecture patterns, Lambda functions, API Gateway, and DynamoDB. Earned through AWS Educate emerging talent program.",
+      link: "https://www.credly.com/badges/0bcd1190-2d68-45ff-91d9-32b65aa93ed8/public_url",
     },
     {
       title: "AWS Machine Learning Badge",
-      description: "Validation of skills in AWS ML services including SageMaker, Comprehend, and Rekognition. Demonstrates ability to implement cloud-based machine learning solutions.",
-      link: "https://www.credly.com/badges/a0042ec2-cc6e-4a99-84de-a1516ee5775a/public_url"
+      description:
+        "Validation of skills in AWS ML services including SageMaker, Comprehend, and Rekognition. Demonstrates ability to implement cloud-based machine learning solutions.",
+      link: "https://www.credly.com/badges/a0042ec2-cc6e-4a99-84de-a1516ee5775a/public_url",
     },
   ];
 
@@ -134,12 +147,12 @@ const MainContent: React.FC = () => {
             animate={{
               x: particle.vx * 10,
               y: particle.vy * 10,
-              transition: { repeat: Infinity, duration: 2, ease: "linear" }
+              transition: { repeat: Infinity, duration: 2, ease: "linear" },
             }}
           />
         ))}
       </div>
-      
+
       {/* Glowing cloud effect */}
       <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-10 animate-pulse z-0"></div>
       <div className="absolute -bottom-32 -left-20 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl opacity-10 animate-pulse z-0"></div>
@@ -155,15 +168,15 @@ const MainContent: React.FC = () => {
           className="backdrop-blur-sm bg-gray-900/70 p-6 sm:p-8 rounded-xl shadow-2xl border border-gray-800 text-center sm:text-left overflow-hidden"
           variants={itemVariants}
         >
-          <motion.h1 
+          <motion.h1
             className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent tracking-tight"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
           >
-            Hey Folks ! Myself kinshuk here ,
+            Hi everyone! I am kinshuk
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-lg sm:text-xl mt-2 md:mt-3 text-cyan-400 font-semibold"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -171,17 +184,6 @@ const MainContent: React.FC = () => {
           >
             A cloud architect and DevOps enthusiast !
           </motion.p>
-          <div className="mt-6 flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0">
-            <motion.a
-              href={kinshuk}
-              className="group relative px-6 py-3 font-bold overflow-hidden rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg transition-all duration-300 hover:scale-105"
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.5)" }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="relative z-10">Download Resume</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </motion.a>
-          </div>
         </motion.section>
 
         {/* About Section */}
@@ -189,11 +191,24 @@ const MainContent: React.FC = () => {
           className="backdrop-blur-sm bg-gray-900/70 p-6 sm:p-8 rounded-xl shadow-2xl border border-gray-800"
           variants={itemVariants}
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Who am I?</h2>
-          <p className="text-gray-300 mt-4 text-sm sm:text-base leading-relaxed">
-            I am a cloud enthusiast with a strong foundation in AWS and cloud-native technologies. Really interested in building scalable infrastructure and cost-effective solutions for cloud native applications. I have a passion for learning and sharing knowledge, and I enjoy collaborating with teams to solve complex problems. You know i am really excited to handle complex problems and build scalable solutions for cloud native applications. I am also a big fan of open-source projects as they are free and open to all. I am always looking for opportunities to learn and grow in the field of cloud computing and DevOps. 
-
-            As i am exploring aws and different tools of deveops it not only making me eager to design as cost effective and simple but complex archietecture to scale the application and make it more reliable and usefull to the community and the across the world. As we are moving forwards towards AI ( Artificial Intelligence) and ML (Machine Learning) , my vision or purpose is to make deployment and CI/CD more automated and reliable to all the systems . This can make huge impact as we will be able to deploy the apps and features more fast and reliable to the end users and the customers.
+          <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+            Who am I?
+          </h2>
+          <p className="text-white mt-4 text-sm sm:text-base leading-relaxed">
+            I'm really excited about cloud computing and have built a solid
+            foundation in AWS and cloud-native technologies. I love solving
+            complex problems and designing scalable, cost-effective solutions
+            for cloud applications. I'm always eager to learn and share
+            knowledge with others, and I enjoy collaborating with teams to
+            tackle challenges. As I explore tools in DevOps and AWS, I focus on
+            building systems that are simple, cost-effective, and can scale
+            easily. I'm also passionate about open-source projects because they
+            are accessible to everyone and foster collaboration. With AI and
+            machine learning advancing rapidly, my goal is to make deployment
+            and CI/CD processes faster and more reliable. By automating these
+            systems, we can deliver updates and features to users quickly and
+            efficiently, making a positive impact on both the development
+            community and users worldwide.
           </p>
         </motion.section>
 
@@ -202,11 +217,36 @@ const MainContent: React.FC = () => {
           className="backdrop-blur-sm bg-gray-900/70 p-6 sm:p-8 rounded-xl shadow-2xl border border-gray-800"
           variants={itemVariants}
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Education</h2>
-          <div className="flex items-center mt-4">
-            <div className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></div>
-            <p className="text-gray-300 text-sm sm:text-base">
-              B.Tech at JSS Academy of Technical Education (2022-2026), Noida, Uttar Pradesh
+          <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent mb-4">
+            Education
+          </h2>
+
+          {/* Main Degree */}
+          <div className="mb-6 border-l-2 border-cyan-400 pl-4">
+            <div className="flex justify-between items-baseline">
+              <h3 className="text-xl font-medium text-white">
+                Bachelor of Technology, Electrical Engineering
+              </h3>
+              <span className="text-cyan-400 text-sm">2022 - 2026</span>
+            </div>
+            <p className="text-gray-300 mt-1">
+              JSS Academy of Technical Education
+            </p>
+            <p className="text-gray-400 text-sm italic">Noida, Uttar Pradesh</p>
+            <div className="mt-3 space-y-2"></div>
+          </div>
+
+          {/* Secondary Education */}
+          <div className="border-l-2 border-gray-600 pl-4">
+            <div className="flex justify-between items-baseline">
+              <h3 className="text-lg font-medium text-white">
+                Higher Secondary Education (XII)
+              </h3>
+              <span className="text-gray-400 text-sm">2020 - 2022</span>
+            </div>
+            <p className="text-gray-300 mt-1">Sri Chaitnya Junior College</p>
+            <p className="text-gray-400 text-sm italic">
+              Pune Maharashtra, India
             </p>
           </div>
         </motion.section>
@@ -216,47 +256,74 @@ const MainContent: React.FC = () => {
           className="backdrop-blur-sm bg-gray-900/70 p-6 sm:p-8 rounded-xl shadow-2xl border border-gray-800"
           variants={itemVariants}
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent mb-4">Tech Stack</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent mb-4">
+            Tech Stack
+          </h2>
           <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mt-4 text-gray-300 text-sm sm:text-base">
             {techStack.map((tech, index) => (
               <motion.div
                 key={index}
                 className="flex items-center space-x-3 p-4 rounded-lg bg-gray-800/60 backdrop-blur-sm border border-gray-700 hover:border-cyan-500/50 transition-all"
-                whileHover={{ scale: 1.03, backgroundColor: "rgba(8, 145, 178, 0.1)" }}
+                whileHover={{
+                  scale: 1.03,
+                  backgroundColor: "rgba(8, 145, 178, 0.1)",
+                }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <span className="text-cyan-400">{tech.icon}</span> 
+                <span className="text-cyan-400">{tech.icon}</span>
                 <span>{tech.name}</span>
               </motion.div>
             ))}
           </div>
         </motion.section>
-
         {/* Certifications Section */}
         <motion.section
           className="backdrop-blur-sm bg-gray-900/70 p-6 sm:p-8 rounded-xl shadow-2xl border border-gray-800"
           variants={itemVariants}
         >
-          <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent mb-4">Cloud Certifications</h2>
+          <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent mb-4">
+            Cloud Certifications
+          </h2>
+
+          {/* AWS Journey Banner */}
+          <div className="p-4 rounded-lg bg-gray-800/80 backdrop-blur-sm border border-cyan-700/40 mb-6">
+            <h3 className="text-cyan-400 font-medium flex items-center mb-2">
+              <FaAws className="mr-2" /> My AWS Certification Journey
+            </h3>
+            <p className="text-gray-300 text-sm sm:text-base italic border-l-2 border-cyan-500/50 pl-3">
+              I recently scored 679/1000 on the AWS Certified Cloud Practitioner
+              exam (CLF-C02). While just shy of passing, this experience has{" "}
+              <span className="text-cyan-300">strengthened my resolve</span> to
+              master cloud fundamentals and accelerated my preparation for the
+              more advanced Solutions Architect Associate certification by Q3
+              2025.
+            </p>
+          </div>
+
           <div className="mt-4 space-y-4 text-sm sm:text-base">
             {certifications.map((certificate, index) => (
               <motion.div
                 key={index}
                 className="p-4 rounded-lg bg-gray-800/60 backdrop-blur-sm border border-gray-700 hover:border-cyan-500/50 transition-all"
-                whileHover={{ scale: 1.02, backgroundColor: "rgba(8, 145, 178, 0.1)" }}
+                whileHover={{
+                  scale: 1.02,
+                  backgroundColor: "rgba(8, 145, 178, 0.1)",
+                }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <a href={certificate.link} className="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center">
+                <a
+                  href={certificate.link}
+                  className="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center"
+                >
                   <FaAws className="mr-2" /> {certificate.title}
                 </a>
-                <p className="text-gray-300 mt-2">
-                  {certificate.description}
-                </p>
+                <p className="text-gray-300 mt-2">{certificate.description}</p>
               </motion.div>
             ))}
           </div>
         </motion.section>
 
+        {/* Projects Section */}
         {/* Projects Section */}
         <motion.section
           className="backdrop-blur-sm bg-gray-900/70 p-6 sm:p-8 rounded-xl shadow-2xl border border-gray-800"
@@ -265,41 +332,169 @@ const MainContent: React.FC = () => {
           <h2 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent mb-4">
             Cloud Projects
           </h2>
-          <p className="text-gray-400 mb-6 text-sm sm:text-base">Current projects in development - updates coming soon</p>
-          
+          <p className="text-gray-400 mb-8 text-sm sm:text-base">
+            Current projects in development - updates coming soon
+          </p>
+
           {/* Project 1 */}
-          <div className="p-4 rounded-lg bg-gray-800/60 backdrop-blur-sm border border-gray-700 hover:border-cyan-500/50 transition-all">
-            <a href="https://cloudkinshuk.in" className="text-lg sm:text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center">
+          <div className="p-5 rounded-lg bg-gray-800/60 backdrop-blur-sm border border-gray-700 hover:border-cyan-500/50 transition-all mb-6">
+            <a
+              href="https://cloudkinshuk.in"
+              className="text-lg sm:text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center mb-4"
+            >
               <span className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-blue-500 rounded mr-3"></span>
               Portfolio Website
             </a>
-            <p className="text-gray-300 mt-3 text-sm sm:text-base">
-              A scalable portfolio website made on react , typescript and is been deployed on aws cloud  using the service  aws amplify for serverless archietecture and used aws service amazon route 53 for hosted zones and url redirection to custom domain which was purchased from hostinger         
-            </p>
-            <div className="flex flex-wrap gap-2 mt-3">
-              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">AWS amplify</span>
-              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">React 19</span>
-              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">Typescript</span>
-              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">Hostinger</span>
-              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">scalable</span>
-              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">CDN</span>
-              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">serverless</span>
+
+            <div className="text-gray-300 space-y-4 text-sm sm:text-base">
+              <p>
+                Built and deployed a personal portfolio website using React 19,
+                TypeScript, Tailwind CSS, and Framer Motion with live blog
+                integration and full cloud-backed deployment.
+              </p>
+
+              <ul className="space-y-2 pl-5 list-disc text-gray-300">
+                <li>
+                  Implemented smooth animations and responsive UI using Framer
+                  Motion and Tailwind CSS
+                </li>
+                <li>
+                  Integrated Hashnode API to dynamically fetch and display blog
+                  posts, enabling real-time updates
+                </li>
+                <li>
+                  Migrated from Netlify to AWS Amplify for faster build times,
+                  better scalability and improved CI/CD
+                </li>
+                <li>
+                  Configured custom domain with Route 53 for SSL certificates
+                  and robust DNS management
+                </li>
+                <li>
+                  Leveraged AI tools like Claude and ChatGPT to boost
+                  development efficiency
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-gray-700">
+              <h4 className="text-sm font-medium text-gray-400 mb-2">
+                Technologies Used:
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  React 19
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  TypeScript
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  Tailwind CSS
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  Framer Motion
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  AWS Amplify
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  Route 53
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  Hostinger
+                </span>
+              </div>
             </div>
           </div>
-          
-          {/* Project 1 */}
-          <div className="p-4 rounded-lg bg-gray-800/60 backdrop-blur-sm border border-gray-700 gap-2 hover:border-cyan-500/50 transition-all">
-            <a href="https://blog.cloudkinshuk.in" className="text-lg sm:text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center">
+
+          {/* Project 2 */}
+          <div className="p-5 rounded-lg bg-gray-800/60 backdrop-blur-sm border border-gray-700 hover:border-cyan-500/50 transition-all">
+            <a
+              href="https://blog.cloudkinshuk.in"
+              className="text-lg sm:text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center mb-4"
+            >
               <span className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-blue-500 rounded mr-3"></span>
               Cloud Architecture Blog
             </a>
-            <p className="text-gray-300 mt-3 text-sm sm:text-base">
-              A specialized technical blog featuring deep-dives into serverless architectures, AWS cloud patterns, and infrastructure-as-code best practices. Designed with a cloud engineer focus, it includes migration case studies, cost optimization techniques, and DevOps automation workflows. Deployed on a globally distributed CDN with Hashnode's platform for optimal performance.
-            </p>
-            <div className="flex flex-wrap gap-2 mt-3">
-              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">AWS</span>
-              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">CDN</span>
-              <span className="px-2 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">Hashnode</span>
+
+            <div className="text-gray-300 space-y-4 text-sm sm:text-base">
+              <p>
+                Created and deployed a fully functional tech blog using Hashnode
+                as the content platform, with custom domain integration and
+                professional DNS configuration.
+              </p>
+
+              <ul className="space-y-2 pl-5 list-disc text-gray-300">
+                <li>
+                  Set up a developer blog with a custom domain
+                  (blog.cloudkinshuk.in)
+                </li>
+                <li>
+                  Configured DNS records (A, CNAME, TXT) in Route 53 for domain
+                  verification and HTTPS
+                </li>
+                <li>
+                  Integrated domain management across different providers
+                  (Hostinger + AWS)
+                </li>
+                <li>
+                  Leveraged Hashnode's developer tools to sync content and
+                  metadata efficiently
+                </li>
+                <li>
+                  Published technical articles covering AWS, serverless
+                  architecture, and React development
+                </li>
+              </ul>
+
+              <p className="flex items-center mt-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 mr-2 text-cyan-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                  />
+                </svg>
+                <a
+                  href="https://blog.cloudkinshuk.in"
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  Live Project: blog.cloudkinshuk.in
+                </a>
+              </p>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-gray-700">
+              <h4 className="text-sm font-medium text-gray-400 mb-2">
+                Technologies Used:
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  Hashnode
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  Amazon Route 53
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  Hostinger
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  DNS Management
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  Custom Domain
+                </span>
+                <span className="px-3 py-1 text-xs rounded-full bg-blue-900/60 text-blue-300 border border-blue-700">
+                  CDN
+                </span>
+              </div>
             </div>
           </div>
         </motion.section>
@@ -311,7 +506,11 @@ const MainContent: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
       >
-        <p>Want to explore my learning journey? Check out the <strong className="text-cyan-300">Resources</strong> tab in the header!</p>
+        <p>
+          Want to explore my learning journey? Check out the{" "}
+          <strong className="text-cyan-300">Resources</strong> tab in the
+          header!
+        </p>
       </motion.footer>
     </div>
   );

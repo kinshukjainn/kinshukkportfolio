@@ -107,7 +107,7 @@ const Footer = () => {
             <FaCloud />
           </motion.div>
           <h2 className="text-2xl font-bold text-slate-200">
-            Kinshuk Jain / Cloud
+            CloudKinshuk / Personal Info 
           </h2>
         </motion.div>
 
@@ -118,7 +118,7 @@ const Footer = () => {
           className="mt-3 max-w-lg font-semibold text-slate-400"
         >
           <span className="relative">
-            Cloud Engineer / DevOps & Infrastructure Automation
+            Aspiring and self-taught cloud engineer with a passion for building scalable and secure cloud solutions.
             <motion.span 
               className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-slate-600 to-slate-500"
               initial={{ width: 0 }}

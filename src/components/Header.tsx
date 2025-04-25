@@ -1,20 +1,36 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaDiscord, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiDocsdotrs } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
-import { CiLogout } from "react-icons/ci";
 import { FaCloud, FaCloudDownloadAlt, FaCloudUploadAlt } from "react-icons/fa";
 import profile from "../assets/image.jpg";
+import {FaHashnode} from "react-icons/fa6";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation(); // Get current location
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
+
+  // Function to determine the path text based on current route
+  const getPathText = () => {
+    const pathname = location.pathname;
+    
+    if (pathname === "/") {
+      return "Profile";
+    } else if (pathname === "/docs" || pathname.startsWith("/docs/")) {
+      return "Resource";
+    } else if (pathname === "/blogs" || pathname.startsWith("/blogs/")) {
+      return "Blog on Hashnode";
+    } else {
+      return "Profile"; // Default fallback
+    }
+  };
 
   // Add scroll detection for sticky header effect
   useEffect(() => {
@@ -127,7 +143,7 @@ const Header = () => {
           </motion.div>
         </motion.div>
 
-        {/* Portfolio Name with cloud theme */}
+        {/* Dynamic Portfolio Name with cloud theme */}
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
@@ -143,7 +159,7 @@ const Header = () => {
               onClick={closeMenu}
               className="hover:underline decoration-wavy decoration-slate-500 underline-offset-4"
             >
-              Kinshuk Jain / Cloud
+              CloudKinshuk / {getPathText()} 
             </Link>
           </motion.h1>
         </motion.div>
@@ -220,9 +236,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
             whileHover={{ rotate: 360 }}
             transition={{ duration: 0.6 }}
           >
-            <CiLogout className="text-2xl text-gray-400 group-hover:text-gray-200" />
           </motion.div>
-          <span className="sm:hidden text-sm">Exit</span>
         </Link>
       </motion.div>
       
@@ -255,9 +269,9 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
           className="flex items-center gap-2 text-slate-400 text-sm md:text-base hover:text-slate-300 transition-colors duration-300" 
           onClick={closeMenu}
         >
-          <SiDocsdotrs className="text-lg" /> 
+          <FaHashnode className="text-lg" /> 
           <span className="relative">
-            Blogs
+            Blogs on Hashnode 
             <motion.span 
               className="absolute -bottom-1 left-0 w-0 h-0.5 bg-slate-600"
               whileHover={{ width: "100%" }}
@@ -269,10 +283,10 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       
       {/* Social Links with cloud-themed hover effects */}
       <div className="flex flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
-        <SocialLink href="https://discord.gg/vA92jrVC" icon={<FaDiscord />} label="Discord" />
-        <SocialLink href="https://instagram.com/kinshukjain._" icon={<FaInstagram />} label="Instagram" />
-        <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin />} label="LinkedIn" />
-        <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub />} label="GitHub" />
+        <SocialLink href="https://discord.gg/vA92jrVC" icon={<FaDiscord />} label="" />
+        <SocialLink href="https://instagram.com/kinshukjain._" icon={<FaInstagram />} label="" />
+        <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin />} label="" />
+        <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub />} label="" />
       </div>
     </div>
   );
