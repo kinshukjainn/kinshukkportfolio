@@ -1,16 +1,26 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { AuthProvider } from "react-oidc-context";
 import "./index.css";
 import App from "./App.tsx";
-import { AuthProvider } from "react-oidc-context";
 
+// Get environment variables from .env file
 const cognitoAuthConfig = {
-  authority:
-    "https://cognito-idp.ap-south-1.amazonaws.com/ap-south-1_p3Zxk7Dgb",
-  client_id: "fkoq7loeea7j9n3uk56l0l18g",
-  redirect_uri: "https://cloudkinshuk.in",
-  response_type: "code",
-  scope: "phone openid email",
+  authority: import.meta.env.VITE_COGNITO_AUTHORITY,
+  client_id: import.meta.env.VITE_COGNITO_CLIENT_ID,
+  redirect_uri: import.meta.env.VITE_COGNITO_REDIRECT_URI,
+  response_type: import.meta.env.VITE_COGNITO_RESPONSE_TYPE || "code",
+  scope: import.meta.env.VITE_COGNITO_SCOPE || "phone openid email",
+  
+  // Additional optional configuration
+  automaticSilentRenew: true,
+  loadUserInfo: true,
+  
+  // Handle token callbacks
+  onSigninCallback: () => {
+    // Remove the query parameters from the URL after successful login
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
 };
 
 createRoot(document.getElementById("root")!).render(
