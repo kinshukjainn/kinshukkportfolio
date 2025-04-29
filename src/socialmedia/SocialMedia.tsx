@@ -22,11 +22,11 @@ const SocialMedia = () => {
   };
 
   return (
-    <div className="bg-gray-900 font-poppins p-6 rounded-lg shadow-xl border border-gray-800">
+    <div className="bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50  font-poppins p-6 rounded-lg shadow-xl border border-gray-800">
       {/* Heading */}
       <div className="flex items-center gap-2 mb-4">
-        <FaConnectdevelop className="text-purple-500 text-2xl" />
-        <h2 className="text-2xl font-bold text-white">Connect With Me</h2>
+        <FaConnectdevelop className="text-yellow-500 text-2xl" />
+        <h2 className="text-2xl font-bold text-yellow-500">Connect With Me</h2>
       </div>
 
       {/* Message */}
@@ -37,7 +37,7 @@ const SocialMedia = () => {
       {/* Contact Details */}
       <div className="space-y-4">
         {/* Email */}
-        <div className="group flex items-center justify-between bg-gray-800 p-3 rounded-lg transition-all hover:bg-gray-700 border border-gray-700 hover:border-purple-500">
+        <div className="group flex items-center justify-between bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50   p-3 rounded-lg transition-all  ">
           <div className="flex items-center gap-3">
             <div className="bg-gray-700 p-2 rounded-md">
               <MdAlternateEmail className="text-purple-400 text-xl" />
@@ -52,15 +52,15 @@ const SocialMedia = () => {
             className="bg-gray-700 hover:bg-purple-600 text-white p-2 rounded-md transition-colors"
           >
             {copiedItem === "email" ? (
-              <span className="text-xs">Copied!</span>
+              <span className="text-xs text-yellow-500">Copied!</span>
             ) : (
-              <FaCopy />
+              <FaCopy className="text-yellow-500" />
             )}
           </button>
         </div>
 
         {/* Phone */}
-        <div className="group flex items-center justify-between bg-gray-800 p-3 rounded-lg transition-all hover:bg-gray-700 border border-gray-700 hover:border-purple-500">
+        <div className="group flex items-center justify-between bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50   p-3 rounded-lg transition-all ">
           <div className="flex items-center gap-3">
             <div className="bg-gray-700 p-2 rounded-md">
               <FaPhoneAlt className="text-purple-400 text-xl" />
@@ -77,7 +77,7 @@ const SocialMedia = () => {
             {copiedItem === "phone" ? (
               <span className="text-xs">Copied!</span>
             ) : (
-              <FaCopy />
+              <FaCopy className="text-yellow-500" />
             )}
           </button>
         </div>

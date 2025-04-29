@@ -23,14 +23,14 @@ const Footer = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="bg-gradient-to-b font-poppins from-slate-900 to-gray-900 text-gray-300 shadow-xl  py-10 relative overflow-hidden"
+      className="bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50 font-poppins text-gray-300 shadow-xl  py-10 relative overflow-hidden"
     >
       {/* Decorative Cloud Elements */}
       <motion.div 
         custom={-10}
         variants={cloudVariants}
         animate="floating"
-        className="absolute left-10 top-10 text-gray-700 opacity-20 text-6xl"
+        className="absolute left-10 top-10 text-gray-200 opacity-20 text-6xl"
       >
         <FaCloud />
       </motion.div>
@@ -39,7 +39,7 @@ const Footer = () => {
         custom={-8}
         variants={cloudVariants}
         animate="floating"
-        className="absolute right-16 bottom-20 text-gray-700 opacity-20 text-5xl"
+        className="absolute right-16 bottom-20 text-gray-200 opacity-20 text-5xl"
       >
         <FaCloudRain />
       </motion.div>
@@ -48,7 +48,7 @@ const Footer = () => {
         custom={-12}
         variants={cloudVariants}
         animate="floating"
-        className="absolute left-1/4 bottom-10 text-gray-700 opacity-20 text-4xl"
+        className="absolute left-1/4 bottom-10 text-gray-200 opacity-20 text-4xl"
       >
         <FaCloudMeatball />
       </motion.div>
@@ -106,7 +106,7 @@ const Footer = () => {
           >
             <FaCloud />
           </motion.div>
-          <h2 className="text-2xl font-bold text-slate-200">
+          <h2 className="text-2xl font-bold text-yellow-500">
             CloudKinshuk / Personal Info 
           </h2>
         </motion.div>
@@ -120,7 +120,7 @@ const Footer = () => {
           <span className="relative">
             Aspiring and self-taught cloud engineer with a passion for building scalable and secure cloud solutions.
             <motion.span 
-              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-slate-600 to-slate-500"
+              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50 "
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ delay: 1.2, duration: 1 }}
@@ -159,7 +159,7 @@ const Footer = () => {
                 duration: 0.5,
                 type: "spring"
               }}
-              className="bg-gray-800 bg-opacity-50 backdrop-blur-sm px-3 py-2 rounded-lg border border-gray-700"
+              className="bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50  backdrop-blur-sm px-3 py-2 rounded-lg border border-gray-700"
             >
               <span className="text-slate-400 text-sm font-medium">{service}</span>
             </motion.div>
@@ -171,7 +171,7 @@ const Footer = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7 }}
-          className="text-sm font-medium text-gray-300 mt-8 p-4 bg-slate-800 bg-opacity-40 backdrop-blur-sm rounded-xl border border-slate-700 max-w-xl"
+          className="text-sm font-medium text-gray-300 mt-8 p-4 bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50  bg-opacity-40 backdrop-blur-sm rounded-xl border border-slate-700 max-w-xl"
         >
           <p>
             Open to opportunities in cloud engineering, DevOps, and security.{" "}

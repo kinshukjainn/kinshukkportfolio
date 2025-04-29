@@ -24,7 +24,7 @@ const Header = () => {
     if (pathname === "/") {
       return "Profile";
     } else if (pathname === "/docs" || pathname.startsWith("/docs/")) {
-      return "Resource";
+      return "Learning.Hub";
     } else if (pathname === "/blogs" || pathname.startsWith("/blogs/")) {
       return "Blog on Hashnode";
     } else {
@@ -60,7 +60,7 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`bg-gradient-to-r font-poppins from-gray-900 to-slate-900 text-gray-300 mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center  rounded-xl shadow-xl border border-gray-800 relative z-50 overflow-hidden ${
+      className={`bg-gradient-to-r font-poppins from-black via-grey-900 to-grey-800 text-gray-300 mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center  rounded-xl shadow-xl border border-gray-800 relative z-50 overflow-hidden ${
         scrolled ? "sticky top-2 backdrop-blur-md bg-opacity-95" : ""
       }`}
     >
@@ -246,12 +246,12 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       >
         <Link 
           to="/docs" 
-          className="flex items-center gap-2 text-slate-400 text-sm md:text-base hover:text-slate-300 transition-colors duration-300" 
+          className="flex items-center gap-2 text-yellow-500 text-sm md:text-base hover:text-yellow-400 transition-colors duration-300" 
           onClick={closeMenu}
         >
           <SiDocsdotrs className="text-lg" /> 
           <span className="relative">
-            Resources
+            Learning.Hub
             <motion.span 
               className="absolute -bottom-1 left-0 w-0 h-0.5 bg-slate-600"
               whileHover={{ width: "100%" }}
@@ -266,12 +266,12 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       >
         <Link 
           to="/blogs" 
-          className="flex items-center gap-2 text-slate-400 text-sm md:text-base hover:text-slate-300 transition-colors duration-300" 
+          className="flex items-center gap-2 text-yellow-500 text-sm md:text-base hover:text-yellow-400 transition-colors duration-300" 
           onClick={closeMenu}
         >
           <FaHashnode className="text-lg" /> 
           <span className="relative">
-            Blogs on Hashnode 
+            Blogs
             <motion.span 
               className="absolute -bottom-1 left-0 w-0 h-0.5 bg-slate-600"
               whileHover={{ width: "100%" }}
@@ -298,8 +298,8 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
     whileHover={{ 
       scale: 1.1,
       y: -3,
-      backgroundColor: "rgba(74, 85, 104, 0.9)",
-      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2)"
+      backgroundColor: "rgba(170, 228, 11, 0.9)",
+      boxShadow: "0 10px 15px -3px rgb(0, 0, 0), 0 4px 6px -4px rgba(0, 0, 0, 0.2)"
     }}
     whileTap={{ scale: 0.95 }}
     initial={{ opacity: 0, y: 20 }}
@@ -319,7 +319,7 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
       animate={{ rotate: [0, 0] }}
       whileHover={{ rotate: [0, 10, -10, 0] }}
       transition={{ duration: 0.6 }}
-      className="text-base sm:text-lg"
+      className="text-base text-white hover:text-black sm:text-lg"
     >
       {icon}
     </motion.span>
