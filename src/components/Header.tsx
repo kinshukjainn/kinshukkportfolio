@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaDiscord, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
-import { SiDocsdotrs } from "react-icons/si";
+import { MdOutlineAutoGraph } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCloud, FaCloudDownloadAlt, FaCloudUploadAlt } from "react-icons/fa";
 import profile from "../assets/image.jpg";
@@ -246,10 +246,10 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       >
         <Link 
           to="/docs" 
-          className="flex items-center gap-2 text-yellow-500 text-sm md:text-base hover:text-yellow-400 transition-colors duration-300" 
+          className="flex items-center gap-2 text-white text-sm md:text-base transition-colors duration-300" 
           onClick={closeMenu}
         >
-          <SiDocsdotrs className="text-lg" /> 
+          <MdOutlineAutoGraph className="text-lg text-white" /> 
           <span className="relative">
             Learning.Hub
             <motion.span 
@@ -266,10 +266,10 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       >
         <Link 
           to="/blogs" 
-          className="flex items-center gap-2 text-yellow-500 text-sm md:text-base hover:text-yellow-400 transition-colors duration-300" 
+          className="flex items-center gap-2 text-white text-sm md:text-base transition-colors duration-300" 
           onClick={closeMenu}
         >
-          <FaHashnode className="text-lg" /> 
+          <FaHashnode className="text-lg text-white" /> 
           <span className="relative">
             Blogs
             <motion.span 

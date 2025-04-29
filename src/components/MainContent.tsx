@@ -6,6 +6,7 @@ import {
   FaPython,
   FaReact,
 } from "react-icons/fa";
+
 import { SiKubernetes, SiTerraform, SiTailwindcss } from "react-icons/si";
 import { motion } from "framer-motion";
 import { useState, useEffect, ReactNode } from "react";
@@ -142,7 +143,7 @@ const MainContent: React.FC = () => {
     {
       title: "AWS Machine Learning Badge",
       description:
-        "Validation of skills in AWS ML services including SageMaker, Comprehend, and Rekognition. Demonstrates ability to implement cloud-based machine learning solutions.",
+        "Validation of skills in AWS ML services including SageMaker, Comprehend, and Rekognition. This badge showcases my understanding of machine learning concepts and AWS tools. Earned through AWS Educate emerging talent program.",
       link: "https://www.credly.com/badges/a0042ec2-cc6e-4a99-84de-a1516ee5775a/public_url",
     },
   ];
@@ -195,7 +196,7 @@ const MainContent: React.FC = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
           >
-            Hi everyone! I am kinshuk
+            Hi everyone! Myself Kinshuk Jain
           </motion.h1>
           <motion.p
             className="text-xl sm:text-2xl mt-4 md:mt-6 text-yellow-400 font-semibold text-center sm:text-left"
@@ -203,7 +204,7 @@ const MainContent: React.FC = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, type: "spring" }}
           >
-            A cloud architect and DevOps enthusiast !
+           Love building cost effective , secure and scalable cloud solutions. I enjoy solving real-world problems that make a meaningful impact and add value to society
           </motion.p>
           <motion.div
             className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mt-6 mx-auto sm:mx-0"
@@ -220,31 +221,6 @@ const MainContent: React.FC = () => {
         animate={contentLoaded ? "visible" : "hidden"}
         variants={containerVariants}
       >
-        {/* About Section */}
-        <motion.section
-          className="backdrop-blur-lg from-grey-900 to-black/90 p-6 sm:p-8 rounded-xl hover:shadow-3xl"
-          variants={itemVariants}
-        >
-          <h2 className="text-2xl sm:text-3xl font-mono font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-            Who am I?
-          </h2>
-          <p className="text-white mt-4 text-sm sm:text-base leading-relaxed">
-            I'm really excited about cloud computing and have built a solid
-            foundation in AWS and cloud-native technologies. I love solving
-            complex problems and designing scalable, cost-effective solutions
-            for cloud applications. I'm always eager to learn and share
-            knowledge with others, and I enjoy collaborating with teams to
-            tackle challenges. As I explore tools in DevOps and AWS, I focus on
-            building systems that are simple, cost-effective, and can scale
-            easily. I'm also passionate about open-source projects because they
-            are accessible to everyone and foster collaboration. With AI and
-            machine learning advancing rapidly, my goal is to make deployment
-            and CI/CD processes faster and more reliable. By automating these
-            systems, we can deliver updates and features to users quickly and
-            efficiently, making a positive impact on both the development
-            community and users worldwide.
-          </p>
-        </motion.section>
 
         {/* Education Section */}
         <motion.section
@@ -396,7 +372,7 @@ const MainContent: React.FC = () => {
             Cloud Projects
           </h2>
           <p className="text-gray-400 mb-8 text-sm sm:text-base">
-            Current projects in development - updates coming soon
+            Current projects are completed and deployed using AWS ( Amazon Web Services)
           </p>
 
           {/* Project 1 - Enhanced with better visual hierarchy */}
@@ -555,19 +531,9 @@ const MainContent: React.FC = () => {
                     Integrated domain management across different providers
                     (Hostinger + AWS)
                   </li>
-                </ul>
-                <ul className="space-y-3 pl-5 list-disc text-gray-300">
-                  <li>
-                    Leveraged Hashnode's developer tools to sync content and
-                    metadata efficiently
-                  </li>
                   <li>
                     Published technical articles covering AWS, serverless
                     architecture, and React development
-                  </li>
-                  <li>
-                    Implemented custom theme and branding to match portfolio
-                    site
                   </li>
                 </ul>
               </div>
