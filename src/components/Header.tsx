@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaBars, FaTimes, FaDiscord, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaBars, FaTimes, FaDiscord, FaLinkedin, FaGithub } from "react-icons/fa";
 import { MdOutlineAutoGraph } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCloud, FaCloudDownloadAlt, FaCloudUploadAlt } from "react-icons/fa";
@@ -284,7 +284,6 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       {/* Social Links with cloud-themed hover effects */}
       <div className="flex flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
         <SocialLink href="https://discord.gg/vA92jrVC" icon={<FaDiscord />} label="" />
-        <SocialLink href="https://instagram.com/kinshukjain._" icon={<FaInstagram />} label="" />
         <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin />} label="" />
         <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub />} label="" />
       </div>
