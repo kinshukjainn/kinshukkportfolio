@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaBars, FaTimes, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaBars, FaTimes, FaLinkedin, FaGithub, FaInstagramSquare } from "react-icons/fa";
 import { MdOutlineAutoGraph } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCloud, FaCloudDownloadAlt, FaCloudUploadAlt } from "react-icons/fa";
 import profile from "../assets/image.jpg";
-import { FaHashnode } from "react-icons/fa6";
+import { FaHashnode ,  FaSquareXTwitter  } from "react-icons/fa6";
+
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -282,6 +283,8 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       <div className="flex flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
         <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin />} label="" />
         <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub />} label="" />
+        <SocialLink href="https://x.com/realkinshuk004?t=Q1ZFJZ28LS4TZecJSD-OUw&s=09" icon={<FaSquareXTwitter />} label="" />
+        <SocialLink href="https://x.com/realkinshuk004?t=Q1ZFJZ28LS4TZecJSD-OUw&s=09" icon={<FaInstagramSquare />} label="" />
       </div>
     </div>
   );
