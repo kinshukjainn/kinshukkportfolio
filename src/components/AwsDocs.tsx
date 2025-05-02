@@ -3,13 +3,19 @@ import {
   FaBook,
   FaVideo,
   FaServer,
-  FaExternalLinkAlt,
   FaCode,
   FaCloud,
   FaHistory,
   FaDatabase,
 } from "react-icons/fa";
-import { BiSearch, BiFilter, BiX, BiChevronDown, BiSort } from "react-icons/bi";
+import {
+  BiSearch,
+  BiFilter,
+  BiX,
+  BiChevronDown,
+  BiSort,
+  BiLink,
+} from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
 import { GrResources } from "react-icons/gr";
 import { AiOutlineBranches } from "react-icons/ai";
@@ -24,7 +30,7 @@ interface Resource {
   categories: Category[];
 }
 
-// Resources data - expanded with multiple entries
+// Sample resource (in actual implementation, this would be a larger array)
 const resources: Resource[] = [
   {
     title: "AWS Official Documentation",
@@ -64,7 +70,7 @@ const resources: Resource[] = [
     description:
       "Learn how to run code without provisioning or managing servers.",
     urls: ["https://docs.aws.amazon.com/lambda/"],
-    categories: ["docs", "aws","services"],
+    categories: ["docs", "aws", "services"],
   },
   {
     title: "AWS SDK for JavaScript",
@@ -227,14 +233,14 @@ const resources: Resource[] = [
     description:
       "This is a badge which you can earn by registering and making account aws educate programme which has multiple free courses and modules to complete and also helps you prepare for aws certification.",
     urls: ["https://aws.amazon.com/education/awseducate/"],
-    categories: ["videos", "services" , "aws"],
+    categories: ["videos", "services", "aws"],
   },
   {
     title: "AWS Getting started with Serverless services with aws educate ",
     description:
       "This is a badge which you can earn by registering and making account aws educate programme which has multiple free courses and modules to complete and also helps you prepare for aws certification",
     urls: ["https://aws.amazon.com/education/awseducate/"],
-    categories: ["videos","services" , "aws"],
+    categories: ["videos", "services", "aws"],
   },
   {
     title:
@@ -242,17 +248,17 @@ const resources: Resource[] = [
     description:
       "This is a badge which you can earn by registering and making account aws educate programme which has multiple free courses and modules to complete and also helps you prepare for aws certification",
     urls: ["https://aws.amazon.com/education/awseducate/"],
-    categories: ["videos", "services" , "aws"],
+    categories: ["videos", "services", "aws"],
   },
   {
     title: "AWS Amplify Documentation",
     description: "Framework for building full-stack applications on AWS.",
     urls: ["https://docs.amplify.aws/"],
-    categories: ["docs", "services"  ,"aws"],
+    categories: ["docs", "services", "aws"],
   },
 ];
 
-// Define category metadata
+// Define category metadata with Microsoft-inspired colors
 interface CategoryMetadata {
   id: string;
   label: string;
@@ -266,31 +272,31 @@ const categoryMetadata: CategoryMetadata[] = [
   {
     id: "docs",
     label: "Documentation",
-    color: "bg-yellow-500",
-    bgColor: "bg-yellow-100",
-    hoverColor: "hover:bg-yellow-200",
-    textColor: "text-yellow-800",
+    color: "bg-blue-600",
+    bgColor: "bg-blue-100",
+    hoverColor: "hover:bg-blue-200",
+    textColor: "text-blue-800",
   },
   {
     id: "videos",
     label: "Videos",
-    color: "bg-green-500",
-    bgColor: "bg-green-100",
-    hoverColor: "hover:bg-green-200",
-    textColor: "text-green-800",
+    color: "bg-indigo-600",
+    bgColor: "bg-indigo-100",
+    hoverColor: "hover:bg-indigo-200",
+    textColor: "text-indigo-800",
   },
   {
     id: "services",
     label: "Services",
-    color: "bg-red-500",
-    bgColor: "bg-red-100",
-    hoverColor: "hover:bg-red-200",
-    textColor: "text-red-800",
+    color: "bg-teal-600",
+    bgColor: "bg-teal-100",
+    hoverColor: "hover:bg-teal-200",
+    textColor: "text-teal-800",
   },
   {
     id: "programming",
     label: "Programming",
-    color: "bg-purple-500",
+    color: "bg-purple-600",
     bgColor: "bg-purple-100",
     hoverColor: "hover:bg-purple-200",
     textColor: "text-purple-800",
@@ -298,18 +304,18 @@ const categoryMetadata: CategoryMetadata[] = [
   {
     id: "aws",
     label: "AWS",
-    color: "bg-orange-500",
+    color: "bg-orange-600",
     bgColor: "bg-orange-100",
     hoverColor: "hover:bg-orange-200",
     textColor: "text-orange-800",
   },
   {
     id: "gcp",
-    label: "Google Cloud Platform (comming soon)",
-    color: "bg-green-800",
-    bgColor: "bg-blue-700",
-    hoverColor: "hover:bg-blue-800",
-    textColor: "text-black",
+    label: "Google Cloud Platform",
+    color: "bg-blue-700",
+    bgColor: "bg-blue-100",
+    hoverColor: "hover:bg-blue-200",
+    textColor: "text-blue-800",
   },
 ];
 
@@ -435,7 +441,7 @@ export const AwsDocs = () => {
   // Get color for a specific category
   const getCategoryColor = (category: string): string => {
     const cat = categoryMetadata.find((c) => c.id === category);
-    return cat ? cat.color : "bg-blue-500";
+    return cat ? cat.color : "bg-blue-600";
   };
 
   // Get background color for a category pill
@@ -456,13 +462,13 @@ export const AwsDocs = () => {
     return cat ? cat.label : categoryId;
   };
 
-  // Variants for animations
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05,
       },
     },
   };
@@ -481,71 +487,57 @@ export const AwsDocs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-gray-900 via-gray-900 to-gray-800 text-white">
-      {/* Header with gradient */}
+    <div className="min-h-screen bg-[#121212] text-gray-900">
+      {/* Microsoft-style header with hero section */}
       <motion.div
-        className="bg-gradient-to-r from-gray-900 via-gray-900 to-gray-800 text-white shadow-lg"
+        className="bg-[#121212] text-white shadow-md"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-          <motion.h1
-            className="text-4xl font-bold tracking-tight"
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="flex items-center"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <span className="bg-clip-text font-mono text-transparent bg-gradient-to-r from-yellow-300 via-yellow-200 to-white">
-              Learning.Hub
-            </span>
-          </motion.h1>
+            <h1 className="text-3xl font-semibold tracking-tight flex items-center space-x-2">
+              <span className="font-light">Learning</span>
+              <span className="font-semibold">.Hub</span>
+            </h1>
+          </motion.div>
 
           <motion.p
-            className="mt-2 text-blue-100 text-lg whitespace-pre-line"
+            className="mt-4 text-blue-100 text-lg max-w-3xl leading-relaxed"
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            {`🚀 The Ultimate Free Learning Hub – Verified. Curated. Trusted.
-
-Welcome to a handpicked collection of the most dependable and completely free resources to master:
-
-🌐 Web Development  
-📊 Data Handling  
-⚙️ Practical Tech Skills  
-💡 And much more...
-
-Each resource has been thoroughly reviewed—no paywalls, no hidden costs, no gimmicks. Just clean, high-impact learning content built to help you grow faster.
-
-🔒 Why You Can Trust This:
-✅ Personally tested—zero AI noise, no clickbait  
-🔍 100% open access—searchable, cross-verifiable, credible  
-🎯 Action-oriented—focused on practical results, not fluff  
-🧠 Beginner-friendly, yet deep enough for serious learners  
-🛡️ No ads. No sponsors. No biases. Just pure value.
-
-This is the resource hub we wish existed when we started. Now it's yours.
-
-Stop guessing what to learn next.  
-Start here. Learn smart. Grow faster. Build with confidence.`}
+            Welcome to your all-in-one platform for mastering technology skills.
+            Gain access to verified, curated, and industry-relevant
+            resources—designed to accelerate your learning and future-proof your
+            career. Still waiting for that one magical tutorial to change your
+            life? Yeah, us too. Stop scrolling, start skilling—because the cloud
+            won’t configure itself.
           </motion.p>
+
           <motion.div
-            className="mt-6 flex flex-wrap items-center gap-3"
+            className="mt-6 flex flex-wrap items-center gap-4"
             initial={{ y: -5, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 rounded-full bg-blue-700/40 backdrop-blur-md px-5 py-2 shadow-md transition hover:bg-blue-700/60">
-              <GrResources className="text-yellow-400 text-xl" />
-              <span className="text-blue-100 text-base font-semibold">
+            <div className="inline-flex items-center gap-2 rounded-md bg-white/10 backdrop-blur-md px-4 py-2">
+              <GrResources className="text-white text-lg" />
+              <span className="text-white text-sm font-medium">
                 {resources.length} Resources
               </span>
             </div>
 
-            <div className="inline-flex items-center gap-2 rounded-full bg-blue-700/40 backdrop-blur-md px-5 py-2 shadow-md transition hover:bg-blue-700/60">
-              <AiOutlineBranches className="text-yellow-400 text-xl" />
-              <span className="text-blue-100 text-base font-semibold">
+            <div className="inline-flex bg-[#232323] items-center gap-2 rounded-md  backdrop-blur-md px-4 py-2">
+              <AiOutlineBranches className="text-white text-lg" />
+              <span className="text-white text-sm font-medium">
                 {new Set(resources.flatMap((r) => r.categories)).size}{" "}
                 Categories
               </span>
@@ -554,8 +546,8 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
         </div>
       </motion.div>
 
-      <div className="max-w-7xl bg-gradient-to-r from-gray-900 via-gray-900 to-gray-800 mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Enhanced Search Bar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Search Bar - Microsoft-style search */}
         <motion.div
           className="mb-8 relative"
           initial={{ y: -10, opacity: 0 }}
@@ -563,21 +555,21 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           <div
-            className={`backdrop-blur-lg bg-gradient-to-r from-blue-900/80 to-black/90 border-t border-blue-800/50 rounded-4xl shadow-md transition-all duration-300 ${
-              isSearchFocused ? "ring-2 ring-blue-500 shadow-lg" : ""
+            className={`bg-[#232323]  rounded-md shadow-sm transition-all duration-300 ${
+              isSearchFocused ? " shadow-md" : ""
             }`}
           >
-            <div className="flex items-center p-4">
+            <div className="flex items-center p-3">
               <BiSearch
                 className={`text-xl transition-colors duration-300 ${
-                  isSearchFocused ? "text-blue-500" : "text-gray-400"
+                  isSearchFocused ? "text-blue-600" : "text-white"
                 }`}
               />
               <input
                 ref={searchInputRef}
                 type="text"
-                placeholder="Search your  resources like : videos , documentation , programming ...."
-                className="flex-1 ml-3 outline-none text-gray-100 placeholder-gray-100"
+                placeholder="Search resources..."
+                className="flex-1 ml-3 outline-none text-gray-100 placeholder-gray-400"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => {
@@ -601,11 +593,11 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
               {searchQuery && (
                 <button
                   onClick={clearSearch}
-                  className="p-1 rounded-full hover:bg-gray-800 transition-colors duration-200"
+                  className="p-1 rounded-full text-white hover:bg-[#121212] transition-colors duration-200"
                   title="Clear search"
                   aria-label="Clear search"
                 >
-                  <BiX className="text-gray-400 text-xl" />
+                  <BiX className="text-yellow-500 text-xl" />
                 </button>
               )}
             </div>
@@ -619,23 +611,22 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="absolute z-10 mt-1 w-full backdrop-blur-lg bg-gradient-to-r from-blue-900/80 to-black/90 border-t border-blue-800/50 rounded-lg shadow-lg border border-gray-200 py-1"
+                className="absolute z-10 mt-1 w-full bg-[#121212] rounded-md shadow-lg text-white py-1"
               >
-                <div className="px-4 py-2 text-xs font-medium text-yellow-500 border-b border-gray-100 flex items-center">
+                <div className="px-4 py-2 text-xs font-medium text-white  flex items-center">
                   <FaHistory className="mr-2" />
                   Recent Searches
                 </div>
                 {searchHistory.map((query, index) => (
                   <motion.div
                     key={index}
-                    className="px-4 py-2 hover:bg-gray-900 text-white cursor-pointer flex items-center"
+                    className="px-4 py-2 hover:bg-[#232323] text-white cursor-pointer flex items-center"
                     onClick={() => handleSearch(query)}
                     whileHover={{
-                      backgroundColor: "#161013",
-                      color: "#ffffff",
+                      backgroundColor: "#232323",
                     }}
                   >
-                    <BiSearch className="text-gray-100 mr-2" />
+                    <BiSearch className="text-gray-400 mr-2" />
                     <span>{query}</span>
                   </motion.div>
                 ))}
@@ -651,20 +642,19 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="absolute z-10 mt-1 w-full bg-black rounded-lg shadow-lg border border-gray-200 py-1"
+                className="absolute z-10 mt-1 w-full bg-[#232323] rounded-md shadow-lg text-white  py-1"
               >
-                <div className="px-4 py-2 text-xs font-medium text-gray-100 border-b border-gray-100 flex items-center">
+                <div className="px-4 py-2 text-xs font-medium text-white border-b border-gray-100 flex items-center">
                   <BiSearch className="mr-2" />
                   Suggestions
                 </div>
                 {suggestions.map((suggestion, index) => (
                   <motion.div
                     key={index}
-                    className="px-4 py-2 hover:bg-gray-900 text-white cursor-pointer flex items-center"
+                    className="px-4 py-2 bg-[#232323] text-white hover:bg-[#232323] text-white cursor-pointer flex items-center"
                     onClick={() => handleSearch(suggestion)}
                     whileHover={{
-                      backgroundColor: "#161013",
-                      color: "#ffffff",
+                      backgroundColor: "#232323",
                     }}
                   >
                     <span>{suggestion}</span>
@@ -675,26 +665,24 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
           </AnimatePresence>
         </motion.div>
 
-        {/* Filters Section */}
+        {/* Filters Section - Microsoft-style with pivot controls */}
         <motion.div
-          className="mb-8"
+          className="mb-6"
           initial={{ y: -10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center">
-              <BiFilter className="text-yellow-500 mr-2" />
-              <h2 className="text-lg font-medium font-semibold text-yellow-500">
-                Filters
-              </h2>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-4">
+            <div className="flex  items-center">
+              <BiFilter className="text-white mr-2" />
+              <h2 className="text-lg font-medium text-white">Filters</h2>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-3">
               {/* Sorting control */}
               <div className="relative">
                 <button
-                  className="px-3 py-1 bg-black text-white rounded-full text-lg flex items-center space-x-1 hover:bg-gray-900 transition-colors text-white duration-200"
+                  className="px-3 py-2 bg-[#232323] text-white rounded-md text-sm flex items-center space-x-2  hover:bg-[#12121212] transition-colors duration-200"
                   onClick={() =>
                     setSortOrder(
                       sortOrder === "az"
@@ -705,12 +693,12 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
                     )
                   }
                 >
-                  <BiSort className="text-blue-500" />
+                  <BiSort className="text-blue-600" />
                   <span>
                     {sortOrder === "az"
-                      ? "A-Z"
+                      ? "Sort: A to Z"
                       : sortOrder === "za"
-                      ? "Z-A"
+                      ? "Sort: Z to A"
                       : "Sort"}
                   </span>
                 </button>
@@ -718,7 +706,7 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
 
               {/* Expand/collapse filters button for mobile */}
               <button
-                className="md:hidden px-3 py-1 bg-black text-white rounded-full text-lg flex items-center space-x-1 hover:bg-gray-50 transition-colors duration-200"
+                className="md:hidden px-3 py-2 bg-[#121212] text-blue-400  rounded-md text-sm flex items-center space-x-2 hover:text-blue-100 transition-colors duration-200"
                 onClick={() => setFiltersExpanded(!filtersExpanded)}
               >
                 <span>Filters</span>
@@ -735,7 +723,7 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
                 sortOrder !== "none") && (
                 <button
                   onClick={clearAllFilters}
-                  className="px-3 py-1 bg-grey-900 text-blue-400 rounded-full text-sm hover:bg-blue-100 transition-colors duration-200"
+                  className="px-3 py-2 text-white bg-blue-400 rounded-md text-sm hover:bg-blue-500 transition-colors duration-200 "
                 >
                   Clear All
                 </button>
@@ -743,7 +731,7 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
             </div>
           </div>
 
-          {/* Category filter buttons */}
+          {/* Category filter buttons - Microsoft-style pivot */}
           <motion.div
             className={`flex flex-wrap gap-2 ${
               !filtersExpanded && "hidden md:flex"
@@ -752,10 +740,10 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
           >
             <button
               onClick={() => setSelectedCategories([])}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 selectedCategories.length === 0
-                  ? `bg-blue-500 text-white shadow-md`
-                  : "bg-blue-600 text-gray-100  hover:shadow-sm"
+                  ? `bg-blue-600 text-white shadow-sm`
+                  : "bg-gray-600 text-white  hover:bg-gray-50"
               }`}
             >
               All
@@ -765,13 +753,21 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
               <button
                 key={category.id}
                 onClick={() => toggleCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 flex items-center space-x-2 ${
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center space-x-2 ${
                   selectedCategories.includes(category.id)
-                    ? `${category.color} text-white shadow-md`
-                    : "bg-slate-700 text-white  hover:shadow-sm"
+                    ? `${category.color} bg-[#121212] text-black shadow-sm`
+                    : "bg-[#232323] text-white font-bold "
                 }`}
               >
-                <span>{getIcon(category.id as Category)}</span>
+                <span className="flex items-center">
+                  {selectedCategories.includes(category.id) ? (
+                    getIcon(category.id as Category)
+                  ) : (
+                    <span
+                      className={`w-4 h-4 bg-blue-500 rounded-full ${category.color}`}
+                    ></span>
+                  )}
+                </span>
                 <span>{category.label}</span>
               </button>
             ))}
@@ -779,8 +775,8 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
 
           {/* Active filters display */}
           {selectedCategories.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-2 items-center">
-              <span className="text-sm text-gray-500">Active filters:</span>
+            <div className="mt-4 flex flex-wrap gap-2 items-center">
+              <span className="text-sm text-yellow-500">Active filters:</span>
               {selectedCategories.map((category) => {
                 const cat = categoryMetadata.find((c) => c.id === category);
                 return (
@@ -790,7 +786,7 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
                       category
                     )} ${getCategoryTextColor(
                       category
-                    )} text-xs rounded-full px-3 py-1 flex items-center`}
+                    )} text-xs rounded-md px-3 py-1 flex items-center`}
                   >
                     {cat?.label}
                     <button
@@ -808,18 +804,18 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
           )}
         </motion.div>
 
-        {/* Loading State */}
+        {/* Loading State - Microsoft-style skeleton */}
         {isLoading ? (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="bg-gray-800 rounded-lg shadow-md overflow-hidden  animate-pulse"
+                className="bg-[#232323] rounded-lg shadow-sm  overflow-hidden animate-pulse"
               >
-                <div className="h-2 bg-gray-700"></div>
+                <div className="h-1 bg-blue-500"></div>
                 <div className="p-5">
                   <div className="flex items-start">
-                    <div className="rounded-full bg-gray-700 p-3 mr-4 h-12 w-12"></div>
+                    <div className="rounded-md bg-gray-500 p-3 mr-4 h-10 w-10"></div>
                     <div className="flex-1">
                       <div className="h-5 bg-gray-700 rounded w-3/4 mb-3"></div>
                       <div className="h-4 bg-gray-700 rounded w-full mb-2"></div>
@@ -828,8 +824,8 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
                   </div>
                   <div className="mt-4 pt-4  flex items-center justify-between">
                     <div className="flex space-x-1">
-                      <div className="h-6 bg-gray-700 rounded-full w-16"></div>
-                      <div className="h-6 bg-gray-700 rounded-full w-20"></div>
+                      <div className="h-6 bg-gray-700 rounded-md w-16"></div>
+                      <div className="h-6 bg-gray-700 rounded-md w-20"></div>
                     </div>
                     <div className="h-6 bg-gray-700 rounded-full w-8"></div>
                   </div>
@@ -839,7 +835,7 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
           </div>
         ) : (
           <>
-            {/* Resources Grid */}
+            {/* Resources Grid - Microsoft card style */}
             <motion.div
               className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
               variants={containerVariants}
@@ -850,35 +846,39 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
                 <motion.div
                   key={index}
                   variants={cardVariants}
-                  className="bg-slate-900 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden hover:border-blue-200"
-                  whileHover={{ y: -5, transition: { duration: 0.1 } }}
+                  className="bg-[#232323] rounded-lg shadow-sm  overflow-hidden hover:shadow-md transition-all duration-300"
+                  whileHover={{ y: -2, transition: { duration: 0.1 } }}
                 >
                   <div
-                    className={`h-2 ${getCategoryColor(
+                    className={`h-1 ${getCategoryColor(
                       resource.categories[0] || "default"
                     )}`}
                   ></div>
                   <div className="p-5">
                     <div className="flex items-start">
-                      <div className="rounded-full bg-blue-900 p-3 mr-4">
+                      <div
+                        className={`rounded-md ${getCategoryColor(
+                          resource.categories[0] || "default"
+                        )} p-2 mr-4`}
+                      >
                         {getIcon(resource.categories[0] || "default")}
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg text-yellow-400 font-mono">
+                        <h3 className=" text-base text-white">
                           {resource.title}
                         </h3>
-                        <p className="text-sm  text-gray-100 mt-1">
+                        <p className="text-sm text-gray-600 mt-1">
                           {resource.description}
                         </p>
                       </div>
                     </div>
 
-                    <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <div className="mt-4 pt-4  flex items-center justify-between">
                       <div className="flex flex-wrap gap-1">
                         {resource.categories.map((category, idx) => (
                           <span
                             key={idx}
-                            className={`text-xs rounded-full px-2 py-1 font-medium ${getCategoryBgColor(
+                            className={`text-sm rounded-md px-2 py-1 font-medium ${getCategoryBgColor(
                               category
                             )} ${getCategoryTextColor(category)}`}
                           >
@@ -894,9 +894,9 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
                             target="_blank"
                             rel="noopener noreferrer"
                             title={`Open ${resource.title} in a new tab`}
-                            className="inline-block text-blue-600 hover:text-blue-800 p-1 hover:bg-blue-50 rounded-full transition-colors"
+                            className="inline-flex items-center justify-center w-8 h-8 text-white hover:text-white hover:bg-blue-600 rounded-full transition-colors border border-blue-200 hover:border-blue-600"
                           >
-                            <FaExternalLinkAlt />
+                            <BiLink className="text-lg " />
                           </a>
                         ))}
                       </div>
@@ -906,35 +906,35 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
               ))}
             </motion.div>
 
-            {/* Empty State */}
+            {/* Empty State - Microsoft style */}
             {sortedResources.length === 0 && (
               <motion.div
-                className="bg-gradient-to-b from-slate-800 to-slate-900 rounded-2xl text-center py-16 px-6 shadow-xl border border-slate-700"
+                className="bg-[#121212] rounded-lg text-center py-12 px-6 shadow-sm "
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <motion.div
-                  className="inline-flex items-center justify-center p-5 bg-blue-900/50 rounded-full mb-6 border-2 border-blue-700"
+                  className="inline-flex items-center justify-center p-4 bg-[#121212] rounded-full mb-6"
                   initial={{ scale: 0.8 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, duration: 0.4, type: "spring" }}
                 >
-                  <BiSearch className="text-4xl text-blue-400" />
+                  <BiSearch className="text-3xl text-white" />
                 </motion.div>
 
-                <h3 className="text-xl font-semibold text-yellow-400 mb-3">
+                <h3 className="text-xl font-semibold text-gray-100 mb-3">
                   No resources found
                 </h3>
 
-                <div className="text-gray-300 max-w-md mx-auto mb-6 leading-relaxed">
-                  <p>We couldn't find any resources matching</p>
-                  <div className="flex items-center justify-center gap-2 my-2 px-4 py-2 bg-slate-800/60 rounded-lg font-medium text-yellow-300 border border-slate-700">
+                <div className="text-gray-100 max-w-md mx-auto mb-6">
+                  <p>We couldn't find any resources matching your criteria</p>
+                  <div className="flex items-center justify-center gap-2 my-2 px-4 py-2 bg-gray-700 rounded-md font-medium text-green-500">
                     <BiSearch className="text-lg" />
                     <span>{searchQuery}</span>
                   </div>
                   {selectedCategories.length > 0 && (
-                    <p className="text-gray-400 italic mt-1">
+                    <p className="text-gray-100 italic mt-1">
                       in the selected categories
                     </p>
                   )}
@@ -943,11 +943,11 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
 
                 <motion.button
                   onClick={clearAllFilters}
-                  className="mt-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-500 transition-all duration-300 font-semibold flex items-center gap-2 mx-auto shadow-lg hover:shadow-blue-500/30"
+                  className="mt-2 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-all duration-300 font-medium flex items-center gap-2 mx-auto"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <BiFilter className="text-xl" />
+                  <BiFilter className="text-lg" />
                   <span>Clear filters</span>
                 </motion.button>
               </motion.div>
@@ -955,13 +955,12 @@ Start here. Learn smart. Grow faster. Build with confidence.`}
           </>
         )}
       </div>
-
       {/* Footer */}
       <footer className="bg-slate-900 p-6 text-center text-gray-100 mt-12">
         <p className="font-medium ">
           Want to explore my learning journey? Check out the{" "}
-          <strong className="text-yellow-300 font-bold underline">Blogs</strong> tab in
-          the header!
+          <strong className="text-yellow-300 font-bold underline">Blogs</strong>{" "}
+          tab in the header!
         </p>
       </footer>
     </div>

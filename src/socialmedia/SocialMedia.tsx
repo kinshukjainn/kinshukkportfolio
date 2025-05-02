@@ -22,7 +22,7 @@ const SocialMedia = () => {
   };
 
   return (
-    <div className="bg-[#121212] hover:border-yellow-500/50  font-poppins p-6 rounded-lg shadow-xl border border-gray-800">
+    <div className="bg-[#121212]   font-poppins p-6 rounded-lg shadow-xl">
       {/* Heading */}
       <div className="flex items-center gap-2 mb-4">
         <FaConnectdevelop className="text-yellow-500 text-2xl" />
@@ -37,9 +37,9 @@ const SocialMedia = () => {
       {/* Contact Details */}
       <div className="space-y-4">
         {/* Email */}
-        <div className="group flex items-center justify-between bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50   p-3 rounded-lg transition-all  ">
+        <div className="group flex items-center justify-between  p-3 rounded-lg transition-all  ">
           <div className="flex items-center gap-3">
-            <div className="bg-gray-700 p-2 rounded-md">
+            <div className=" p-2 rounded-md">
               <MdAlternateEmail className="text-purple-400 text-xl" />
             </div>
             <div>
@@ -60,9 +60,9 @@ const SocialMedia = () => {
         </div>
 
         {/* Phone */}
-        <div className="group flex items-center justify-between bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50   p-3 rounded-lg transition-all ">
+        <div className="group flex items-center justify-between  p-3 rounded-lg transition-all ">
           <div className="flex items-center gap-3">
-            <div className="bg-gray-700 p-2 rounded-md">
+            <div className=" p-2 rounded-md">
               <FaPhoneAlt className="text-purple-400 text-xl" />
             </div>
             <div>
