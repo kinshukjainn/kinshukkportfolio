@@ -22,7 +22,7 @@ const SocialMedia = () => {
   };
 
   return (
-    <div className="bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50  font-poppins p-6 rounded-lg shadow-xl border border-gray-800">
+    <div className="bg-[#121212] hover:border-yellow-500/50  font-poppins p-6 rounded-lg shadow-xl border border-gray-800">
       {/* Heading */}
       <div className="flex items-center gap-2 mb-4">
         <FaConnectdevelop className="text-yellow-500 text-2xl" />

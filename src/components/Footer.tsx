@@ -6,8 +6,8 @@ import { FaCloud, FaCloudRain, FaCloudMeatball } from "react-icons/fa";
 
 const Footer = () => {
   // Cloud animations
-  const cloudVariants: { floating: (custom: number) => { y: number[]; transition: { duration: number; repeat: number; repeatType: "reverse"; ease: string; }; }; } = {
-    floating: (custom: number) => ({
+  const cloudVariants: Record<string, (custom: number) => { y: number[]; transition: { duration: number; repeat: number; repeatType: "reverse"; ease: string; }; }> = {
+    floating: (custom) => ({
       y: [0, custom, 0],
       transition: {
         duration: 3 + custom / 2,
@@ -23,14 +23,14 @@ const Footer = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50 font-poppins text-gray-300 shadow-xl  py-10 relative overflow-hidden"
+      className="bg-[#121212] font-poppins text-gray-300 shadow-xl py-10 relative overflow-hidden border-t border-gray-800 mt-8"
     >
       {/* Decorative Cloud Elements */}
       <motion.div 
         custom={-10}
         variants={cloudVariants}
         animate="floating"
-        className="absolute left-10 top-10 text-gray-200 opacity-20 text-6xl"
+        className="absolute left-10 top-10 text-gray-600 opacity-10 text-6xl"
       >
         <FaCloud />
       </motion.div>
@@ -39,7 +39,7 @@ const Footer = () => {
         custom={-8}
         variants={cloudVariants}
         animate="floating"
-        className="absolute right-16 bottom-20 text-gray-200 opacity-20 text-5xl"
+        className="absolute right-16 bottom-20 text-gray-600 opacity-10 text-5xl"
       >
         <FaCloudRain />
       </motion.div>
@@ -48,7 +48,7 @@ const Footer = () => {
         custom={-12}
         variants={cloudVariants}
         animate="floating"
-        className="absolute left-1/4 bottom-10 text-gray-200 opacity-20 text-4xl"
+        className="absolute left-1/4 bottom-10 text-gray-600 opacity-10 text-4xl"
       >
         <FaCloudMeatball />
       </motion.div>
@@ -76,9 +76,9 @@ const Footer = () => {
           </motion.path>
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#4A5568" />
-              <stop offset="50%" stopColor="#2D3748" />
-              <stop offset="100%" stopColor="#1A202C" />
+              <stop offset="0%" stopColor="#121212" />
+              <stop offset="50%" stopColor="#4299E1" stopOpacity="0.1" />
+              <stop offset="100%" stopColor="#121212" />
             </linearGradient>
           </defs>
         </svg>
@@ -102,11 +102,11 @@ const Footer = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="text-slate-500 text-3xl"
+            className="text-blue-400 text-3xl"
           >
             <FaCloud />
           </motion.div>
-          <h2 className="text-2xl font-bold text-yellow-500">
+          <h2 className="text-2xl font-bold text-gray-100">
             CloudKinshuk / Personal Info 
           </h2>
         </motion.div>
@@ -115,12 +115,12 @@ const Footer = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
-          className="mt-3 max-w-lg font-semibold text-slate-400"
+          className="mt-3 max-w-lg text-gray-400"
         >
           <span className="relative">
             Aspiring and self-taught cloud engineer with a passion for building scalable and secure cloud solutions.
             <motion.span 
-              className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50 "
+              className="absolute -bottom-1 left-0 h-0.5 bg-blue-500"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ delay: 1.2, duration: 1 }}
@@ -150,7 +150,8 @@ const Footer = () => {
               key={service}
               whileHover={{ 
                 scale: 1.05,
-                boxShadow: "0 0 15px rgba(45, 55, 72, 0.3)"
+                backgroundColor: "rgba(66, 153, 225, 0.1)",
+                boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -159,9 +160,9 @@ const Footer = () => {
                 duration: 0.5,
                 type: "spring"
               }}
-              className="bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50  backdrop-blur-sm px-3 py-2 rounded-lg border border-gray-700"
+              className="bg-[#1A1A1A] px-3 py-2 rounded-md border border-gray-800 shadow-md"
             >
-              <span className="text-slate-400 text-sm font-medium">{service}</span>
+              <span className="text-blue-300 text-sm font-medium">{service}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -171,17 +172,17 @@ const Footer = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7 }}
-          className="text-sm font-medium text-gray-300 mt-8 p-4 bg-gradient-to-t from-black via-grey-800 to-slate-900 backdrop-blur-lg border border-blue-800 hover:border-yellow-500/50  bg-opacity-40 backdrop-blur-sm rounded-xl border border-slate-700 max-w-xl"
+          className="text-sm font-medium text-gray-300 mt-8 p-4 bg-[#1A1A1A] backdrop-blur-sm rounded-md border border-gray-800 max-w-xl shadow-md"
         >
           <p>
             Open to opportunities in cloud engineering, DevOps, and security.{" "}
             <motion.span 
               animate={{ 
-                color: ["#A0AEC0", "#718096", "#A0AEC0"],
+                color: ["#63B3ED", "#4299E1", "#63B3ED"],
                 textShadow: [
-                  "0 0 5px rgba(160, 174, 192, 0)",
-                  "0 0 8px rgba(160, 174, 192, 0.3)",
-                  "0 0 5px rgba(160, 174, 192, 0)"
+                  "0 0 5px rgba(66, 153, 225, 0)",
+                  "0 0 8px rgba(66, 153, 225, 0.3)",
+                  "0 0 5px rgba(66, 153, 225, 0)"
                 ]
               }}
               transition={{ 

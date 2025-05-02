@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaBars, FaTimes,  FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaBars, FaTimes, FaLinkedin, FaGithub } from "react-icons/fa";
 import { MdOutlineAutoGraph } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCloud, FaCloudDownloadAlt, FaCloudUploadAlt } from "react-icons/fa";
 import profile from "../assets/image.jpg";
-import {FaHashnode} from "react-icons/fa6";
+import { FaHashnode } from "react-icons/fa6";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -49,7 +49,7 @@ const Header = () => {
       transition: {
         duration: 4,
         repeat: Infinity,
-        repeatType: "reverse" as const,
+        repeatType: "reverse" as "reverse",
         ease: "easeInOut"
       }
     }
@@ -60,7 +60,7 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`bg-gradient-to-r font-poppins from-black via-grey-900 to-grey-800 text-gray-300 mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center  rounded-xl shadow-xl border border-gray-800 relative z-50 overflow-hidden ${
+      className={`bg-[#121212] font-poppins mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center rounded-xl shadow-2xl border border-gray-700 relative z-50 overflow-hidden ${
         scrolled ? "sticky top-2 backdrop-blur-md bg-opacity-95" : ""
       }`}
     >
@@ -68,7 +68,7 @@ const Header = () => {
       <motion.div 
         variants={cloudVariants}
         animate="floating"
-        className="absolute -left-4 -bottom-4 text-gray-700 opacity-20 text-6xl"
+        className="absolute -left-4 -bottom-4 text-gray-700 opacity-10 text-6xl"
       >
         <FaCloud />
       </motion.div>
@@ -76,7 +76,7 @@ const Header = () => {
       <motion.div 
         variants={cloudVariants}
         animate="floating"
-        className="absolute right-20 top-0 text-gray-700 opacity-20 text-5xl"
+        className="absolute right-20 top-0 text-gray-700 opacity-10 text-5xl"
       >
         <FaCloudUploadAlt />
       </motion.div>
@@ -93,10 +93,10 @@ const Header = () => {
             whileHover={{ 
               scale: 1.08, 
               rotate: 5,
-              boxShadow: "0 0 15px rgba(45, 55, 72, 0.7)" 
+              boxShadow: "0 0 15px rgba(99, 179, 237, 0.5)" 
             }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="w-10 h-10 sm:w-12 sm:h-12 overflow-hidden rounded-full shadow-lg border-2 border-slate-700"
+            className="w-10 h-10 sm:w-12 sm:h-12 overflow-hidden rounded-full shadow-lg border-2 border-blue-500"
           >
             <img
               src={profile}
@@ -108,7 +108,7 @@ const Header = () => {
                 const parent = e.currentTarget.parentElement;
                 if (parent) {
                   const initialsDiv = document.createElement('div');
-                  initialsDiv.className = 'flex items-center justify-center w-full h-full bg-gradient-to-br from-slate-800 to-slate-700 text-gray-200 text-lg font-bold';
+                  initialsDiv.className = 'flex items-center justify-center w-full h-full bg-gradient-to-br from-blue-900 to-blue-700 text-gray-100 text-lg font-bold';
                   initialsDiv.textContent = 'KJ';
                   parent.appendChild(initialsDiv);
                 }
@@ -137,7 +137,7 @@ const Header = () => {
                 repeat: Infinity,
                 repeatType: "loop"
               }}
-              className="w-4 h-4 bg-green-600 rounded-full border-2 border-slate-900" 
+              className="w-4 h-4 bg-blue-500 rounded-full border-2 border-gray-900" 
               title="Online"
             />
           </motion.div>
@@ -150,14 +150,14 @@ const Header = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="flex items-center"
         >
-          <FaCloudDownloadAlt className="text-slate-500 mr-2 text-xl" />
+          <FaCloudDownloadAlt className="text-blue-400 mr-2 text-xl" />
           <motion.h1
-            className="text-lg sm:text-xl font-semibold tracking-wide text-slate-300"
+            className="text-lg sm:text-xl font-semibold tracking-wide text-gray-100"
           >
             <Link 
               to="/" 
               onClick={closeMenu}
-              className="hover:underline decoration-wavy decoration-slate-500 underline-offset-4"
+              className="hover:text-blue-300 transition-colors duration-300"
             >
               CloudKinshuk / {getPathText()} 
             </Link>
@@ -169,10 +169,10 @@ const Header = () => {
           whileTap={{ scale: 0.9 }}
           whileHover={{ 
             scale: 1.1,
-            rotate: [0, 5, -5, 0],
-            transition: { duration: 0.5 }
+            backgroundColor: "rgba(66, 153, 225, 0.2)"
           }}
-          className="sm:hidden text-2xl text-slate-400 focus:outline-none bg-slate-800 rounded-lg p-2"
+          transition={{ duration: 0.3 }}
+          className="sm:hidden text-2xl text-blue-400 focus:outline-none bg-gray-800 hover:bg-gray-700 rounded-lg p-2"
           onClick={toggleMenu}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
@@ -193,13 +193,13 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto", y: 0 }}
             exit={{ opacity: 0, height: 0, y: -10 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="w-full overflow-hidden sm:hidden backdrop-blur-sm bg-slate-900 bg-opacity-90 rounded-lg mt-2"
+            className="w-full overflow-hidden sm:hidden backdrop-blur-md bg-gray-900 bg-opacity-95 rounded-lg mt-2 border border-gray-700"
           >
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1, staggerChildren: 0.1 }}  
-              className="pt-3 pb-2 border-t border-slate-800 flex flex-col items-center gap-4"
+              className="pt-3 pb-2 flex flex-col items-center gap-4"
             >
               <NavLinks closeMenu={closeMenu} />
             </motion.div>
@@ -210,12 +210,11 @@ const Header = () => {
   );
 };
 
-// Navigation Links Component with cloud theme
+// Navigation Links Component with Microsoft-inspired theme
 const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
   const linkVariants = {
     hover: {
       scale: 1.05, 
-      textShadow: "0 0 8px rgba(160, 174, 192, 0.6)",
       transition: { type: "spring", stiffness: 400 }
     }
   };
@@ -229,7 +228,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       >
         <Link 
           to="/" 
-          className="flex items-center gap-2 hover:text-gray-200 transition-colors duration-300" 
+          className="flex items-center gap-2 hover:text-blue-300 transition-colors duration-300" 
           onClick={closeMenu}
         >
           <motion.div
@@ -246,15 +245,14 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       >
         <Link 
           to="/docs" 
-          className="flex items-center gap-2 text-white text-sm md:text-base transition-colors duration-300" 
+          className="flex items-center gap-2 text-gray-100 text-sm md:text-base transition-colors duration-300" 
           onClick={closeMenu}
         >
-          <MdOutlineAutoGraph className="text-lg text-white" /> 
-          <span className="relative">
+          <MdOutlineAutoGraph className="text-lg text-blue-400" /> 
+          <span className="relative group">
             Learning.Hub
             <motion.span 
-              className="absolute -bottom-1 left-0 w-0 h-0.5 bg-slate-600"
-              whileHover={{ width: "100%" }}
+              className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full"
               transition={{ duration: 0.3 }}
             />
           </span>
@@ -266,22 +264,21 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       >
         <Link 
           to="/blogs" 
-          className="flex items-center gap-2 text-white text-sm md:text-base transition-colors duration-300" 
+          className="flex items-center gap-2 text-gray-100 text-sm md:text-base transition-colors duration-300" 
           onClick={closeMenu}
         >
-          <FaHashnode className="text-lg text-white" /> 
-          <span className="relative">
+          <FaHashnode className="text-lg text-blue-400" /> 
+          <span className="relative group">
             Blogs
             <motion.span 
-              className="absolute -bottom-1 left-0 w-0 h-0.5 bg-slate-600"
-              whileHover={{ width: "100%" }}
+              className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full"
               transition={{ duration: 0.3 }}
             />
           </span>
         </Link>
       </motion.div>
       
-      {/* Social Links with cloud-themed hover effects */}
+      {/* Social Links with Microsoft-inspired hover effects */}
       <div className="flex flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
         <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin />} label="" />
         <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub />} label="" />
@@ -290,14 +287,19 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
   );
 };
 
-// Enhanced Social Link Component with cloud-themed hover effects
-const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
+// Enhanced Social Link Component with Microsoft-inspired hover effects
+interface SocialLinkProps {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+}
+
+const SocialLink = ({ href, icon, label }: SocialLinkProps) => (
   <motion.a
     whileHover={{ 
-      scale: 1.1,
-      y: -3,
-      backgroundColor: "rgba(170, 228, 11, 0.9)",
-      boxShadow: "0 10px 15px -3px rgb(0, 0, 0), 0 4px 6px -4px rgba(0, 0, 0, 0.2)"
+      scale: 1.05,
+      backgroundColor: "rgba(66, 153, 225, 0.3)",
+      boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
     }}
     whileTap={{ scale: 0.95 }}
     initial={{ opacity: 0, y: 20 }}
@@ -311,23 +313,17 @@ const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center gap-1 px-2 sm:px-3 py-1 text-gray-300 bg-slate-800 border border-slate-700 rounded-full hover:text-white transition-all duration-300 shadow-md text-sm md:text-base group"
+    className="flex items-center gap-1 px-2 sm:px-3 py-1 text-gray-200 bg-gray-800 border border-gray-700 rounded-md hover:text-blue-300 transition-all duration-300 shadow-md text-sm md:text-base"
   >
     <motion.span
-      animate={{ rotate: [0, 0] }}
-      whileHover={{ rotate: [0, 10, -10, 0] }}
-      transition={{ duration: 0.6 }}
-      className="text-base text-white hover:text-black sm:text-lg"
+      whileHover={{ scale: 1.2 }}
+      transition={{ duration: 0.3 }}
+      className="text-base text-blue-400 sm:text-lg"
     >
       {icon}
     </motion.span>
-    <span className="font-medium hidden md:inline relative">
+    <span className="font-medium hidden md:inline">
       {label}
-      <motion.span 
-        className="absolute -bottom-1 left-0 w-0 h-0.5 bg-slate-400 opacity-0 group-hover:opacity-100"
-        whileHover={{ width: "100%" }}
-        transition={{ duration: 0.3, delay: 0.1 }}
-      />
     </span>
   </motion.a>
 );
