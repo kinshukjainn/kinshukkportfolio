@@ -212,6 +212,8 @@ const Blogs = () => {
                 <button 
                   onClick={() => setSearchQuery('')}
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  title="Clear search"
+                  aria-label="Clear search"
                 >
                   <X size={16} className="text-gray-400 hover:text-white" />
                 </button>

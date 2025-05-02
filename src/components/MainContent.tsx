@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 // Icons
 import { 
   FaAws, 
@@ -13,10 +11,6 @@ import { SiKubernetes, SiTerraform, SiTailwindcss } from "react-icons/si";
 
 // Define types
 const MainContent = () => {
-  // State for scroll position for parallax effects
-  const [scrollY, setScrollY] = useState(0);
-  // Removed unused contentLoaded state
-
   // Tech stack items
   const techStack = [
     { icon: <FaAws />, name: "AWS Cloud" },
@@ -52,32 +46,11 @@ const MainContent = () => {
     },
   ];
 
-  // Set content loaded after a small delay
-  useEffect(() => {
-    const timer = setTimeout(() => {}, 100); // Removed setContentLoaded call
-    
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    
-    window.addEventListener("scroll", handleScroll);
-    
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <div className="font-sans bg-[#121212] text-gray-100 min-h-screen">
       {/* Hero section with custom dark theme */}
       <header className="relative bg-[#121212] border-b border-gray-800 overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-[#121212]"
-          style={{ 
-            transform: `translateY(${scrollY * 0.1}px)` 
-          }}
-        ></div>
+        <div className="absolute inset-0 bg-[#121212]"></div>
         
         <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 relative z-10">
           <div className="relative">

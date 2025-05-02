@@ -50,7 +50,7 @@ const Header = () => {
       transition: {
         duration: 4,
         repeat: Infinity,
-        repeatType: "reverse" as "reverse",
+        repeatType: "reverse" as const,
         ease: "easeInOut"
       }
     }
@@ -280,11 +280,11 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       </motion.div>
       
       {/* Social Links with Microsoft-inspired hover effects */}
-      <div className="flex bg-black flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
-        <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin />} label="linkedin" />
-        <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub />} label="github" />
-        <SocialLink href="https://x.com/realkinshuk004?t=Q1ZFJZ28LS4TZecJSD-OUw&s=09" icon={<FaSquareXTwitter />} label="twitter / x" />
-        <SocialLink href="https://www.instagram.com/kinshukjain._/" icon={<FaInstagramSquare />} label="instagram" />
+      <div className="flex  flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
+        <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin className="text-white" />} label="" />
+        <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub className="text-white" />} label="" />
+        <SocialLink href="https://x.com/realkinshuk004?t=Q1ZFJZ28LS4TZecJSD-OUw&s=09" icon={<FaSquareXTwitter className="text-white" />} label="" />
+        <SocialLink href="https://www.instagram.com/kinshukjain._/" icon={<FaInstagramSquare className="text-white" />} label="" />
       </div>
     </div>
   );
@@ -316,12 +316,13 @@ const SocialLink = ({ href, icon, label }: SocialLinkProps) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex items-center gap-1 px-2 sm:px-3 py-1 text-gray-200 bg-gray-800 border border-gray-700 rounded-md hover:text-blue-300 transition-all duration-300 shadow-md text-sm md:text-base"
+    className="flex items-center gap-1 px-2 sm:px-3 py-1 text-white
+     rounded-md  transition-all duration-300 shadow-md text-sm md:text-base"
   >
     <motion.span
       whileHover={{ scale: 1.2 }}
       transition={{ duration: 0.3 }}
-      className="text-base text-blue-400 sm:text-lg"
+      className="text-base  sm:text-lg"
     >
       {icon}
     </motion.span>
