@@ -280,11 +280,11 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       </motion.div>
       
       {/* Social Links with Microsoft-inspired hover effects */}
-      <div className="flex flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
-        <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin />} label="" />
-        <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub />} label="" />
-        <SocialLink href="https://x.com/realkinshuk004?t=Q1ZFJZ28LS4TZecJSD-OUw&s=09" icon={<FaSquareXTwitter />} label="" />
-        <SocialLink href="https://x.com/realkinshuk004?t=Q1ZFJZ28LS4TZecJSD-OUw&s=09" icon={<FaInstagramSquare />} label="" />
+      <div className="flex bg-black flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
+        <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin />} label="linkedin" />
+        <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub />} label="github" />
+        <SocialLink href="https://x.com/realkinshuk004?t=Q1ZFJZ28LS4TZecJSD-OUw&s=09" icon={<FaSquareXTwitter />} label="twitter / x" />
+        <SocialLink href="https://www.instagram.com/kinshukjain._/" icon={<FaInstagramSquare />} label="instagram" />
       </div>
     </div>
   );
