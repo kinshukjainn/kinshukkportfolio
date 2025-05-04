@@ -13,6 +13,33 @@ interface Blog {
   originalDate: Date;
 }
 
+interface BlogEdge {
+  node: {
+    id: string;
+    title: string;
+    brief: string;
+    publishedAt: string;
+    slug: string;
+    readTimeInMinutes: number;
+    tags: { name: string }[];
+  };
+}
+
+interface HashnodeResponse {
+  data?: {
+    publication?: {
+      posts?: {
+        edges: BlogEdge[];
+        pageInfo?: {
+          hasNextPage: boolean;
+          endCursor: string;
+        };
+      };
+    };
+  };
+  errors?: Array<{ message: string }>;
+}
+
 const Blogs = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [filteredBlogs, setFilteredBlogs] = useState<Blog[]>([]);
@@ -34,94 +61,142 @@ const Blogs = () => {
     return Array.from(tags).sort();
   }, [blogs]);
 
+  // Function to convert API blog data to our format
+  const formatBlogData = (edges: BlogEdge[], blogDomain: string): Blog[] => {
+    return edges.map((edge) => {
+      const originalDate = new Date(edge.node.publishedAt);
+      return {
+        id: edge.node.id,
+        title: edge.node.title,
+        brief: edge.node.brief,
+        dateAdded: originalDate.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        }),
+        originalDate: originalDate,
+        url: `https://${blogDomain}/${edge.node.slug}`,
+        readTime: `${edge.node.readTimeInMinutes} min read`,
+        tags: edge.node.tags?.map((tag) => tag.name) || [],
+      };
+    });
+  };
+
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const HASHNODE_TOKEN = import.meta.env.VITE_HASHNODE_APIKEY;
         const blogDomain = "blog.cloudkinshuk.in";
+        let allBlogEdges: BlogEdge[] = [];
+        let hasNextPage = true;
+        let endCursor = null;
+        let retryCount = 0;
+        const MAX_RETRIES = 3;
+        const POSTS_PER_PAGE = 20; // Optimal batch size
+        const MAX_POSTS = 500; // Safety limit to prevent endless loops
 
-        const response = await fetch("https://gql.hashnode.com", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            ...(HASHNODE_TOKEN ? { "Authorization": HASHNODE_TOKEN } : {}),
-          },
-          body: JSON.stringify({
-            query: `
-              query Publication($host: String!) {
-                publication(host: $host) {
-                  posts(first: 100) {
-                    edges {
-                      node {
-                        id
-                        title
-                        brief
-                        publishedAt
-                        slug
-                        readTimeInMinutes
-                        tags {
-                          name
+        // Function to make a single GraphQL request
+        const fetchBlogPage = async (cursor: string | null) => {
+          const response = await fetch("https://gql.hashnode.com", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              ...(HASHNODE_TOKEN ? { "Authorization": HASHNODE_TOKEN } : {}),
+            },
+            body: JSON.stringify({
+              query: `
+                query Publication($host: String!, $first: Int!, $after: String) {
+                  publication(host: $host) {
+                    posts(first: $first, after: $after) {
+                      edges {
+                        node {
+                          id
+                          title
+                          brief
+                          publishedAt
+                          slug
+                          readTimeInMinutes
+                          tags {
+                            name
+                          }
                         }
+                      }
+                      pageInfo {
+                        hasNextPage
+                        endCursor
                       }
                     }
                   }
                 }
-              }
-            `,
-            variables: { host: blogDomain },
-          }),
-        });
-
-        const data = await response.json();
-
-        if (data?.data?.publication?.posts?.edges) {
-          interface BlogEdge {
-            node: {
-              id: string;
-              title: string;
-              brief: string;
-              publishedAt: string;
-              slug: string;
-              readTimeInMinutes: number;
-              tags: { name: string }[];
-            };
-          }
-
-          interface BlogResponse {
-            data: {
-              publication: {
-                posts: {
-                  edges: BlogEdge[];
-                };
-              };
-            };
-          }
-
-          const formattedBlogs = (data as BlogResponse).data.publication.posts.edges.map((edge) => {
-            const originalDate = new Date(edge.node.publishedAt);
-            return {
-              id: edge.node.id,
-              title: edge.node.title,
-              brief: edge.node.brief,
-              dateAdded: originalDate.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              }),
-              originalDate: originalDate,
-              url: `https://${blogDomain}/${edge.node.slug}`,
-              readTime: `${edge.node.readTimeInMinutes} min read`,
-              tags: edge.node.tags?.map((tag) => tag.name) || [],
-            };
+              `,
+              variables: { 
+                host: blogDomain,
+                first: POSTS_PER_PAGE,
+                after: cursor
+              },
+            }),
           });
+
+          if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.status}`);
+          }
+
+          return await response.json() as HashnodeResponse;
+        };
+
+        // Paginated fetch with error handling and retries
+        while (hasNextPage && allBlogEdges.length < MAX_POSTS) {
+          try {
+            const data = await fetchBlogPage(endCursor);
+            
+            if (data?.errors) {
+              console.error("GraphQL errors:", data.errors);
+              throw new Error(data.errors[0]?.message || "GraphQL error occurred");
+            }
+            
+            if (!data?.data?.publication?.posts?.edges) {
+              throw new Error("No blog data found in response");
+            }
+            
+            const edges = data.data.publication.posts.edges;
+            allBlogEdges = [...allBlogEdges, ...edges];
+            
+            // Update pagination info
+            hasNextPage = !!data.data.publication.posts.pageInfo?.hasNextPage;
+            endCursor = data.data.publication.posts.pageInfo?.endCursor || null;
+            
+            // If no new blogs were returned, break to avoid infinite loop
+            if (edges.length === 0) break;
+            
+            // Reset retry counter on successful request
+            retryCount = 0;
+            
+            // Add a small delay between requests to be kind to the API
+            await new Promise(resolve => setTimeout(resolve, 300));
+          } catch (err) {
+            retryCount++;
+            console.error(`Fetch attempt ${retryCount} failed:`, err);
+            
+            if (retryCount >= MAX_RETRIES) {
+              throw new Error(`Failed after ${MAX_RETRIES} attempts: ${err instanceof Error ? err.message : 'Unknown error'}`);
+            }
+            
+            // Exponential backoff
+            const delay = Math.min(1000 * (2 ** retryCount), 10000);
+            await new Promise(resolve => setTimeout(resolve, delay));
+          }
+        }
+
+        if (allBlogEdges.length > 0) {
+          const formattedBlogs = formatBlogData(allBlogEdges, blogDomain);
           setBlogs(formattedBlogs);
           setFilteredBlogs(formattedBlogs);
+          console.log(`Successfully fetched ${formattedBlogs.length} blogs`);
         } else {
-          setError("No blogs found or error in API response");
-          console.error("Hashnode response error:", data);
+          setError("No blogs found in API response");
         }
       } catch (err) {
-        setError("Failed to fetch blogs");
+        setError(`Failed to fetch blogs: ${err instanceof Error ? err.message : 'Unknown error'}`);
         console.error("Fetch error:", err);
       } finally {
         setLoading(false);
