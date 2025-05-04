@@ -503,23 +503,26 @@ export const AwsDocs = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
           >
             <h1 className="text-3xl font-semibold tracking-tight flex items-center space-x-2">
-              <span className="font-light">Learning</span>
-              <span className="font-semibold">.Hub</span>
+              <span className="font-bold text-4xl">Learning</span>
+              <span className="font-light font-mono">.Hub</span>
             </h1>
           </motion.div>
 
           <motion.p
-            className="mt-4 text-blue-100 text-lg max-w-3xl leading-relaxed"
+            className="mt-4 text-blue-100 text-lg max-w-3xl leading-relaxed tracking-wide"
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            Welcome to your all-in-one platform for mastering technology skills.
-            Gain access to verified, curated, and industry-relevant
-            resources—designed to accelerate your learning and future-proof your
-            career. Still waiting for that one magical tutorial to change your
-            life? Yeah, us too. Stop scrolling, start skilling—because the cloud
-            won’t configure itself.
+            Explore a handpicked collection of 100% free, high-quality resources
+            — the exact ones I used to build real-world cloud, DevOps, and
+            coding skills. Every tutorial, guide, and lab is verified,
+            beginner-friendly, and designed to help you skill up faster — no
+            paywalls, no fluff. Ready to stop guessing and start growing?{" "}
+            <span className="underline underline-offset-4 hover:text-blue-300 transition duration-200">
+              Jump into the stack
+            </span>{" "}
+            and level up from day one.
           </motion.p>
 
           <motion.div
@@ -528,14 +531,14 @@ export const AwsDocs = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 rounded-md bg-white/10 backdrop-blur-md px-4 py-2">
+            <div className="inline-flex cursor-pointer items-center gap-2  px-4 py-2">
               <GrResources className="text-white text-lg" />
               <span className="text-white text-sm font-medium">
                 {resources.length} Resources
               </span>
             </div>
 
-            <div className="inline-flex bg-[#232323] items-center gap-2 rounded-md  backdrop-blur-md px-4 py-2">
+            <div className="inline-flex cursor-pointer items-center gap-2  px-4 py-2">
               <AiOutlineBranches className="text-white text-lg" />
               <span className="text-white text-sm font-medium">
                 {new Set(resources.flatMap((r) => r.categories)).size}{" "}

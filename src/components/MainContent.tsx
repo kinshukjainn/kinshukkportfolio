@@ -1,5 +1,4 @@
 // Icons
-import { useState } from "react";
 import {
   FaAws,
   FaDocker,
@@ -11,13 +10,14 @@ import {
   FaCodeBranch,
   FaCode,
 } from "react-icons/fa";
-import { SiKubernetes, SiTerraform, SiTailwindcss } from "react-icons/si";
+import { SiKubernetes,SiCanva  , SiTerraform, SiTailwindcss } from "react-icons/si";
 import { HiOutlineExternalLink } from "react-icons/hi";
+import { FaDiscord } from "react-icons/fa6";
 
-// Define types
+
+// Define types 
 const MainContent = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  // Tech stack items
+  // Tech stack data : 
   const techStack = [
     { icon: <FaAws />, name: "AWS Cloud" },
     { icon: <FaReact />, name: "React 19" },
@@ -26,8 +26,14 @@ const MainContent = () => {
     { icon: <FaDocker />, name: "Docker" },
     { icon: <SiKubernetes />, name: "Kubernetes" },
     { icon: <SiTerraform />, name: "Terraform" },
-    { icon: <FaGithub />, name: "GitHub Actions" },
-    { icon: <FaLinux />, name: "Linux, Bash" },
+  ];
+
+  // tools stack : 
+  const ToolsStack = [
+    { icon: < FaDiscord/>, name: "Discord" },
+    { icon: < SiCanva/>, name: "Canva : Graphic Designing" },
+    { icon: < FaGithub/>, name: "Github / Git / Github Actions" },
+    { icon: < FaLinux />, name: "Linux / Linux CLI Commands" },
   ];
 
   // Certifications data
@@ -55,7 +61,7 @@ const MainContent = () => {
   return (
     <div className="font-sans bg-[#121212] text-gray-100 min-h-screen">
       {/* Hero section with custom dark theme */}
-      <header className="relative bg-[#121212] border-b border-gray-800 overflow-hidden">
+      <header className="relative bg-[#121212]  overflow-hidden">
         <div className="absolute inset-0 bg-[#121212]"></div>
 
         <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 relative z-10">
@@ -116,7 +122,7 @@ const MainContent = () => {
         {/* Education Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-light text-gray-100 mb-6 flex items-center">
-            <span className="w-8 h-1 bg-[#232323] mr-3"></span>
+            <span className="w-8 h-1 bg-purple-500 mr-3"></span>
             Education
           </h2>
 
@@ -164,12 +170,30 @@ const MainContent = () => {
         {/* Tech Stack Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-light text-gray-100 mb-6 flex items-center">
-            <span className="w-8 h-1 bg-[#232323] mr-3"></span>
+            <span className="w-8 h-1 bg-purple-500 mr-3"></span>
             Tech Stack
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {techStack.map((tech, index) => (
+              <div
+                key={index}
+                className="bg-[#232323] border border-gray-800 rounded-lg p-4 hover:shadow-lg transition-shadow flex items-center space-x-3 hover:border-purple-500"
+              >
+                <span className="text-purple-400 text-xl">{tech.icon}</span>
+                <span className="text-gray-200">{tech.name}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="mb-16">
+          <h2 className="text-3xl font-light text-gray-100 mb-6 flex items-center">
+            <span className="w-8 h-1 bg-purple-500 mr-3"></span>
+            Tools : 
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {ToolsStack.map((tech, index) => (
               <div
                 key={index}
                 className="bg-[#232323] border border-gray-800 rounded-lg p-4 hover:shadow-lg transition-shadow flex items-center space-x-3 hover:border-purple-500"
@@ -255,7 +279,7 @@ const MainContent = () => {
         <section id="projects" className="mb-16">
           <h2 className="text-3xl font-light text-gray-100 mb-6 flex items-center">
             <span className="w-8 h-1 bg-purple-500 mr-3"></span>
-            Cloud Projects
+            Projects / Work
           </h2>
 
           {/* Project 1 */}
@@ -510,53 +534,65 @@ const MainContent = () => {
         </section>
       </div>
 
-      <div className="bg-[#121212] text-white py-6 px-4 sm:px-8 rounded-xl shadow-lg ">
+      <div className="bg-[#121212] mb-4 mr-4 ml-4  text-white py-8 px-6 sm:px-10 rounded-2xl shadow-xl ">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
-            <div className="space-y-4 text-center lg:text-left">
-              <div className="flex items-center justify-center lg:justify-start gap-2">
-                <FaCode className="text-white text-xl" />
-                <h3 className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-700 via-red-700 via-grey-300 via-blue-500 via-slate-400 to-purple-500">
-                  Open Source: Your Contributions Matter!
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+            {/* Left Content */}
+            <div className="space-y-5 text-center lg:text-left">
+              <div className="flex items-center justify-center lg:justify-start gap-3">
+                <FaCode className="text-green-400 text-2xl" />
+                <h3
+                  className="text-2xl sm:text-3xl font-extrabold 
+             bg-gradient-to-r from-[#00F260] via-[#0575E6] to-[#FF6FD8] 
+             bg-clip-text text-transparent 
+             transition-all duration-300 hover:scale-105 hover:brightness-125"
+                >
+                  <span
+                    className="bg-gradient-to-r from-[#00F260] via-[#0575E6] to-[#FF6FD8] 
+               bg-clip-text text-transparent 
+               animate-gradient bg-[length:200%_200%] text-shadow-neon"
+                  >
+                    Fork it. Star it. Make it yours.
+                  </span>
                 </h3>
               </div>
 
-              <p className="text-sm sm:text-base text-gray-300 max-w-3xl">
-                This repository is fully open-source and free to use. If you
-                find it valuable, consider starring it to show your support.
-                You’re also welcome to fork the project, customize it, and build
-                a portfolio that reflects your unique style and goals. We
-                believe in the power of collaboration. If you have ideas to
-                improve this project, feel free to open an issue or submit a
-                pull request. Your feedback and contributions are not just
-                welcome—they’re what drive innovation forward.
+              <p className="text-base sm:text-lg text-gray-400 max-w-3xl mx-auto lg:mx-0">
+                This portfolio is now fully open-source and unapologetically
+                forkable. Like the design? Steal it. Want to tweak the branding?
+                Clone away. Just don’t forget to ⭐ if it saves you hours of
+                debugging and styling! Contributions, issues, and witty pull
+                requests are always welcome.
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <div className="flex items-center font-semibold text-lg  text-gray-300">
+                <div className="flex items-center font-semibold text-base sm:text-lg text-gray-300 hover:text-yellow-400 transition">
                   <FaStar className="text-yellow-400 mr-2" />
-                  <span>Star to support</span>
+                  <span>Star to show love</span>
                 </div>
-                <div className="flex items-center font-semibold text-lg text-gray-300">
-                  <FaCodeBranch className="text-blue-400  mr-2 " />
-                  <span>Fork to customize</span>
+                <div className="flex items-center font-semibold text-base sm:text-lg text-gray-300 hover:text-blue-400 transition">
+                  <FaCodeBranch className="text-blue-400 mr-2" />
+                  <span>Fork and remix</span>
                 </div>
               </div>
             </div>
 
+            {/* Right Button */}
             <a
               href="https://github.com/kinshukjain01/kinshukkportfolio"
               target="_blank"
               rel="noopener noreferrer"
-              className={`group flex items-center gap-2 bg-gray-800 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 border border-gray-700 hover:border-blue-500 ${
-                isHovered ? "transform -translate-y-1" : ""
-              }`}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+              className="group relative inline-flex items-center gap-2 text-white font-semibold py-3 px-6 rounded-xl 
+             transition-all duration-300 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 
+             shadow-[0_10px_25px_rgba(255,215,0,0.4)] hover:shadow-[0_15px_35px_rgba(255,105,180,0.6)] 
+             hover:scale-105 hover:brightness-110 animate-pulse"
             >
-              <FaGithub className="text-xl" />
-              <span>Repository</span>
-              <HiOutlineExternalLink className="text-lg opacity-70 group-hover:opacity-100" />
+              <FaGithub className="text-2xl text-black" />
+              <span className="text-lg text-black">View Repository</span>
+              <HiOutlineExternalLink className="text-lg text-black opacity-70 group-hover:opacity-100 transition" />
+
+              {/* Hover shine effect */}
+              <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 blur-sm pointer-events-none" />
             </a>
           </div>
         </div>
