@@ -50,7 +50,7 @@ const Blogs = () => {
             query: `
               query Publication($host: String!) {
                 publication(host: $host) {
-                  posts(first: 20) {
+                  posts(first: 100) {
                     edges {
                       node {
                         id
