@@ -487,7 +487,7 @@ export const AwsDocs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#121212] text-gray-900">
+    <div className="min-h-screen  bg-[#121212] text-gray-900">
       {/* Microsoft-style header with hero section */}
       <motion.div
         className="bg-[#121212] text-white shadow-md"
@@ -509,7 +509,7 @@ export const AwsDocs = () => {
           </motion.div>
 
           <motion.p
-            className="mt-4 text-blue-100 text-lg max-w-3xl leading-relaxed tracking-wide"
+            className="mt-4 text-blue-100  text-lg max-w-3xl leading-relaxed tracking-wide"
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}

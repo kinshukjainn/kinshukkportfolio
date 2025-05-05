@@ -254,15 +254,15 @@ const Blogs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#121212]text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="relative mb-16">
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-violet-500 rounded-lg opacity-75 blur"></div>
-          <div className="relative bg-[#1a1a1a] rounded-lg p-8 border border-[#333] shadow-lg">
-            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-violet-500 mb-4">
+          <div className="absolute -inset-1  rounded-lg opacity-75 blur"></div>
+          <div className="relative  rounded-lg p-8  shadow-lg">
+            <h1 className="text-4xl font-source font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-violet-500 mb-4">
               My Blog
             </h1>
-            <p className="text-gray-300 text-lg max-w-3xl">
+            <p className="text-gray-300 p-5 font-source text-lg max-w-3xl">
               My thoughts, opinion, take, and some guides on cloud, building scalable infrastructure,
               deploying apps, web development, and many other technical and non-technical fields
             </p>
@@ -270,7 +270,7 @@ const Blogs = () => {
         </div>
 
         {/* Search and filter section */}
-        <div className="mb-8 bg-[#1a1a1a] rounded-lg border border-[#333] p-6">
+        <div className="mb-8 bg-[#1a1a1a] font-poppins rounded-lg border border-[#333] p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="relative w-full max-w-xl">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -387,7 +387,7 @@ const Blogs = () => {
         </div>
 
         {loading ? (
-          <div className="flex flex-col justify-center items-center py-20">
+          <div className="flex flex-col  justify-center items-center py-20">
             <div className="relative w-20 h-20">
               <div className="absolute inset-0 rounded-full border-4 border-t-blue-500 border-r-blue-500 border-b-blue-500 border-l-transparent animate-spin"></div>
               <div className="absolute inset-2 rounded-full bg-[#1a1a1a]"></div>
@@ -424,7 +424,7 @@ const Blogs = () => {
                   rel="noopener noreferrer"
                   className="block p-6"
                 >
-                  <div className="flex flex-col space-y-3">
+                  <div className="flex flex-col  space-y-3">
                     <div className="flex justify-between items-start">
                       <h2 className="text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors">
                         {blog.title}
