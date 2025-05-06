@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import {
   FaBook,
   FaVideo,
@@ -487,10 +488,10 @@ export const AwsDocs = () => {
   };
 
   return (
-    <div className="min-h-screen  bg-[#121212] text-gray-900">
+    <div className="min-h-screen  bg-black text-gray-900">
       {/* Microsoft-style header with hero section */}
       <motion.div
-        className="bg-[#121212] text-white shadow-md"
+        className="bg-black text-white shadow-md"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -558,7 +559,7 @@ export const AwsDocs = () => {
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           <div
-            className={`bg-[#232323]  rounded-md shadow-sm transition-all duration-300 ${
+            className={`rounded-2xl border-b border-white shadow-sm transition-all duration-300 ${
               isSearchFocused ? " shadow-md" : ""
             }`}
           >
@@ -572,7 +573,7 @@ export const AwsDocs = () => {
                 ref={searchInputRef}
                 type="text"
                 placeholder="Search resources..."
-                className="flex-1 ml-3 outline-none text-gray-100 placeholder-gray-400"
+                className="flex-1 ml-3 outline-none text-white placeholder-gray-400"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => {
@@ -614,7 +615,7 @@ export const AwsDocs = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="absolute z-10 mt-1 w-full bg-[#121212] rounded-md shadow-lg text-white py-1"
+                className="absolute z-10 mt-1 w-full bg-black rounded-md shadow-lg text-white py-1"
               >
                 <div className="px-4 py-2 text-xs font-medium text-white  flex items-center">
                   <FaHistory className="mr-2" />
@@ -849,7 +850,7 @@ export const AwsDocs = () => {
                 <motion.div
                   key={index}
                   variants={cardVariants}
-                  className="bg-[#232323] rounded-lg shadow-sm  overflow-hidden hover:shadow-md transition-all duration-300"
+                  className=" bg-gray-900/70 rounded-lg shadow-sm  overflow-hidden hover:shadow-md transition-all duration-300"
                   whileHover={{ y: -2, transition: { duration: 0.1 } }}
                 >
                   <div
@@ -959,10 +960,10 @@ export const AwsDocs = () => {
         )}
       </div>
       {/* Footer */}
-      <footer className="bg-slate-900 p-6 text-center text-gray-100 mt-12">
+      <footer className="bg-black p-6 text-center text-white mt-12">
         <p className="font-medium ">
           Want to explore my learning journey? Check out the{" "}
-          <strong className="text-yellow-300 font-bold underline">Blogs</strong>{" "}
+          <Link to="/blogs" className="text-yellow-300 font-bold underline">Blogs</Link>{" "}
           tab in the header!
         </p>
       </footer>

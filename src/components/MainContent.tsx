@@ -10,14 +10,19 @@ import {
   FaCodeBranch,
   FaCode,
 } from "react-icons/fa";
-import { SiKubernetes,SiCanva  , SiTerraform, SiTailwindcss } from "react-icons/si";
+import {
+  SiKubernetes,
+  SiCanva,
+  SiTerraform,
+  SiTailwindcss,
+} from "react-icons/si";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { FaDiscord } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
-
-// Define types 
+// Define types
 const MainContent = () => {
-  // Tech stack data : 
+  // Tech stack data :
   const techStack = [
     { icon: <FaAws />, name: "AWS Cloud" },
     { icon: <FaReact />, name: "React 19" },
@@ -28,12 +33,12 @@ const MainContent = () => {
     { icon: <SiTerraform />, name: "Terraform" },
   ];
 
-  // tools stack : 
+  // tools stack :
   const ToolsStack = [
-    { icon: < FaDiscord/>, name: "Discord" },
-    { icon: < SiCanva/>, name: "Canva : Graphic Designing" },
-    { icon: < FaGithub/>, name: "Github / Git / Github Actions" },
-    { icon: < FaLinux />, name: "Linux / Linux CLI Commands" },
+    { icon: <FaDiscord />, name: "Discord" },
+    { icon: <SiCanva />, name: "Canva : Graphic Designing" },
+    { icon: <FaGithub />, name: "Github / Git / Github Actions" },
+    { icon: <FaLinux />, name: "Linux / Linux CLI Commands" },
   ];
 
   // Certifications data
@@ -59,16 +64,16 @@ const MainContent = () => {
   ];
 
   return (
-    <div className="font-sans bg-[#121212] text-gray-100 min-h-screen">
+    <div className=" bg-black text-gray-100 min-h-screen">
       {/* Hero section with custom dark theme */}
-      <header className="relative bg-[#121212]  overflow-hidden">
-        <div className="absolute inset-0 bg-[#121212]"></div>
+      <header className="relative bg-black  overflow-hidden">
+        <div className="absolute inset-0 bg-black"></div>
 
         <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 relative z-10">
           <div className="relative">
             <h1 className="text-4xl md:text-6xl font-light text-gray-100 mb-4">
               Hi, I'm{" "}
-              <span className="font-semibold text-purple-400">
+              <span className="font-semibold">
                 Kinshuk Jain
               </span>
             </h1>
@@ -79,41 +84,13 @@ const MainContent = () => {
             </p>
 
             <div>
-              <a
-                href="#projects"
-                className="inline-flex items-center justify-center px-6 py-3 bg-purple-700 text-white rounded hover:bg-purple-600 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black"
+              <Link
+                to="/blogs"
+                className="inline-flex items-center justify-center  bg-white px-2 py-2 underline text-black font-bold rounded-md"
               >
-                View My Work
-              </a>
+                View My blogs
+              </Link>
             </div>
-          </div>
-        </div>
-
-        {/* Geometric background */}
-        <div className="absolute top-0 right-0 h-full w-1/2 opacity-10">
-          <div className="absolute top-0 right-0 w-full h-full">
-            <svg
-              width="100%"
-              height="100%"
-              viewBox="0 0 500 500"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#8B5CF6" />
-                  <stop offset="100%" stopColor="#C084FC" />
-                </linearGradient>
-              </defs>
-              <circle cx="350" cy="150" r="200" fill="url(#grad1)" />
-              <rect
-                x="100"
-                y="250"
-                width="300"
-                height="300"
-                rx="20"
-                fill="url(#grad1)"
-              />
-            </svg>
           </div>
         </div>
       </header>
@@ -121,12 +98,12 @@ const MainContent = () => {
       <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Education Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-light text-gray-100 mb-6 flex items-center">
-            <span className="w-8 h-1 bg-purple-500 mr-3"></span>
+          <h2 className="text-3xl font-semibold text-gray-100 mb-6 flex items-center">
+            <span className="w-8 h-3 rounded-2xl bg-white mr-3"></span>
             Education
           </h2>
 
-          <div className="bg-[#232323] rounded-lg shadow-md border border-gray-800 p-6 mb-6">
+          <div className=" rounded-4xl  p-6 mb-6">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center">
               <div>
                 <h3 className="text-xl font-semibold text-gray-100">
@@ -138,14 +115,14 @@ const MainContent = () => {
                 <p className="text-gray-400 text-sm">Noida, Uttar Pradesh</p>
               </div>
               <div className="mt-2 md:mt-0">
-                <span className="inline-block bg-purple-900 text-purple-200 px-3 py-1 rounded text-sm font-medium">
+                <span className="inline-block bg-blue-700 text-white px-3 py-1 rounded-full text-sm font-medium">
                   2022 - 2026
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="bg-[#232323] rounded-lg shadow-md border border-gray-800 p-6">
+          <div className=" rounded-4xl shadow-md p-6">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center">
               <div>
                 <h3 className="text-xl font-semibold text-gray-100">
@@ -159,7 +136,7 @@ const MainContent = () => {
                 </p>
               </div>
               <div className="mt-2 md:mt-0">
-                <span className="inline-block bg-purple-900 text-purple-200 px-3 py-1 rounded text-sm font-medium">
+                <span className="inline-block bg-blue-700 text-white px-3 py-1 rounded-full text-sm font-medium">
                   2020 - 2022
                 </span>
               </div>
@@ -169,8 +146,8 @@ const MainContent = () => {
 
         {/* Tech Stack Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-light text-gray-100 mb-6 flex items-center">
-            <span className="w-8 h-1 bg-purple-500 mr-3"></span>
+          <h2 className="text-3xl font-semibold text-gray-100 mb-6 flex items-center">
+            <span className="w-8 h-3 rounded-full bg-white mr-3"></span>
             Tech Stack
           </h2>
 
@@ -178,7 +155,7 @@ const MainContent = () => {
             {techStack.map((tech, index) => (
               <div
                 key={index}
-                className="bg-[#232323] border border-gray-800 rounded-lg p-4 hover:shadow-lg transition-shadow flex items-center space-x-3 hover:border-purple-500"
+                className="  rounded-2xl p-4 hover:shadow-lg transition-shadow flex items-center space-x-3"
               >
                 <span className="text-purple-400 text-xl">{tech.icon}</span>
                 <span className="text-gray-200">{tech.name}</span>
@@ -186,17 +163,18 @@ const MainContent = () => {
             ))}
           </div>
         </section>
+
         <section className="mb-16">
-          <h2 className="text-3xl font-light text-gray-100 mb-6 flex items-center">
-            <span className="w-8 h-1 bg-purple-500 mr-3"></span>
-            Tools : 
+          <h2 className="text-3xl font-semibold text-gray-100 mb-6 flex items-center">
+            <span className="w-8 h-3 rounded-full bg-white mr-3"></span>
+            Tools :
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {ToolsStack.map((tech, index) => (
               <div
                 key={index}
-                className="bg-[#232323] border border-gray-800 rounded-lg p-4 hover:shadow-lg transition-shadow flex items-center space-x-3 hover:border-purple-500"
+                className=" p-4 hover:shadow-lg transition-shadow flex items-center space-x-3"
               >
                 <span className="text-purple-400 text-xl">{tech.icon}</span>
                 <span className="text-gray-200">{tech.name}</span>
@@ -207,13 +185,13 @@ const MainContent = () => {
 
         {/* Certifications Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-light text-gray-100 mb-6 flex items-center">
-            <span className="w-8 h-1 bg-purple-500 mr-3"></span>
+          <h2 className="text-3xl font-semibold font-light text-gray-100 mb-6 flex items-center">
+            <span className="w-8 h-3 rounded-full bg-white mr-3"></span>
             Cloud Certifications
           </h2>
 
           {/* AWS Journey Banner */}
-          <div className="bg-[#232323] bg-opacity-20 border-l-4 border-purple-500 p-6 rounded mb-8">
+          <div className="p-6 rounded-4xl mb-8">
             <h3 className="text-xl font-semibold text-gray-100 flex items-center mb-3">
               <FaAws className="mr-2 text-purple-400" /> My AWS Certification
               Journey
@@ -235,7 +213,7 @@ const MainContent = () => {
             {certifications.map((cert, index) => (
               <div
                 key={index}
-                className="bg-[#232323] border border-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col h-full hover:border-purple-500 transition-colors"
+                className=" overflow-hidden flex flex-col h-full transition-colors"
               >
                 <div className="p-6 flex-grow">
                   <div className="flex items-start">
@@ -248,10 +226,10 @@ const MainContent = () => {
                     {cert.description}
                   </p>
                 </div>
-                <div className="px-6 py-3 bg-black border-t border-gray-800">
+                <div className="px-6 py-3 mb-2 mt-2 mr-2 ml-2 rounded-full w-max  font-semibold ">
                   <a
                     href={cert.link}
-                    className="text-purple-400 hover:text-purple-300 text-sm font-medium inline-flex items-center"
+                    className="text-blue-500 font-semibold font-medium inline-flex items-center"
                   >
                     View Certificate
                     <svg
@@ -277,13 +255,13 @@ const MainContent = () => {
 
         {/* Projects Section */}
         <section id="projects" className="mb-16">
-          <h2 className="text-3xl font-light text-gray-100 mb-6 flex items-center">
-            <span className="w-8 h-1 bg-purple-500 mr-3"></span>
+          <h2 className="text-3xl font-semibold text-gray-100 mb-6 flex items-center">
+            <span className="w-8 h-3 rounded-full bg-purple-500 mr-3"></span>
             Projects / Work
           </h2>
 
           {/* Project 1 */}
-          <div className="bg-[#232323] border border-gray-800 rounded-lg shadow-md mb-8 overflow-hidden">
+          <div className="  rounded-4xl shadow-md mb-8 overflow-hidden">
             <div className="p-6">
               <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
                 <h3 className="text-2xl font-semibold text-gray-100 mb-2 md:mb-0">
@@ -291,7 +269,7 @@ const MainContent = () => {
                 </h3>
                 <a
                   href="https://cloudkinshuk.in"
-                  className="inline-flex items-center justify-center px-4 py-2 bg-purple-700 text-white text-sm rounded hover:bg-purple-600 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="inline-flex items-center justify-center px-2 w-max py-2 font-bold bg-purple-700 text-white text-sm rounded-full hover:bg-purple-600 transition-colors "
                 >
                   View Live
                 </a>
@@ -409,25 +387,25 @@ const MainContent = () => {
                   Technologies Used:
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full">
                     React 19
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full">
                     TypeScript
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full">
                     Tailwind CSS
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full">
                     Framer Motion
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full">
                     AWS Amplify
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full">
                     Route 53
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full">
                     Hostinger
                   </span>
                 </div>
@@ -436,7 +414,7 @@ const MainContent = () => {
           </div>
 
           {/* Project 2 */}
-          <div className="bg-[#232323] border border-gray-800 rounded-lg shadow-md overflow-hidden">
+          <div className="  shadow-md overflow-hidden">
             <div className="p-6">
               <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
                 <h3 className="text-2xl font-semibold text-gray-100 mb-2 md:mb-0">
@@ -444,7 +422,7 @@ const MainContent = () => {
                 </h3>
                 <a
                   href="https://blog.cloudkinshuk.in"
-                  className="inline-flex items-center justify-center px-4 py-2 bg-purple-700 text-white text-sm rounded hover:bg-purple-600 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="inline-flex items-center justify-center px-2 w-max py-2 font-bold bg-purple-700 text-white text-sm rounded-full hover:bg-purple-600 transition-colors"
                 >
                   View Blog
                 </a>
@@ -509,22 +487,22 @@ const MainContent = () => {
                   Technologies Used:
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full ">
                     Hashnode
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full ">
                     Amazon Route 53
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full ">
                     Hostinger
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full ">
                     DNS Management
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full ">
                     Custom Domain
                   </span>
-                  <span className="px-3 py-1 bg-black text-gray-200 text-xs rounded-full border border-gray-700">
+                  <span className="px-3 py-1 bg-blue-800 text-white text-sm rounded-full ">
                     CDN
                   </span>
                 </div>
@@ -534,43 +512,35 @@ const MainContent = () => {
         </section>
       </div>
 
-      <div className="bg-[#121212] mb-4 mr-4 ml-4  text-white py-8 px-6 sm:px-10 rounded-2xl shadow-xl ">
+      <div className=" mb-4 mr-4 ml-4  text-white py-8 px-6 sm:px-10 rounded-2xl shadow-xl ">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
             {/* Left Content */}
             <div className="space-y-5 text-center lg:text-left">
               <div className="flex items-center justify-center lg:justify-start gap-3">
-                <FaCode className="text-green-400 text-2xl" />
+                <FaCode className="text-blue-400 text-2xl" />
                 <h3
-                  className="text-2xl sm:text-3xl font-extrabold 
-             bg-gradient-to-r from-[#00F260] via-[#0575E6] to-[#FF6FD8] 
-             bg-clip-text text-transparent 
-             transition-all duration-300 hover:scale-105 hover:brightness-125"
+                  className="text-2xl sm:text-3xl font-extrabold text-white 
+             transition-all duration-300"
                 >
                   <span
-                    className="bg-gradient-to-r from-[#00F260] via-[#0575E6] to-[#FF6FD8] 
-               bg-clip-text text-transparent 
-               animate-gradient bg-[length:200%_200%] text-shadow-neon"
+                    className="text0-white"
                   >
                     Fork it. Star it. Make it yours.
                   </span>
                 </h3>
               </div>
 
-              <p className="text-base sm:text-lg text-gray-400 max-w-3xl mx-auto lg:mx-0">
-                This portfolio is now fully open-source and unapologetically
-                forkable. Like the design? Steal it. Want to tweak the branding?
-                Clone away. Just don’t forget to ⭐ if it saves you hours of
-                debugging and styling! Contributions, issues, and witty pull
-                requests are always welcome.
+              <p className="text-base  font-mono sm:text-lg text-gray-400 max-w-3xl mx-auto lg:mx-0">
+              This portfolio is fully open-source and free to fork. Found the design helpful? Feel free to use or modify it for your own site. If it saved you time or gave you a good starting point, a ⭐ would mean a lot. Contributions, feedback, and improvements are always welcome
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <div className="flex items-center font-semibold text-base sm:text-lg text-gray-300 hover:text-yellow-400 transition">
+                <div className="flex items-center font-semibold text-base sm:text-sm text-gray-300 hover:text-yellow-400 transition">
                   <FaStar className="text-yellow-400 mr-2" />
                   <span>Star to show love</span>
                 </div>
-                <div className="flex items-center font-semibold text-base sm:text-lg text-gray-300 hover:text-blue-400 transition">
+                <div className="flex items-center font-semibold text-base sm:text-sm text-gray-300 transition">
                   <FaCodeBranch className="text-blue-400 mr-2" />
                   <span>Fork and remix</span>
                 </div>
@@ -582,14 +552,11 @@ const MainContent = () => {
               href="https://github.com/kinshukjain01/kinshukkportfolio"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center gap-2 text-white font-semibold py-3 px-6 rounded-xl 
-             transition-all duration-300 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 
-             shadow-[0_10px_25px_rgba(255,215,0,0.4)] hover:shadow-[0_15px_35px_rgba(255,105,180,0.6)] 
-             hover:scale-105 hover:brightness-110 animate-pulse"
+              className="group relative inline-flex items-center gap-2 text-white font-semibold py-2 px-2 rounded-xl bg-blue-900 "
             >
-              <FaGithub className="text-2xl text-black" />
-              <span className="text-lg text-black">View Repository</span>
-              <HiOutlineExternalLink className="text-lg text-black opacity-70 group-hover:opacity-100 transition" />
+              <FaGithub className="text-2xl text-white" />
+              <span className="text-sm text-white">View Repository</span>
+              <HiOutlineExternalLink className="text-lg text-white  group-hover:opacity-100 transition" />
 
               {/* Hover shine effect */}
               <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 blur-sm pointer-events-none" />
@@ -599,12 +566,14 @@ const MainContent = () => {
       </div>
 
       {/* Custom dark theme footer with gradient accent */}
-      <footer className="bg-black border-t border-gray-800 py-8">
+      <footer className="bg-black py-6 ">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-gray-300">
             Want to explore my learning journey? Check out the{" "}
-            <span className="text-purple-400 font-medium">Resources</span> tab
-            in the header!
+            <Link to="/docs" className="text-purple-400 font-bold">
+              Resources
+            </Link>{" "}
+            tab in the header!
           </p>
         </div>
       </footer>

@@ -258,19 +258,18 @@ const Blogs = () => {
       <div className="max-w-6xl mx-auto">
         <div className="relative mb-16">
           <div className="absolute -inset-1  rounded-lg opacity-75 blur"></div>
-          <div className="relative  rounded-lg p-8  shadow-lg">
-            <h1 className="text-4xl font-source font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-violet-500 mb-4">
+          <div className="relative  rounded-xl p-8  shadow-lg">
+            <h1 className="text-4xl font-source font-bold bg-clip-text  text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-violet-500 mb-4">
               My Blog
             </h1>
-            <p className="text-gray-300 p-5 font-source text-lg max-w-3xl">
-              My thoughts, opinion, take, and some guides on cloud, building scalable infrastructure,
-              deploying apps, web development, and many other technical and non-technical fields
+            <p className="text-gray-300 p-5 font-source text-xl max-w-3xl">
+            These are my working notes and reflections—on cloud infrastructure, building systems that scale, deploying and debugging web apps, and navigating both the elegant and messy sides of development. Some of it’s technical, some of it’s opinionated, but all of it comes from hands-on learning. This isn’t a polished manual—it’s a trace of what I’ve built, broken, fixed, and figured out.
             </p>
           </div>
         </div>
 
         {/* Search and filter section */}
-        <div className="mb-8 bg-[#1a1a1a] font-poppins rounded-lg border border-[#333] p-6">
+        <div className="mb-8 bg-black font-poppins rounded-lg p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="relative w-full max-w-xl">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -281,7 +280,7 @@ const Blogs = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by title, content, or tags..."
-                className="w-full py-2 pl-10 pr-4 bg-[#232323] border border-[#444] rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full py-2 pl-10 pr-4 bg-black border border-[#444] rounded-md text-white"
               />
               {searchQuery && (
                 <button 
@@ -296,7 +295,7 @@ const Blogs = () => {
             </div>
             
             <button 
-              className="ml-4 flex items-center text-blue-400 hover:text-blue-300 bg-[#232323] border border-[#444] rounded-md px-4 py-2"
+              className="ml-4 flex items-center text-white hover:text-blue-300 bg-[#121212] border border-[#444] opacity-70 px-4 py-2"
               onClick={() => setFiltersOpen(!filtersOpen)}
             >
               <Filter size={16} className="mr-2" />
@@ -416,7 +415,7 @@ const Blogs = () => {
             {filteredBlogs.map((blog) => (
               <article 
                 key={blog.id} 
-                className="group bg-[#1a1a1a] rounded-lg overflow-hidden border border-[#333] transition-all duration-300 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-900/10"
+                className="group  rounded-lg overflow-hidden  transition-all duration-300"
               >
                 <a
                   href={blog.url}

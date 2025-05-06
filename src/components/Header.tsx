@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaLinkedin, FaGithub, FaInstagramSquare } from "react-icons/fa";
 import { MdOutlineAutoGraph } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaCloud, FaCloudDownloadAlt, FaCloudUploadAlt } from "react-icons/fa";
+import { FaCloud, FaCloudUploadAlt } from "react-icons/fa";
 import profile from "../assets/image.jpg";
 import { FaHashnode ,  FaSquareXTwitter  } from "react-icons/fa6";
 
@@ -27,7 +27,7 @@ const Header = () => {
     } else if (pathname === "/docs" || pathname.startsWith("/docs/")) {
       return "Learning.Hub";
     } else if (pathname === "/blogs" || pathname.startsWith("/blogs/")) {
-      return "Blog on Hashnode";
+      return "Blogs";
     } else {
       return "Profile"; // Default fallback
     }
@@ -61,7 +61,7 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`bg-[#121212] font-poppins mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center rounded-xl shadow-2xl border border-gray-700 relative z-50 overflow-hidden ${
+      className={`bg-black font-poppins mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center rounded-xl shadow-2xl relative z-50 overflow-hidden ${
         scrolled ? "sticky top-2 backdrop-blur-md bg-opacity-95" : ""
       }`}
     >
@@ -116,32 +116,6 @@ const Header = () => {
               }}
             />
           </motion.div>
-          
-          {/* Pulsing online indicator */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6, type: "spring" }}
-            className="absolute -bottom-1 -right-1 z-10"
-          >
-            <motion.div
-              animate={{ 
-                scale: [1, 1.2, 1], 
-                boxShadow: [
-                  "0 0 0 0 rgba(56, 161, 105, 0.7)",
-                  "0 0 0 4px rgba(56, 161, 105, 0.2)",
-                  "0 0 0 0 rgba(56, 161, 105, 0.7)"
-                ]
-              }}
-              transition={{ 
-                duration: 2.5, 
-                repeat: Infinity,
-                repeatType: "loop"
-              }}
-              className="w-4 h-4 bg-blue-500 rounded-full border-2 border-gray-900" 
-              title="Online"
-            />
-          </motion.div>
         </motion.div>
 
         {/* Dynamic Portfolio Name with cloud theme */}
@@ -151,7 +125,6 @@ const Header = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="flex items-center"
         >
-          <FaCloudDownloadAlt className="text-blue-400 mr-2 text-xl" />
           <motion.h1
             className="text-lg sm:text-xl font-semibold tracking-wide text-gray-100"
           >

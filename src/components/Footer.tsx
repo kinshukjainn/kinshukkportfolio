@@ -1,57 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SocialMedia from "../socialmedia/SocialMedia";
-import { FaCloud, FaCloudRain, FaCloudMeatball } from "react-icons/fa";
+import { FaCloud } from "react-icons/fa";
 
 const Footer = () => {
-  // Cloud animations
-  const cloudVariants: Record<string, (custom: number) => { y: number[]; transition: { duration: number; repeat: number; repeatType: "reverse"; ease: string; }; }> = {
-    floating: (custom) => ({
-      y: [0, custom, 0],
-      transition: {
-        duration: 3 + custom / 2,
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "easeInOut"
-      }
-    })
-  };
 
   return (
     <motion.footer
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="bg-[#121212] font-poppins text-gray-300 shadow-xl py-10 relative overflow-hidden border-t border-gray-800 mt-8"
+      className="bg-black font-poppins text-gray-300 shadow-xl py-10 relative overflow-hidden border-t border-gray-800 mt-8"
     >
-      {/* Decorative Cloud Elements */}
-      <motion.div 
-        custom={-10}
-        variants={cloudVariants}
-        animate="floating"
-        className="absolute left-10 top-10 text-gray-600 opacity-10 text-6xl"
-      >
-        <FaCloud />
-      </motion.div>
-      
-      <motion.div 
-        custom={-8}
-        variants={cloudVariants}
-        animate="floating"
-        className="absolute right-16 bottom-20 text-gray-600 opacity-10 text-5xl"
-      >
-        <FaCloudRain />
-      </motion.div>
-      
-      <motion.div 
-        custom={-12}
-        variants={cloudVariants}
-        animate="floating"
-        className="absolute left-1/4 bottom-10 text-gray-600 opacity-10 text-4xl"
-      >
-        <FaCloudMeatball />
-      </motion.div>
 
       {/* Top Border with Animation */}
       <div className="absolute top-0 left-0 right-0">
@@ -120,7 +80,7 @@ const Footer = () => {
           <span className="relative">
             Aspiring and self-taught cloud engineer with a passion for building scalable and secure cloud solutions.
             <motion.span 
-              className="absolute -bottom-1 left-0 h-0.5 bg-blue-500"
+              className="absolute -bottom-2 left-1 right-1  h-1 rounded-full bg-blue-500"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ delay: 1.2, duration: 1 }}
@@ -135,36 +95,6 @@ const Footer = () => {
           transition={{ delay: 0.5, duration: 0.7 }}
           className="flex space-x-6 mt-6"
         >
-          <SocialMedia />
-        </motion.div>
-
-        {/* Cloud Services Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.7, duration: 0.7 }}
-          className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl"
-        >
-          {["AWS", "Azure", "GCP", "Kubernetes"].map((service, index) => (
-            <motion.div
-              key={service}
-              whileHover={{ 
-                scale: 1.05,
-                backgroundColor: "rgba(66, 153, 225, 0.1)",
-                boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                delay: 0.8 + index * 0.1,
-                duration: 0.5,
-                type: "spring"
-              }}
-              className="bg-[#1A1A1A] px-3 py-2 rounded-md border border-gray-800 shadow-md"
-            >
-              <span className="text-blue-300 text-sm font-medium">{service}</span>
-            </motion.div>
-          ))}
         </motion.div>
 
         {/* Call-to-Action */}
@@ -172,7 +102,7 @@ const Footer = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7 }}
-          className="text-sm font-medium text-gray-300 mt-8 p-4 bg-[#1A1A1A] backdrop-blur-sm rounded-md border border-gray-800 max-w-xl shadow-md"
+          className="text-lg font-medium text-gray-300 mt-8 p-4  max-w-xl "
         >
           <p>
             Open to opportunities in cloud engineering, DevOps, and security.{" "}

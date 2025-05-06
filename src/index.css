@@ -5,7 +5,6 @@
 body {
   background-color: black; /* Dark background */
   color: #F8F8F2; /* Default text color */
+  font-family: 'Poppins', sans-serif;
 }
-:root {
-  --font-source: "Source Code Pro", monospace; 
-}
+

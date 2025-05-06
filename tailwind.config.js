@@ -1,15 +1,13 @@
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
         source: ['"Source Code Pro"', 'monospace'],
-      },
+      },      
     },
   },
   plugins: [],
 }
 
-export default config
