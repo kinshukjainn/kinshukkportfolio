@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaLinkedin, FaGithub, FaInstagramSquare } from "react-icons/fa";
-import { MdOutlineAutoGraph } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCloud, FaCloudUploadAlt } from "react-icons/fa";
 import profile from "../assets/image.jpg";
@@ -24,8 +23,6 @@ const Header = () => {
     
     if (pathname === "/") {
       return "Profile";
-    } else if (pathname === "/docs" || pathname.startsWith("/docs/")) {
-      return "Learning.Hub";
     } else if (pathname === "/blogs" || pathname.startsWith("/blogs/")) {
       return "Blogs";
     } else {
@@ -167,7 +164,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto", y: 0 }}
             exit={{ opacity: 0, height: 0, y: -10 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="w-full overflow-hidden sm:hidden backdrop-blur-md bg-gray-900 bg-opacity-95 rounded-lg mt-2 border border-gray-700"
+            className="w-full overflow-hidden sm:hidden backdrop-blur-md bg-black bg-opacity-95 rounded-md mt-2"
           >
             <motion.div 
               initial={{ opacity: 0 }}
@@ -213,25 +210,6 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
         </Link>
       </motion.div>
       
-      <motion.div 
-        whileHover="hover" 
-        variants={linkVariants}
-      >
-        <Link 
-          to="/docs" 
-          className="flex items-center gap-2 text-gray-100 text-sm md:text-base transition-colors duration-300" 
-          onClick={closeMenu}
-        >
-          <MdOutlineAutoGraph className="text-lg text-blue-400" /> 
-          <span className="relative group">
-            Learning.Hub
-            <motion.span 
-              className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full"
-              transition={{ duration: 0.3 }}
-            />
-          </span>
-        </Link>
-      </motion.div>
       <motion.div 
         whileHover="hover" 
         variants={linkVariants}

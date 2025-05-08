@@ -9,7 +9,6 @@ interface Blog {
   url: string;
   readTime: string;
   tags: string[];
-  // Store original date for sorting
   originalDate: Date;
 }
 
@@ -46,13 +45,11 @@ const Blogs = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
-  // Search and filter states
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [sortOption, setSortOption] = useState<'newest' | 'oldest' | 'readTime'>('newest');
   const [filtersOpen, setFiltersOpen] = useState(false);
   
-  // Get all unique tags
   const allTags = useMemo(() => {
     const tags = new Set<string>();
     blogs.forEach(blog => {
@@ -61,7 +58,6 @@ const Blogs = () => {
     return Array.from(tags).sort();
   }, [blogs]);
 
-  // Function to convert API blog data to our format
   const formatBlogData = (edges: BlogEdge[], blogDomain: string): Blog[] => {
     return edges.map((edge) => {
       const originalDate = new Date(edge.node.publishedAt);
@@ -92,10 +88,9 @@ const Blogs = () => {
         let endCursor = null;
         let retryCount = 0;
         const MAX_RETRIES = 3;
-        const POSTS_PER_PAGE = 20; // Optimal batch size
-        const MAX_POSTS = 500; // Safety limit to prevent endless loops
+        const POSTS_PER_PAGE = 20;
+        const MAX_POSTS = 500;
 
-        // Function to make a single GraphQL request
         const fetchBlogPage = async (cursor: string | null) => {
           const response = await fetch("https://gql.hashnode.com", {
             method: "POST",
@@ -144,7 +139,6 @@ const Blogs = () => {
           return await response.json() as HashnodeResponse;
         };
 
-        // Paginated fetch with error handling and retries
         while (hasNextPage && allBlogEdges.length < MAX_POSTS) {
           try {
             const data = await fetchBlogPage(endCursor);
@@ -161,17 +155,13 @@ const Blogs = () => {
             const edges = data.data.publication.posts.edges;
             allBlogEdges = [...allBlogEdges, ...edges];
             
-            // Update pagination info
             hasNextPage = !!data.data.publication.posts.pageInfo?.hasNextPage;
             endCursor = data.data.publication.posts.pageInfo?.endCursor || null;
             
-            // If no new blogs were returned, break to avoid infinite loop
             if (edges.length === 0) break;
             
-            // Reset retry counter on successful request
             retryCount = 0;
             
-            // Add a small delay between requests to be kind to the API
             await new Promise(resolve => setTimeout(resolve, 300));
           } catch (err) {
             retryCount++;
@@ -181,7 +171,6 @@ const Blogs = () => {
               throw new Error(`Failed after ${MAX_RETRIES} attempts: ${err instanceof Error ? err.message : 'Unknown error'}`);
             }
             
-            // Exponential backoff
             const delay = Math.min(1000 * (2 ** retryCount), 10000);
             await new Promise(resolve => setTimeout(resolve, delay));
           }
@@ -206,11 +195,9 @@ const Blogs = () => {
     fetchBlogs();
   }, []);
 
-  // Apply filters when any filtering criteria changes
   useEffect(() => {
     let result = [...blogs];
     
-    // Apply search filter
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       result = result.filter(blog => 
@@ -220,14 +207,12 @@ const Blogs = () => {
       );
     }
     
-    // Apply tag filters
     if (selectedTags.length > 0) {
       result = result.filter(blog => 
         selectedTags.every(tag => blog.tags.includes(tag))
       );
     }
     
-    // Apply sorting
     if (sortOption === 'newest') {
       result.sort((a, b) => b.originalDate.getTime() - a.originalDate.getTime());
     } else if (sortOption === 'oldest') {
@@ -254,80 +239,76 @@ const Blogs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#121212]text-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="relative mb-16">
-          <div className="absolute -inset-1  rounded-lg opacity-75 blur"></div>
-          <div className="relative  rounded-xl p-8  shadow-lg">
-            <h1 className="text-4xl font-source font-bold bg-clip-text  text-transparent bg-gradient-to-r from-blue-400 via-blue-500 to-violet-500 mb-4">
-              My Blog
-            </h1>
-            <p className="text-gray-300 p-5 font-source text-xl max-w-3xl">
-            These are my working notes and reflections—on cloud infrastructure, building systems that scale, deploying and debugging web apps, and navigating both the elegant and messy sides of development. Some of it’s technical, some of it’s opinionated, but all of it comes from hands-on learning. This isn’t a polished manual—it’s a trace of what I’ve built, broken, fixed, and figured out.
-            </p>
-          </div>
+    <div className="min-h-screen bg-black text-white py-8 px-3 sm:px-4">
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold text-white mb-2">
+            My Blog
+          </h1>
+          <p className="text-gray-300 text-sm">
+            These are my working notes and reflections—on cloud infrastructure, building systems that scale, deploying and debugging web apps, and navigating both the elegant and messy sides of development. Some of it's technical, some of it's opinionated, but all of it comes from hands-on learning.
+          </p>
         </div>
 
-        {/* Search and filter section */}
-        <div className="mb-8 bg-black font-poppins rounded-lg p-6">
-          <div className="flex items-center justify-between mb-4">
+        <div className="mb-4 bg-black border border-gray-800 p-3">
+          <div className="flex items-center justify-between mb-2">
             <div className="relative w-full max-w-xl">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search size={18} className="text-gray-400" />
+              <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+                <Search size={14} className="text-gray-400" />
               </div>
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by title, content, or tags..."
-                className="w-full py-2 pl-10 pr-4 bg-black border border-[#444] rounded-md text-white"
+                placeholder="Search..."
+                className="w-full py-1 pl-7 pr-2 bg-black border border-gray-800 text-white text-sm"
               />
               {searchQuery && (
                 <button 
                   onClick={() => setSearchQuery('')}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-2 flex items-center"
                   title="Clear search"
                   aria-label="Clear search"
                 >
-                  <X size={16} className="text-gray-400 hover:text-white" />
+                  <X size={14} className="text-gray-400 hover:text-white" />
                 </button>
               )}
             </div>
             
             <button 
-              className="ml-4 flex items-center text-white hover:text-blue-300 bg-[#121212] border border-[#444] opacity-70 px-4 py-2"
+              className="ml-2 flex items-center text-white text-sm bg-black border border-gray-800 px-2 py-1"
               onClick={() => setFiltersOpen(!filtersOpen)}
             >
-              <Filter size={16} className="mr-2" />
+              <Filter size={14} className="mr-1" />
               Filters
               {filtersOpen ? (
-                <ChevronUp size={16} className="ml-2" />
+                <ChevronUp size={14} className="ml-1" />
               ) : (
-                <ChevronDown size={16} className="ml-2" />
+                <ChevronDown size={14} className="ml-1" />
               )}
             </button>
           </div>
 
           {filtersOpen && (
-            <div className="mt-4 pt-4 border-t border-[#333] animate-fadeIn">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="mt-2 pt-2 border-t border-gray-800">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div>
-                  <h3 className="text-gray-300 mb-2 font-medium">Sort by</h3>
-                  <div className="space-y-2">
+                  <h3 className="text-gray-300 mb-1 text-xs font-medium">Sort by</h3>
+                  <div className="space-y-1">
                     <button 
-                      className={`px-3 py-1.5 rounded-md w-full text-left ${sortOption === 'newest' ? 'bg-blue-600 text-white' : 'bg-[#232323] text-gray-300 hover:bg-[#2a2a2a]'}`}
+                      className={`px-2 py-1 text-xs w-full text-left ${sortOption === 'newest' ? 'bg-gray-900 text-white' : 'text-gray-400 hover:bg-gray-900'}`}
                       onClick={() => setSortOption('newest')}
                     >
                       Newest first
                     </button>
                     <button 
-                      className={`px-3 py-1.5 rounded-md w-full text-left ${sortOption === 'oldest' ? 'bg-blue-600 text-white' : 'bg-[#232323] text-gray-300 hover:bg-[#2a2a2a]'}`}
+                      className={`px-2 py-1 text-xs w-full text-left ${sortOption === 'oldest' ? 'bg-gray-900 text-white' : 'text-gray-400 hover:bg-gray-900'}`}
                       onClick={() => setSortOption('oldest')}
                     >
                       Oldest first
                     </button>
                     <button 
-                      className={`px-3 py-1.5 rounded-md w-full text-left ${sortOption === 'readTime' ? 'bg-blue-600 text-white' : 'bg-[#232323] text-gray-300 hover:bg-[#2a2a2a]'}`}
+                      className={`px-2 py-1 text-xs w-full text-left ${sortOption === 'readTime' ? 'bg-gray-900 text-white' : 'text-gray-400 hover:bg-gray-900'}`}
                       onClick={() => setSortOption('readTime')}
                     >
                       Reading time
@@ -336,29 +317,29 @@ const Blogs = () => {
                 </div>
                 
                 <div className="md:col-span-2">
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-gray-300 font-medium">Filter by tags</h3>
+                  <div className="flex justify-between items-center mb-1">
+                    <h3 className="text-gray-300 text-xs font-medium">Filter by tags</h3>
                     {selectedTags.length > 0 && (
                       <button 
                         onClick={clearFilters}
-                        className="text-sm text-blue-400 hover:text-blue-300 flex items-center"
+                        className="text-xs text-gray-400 hover:text-white flex items-center"
                       >
-                        Clear all filters <X size={14} className="ml-1" />
+                        Clear all <X size={12} className="ml-1" />
                       </button>
                     )}
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1">
                     {allTags.map(tag => (
                       <button
                         key={tag}
                         onClick={() => toggleTag(tag)}
-                        className={`px-3 py-1 rounded-full text-sm flex items-center ${
+                        className={`px-2 py-0.5 text-xs flex items-center ${
                           selectedTags.includes(tag) 
-                            ? 'bg-blue-600 text-white' 
-                            : 'bg-[#232323] text-gray-300 hover:bg-[#2a2a2a]'
+                            ? 'bg-gray-900 text-white border border-gray-700' 
+                            : 'bg-black text-gray-400 border border-gray-800 hover:bg-gray-900'
                         }`}
                       >
-                        <Tag size={12} className="mr-1" />
+                        <Tag size={10} className="mr-1" />
                         {tag}
                       </button>
                     ))}
@@ -369,8 +350,7 @@ const Blogs = () => {
           )}
         </div>
 
-        {/* Results section */}
-        <div className="mb-4 flex justify-between items-center">
+        <div className="mb-2 flex justify-between items-center text-xs">
           <p className="text-gray-400">
             {filteredBlogs.length} {filteredBlogs.length === 1 ? 'article' : 'articles'} {searchQuery || selectedTags.length > 0 ? 'found' : 'total'}
           </p>
@@ -378,88 +358,79 @@ const Blogs = () => {
           {(searchQuery || selectedTags.length > 0) && (
             <button 
               onClick={clearFilters}
-              className="text-sm text-blue-400 hover:text-blue-300 flex items-center"
+              className="text-xs text-gray-400 hover:text-white flex items-center"
             >
-              Clear filters <X size={14} className="ml-1" />
+              Clear filters <X size={12} className="ml-1" />
             </button>
           )}
         </div>
 
         {loading ? (
-          <div className="flex flex-col  justify-center items-center py-20">
-            <div className="relative w-20 h-20">
-              <div className="absolute inset-0 rounded-full border-4 border-t-blue-500 border-r-blue-500 border-b-blue-500 border-l-transparent animate-spin"></div>
-              <div className="absolute inset-2 rounded-full bg-[#1a1a1a]"></div>
-            </div>
-            <p className="mt-4 text-gray-400">Loading articles...</p>
+          <div className="flex flex-col justify-center items-center py-10">
+            <div className="w-8 h-8 border-2 border-t-white border-r-white border-b-white border-l-transparent rounded-full animate-spin"></div>
+            <p className="mt-2 text-xs text-gray-400">Loading articles...</p>
           </div>
         ) : error ? (
-          <div className="mb-10 p-6 bg-[#1a1a1a] rounded-lg border border-red-700">
-            <div className="flex items-center mb-3">
-              <div className="w-2 h-2 rounded-full bg-red-500 mr-2 animate-pulse"></div>
-              <h3 className="text-red-400 font-medium">Error Loading Articles</h3>
-            </div>
-            <p className="text-gray-300">{error}</p>
-            <p className="mt-3 text-gray-400 text-sm">If this persists, check your domain or API key.</p>
+          <div className="mb-4 p-3 bg-black border border-gray-800 text-sm">
+            <h3 className="text-gray-300 font-medium">Error Loading Articles</h3>
+            <p className="text-gray-400 text-xs mt-1">{error}</p>
           </div>
         ) : filteredBlogs.length === 0 ? (
-          <div className="text-center py-16">
-            <div className="inline-flex justify-center items-center w-16 h-16 rounded-full bg-[#232323] mb-4">
-              <Search size={32} className="text-gray-400" />
-            </div>
-            <h3 className="text-xl font-medium text-gray-300 mb-2">No articles found</h3>
-            <p className="text-gray-400">Try adjusting your search or filter criteria</p>
+          <div className="text-center py-8">
+            <Search size={24} className="text-gray-400 mx-auto mb-2" />
+            <p className="text-sm text-gray-300">No articles found</p>
+            <p className="text-xs text-gray-400">Try adjusting your search or filter criteria</p>
           </div>
         ) : (
-          <div className="grid gap-6">
+          <div className="grid gap-3">
             {filteredBlogs.map((blog) => (
               <article 
                 key={blog.id} 
-                className="group  rounded-lg overflow-hidden  transition-all duration-300"
+                className="border border-gray-800 hover:border-gray-700"
               >
                 <a
                   href={blog.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-6"
+                  className="block p-3"
                 >
-                  <div className="flex flex-col  space-y-3">
+                  <div className="flex flex-col space-y-2">
                     <div className="flex justify-between items-start">
-                      <h2 className="text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors">
+                      <h2 className="text-base font-medium text-white hover:text-gray-300">
                         {blog.title}
                       </h2>
-                      <div className="flex items-center space-x-1 text-xs text-gray-400 whitespace-nowrap ml-4">
-                        <Clock size={14} className="text-blue-400" />
+                      <div className="flex items-center space-x-1 text-xs text-gray-400 whitespace-nowrap ml-2">
+                        <Clock size={12} />
                         <span>{blog.readTime}</span>
                       </div>
                     </div>
 
-                    <p className="text-gray-300 line-clamp-2">
+                    <p className="text-gray-400 text-xs line-clamp-2">
                       {blog.brief}
                     </p>
 
-                    <div className="flex flex-wrap gap-2 mt-1">
+                    <div className="flex flex-wrap gap-1">
                       {blog.tags.map((tag, index) => (
                         <span
                           key={index}
-                          className={`flex items-center text-xs px-3 py-1 rounded-full bg-[#232323] border border-[#444] ${
-                            selectedTags.includes(tag) ? 'text-blue-300 border-blue-500' : 'text-gray-300'
+                          className={`flex items-center text-xs px-1.5 py-0.5 border ${
+                            selectedTags.includes(tag) ? 'text-white border-gray-700' : 'text-gray-400 border-gray-800'
                           }`}
                         >
-                          <Tag size={10} className="mr-1" />
+                          <Tag size={8} className="mr-1" />
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex justify-between items-center pt-3 mt-2 border-t border-[#333]">
-                      <div className="flex items-center text-xs text-gray-400">
-                        <Calendar size={14} className="mr-1 text-blue-400" />
+                    <div className="flex justify-between items-center pt-1 text-xs">
+                      <div className="flex items-center text-gray-400">
+                        <Calendar size={12} className="mr-1" />
                         <span>{blog.dateAdded}</span>
                       </div>
-                      <div className="flex items-center text-xs text-blue-400 font-medium group-hover:underline">
-                        <span>Read article</span>
-                        <ExternalLink size={14} className="ml-1" />
+                      <div className="flex items-center text-gray-300 hover:underline">
+                        <span>Read</span>
+                        <ExternalLink size={12} className="ml-1" />
                       </div>
                     </div>
                   </div>
