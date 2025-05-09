@@ -1,17 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaLinkedin, FaGithub, FaInstagramSquare } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCloud, FaCloudUploadAlt } from "react-icons/fa";
 import profile from "../assets/image.jpg";
 import { FaHashnode ,  FaSquareXTwitter  } from "react-icons/fa6";
+import { ImProfile } from "react-icons/im";
+
 
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation(); // Get current location
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
@@ -25,20 +26,12 @@ const Header = () => {
       return "Profile";
     } else if (pathname === "/blogs" || pathname.startsWith("/blogs/")) {
       return "Blogs";
+    } else if (pathname === "/aboutme" || pathname.startsWith("/aboutme/")) {
+      return "Personal Info";
     } else {
       return "Profile"; // Default fallback
     }
   };
-
-  // Add scroll detection for sticky header effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Cloud animations
   const cloudVariants = {
@@ -58,15 +51,13 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`bg-black font-poppins mt-2 mx-2 p-4 flex flex-col sm:flex-row justify-between items-center rounded-xl shadow-2xl relative z-50 overflow-hidden ${
-        scrolled ? "sticky top-2 backdrop-blur-md bg-opacity-95" : ""
-      }`}
+      className={`bg-gray-200 font-sans  p-4 flex flex-col sm:flex-row justify-between items-center   overflow-hidden`}
     >
       {/* Decorative Cloud Elements */}
       <motion.div 
         variants={cloudVariants}
         animate="floating"
-        className="absolute -left-4 -bottom-4 text-gray-700 opacity-10 text-6xl"
+        className="absolute -left-4 -bottom-4 text-black opacity-10 text-6xl"
       >
         <FaCloud />
       </motion.div>
@@ -74,7 +65,7 @@ const Header = () => {
       <motion.div 
         variants={cloudVariants}
         animate="floating"
-        className="absolute right-20 top-0 text-gray-700 opacity-10 text-5xl"
+        className="absolute right-20 top-0 text-black opacity-10 text-5xl"
       >
         <FaCloudUploadAlt />
       </motion.div>
@@ -94,7 +85,7 @@ const Header = () => {
               boxShadow: "0 0 15px rgba(99, 179, 237, 0.5)" 
             }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="w-10 h-10 sm:w-12 sm:h-12 overflow-hidden rounded-full shadow-lg border-2 border-blue-500"
+            className="w-10 h-10 sm:w-12 sm:h-12 overflow-hidden rounded-full shadow-lg border-3 border-black"
           >
             <img
               src={profile}
@@ -106,7 +97,7 @@ const Header = () => {
                 const parent = e.currentTarget.parentElement;
                 if (parent) {
                   const initialsDiv = document.createElement('div');
-                  initialsDiv.className = 'flex items-center justify-center w-full h-full bg-gradient-to-br from-blue-900 to-blue-700 text-gray-100 text-lg font-bold';
+                  initialsDiv.className = 'flex items-center justify-center w-full h-full bg-gradient-to-br from-black-900 to-grey-700 text-gray-100 text-lg font-bold';
                   initialsDiv.textContent = 'KJ';
                   parent.appendChild(initialsDiv);
                 }
@@ -123,12 +114,12 @@ const Header = () => {
           className="flex items-center"
         >
           <motion.h1
-            className="text-lg sm:text-xl font-semibold tracking-wide text-gray-100"
+            className="text-lg sm:text-xl font-semibold tracking-wide text-black"
           >
             <Link 
               to="/" 
               onClick={closeMenu}
-              className="hover:text-blue-300 transition-colors duration-300"
+              className="hover:text-gray-900 transition-colors duration-300"
             >
               CloudKinshuk / {getPathText()} 
             </Link>
@@ -143,7 +134,7 @@ const Header = () => {
             backgroundColor: "rgba(66, 153, 225, 0.2)"
           }}
           transition={{ duration: 0.3 }}
-          className="sm:hidden text-2xl text-blue-400 focus:outline-none bg-gray-800 hover:bg-gray-700 rounded-lg p-2"
+          className="sm:hidden text-2xl text-white focus:outline-none bg-black hover:bg-black rounded-lg p-2"
           onClick={toggleMenu}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
@@ -164,7 +155,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto", y: 0 }}
             exit={{ opacity: 0, height: 0, y: -10 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="w-full overflow-hidden sm:hidden backdrop-blur-md bg-black bg-opacity-95 rounded-md mt-2"
+            className="w-full overflow-hidden sm:hidden backdrop-blur-md bg-gray-200  rounded-md mt-2"
           >
             <motion.div 
               initial={{ opacity: 0 }}
@@ -172,7 +163,7 @@ const Header = () => {
               transition={{ delay: 0.1, staggerChildren: 0.1 }}  
               className="pt-3 pb-2 flex flex-col items-center gap-4"
             >
-              <NavLinks closeMenu={closeMenu} />
+              <NavLinks  closeMenu={closeMenu} />
             </motion.div>
           </motion.div>
         )}
@@ -216,12 +207,31 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       >
         <Link 
           to="/blogs" 
-          className="flex items-center gap-2 text-gray-100 text-sm md:text-base transition-colors duration-300" 
+          className="flex items-center gap-2 text-black text-lg md:text-base transition-colors duration-300" 
           onClick={closeMenu}
         >
-          <FaHashnode className="text-lg text-blue-400" /> 
+          <FaHashnode className="text-lg text-black" /> 
           <span className="relative group">
             Blogs
+            <motion.span 
+              className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full"
+              transition={{ duration: 0.3 }}
+            />
+          </span>
+        </Link>
+      </motion.div>
+      <motion.div 
+        whileHover="hover" 
+        variants={linkVariants}
+      >
+        <Link 
+          to="/aboutme" 
+          className="flex items-center gap-2 text-black text-lg md:text-base transition-colors duration-300" 
+          onClick={closeMenu}
+        >
+          <ImProfile className="text-lg text-black" /> 
+          <span className="relative group">
+            About me
             <motion.span 
               className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full"
               transition={{ duration: 0.3 }}
@@ -232,10 +242,10 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       
       {/* Social Links with Microsoft-inspired hover effects */}
       <div className="flex  flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
-        <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin className="text-white" />} label="" />
-        <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub className="text-white" />} label="" />
-        <SocialLink href="https://x.com/realkinshuk004?t=Q1ZFJZ28LS4TZecJSD-OUw&s=09" icon={<FaSquareXTwitter className="text-white" />} label="" />
-        <SocialLink href="https://www.instagram.com/kinshukjain._/" icon={<FaInstagramSquare className="text-white" />} label="" />
+        <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin className="text-black" />} label="" />
+        <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub className="text-black" />} label="" />
+        <SocialLink href="https://x.com/realkinshuk004?t=Q1ZFJZ28LS4TZecJSD-OUw&s=09" icon={<FaSquareXTwitter className="text-black" />} label="" />
+        <SocialLink href="https://www.instagram.com/kinshukjain._/" icon={<FaInstagramSquare className="text-black" />} label="" />
       </div>
     </div>
   );
