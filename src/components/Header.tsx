@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaBars, FaTimes, FaLinkedin, FaGithub, FaInstagramSquare } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCloud, FaCloudUploadAlt } from "react-icons/fa";
 import profile from "../assets/image.jpg";
-import { FaHashnode ,  FaSquareXTwitter  } from "react-icons/fa6";
+import { FaHashnode} from "react-icons/fa6";
 import { ImProfile } from "react-icons/im";
 
 
@@ -51,7 +51,7 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`bg-gray-200 font-sans  p-4 flex flex-col sm:flex-row justify-between items-center   overflow-hidden`}
+      className={`bg-[#f3ecec] font-sans  p-4 flex flex-col sm:flex-row justify-between items-center   overflow-hidden`}
     >
       {/* Decorative Cloud Elements */}
       <motion.div 
@@ -239,58 +239,8 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
           </span>
         </Link>
       </motion.div>
-      
-      {/* Social Links with Microsoft-inspired hover effects */}
-      <div className="flex  flex-wrap gap-2 md:gap-4 mt-2 sm:mt-0 justify-center">
-        <SocialLink href="https://linkedin.com/kinshukjainn" icon={<FaLinkedin className="text-black" />} label="" />
-        <SocialLink href="https://github.com/kinshukjainn" icon={<FaGithub className="text-black" />} label="" />
-        <SocialLink href="https://x.com/realkinshuk004?t=Q1ZFJZ28LS4TZecJSD-OUw&s=09" icon={<FaSquareXTwitter className="text-black" />} label="" />
-        <SocialLink href="https://www.instagram.com/kinshukjain._/" icon={<FaInstagramSquare className="text-black" />} label="" />
-      </div>
     </div>
   );
 };
-
-// Enhanced Social Link Component with Microsoft-inspired hover effects
-interface SocialLinkProps {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
-}
-
-const SocialLink = ({ href, icon, label }: SocialLinkProps) => (
-  <motion.a
-    whileHover={{ 
-      scale: 1.05,
-      backgroundColor: "rgba(66, 153, 225, 0.3)",
-      boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
-    }}
-    whileTap={{ scale: 0.95 }}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ 
-      type: "spring", 
-      stiffness: 500, 
-      damping: 17,
-      mass: 0.8
-    }}
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center gap-1 px-2 sm:px-3 py-1 text-white
-     rounded-md  transition-all duration-300 shadow-md text-sm md:text-base"
-  >
-    <motion.span
-      whileHover={{ scale: 1.2 }}
-      transition={{ duration: 0.3 }}
-      className="text-base  sm:text-lg"
-    >
-      {icon}
-    </motion.span>
-    <span className="font-medium hidden md:inline">
-      {label}
-    </span>
-  </motion.a>
-);
 
 export default Header;

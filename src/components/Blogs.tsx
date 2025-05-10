@@ -239,11 +239,11 @@ const Blogs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black py-8 px-3 sm:px-4">
+    <div className="min-h-screen font-sans bg-white text-black py-8 px-3 sm:px-4">
       <div className="max-w-5xl mx-auto">
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-purple-900 mb-2">
-            My Blog
+          <h1 className="text-4xl flex justify-center text-purple-900 mb-2">
+            Blogs on Hashnode Platform 
           </h1>
           <p className="text-gray-900 text-sm">
             These are my working notes and reflections—on cloud infrastructure, building systems that scale, deploying and debugging web apps, and navigating both the elegant and messy sides of development. Some of it's technical, some of it's opinionated, but all of it comes from hands-on learning.

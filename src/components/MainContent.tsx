@@ -22,7 +22,7 @@ import { TbExternalLink } from "react-icons/tb";
 import { useState } from "react";
 
 import { HiOutlineExternalLink } from "react-icons/hi";
-import { FaDiscord } from "react-icons/fa6";
+import { FaDiscord, FaLinkedin, FaTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -54,14 +54,6 @@ const MainContent = () => {
       opacity: 1,
       y: 0,
       transition: { duration: 0.4 },
-    },
-  };
-
-  const subtleHover = {
-    rest: { scale: 1 },
-    hover: {
-      scale: 1.02,
-      transition: { duration: 0.2, ease: "easeInOut" },
     },
   };
 
@@ -153,21 +145,15 @@ const MainContent = () => {
   // Certifications data
   const certifications = [
     {
-      title: "AWS Certified Cloud Practitioner",
-      description:
-        "Foundation-level certification validating my cloud fluency and basic AWS knowledge. Will be completed by May 2025 as part of my professional cloud journey roadmap.",
+      title: "AWS Certified Cloud Practitioner (Upcomming)",
       link: "https://github.com/kinshukjainn/",
     },
     {
       title: "AWS Serverless Cloud Badge",
-      description:
-        "Specialized recognition for proficiency in serverless architecture patterns, Lambda functions, API Gateway, and DynamoDB. Earned through AWS Educate emerging talent program.",
       link: "https://www.credly.com/badges/0bcd1190-2d68-45ff-91d9-32b65aa93ed8/public_url",
     },
     {
       title: "AWS Machine Learning Badge",
-      description:
-        "Validation of skills in AWS ML services including SageMaker, Comprehend, and Rekognition. This badge showcases my understanding of machine learning concepts and AWS tools. Earned through AWS Educate emerging talent program.",
       link: "https://www.credly.com/badges/a0042ec2-cc6e-4a99-84de-a1516ee5775a/public_url",
     },
   ];
@@ -189,7 +175,7 @@ const MainContent = () => {
             className="text-3xl md:text-5xl font-light tracking-tight mb-4"
           >
             Hi, I'm{" "}
-            <span className="font-medium text-gray-900">Kinshuk Jain</span>
+            <span className=" text-gray-900">Kinshuk Jain</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -228,7 +214,7 @@ const MainContent = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-medium mb-12 flex items-center text-gray-900">
+          <h2 className="text-4xl  mb-12 flex items-center text-gray-900">
             <span className="w-6 h-px bg-gray-400 mr-3"></span>
             Education
           </h2>
@@ -292,7 +278,7 @@ const MainContent = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-medium mb-12 flex items-center text-gray-900">
+          <h2 className="text-4xl mb-12 flex items-center text-gray-900">
             <span className="w-6 h-px bg-gray-400 mr-3"></span>
             Tech Stack
           </h2>
@@ -325,7 +311,7 @@ const MainContent = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-medium mb-12 flex items-center text-gray-900">
+          <h2 className="text-4xl  mb-12 flex items-center text-gray-900">
             <span className="w-6 h-px bg-gray-400 mr-3"></span>
             Tools
           </h2>
@@ -359,7 +345,7 @@ const MainContent = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-medium mb-12 flex items-center text-gray-900">
+          <h2 className="text-4xl  mb-12 flex items-center text-gray-900">
             <span className="w-6 h-px bg-gray-400 mr-3"></span>
             Cloud Certifications
           </h2>
@@ -395,7 +381,6 @@ const MainContent = () => {
               <motion.div
                 key={index}
                 className="relative pl-4 py-4 bg-white rounded-sm shadow-sm"
-                variants={subtleHover}
                 whileHover="hover"
                 initial="rest"
               >
@@ -406,9 +391,6 @@ const MainContent = () => {
                     {cert.title}
                   </h3>
                 </div>
-                <p className="mt-3 text-gray-900 font-semibold text-xs leading-relaxed">
-                  {cert.description}
-                </p>
                 <motion.a
                   href={cert.link}
                   initial="rest"
@@ -433,7 +415,7 @@ const MainContent = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl font-medium mb-12 flex items-center text-gray-900">
+          <h2 className="text-4xl  mb-12 flex items-center text-gray-900">
             <span className="w-6 h-px bg-gray-400 mr-3"></span>
             Projects / Work
           </h2>
@@ -441,7 +423,6 @@ const MainContent = () => {
           {/* Project 1 */}
           <motion.div
             className="mb-16 relative pl-6 py-6 bg-white rounded-sm shadow-sm"
-            variants={subtleHover}
             whileHover="hover"
             initial="rest"
           >
@@ -461,18 +442,67 @@ const MainContent = () => {
               </motion.a>
             </div>
 
+            <h3 className="text-2xl font-semibold ">Description : </h3>
             <p className="text-sm text-black mb-6 leading-relaxed">
               Built and deployed a personal portfolio website using React 19,
               TypeScript, Tailwind CSS with live blog integration and full
               cloud-backed deployment.
             </p>
+            <h3 className=" text-2xl font-semibold">Challenges:</h3>
+            <p className="text-sm text-black mb-3 leading-relaxed">
+              Deploying my website on a cloud platform like AWS was a completely
+              new experience for me. AWS is a vast platform with numerous
+              complexities, and navigating through its features felt
+              overwhelming at times.
+            </p>
+            <p className="text-sm text-black mb-3 leading-relaxed">
+              I was unfamiliar with the best practices for optimizing SEO
+              (Search Engine Optimization) while building the website. Despite
+              several attempts, I struggled to implement the right methods to
+              enhance my website’s SEO performance and overall user experience.
+            </p>
+            <p className="text-sm text-black mb-3 leading-relaxed">
+              As a beginner, I constantly worried about the potential high costs
+              associated with deploying the website on AWS. The thought of
+              exceeding the free-tier traffic limits and accumulating an
+              unexpected, hefty bill added to my stress.
+            </p>
+            <p className="text-sm text-black mb-3 leading-relaxed">
+              When I purchased my own domain from Hostinger, I had no idea how
+              to link it to my website. I faced several challenges in correctly
+              redirecting my custom URL to the site and encountered failures
+              multiple times before getting it right.
+            </p>
+            <h3 className=" text-2xl font-semibold">Learnings:</h3>
+            <p className="text-sm text-black mb-3 leading-relaxed">
+              Gained hands-on experience with AWS services and understood how to
+              deploy static and dynamic websites using cost-effective practices.
+              I also learned how to monitor resources to avoid unexpected
+              charges.
+            </p>
+            <p className="text-sm text-black mb-3 leading-relaxed">
+              Understood the importance of SEO and gradually adopted key best
+              practices such as setting up proper meta tags, improving load
+              speed, using semantic HTML, and ensuring mobile responsiveness.
+            </p>
+            <p className="text-sm text-black mb-3 leading-relaxed">
+              Learned how to stay calm and analytical under pressure. I
+              developed the habit of reading official documentation and
+              community threads to troubleshoot issues instead of panicking.
+            </p>
+            <p className="text-sm text-black mb-3 leading-relaxed">
+              Mastered the process of linking a custom domain to a hosted
+              website. I now understand DNS records, domain pointing, and the
+              importance of patience and debugging while working with hosting
+              and domain providers.
+            </p>
 
             <div className="md:grid md:grid-cols-2 gap-8 mt-6">
               <div>
-                <h4 className="text-sm font-semibold mb-3 text-black">
+                <h4 className="text-xl font-semibold mb-3 text-black">
                   Key Features
                 </h4>
-                <ul className="space-y-2 font-semibold text-xs text-gray-900">
+                <ul className="space-y-2  text-sm text-gray-900">
                   <li className="flex items-start">
                     <span className="text-black mr-2">→</span>
                     Implemented responsive and dynamicsal design using Tailwind
@@ -492,10 +522,10 @@ const MainContent = () => {
                 </ul>
               </div>
               <div className="mt-6 md:mt-0">
-                <h4 className="text-sm font-medium mb-3 text-black">
+                <h4 className="text-xl font-medium mb-3 text-black">
                   Technical Details
                 </h4>
-                <ul className="space-y-2 text-xs font-semibold text-black">
+                <ul className="space-y-2 text-sm  text-black">
                   <li className="flex items-start">
                     <span className="text-black font-semibold mr-2">→</span>
                     Configured Amazon Route 53 for SSL and DNS management .
@@ -545,12 +575,12 @@ const MainContent = () => {
               variants={itemVariants}
             >
               <h3 className="text-3xl font-medium mb-2 md:mb-0 text-gray-900">
-                Search Engine Optimization of My Portfolio Website
+                SEO of my website
               </h3>
               <motion.a
                 href="https://pagespeed.web.dev/"
                 whileHover={{ y: -2 }}
-                className="inline-flex items-center gap-1 text-sm font-medium text-white transition-all bg-black p-2 w-max rounded-md hover:text-gray-200"
+                className="inline-flex items-center  text-sm font-medium text-white transition-all bg-black p-2 w-max rounded-md hover:text-gray-200"
               >
                 Check Here <BiLinkExternal />
               </motion.a>
@@ -696,7 +726,6 @@ const MainContent = () => {
           {/* Project 2 */}
           <motion.div
             className="relative pl-6 py-6 bg-white rounded-sm shadow-sm"
-            variants={subtleHover}
             whileHover="hover"
             initial="rest"
           >
@@ -767,37 +796,71 @@ const MainContent = () => {
         </motion.section>
       </div>
 
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+  {/* reduced py-16 to py-8 */}
+  <motion.section
+    id="projects"
+    className="mb-12"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-50px" }}
+    variants={fadeInUp}
+  >
+    <h2 className="text-3xl sm:text-4xl  mb-8 sm:mb-10 flex items-center text-gray-900">
+      <span className="w-6 h-px bg-gray-400 mr-3"></span>
+      Open to Collaborate / Work :
+    </h2>
 
-      <div className="max-w-4xl mx-auto px-6 py-8">
-        {" "}
-        {/* reduced py-16 to py-8 */}
-        <motion.section
-          id="projects"
-          className="mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-4xl font-medium mb-10 flex items-center text-gray-900">
-            <span className="w-6 h-px bg-gray-400 mr-3"></span>
-            Open to Collaborate / Work : 
-          </h2>
+    <motion.div
+      className="relative pl-6 mt-4 py-6 px-4 sm:px-6 bg-white text-base sm:text-lg rounded-md shadow-md"
+      whileHover="hover"
+      initial="rest"
+    >
+      <span className="absolute left-0 top-0 w-px h-full bg-gray-300"></span>
+      <span className="absolute left-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></span>
 
-          <motion.div
-            className="relative pl-6 mt-4 py-6 text-lg rounded-sm shadow-sm"
-            variants={subtleHover}
-            whileHover="hover"
-            initial="rest"
-          >
-            <span className="absolute left-0 top-0 w-px h-full "></span>
-            <span className="absolute left-0 top-6 w-1 h-1"></span>
-            <p className="text-lg text-black mb-6 leading-relaxed">
-              I'm always up for connecting with learners, developers, or anyone curious about cloud, DevOps, or tech in general. Whether you're just starting or switching paths, feel free to reach out — we can learn and build together.
-            </p>
-          </motion.div>
-        </motion.section>
+      <p className="text-black mb-6 leading-relaxed">
+        I'm always up for connecting with learners, developers, or anyone
+        curious about cloud, DevOps, or tech in general. Whether you're
+        just starting or switching paths, feel free to reach out — we can
+        learn and build together.
+      </p>
+
+      <div className="space-y-2">
+        <h3><span className="font-semibold">Email: </span> kinshuk25jan04@gmail.com</h3>
+        <h3><span className="font-semibold">Phone No: </span> +91 91727 XXXXX</h3>
+
+        <div className="flex items-center space-x-6 p-4">
+  <a 
+    href="#" 
+    className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
+    aria-label="GitHub"
+  >
+    <span className="underline">@github</span>
+    <FaGithub size={24} />
+  </a>
+  <a 
+    href="#" 
+    className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
+    aria-label="LinkedIn"
+  >
+    <span className="underline">@linkedin</span>
+    <FaLinkedin size={24} />
+  </a>
+  <a 
+    href="#" 
+    className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
+    aria-label="Twitter"
+  >
+    <span className="underline">@twitter</span>
+    <FaTwitter size={24} />
+  </a>
+</div>
+
       </div>
+    </motion.div>
+  </motion.section>
+</div>
 
       <motion.div
         className="border-t border-gray-200 mt-12 py-16 bg-white"

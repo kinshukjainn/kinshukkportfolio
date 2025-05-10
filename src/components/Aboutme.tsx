@@ -121,7 +121,7 @@ const AboutMe = () => {
 
                 <div className="lg:text-left text-center">
                   <motion.h1
-                    className="text-4xl font-bold text-black"
+                    className="text-4xl  text-black"
                     animate={{
                       backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                     }}
@@ -193,7 +193,7 @@ const AboutMe = () => {
             >
               <motion.h2
                 variants={fadeIn}
-                className="text-2xl font-bold text-4xl text-center mb-8 text-grey-800"
+                className="text-2xl  text-4xl text-center mb-8 text-grey-800"
               >
                 What I Love & How I Spend My Free Time
               </motion.h2>
@@ -210,7 +210,7 @@ const AboutMe = () => {
                   >
                     <div className="flex items-center mb-4">
                       {interest.icon}
-                      <h3 className="text-xl font-semibold ml-3 text-black">
+                      <h3 className="text-xl  ml-3 text-black">
                         {interest.title}
                       </h3>
                     </div>
