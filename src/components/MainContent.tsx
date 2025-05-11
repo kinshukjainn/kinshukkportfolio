@@ -8,8 +8,12 @@ import {
   FaStar,
   FaCodeBranch,
   FaCode,
+  FaInstagram,
+  FaWhatsapp,
 } from "react-icons/fa";
+import { GoRocket } from "react-icons/go";
 import { BiLinkExternal } from "react-icons/bi";
+import { GoHash } from "react-icons/go";
 import { BsPhone, BsLaptop } from "react-icons/bs";
 import {
   SiKubernetes,
@@ -22,7 +26,7 @@ import { TbExternalLink } from "react-icons/tb";
 import { useState } from "react";
 
 import { HiOutlineExternalLink } from "react-icons/hi";
-import { FaDiscord, FaLinkedin, FaTwitter } from "react-icons/fa6";
+import { FaDiscord, FaHashnode, FaLinkedin, FaTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -35,6 +39,31 @@ const MainContent = () => {
       y: 0,
       transition: { duration: 0.5, ease: "easeOut" },
     },
+  };
+  const handleClick = async () => {
+    const phoneNumber = '919172702501';
+    const message = 'Hi Kinshuk, I saw your website and wanted to connect.';
+    const encodedMessage = encodeURIComponent(message);
+    const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    try {
+      // Optional: API call to your server or webhook
+      await fetch('https://your-api-endpoint.com/log-whatsapp-click', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          timestamp: new Date().toISOString(),
+          contactType: 'WhatsApp',
+        }),
+      });
+
+      // Redirect to WhatsApp link
+      window.open(waUrl, '_blank');
+    } catch (error) {
+      console.error('Error logging WhatsApp click:', error);
+      window.open(waUrl, '_blank'); // Still open WhatsApp even if API fails
+    }
   };
 
   const staggerChildren = {
@@ -165,23 +194,22 @@ const MainContent = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="py-20 md:py-28 border-b border-gray-100"
+        className="py-12 sm:py-20 md:py-28 border-b border-gray-100"
       >
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.h1
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-3xl md:text-5xl font-light tracking-tight mb-4"
+            className="text-3xl sm:text-4xl md:text-6xl font-light tracking-tight mb-6"
           >
-            Hi, I'm{" "}
-            <span className=" text-gray-900">Kinshuk Jain</span>
+            Hi, I'm <span className=" text-gray-900">Kinshuk Jain</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl leading-relaxed"
           >
             I design and deploy scalable, secure, and cost-efficient cloud
             infrastructure using modern DevOps tools — solving real-world
@@ -196,7 +224,7 @@ const MainContent = () => {
           >
             <Link
               to="/blogs"
-              className="inline-flex items-center  p-2 bg-black rounded-md text-gray-100 font-medium transition-all duration-200 hover:border-gray-400"
+              className="inline-flex items-center p-3 px-4 bg-black rounded-md text-gray-100 text-base font-medium transition-all duration-200 hover:border-gray-400"
             >
               <MdOutlineViewInAr className="text-lg mr-2" />
               View My blogs
@@ -205,7 +233,7 @@ const MainContent = () => {
         </div>
       </motion.header>
 
-      <div className="max-w-4xl mx-auto px-6 py-4">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
         {/* Education Section */}
         <motion.section
           className="mb-24"
@@ -214,24 +242,26 @@ const MainContent = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl  mb-12 flex items-center text-gray-900">
-            <span className="w-6 h-px bg-gray-400 mr-3"></span>
+          <h2 className="text-4xl sm:text-5xl mb-10 sm:mb-16 flex items-center text-gray-900">
+            <span className="  mr-3">
+              <GoHash className="font-bold" />
+            </span>
             Education
           </h2>
 
           <motion.div className="space-y-12" variants={staggerChildren}>
             <motion.div
               variants={itemFade}
-              className="relative pl-6 bg-white p-5 shadow-sm rounded-sm"
+              className="relative pl-8 bg-white p-6 shadow-md rounded-md"
             >
               <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
               <span className="absolute left-0 top-0 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
               <div className="flex flex-col md:flex-row md:justify-between">
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900">
+                  <h3 className="text-xl font-medium text-gray-900">
                     Bachelor of Technology, Electrical Engineering
                   </h3>
-                  <p className="text-gray-600 text-sm mt-1">
+                  <p className="text-gray-600 text-base mt-2">
                     JSS Academy of Technical Education
                   </p>
                   <p className="text-gray-500 text-xs mt-1">
@@ -246,16 +276,16 @@ const MainContent = () => {
 
             <motion.div
               variants={itemFade}
-              className="relative pl-6 bg-white p-5 shadow-sm rounded-sm"
+              className="relative pl-8 bg-white p-6 shadow-md rounded-md"
             >
               <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
               <span className="absolute left-0 top-0 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
               <div className="flex flex-col md:flex-row md:justify-between">
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900">
+                  <h3 className="text-xl font-medium text-gray-900">
                     Higher Secondary Education (XII)
                   </h3>
-                  <p className="text-gray-600 text-sm mt-1">
+                  <p className="text-gray-600 text-base mt-2">
                     Sri Chaitnya Junior College
                   </p>
                   <p className="text-gray-500 text-xs mt-1">
@@ -278,13 +308,15 @@ const MainContent = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl mb-12 flex items-center text-gray-900">
-            <span className="w-6 h-px bg-gray-400 mr-3"></span>
+          <h2 className="text-4xl sm:text-5xl mb-10 sm:mb-16 flex items-center text-gray-900">
+            <span className=" mr-3">
+              <GoHash />
+            </span>
             Tech Stack
           </h2>
 
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
             variants={staggerChildren}
           >
             {techStack.map((tech, index) => (
@@ -293,10 +325,10 @@ const MainContent = () => {
                 variants={itemFade}
                 whileHover={{ x: 3 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="flex items-center space-x-3 py-2 px-3 bg-white rounded-sm shadow-sm"
+                className="flex items-center space-x-4 py-3 px-4 bg-white rounded-md shadow-md"
               >
-                <span className="text-gray-600 text-lg">{tech.icon}</span>
-                <span className="text-sm tracking-wide text-gray-800">
+                <span className="text-gray-600 text-xl">{tech.icon}</span>
+                <span className="text-base tracking-wide text-gray-800">
                   {tech.name}
                 </span>
               </motion.div>
@@ -311,13 +343,15 @@ const MainContent = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl  mb-12 flex items-center text-gray-900">
-            <span className="w-6 h-px bg-gray-400 mr-3"></span>
+          <h2 className="text-4xl sm:text-5xl mb-10 sm:mb-16 flex items-center text-gray-900">
+            <span className="  mr-3">
+              <GoHash className="font-bold" />
+            </span>
             Tools
           </h2>
 
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
             variants={staggerChildren}
           >
             {toolsStack.map((tech, index) => (
@@ -326,10 +360,10 @@ const MainContent = () => {
                 variants={itemFade}
                 whileHover={{ x: 3 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="flex items-center space-x-3 py-2 px-3 bg-white rounded-sm shadow-sm"
+                className="flex items-center space-x-4 py-3 px-4 bg-white rounded-md shadow-md"
               >
-                <span className="text-gray-600 text-lg">{tech.icon}</span>
-                <span className="text-sm tracking-wide text-gray-800">
+                <span className="text-gray-600 text-xl">{tech.icon}</span>
+                <span className="text-base tracking-wide text-gray-800">
                   {tech.name}
                 </span>
               </motion.div>
@@ -345,22 +379,24 @@ const MainContent = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl  mb-12 flex items-center text-gray-900">
-            <span className="w-6 h-px bg-gray-400 mr-3"></span>
+          <h2 className="text-4xl sm:text-5xl mb-10 sm:mb-16 flex items-center text-gray-900">
+            <span className="mr-3">
+              <GoHash />
+            </span>
             Cloud Certifications
           </h2>
 
           {/* AWS Journey Banner */}
           <motion.div
-            className="mb-12 relative pl-6 py-4 bg-white rounded-sm shadow-sm"
+            className="mb-16 relative pl-8 py-6 bg-white rounded-md shadow-md"
             variants={itemFade}
           >
             <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
-            <h3 className="text-lg font-medium flex items-center mb-3 text-gray-900">
+            <h3 className="text-xl font-medium flex items-center mb-4 text-gray-900">
               <FaAws className="mr-3 text-gray-700" /> My AWS Certification
               Journey
             </h3>
-            <p className="text-sm text-gray-900 leading-relaxed">
+            <p className="text-base text-gray-900 leading-relaxed">
               I recently scored 679/1000 on the AWS Certified Cloud Practitioner
               exam (CLF-C02). While just shy of passing, this experience has
               <span className="font-medium text-gray-900">
@@ -374,13 +410,13 @@ const MainContent = () => {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6"
             variants={staggerChildren}
           >
             {certifications.map((cert, index) => (
               <motion.div
                 key={index}
-                className="relative pl-4 py-4 bg-white rounded-sm shadow-sm"
+                className="relative pl-6 py-6 bg-white rounded-md shadow-md"
                 whileHover="hover"
                 initial="rest"
               >
@@ -415,14 +451,16 @@ const MainContent = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={fadeInUp}
         >
-          <h2 className="text-4xl  mb-12 flex items-center text-gray-900">
-            <span className="w-6 h-px bg-gray-400 mr-3"></span>
+          <h2 className="text-4xl sm:text-5xl mb-10 sm:mb-16 flex items-center text-gray-900">
+            <span className="  mr-3">
+              <GoHash className="font-bold" />
+            </span>
             Projects / Work
           </h2>
 
           {/* Project 1 */}
           <motion.div
-            className="mb-16 relative pl-6 py-6 bg-white rounded-sm shadow-sm"
+            className="mb-20 relative pl-8 py-6 sm:py-8 bg-white rounded-md shadow-lg"
             whileHover="hover"
             initial="rest"
           >
@@ -430,7 +468,7 @@ const MainContent = () => {
             <span className="absolute left-0 top-6 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
 
             <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-5">
-              <h3 className="text-3xl font-medium mb-2 md:mb-0 text-gray-900">
+              <h3 className="text-4xl font-medium mb-3 md:mb-0 text-gray-900">
                 Portfolio Website
               </h3>
               <motion.a
@@ -442,67 +480,67 @@ const MainContent = () => {
               </motion.a>
             </div>
 
-            <h3 className="text-2xl font-semibold ">Description : </h3>
-            <p className="text-sm text-black mb-6 leading-relaxed">
+            <h3 className="text-3xl font-semibold ">Description : </h3>
+            <p className="text-base text-black mb-8 leading-relaxed">
               Built and deployed a personal portfolio website using React 19,
               TypeScript, Tailwind CSS with live blog integration and full
               cloud-backed deployment.
             </p>
-            <h3 className=" text-2xl font-semibold">Challenges:</h3>
-            <p className="text-sm text-black mb-3 leading-relaxed">
+            <h3 className=" text-3xl font-semibold">Challenges:</h3>
+            <p className="text-base text-black mb-4 leading-relaxed">
               Deploying my website on a cloud platform like AWS was a completely
               new experience for me. AWS is a vast platform with numerous
               complexities, and navigating through its features felt
               overwhelming at times.
             </p>
-            <p className="text-sm text-black mb-3 leading-relaxed">
+            <p className="text-base text-black mb-4 leading-relaxed">
               I was unfamiliar with the best practices for optimizing SEO
               (Search Engine Optimization) while building the website. Despite
               several attempts, I struggled to implement the right methods to
               enhance my website’s SEO performance and overall user experience.
             </p>
-            <p className="text-sm text-black mb-3 leading-relaxed">
+            <p className="text-base text-black mb-4 leading-relaxed">
               As a beginner, I constantly worried about the potential high costs
               associated with deploying the website on AWS. The thought of
               exceeding the free-tier traffic limits and accumulating an
               unexpected, hefty bill added to my stress.
             </p>
-            <p className="text-sm text-black mb-3 leading-relaxed">
+            <p className="text-base text-black mb-4 leading-relaxed">
               When I purchased my own domain from Hostinger, I had no idea how
               to link it to my website. I faced several challenges in correctly
               redirecting my custom URL to the site and encountered failures
               multiple times before getting it right.
             </p>
-            <h3 className=" text-2xl font-semibold">Learnings:</h3>
-            <p className="text-sm text-black mb-3 leading-relaxed">
+            <h3 className=" text-3xl font-semibold">Learnings:</h3>
+            <p className="text-base text-black mb-4 leading-relaxed">
               Gained hands-on experience with AWS services and understood how to
               deploy static and dynamic websites using cost-effective practices.
               I also learned how to monitor resources to avoid unexpected
               charges.
             </p>
-            <p className="text-sm text-black mb-3 leading-relaxed">
+            <p className="text-base text-black mb-4 leading-relaxed">
               Understood the importance of SEO and gradually adopted key best
               practices such as setting up proper meta tags, improving load
               speed, using semantic HTML, and ensuring mobile responsiveness.
             </p>
-            <p className="text-sm text-black mb-3 leading-relaxed">
+            <p className="text-base text-black mb-4 leading-relaxed">
               Learned how to stay calm and analytical under pressure. I
               developed the habit of reading official documentation and
               community threads to troubleshoot issues instead of panicking.
             </p>
-            <p className="text-sm text-black mb-3 leading-relaxed">
+            <p className="text-base text-black mb-4 leading-relaxed">
               Mastered the process of linking a custom domain to a hosted
               website. I now understand DNS records, domain pointing, and the
               importance of patience and debugging while working with hosting
               and domain providers.
             </p>
 
-            <div className="md:grid md:grid-cols-2 gap-8 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mt-4 sm:mt-6">
               <div>
-                <h4 className="text-xl font-semibold mb-3 text-black">
+                <h4 className="text-2xl font-semibold mb-4 text-black">
                   Key Features
                 </h4>
-                <ul className="space-y-2  text-sm text-gray-900">
+                <ul className="space-y-2  text-base text-gray-900">
                   <li className="flex items-start">
                     <span className="text-black mr-2">→</span>
                     Implemented responsive and dynamicsal design using Tailwind
@@ -522,10 +560,10 @@ const MainContent = () => {
                 </ul>
               </div>
               <div className="mt-6 md:mt-0">
-                <h4 className="text-xl font-medium mb-3 text-black">
+                <h4 className="text-2xl font-medium mb-4 text-black">
                   Technical Details
                 </h4>
-                <ul className="space-y-2 text-sm  text-black">
+                <ul className="space-y-2 text-base  text-black">
                   <li className="flex items-start">
                     <span className="text-black font-semibold mr-2">→</span>
                     Configured Amazon Route 53 for SSL and DNS management .
@@ -625,14 +663,14 @@ const MainContent = () => {
                 </h4>
               </div>
 
-              <div className="flex justify-center mb-8 flex-wrap gap-8">
+              <div className="flex justify-center mb-8 flex-wrap gap-4 sm:gap-8">
                 <div className="text-center">
                   <div
-                    className={`w-24 h-24 flex items-center justify-center rounded-full border-4 ${getCircleColor(
+                    className={`w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center rounded-full border-4 ${getCircleColor(
                       activeScores.performance
                     )}`}
                   >
-                    <span className="text-2xl font-bold">
+                    <span className="text-3xl font-bold">
                       {activeScores.performance}
                     </span>
                   </div>
@@ -640,11 +678,11 @@ const MainContent = () => {
                 </div>
                 <div className="text-center">
                   <div
-                    className={`w-24 h-24 flex items-center justify-center rounded-full border-4 ${getCircleColor(
+                    className={`w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center rounded-full border-4 ${getCircleColor(
                       activeScores.accessibility
                     )}`}
                   >
-                    <span className="text-2xl font-bold">
+                    <span className="text-3xl font-bold">
                       {activeScores.accessibility}
                     </span>
                   </div>
@@ -652,11 +690,11 @@ const MainContent = () => {
                 </div>
                 <div className="text-center">
                   <div
-                    className={`w-24 h-24 flex items-center justify-center rounded-full border-4 ${getCircleColor(
+                    className={`w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center rounded-full border-4 ${getCircleColor(
                       activeScores.bestPractices
                     )}`}
                   >
-                    <span className="text-2xl font-bold">
+                    <span className="text-3xl font-bold">
                       {activeScores.bestPractices}
                     </span>
                   </div>
@@ -664,11 +702,11 @@ const MainContent = () => {
                 </div>
                 <div className="text-center">
                   <div
-                    className={`w-24 h-24 flex items-center justify-center rounded-full border-4 ${getCircleColor(
+                    className={`w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center rounded-full border-4 ${getCircleColor(
                       activeScores.seo
                     )}`}
                   >
-                    <span className="text-2xl font-bold">
+                    <span className="text-3xl font-bold">
                       {activeScores.seo}
                     </span>
                   </div>
@@ -678,11 +716,11 @@ const MainContent = () => {
 
               <div className="flex flex-col items-center mt-8">
                 <div
-                  className={`w-48 h-48 flex items-center justify-center rounded-full border-8 ${getCircleFill(
+                  className={`w-56 h-56 flex items-center justify-center rounded-full border-8 ${getCircleFill(
                     activeScores.performance
                   )}`}
                 >
-                  <span className="text-5xl font-bold">
+                  <span className="text-6xl font-bold">
                     {activeScores.performance}
                   </span>
                 </div>
@@ -745,25 +783,57 @@ const MainContent = () => {
               </motion.a>
             </div>
 
-            <p className="text-sm text-black  mb-6 leading-relaxed">
+            <p className="text-md text-black  mb-6 leading-relaxed">
               Created and deployed a fully functional tech blog using Hashnode
               as the content platform, with custom domain integration and
               professional DNS configuration.
             </p>
 
-            <ul className="space-y-2 text-xs text-black font-semibold mb-6">
+            <h1 className="text-3xl mb-2">Learning : </h1>
+            <ul className="space-y-2 text-md text-black mb-6">
               <li className="flex items-start">
-                <span className="text-black mr-2">→</span>
+                <span className="text-black mr-2">
+                  <GoRocket />
+                </span>
+                Built a personal brand using a custom-named blog (e.g.,
+                blog.yourname.com).Showcased your knowledge and skills through
+                public writing.Shared blog links on LinkedIn, GitHub, and resume
+                to show expertise.
+              </li>
+              <li className="flex items-start">
+                <span className="text-black mr-2">
+                  <GoRocket />
+                </span>
+                Gained hands-on experience with Hashnode, a powerful blogging
+              </li>
+              <li className="flex items-start">
+                <span className="text-black mr-2">
+                  <GoRocket />
+                </span>
+                platform that simplifies the process of creating and managing
+              </li>
+            </ul>
+
+            <h1 className="text-3xl mb-2">Description</h1>
+            <ul className="space-y-2 text-md text-black mb-6">
+              <li className="flex items-start">
+                <span className="text-black mr-2">
+                  <GoRocket />
+                </span>
                 Set up a developer blog with a custom domain
                 (blog.cloudkinshuk.in)
               </li>
               <li className="flex items-start">
-                <span className="text-black mr-2">→</span>
+                <span className="text-black mr-2">
+                  <GoRocket />
+                </span>
                 Configured DNS records (A, CNAME, TXT) in Route 53 for domain
                 verification and HTTPS
               </li>
               <li className="flex items-start">
-                <span className="text-black mr-2">→</span>
+                <span className="text-black mr-2">
+                  <GoRocket />
+                </span>
                 Publishing technical articles covering AWS, serverless
                 architecture, and React development
               </li>
@@ -797,70 +867,108 @@ const MainContent = () => {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
-  {/* reduced py-16 to py-8 */}
-  <motion.section
-    id="projects"
-    className="mb-12"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-50px" }}
-    variants={fadeInUp}
-  >
-    <h2 className="text-3xl sm:text-4xl  mb-8 sm:mb-10 flex items-center text-gray-900">
-      <span className="w-6 h-px bg-gray-400 mr-3"></span>
-      Open to Collaborate / Work :
-    </h2>
+        {/* reduced py-16 to py-8 */}
+        <motion.section
+          id="projects"
+          className="mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={fadeInUp}
+        >
+          <h2 className="text-3xl sm:text-4xl  mb-8 sm:mb-10 flex items-center text-gray-900">
+            <span className="w-6 h-px bg-gray-400 mr-3"></span>
+            Open to Collaborate / Work :
+          </h2>
 
-    <motion.div
-      className="relative pl-6 mt-4 py-6 px-4 sm:px-6 bg-white text-base sm:text-lg rounded-md shadow-md"
-      whileHover="hover"
-      initial="rest"
-    >
-      <span className="absolute left-0 top-0 w-px h-full bg-gray-300"></span>
-      <span className="absolute left-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></span>
+          <motion.div
+            className="relative pl-8 mt-6 py-8 px-6 sm:px-8 bg-white text-lg sm:text-xl rounded-lg shadow-lg"
+            whileHover="hover"
+            initial="rest"
+          >
+            <span className="absolute left-0 top-0 w-px h-full bg-gray-300"></span>
+            <span className="absolute left-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></span>
 
-      <p className="text-black mb-6 leading-relaxed">
-        I'm always up for connecting with learners, developers, or anyone
-        curious about cloud, DevOps, or tech in general. Whether you're
-        just starting or switching paths, feel free to reach out — we can
-        learn and build together.
-      </p>
+            <p className="text-black mb-6 leading-relaxed">
+              Hey there! I'm always open to connecting with fellow students,
+              developers, or anyone curious about tech, cloud, or just building
+              cool things together. Whether you're just starting out, exploring
+              new paths, or already deep into your journey — feel free to reach
+              out!
+            </p>
+            <p className="text-black mb-6 leading-relaxed">
+              I believe learning is better when shared. So if you’ve got ideas,
+              want to brainstorm, collab on a project, or simply talk tech (or
+              life), I’m just a message away. Let’s grow, learn, and build
+              something meaningful — together.
+            </p>
 
-      <div className="space-y-2">
-        <h3><span className="font-semibold">Email: </span> kinshuk25jan04@gmail.com</h3>
-        <h3><span className="font-semibold">Phone No: </span> +91 91727 XXXXX</h3>
+            <div className="space-y-2">
+              <h3>
+                <span className="font-semibold">Email: </span>{" "}
+                kinshuk25jan04@gmail.com
+              </h3>
+              <h3>
+                <span className="font-semibold">Alternate Email: </span>{" "}
+                jkinshuk@outlook.com
+              </h3>
+              <h3>
+                <span className="font-semibold">Phone No: </span> +91 9172702501
+              </h3>
 
-        <div className="flex items-center space-x-6 p-4">
-  <a 
-    href="#" 
-    className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
-    aria-label="GitHub"
-  >
-    <span className="underline">@github</span>
-    <FaGithub size={24} />
-  </a>
-  <a 
-    href="#" 
-    className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
-    aria-label="LinkedIn"
-  >
-    <span className="underline">@linkedin</span>
-    <FaLinkedin size={24} />
-  </a>
-  <a 
-    href="#" 
-    className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
-    aria-label="Twitter"
-  >
-    <span className="underline">@twitter</span>
-    <FaTwitter size={24} />
-  </a>
-</div>
-
+              <div className="flex flex-wrap items-center gap-5 sm:gap-8 p-4 sm:p-6">
+                <a
+                  href="https://github.com/kinshukjainn"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="GitHub"
+                >
+                  <span className="underline">@github</span>
+                  <FaGithub size={24} />
+                </a>
+                <a
+                  href="https://linkedin.com/in/kinshukjainn/"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <span className="underline">@linkedin</span>
+                  <FaLinkedin size={24} />
+                </a>
+                <a
+                  href="https://x.com/realkinshuk04"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="Twitter"
+                >
+                  <span className="underline">@twitter</span>
+                  <FaTwitter size={24} />
+                </a>
+                <a
+                  href="https://instagram.com/kinshukjain._/"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="instagram"
+                >
+                  <span className="underline">@instagram</span>
+                  <FaInstagram size={24} />
+                </a>
+                <a
+                  href="https://blog.cloudkinshuk.in"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="instagram"
+                >
+                  <span className="underline">@Hashnode Blogs</span>
+                  <FaHashnode size={24} />
+                </a>
+                <button
+                  onClick={handleClick}
+                  className="underline flex mr-2 cursor-pointer items-center space-x-2"
+                >
+                  <FaWhatsapp className=""/>
+                @WhatsApp
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </motion.section>
       </div>
-    </motion.div>
-  </motion.section>
-</div>
 
       <motion.div
         className="border-t border-gray-200 mt-12 py-16 bg-white"
@@ -880,7 +988,7 @@ const MainContent = () => {
                 </h3>
               </div>
 
-              <p className="text-xs text-gray-600 max-w-2xl leading-relaxed">
+              <p className="text-sm text-gray-600 max-w-3xl leading-relaxed">
                 This portfolio is fully open-source and free to fork. Found the
                 design helpful? Feel free to use or modify it for your own site.
                 If it saved you time or gave you a good starting point, a ⭐
@@ -913,7 +1021,7 @@ const MainContent = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-2 text-gray-800 font-medium py-2 px-4 border border-gray-300 rounded-sm bg-gray-50 text-sm transition-all duration-200 hover:border-gray-800 hover:bg-gray-100"
+              className="flex items-center gap-3 text-gray-800 font-medium py-3 px-5 border border-gray-300 rounded-md bg-gray-50 text-base transition-all duration-200 hover:border-gray-800 hover:bg-gray-100"
             >
               <FaGithub className="text-lg" />
               <span>View Repository</span>
@@ -931,15 +1039,15 @@ const MainContent = () => {
         className="bg-gray-50 border-t border-gray-200 py-12"
       >
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-gray-600 text-sm">
-            Want to explore my Thinking? Check out the{" "}
+          <p className="text-sm text-gray-600">
+            Want to explore my Thinking? click on "Blogs" to Check out the{" "}
             <Link
               to="/blogs"
               className="text-gray-900 border-b border-gray-900 pb-px hover:text-gray-600 hover:border-gray-500 transition-colors duration-200"
             >
               Blogs
             </Link>{" "}
-            tab in the header!
+            Page
           </p>
         </div>
       </motion.footer>

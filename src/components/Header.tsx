@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaCloud, FaCloudUploadAlt } from "react-icons/fa";
 import profile from "../assets/image.jpg";
 import { FaHashnode} from "react-icons/fa6";
-import { ImProfile } from "react-icons/im";
+import { GoPersonFill } from "react-icons/go";
 
 
 
@@ -229,7 +229,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
           className="flex items-center gap-2 text-black text-lg md:text-base transition-colors duration-300" 
           onClick={closeMenu}
         >
-          <ImProfile className="text-lg text-black" /> 
+          <GoPersonFill className="text-lg text-black" /> 
           <span className="relative group">
             About me
             <motion.span 
