@@ -109,7 +109,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
 
       <div>
         <a
-          href="https://blogs.cloudkinshuk.in"
+          href="https://blog.cloudkinshuk.in"
           className="flex underline items-center gap-2 text-black text-lg md:text-base"
           onClick={closeMenu}
         >
