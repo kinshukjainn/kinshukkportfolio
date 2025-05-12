@@ -108,17 +108,17 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       </div>
 
       <div>
-        <Link
-          to="/blogs"
-          className="flex items-center gap-2 text-black text-lg md:text-base transition-colors duration-300"
+        <a
+          href="https://blogs.cloudkinshuk.in"
+          className="flex underline items-center gap-2 text-black text-lg md:text-base"
           onClick={closeMenu}
         >
           <FaHashnode className="text-lg text-black" />
           <span className="relative group">
-            Blogs
+            @checkout My Blogs
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300" />
           </span>
-        </Link>
+        </a>
       </div>
       <div>
         <Link

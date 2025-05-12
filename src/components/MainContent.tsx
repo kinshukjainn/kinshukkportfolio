@@ -395,11 +395,6 @@ const MainContent = () => {
                   </li>
                   <li className="flex items-start">
                     <span className="text-black mr-2">→</span>
-                    Integrated Hashnode API for dynamic blog posts updates and everyone can checkout my latest blogs
-                    from my portfolio
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-black mr-2">→</span>
                     Migrated from Netlify to AWS Amplify , to make it more cost-effective and scalable
                   </li>
                 </ul>
