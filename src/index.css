@@ -4,7 +4,7 @@
 @import "tailwindcss";
 
 body {
-  background-color: aqua ; /* Dark background */
+  background-color: white ; /* Dark background */
   color: black; /* Default text color */
   font-family: "IBM Plex Sans", sans-serif;
 }

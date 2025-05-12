@@ -117,8 +117,6 @@ const MainContent = () => {
           </h2>
 
           <div className="relative pl-6 sm:pl-8 mt-4 py-6 px-4 sm:px-6  text-base rounded-lg ">
-            <span className="absolute left-0 top-0 w-px h-full bg-gray-300"></span>
-            <span className="absolute left-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></span>
 
             <p className="text-sm sm:text-base text-black mb-4 leading-relaxed">
               Hey there! I'm always open to connecting with fellow peers , engineers, developers, or anyone curious about tech,
@@ -142,7 +140,7 @@ const MainContent = () => {
               <div className="flex flex-wrap items-center gap-3 sm:gap-5 p-3 sm:p-4 mt-2">
                 <a
                   href="https://github.com/kinshukjainn"
-                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  className="flex items-center space-x-1 text-black hover:text-gray-900 transition-colors"
                   aria-label="GitHub"
                 >
                   <span className="underline text-sm">@github</span>
@@ -150,7 +148,7 @@ const MainContent = () => {
                 </a>
                 <a
                   href="https://linkedin.com/in/kinshukjainn/"
-                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  className="flex items-center space-x-1 text-black hover:text-gray-900 transition-colors"
                   aria-label="LinkedIn"
                 >
                   <span className="underline text-sm">@linkedin</span>
@@ -158,7 +156,7 @@ const MainContent = () => {
                 </a>
                 <a
                   href="https://x.com/realkinshuk04"
-                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  className="flex items-center space-x-1 text-black hover:text-gray-900 transition-colors"
                   aria-label="Twitter"
                 >
                   <span className="underline text-sm">@twitter</span>
@@ -166,7 +164,7 @@ const MainContent = () => {
                 </a>
                 <a
                   href="https://instagram.com/kinshukjain._/"
-                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  className="flex items-center space-x-1 text-black hover:text-gray-900 transition-colors"
                   aria-label="instagram"
                 >
                   <span className="underline text-sm">@instagram</span>
@@ -174,7 +172,7 @@ const MainContent = () => {
                 </a>
                 <a
                   href="https://blog.cloudkinshuk.in"
-                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  className="flex items-center space-x-1 text-black hover:text-gray-900 transition-colors"
                   aria-label="Hashnode"
                 >
                   <span className="underline text-sm">@Hashnode</span>
@@ -182,7 +180,7 @@ const MainContent = () => {
                 </a>
                 <button
                   onClick={handleClick}
-                  className="underline flex cursor-pointer items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  className="underline flex cursor-pointer items-center space-x-1 text-black hover:text-gray-900 transition-colors"
                 >
                   <FaWhatsapp size={20} className="mr-1" />
                   <span className="text-sm">@WhatsApp</span>
@@ -250,7 +248,6 @@ const MainContent = () => {
 
           {/* AWS Journey Banner */}
           <div className="mb-8 sm:mb-12 relative pl-6 sm:pl-8 py-4 sm:py-6  rounded-md ">
-            <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
             <h3 className="text-lg sm:text-xl font-medium flex items-center mb-3 sm:mb-4 text-gray-900">
               <FaAws className="mr-3 text-gray-700" /> My AWS Certification Journey
             </h3>
@@ -266,7 +263,6 @@ const MainContent = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             {certifications.map((cert, index) => (
               <div key={index} className="relative pl-6 py-4 sm:py-6  rounded-md ">
-                <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
                 <div className="flex items-start">
                   <FaAws className="text-gray-700 text-sm mr-2 mt-1" />
                   <h3 className="text-base sm:text-lg text-black font-medium">{cert.title}</h3>
@@ -292,33 +288,29 @@ const MainContent = () => {
 
           <div className="space-y-6 sm:space-y-8">
             <div className="relative pl-6 sm:pl-8  p-4 sm:p-6  rounded-md">
-              <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
-              <span className="absolute left-0 top-0 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
               <div className="flex flex-col md:flex-row md:justify-between">
                 <div>
                   <h3 className="text-lg sm:text-xl font-medium text-gray-900">
                     Bachelor of Technology, Electrical Engineering
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base mt-1 sm:mt-2">JSS Academy of Technical Education</p>
-                  <p className="text-gray-500 text-xs mt-1">Noida, Uttar Pradesh</p>
+                  <p className="text-gray-900 text-sm sm:text-base mt-1 sm:mt-2">JSS Academy of Technical Education</p>
+                  <p className="text-gray-900 text-xs mt-1">Noida, Uttar Pradesh</p>
                 </div>
                 <div className="mt-2 md:mt-0">
-                  <span className="text-gray-500 text-sm">2022 - 2026</span>
+                  <span className="text-gray-800 text-sm">2022 - 2026</span>
                 </div>
               </div>
             </div>
 
             <div className="relative pl-6 sm:pl-8  p-4 sm:p-6  rounded-md">
-              <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
-              <span className="absolute left-0 top-0 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
               <div className="flex flex-col md:flex-row md:justify-between">
                 <div>
                   <h3 className="text-lg sm:text-xl font-medium text-gray-900">Higher Secondary Education (XII)</h3>
-                  <p className="text-gray-600 text-sm sm:text-base mt-1 sm:mt-2">Sri Chaitnya Junior College</p>
-                  <p className="text-gray-500 text-xs mt-1">Pune, Maharashtra, India</p>
+                  <p className="text-gray-900 text-sm sm:text-base mt-1 sm:mt-2">Sri Chaitnya Junior College</p>
+                  <p className="text-gray-900 text-xs mt-1">Pune, Maharashtra, India</p>
                 </div>
                 <div className="mt-2 md:mt-0">
-                  <span className="text-gray-500 text-sm">2020 - 2022</span>
+                  <span className="text-gray-800 text-sm">2020 - 2022</span>
                 </div>
               </div>
             </div>
@@ -336,8 +328,6 @@ const MainContent = () => {
 
           {/* Project 1 */}
           <div className="mb-12 sm:mb-16 relative pl-6 sm:pl-8 py-5 sm:py-6 px-4 sm:px-6  rounded-md ">
-            <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
-            <span className="absolute left-0 top-6 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
 
             <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
               <h3 className="text-2xl sm:text-3xl font-medium mb-2 md:mb-0 text-gray-900">Portfolio Website</h3>
@@ -509,8 +499,6 @@ const MainContent = () => {
 
           {/* Project 2 */}
           <div className="relative pl-6 py-5 sm:py-6 px-4 sm:px-6  rounded-md ">
-            <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
-            <span className="absolute left-0 top-6 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
 
             <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
               <h3 className="text-2xl sm:text-3xl font-medium mb-2 md:mb-0 text-gray-900">
@@ -569,7 +557,7 @@ const MainContent = () => {
               </li>
             </ul>
 
-            <div className="mt-6 pt-4 border-t border-gray-200">
+            <div className="mt-6 pt-4 border-t border-black ">
               <h4 className="text-sm font-bold text-gray-900 mb-2">Technologies:</h4>
               <div className="flex flex-wrap gap-2 mt-2">
                 {["Hashnode", "Amazon Route 53", "Hostinger", "DNS Management", "Custom Domain", "CDN"].map(
@@ -588,7 +576,7 @@ const MainContent = () => {
         </section>
       </div>
 
-      <div className="border-t border-gray-200 mt-8 py-8 sm:py-12 ">
+      <div className="border-t border-black mt-8 py-8 sm:py-12 ">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row justify-between items-start gap-6">
             {/* Left Content */}
@@ -621,10 +609,10 @@ const MainContent = () => {
               href="https://github.com/kinshukjain01/kinshukkportfolio"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-800 font-medium py-2 px-4 border border-gray-300 rounded-md bg-gray-50 text-sm transition-all duration-200 hover:border-gray-800 hover:bg-gray-100"
+              className="flex items-center gap-2 underline  text-black  px-4 py-2  transition-colors duration-200"
             >
-              <FaGithub className="text-lg" />
-              <span>View Repository</span>
+              <FaGithub className="text-xl" />
+              <span className="text-sm font-medium">@kinshukkportfolio</span>
               <HiOutlineExternalLink className="text-sm" />
             </a>
           </div>
@@ -632,7 +620,7 @@ const MainContent = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-50 border-t border-gray-200 py-8">
+      <footer className="bg-[#f6fdd9]  py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-xs sm:text-sm text-gray-600">
             Want to explore my Thinking? click on "Blogs" to Check out the{" "}
