@@ -51,7 +51,7 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`bg-[#f3ecec] font-sans  p-4 flex flex-col sm:flex-row justify-between items-center   overflow-hidden`}
+      className={`bg-[#f6fdd9] font-sans  p-4 flex flex-col sm:flex-row justify-between items-center   overflow-hidden`}
     >
       {/* Decorative Cloud Elements */}
       <motion.div 

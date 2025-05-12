@@ -70,7 +70,7 @@ const AboutMe = () => {
   };
 
   return (
-    <div className="min-h-screen font-sans bg-gray-100 text-black py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen font-sans bg-[#f6fdd9] text-black py-12 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -108,7 +108,7 @@ const AboutMe = () => {
         </nav>
 
         {/* Content */}
-        <div className="bg-gray-200 bg-opacity-50 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+        <div className="bg-[#f6fdd9] bg-opacity-50 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
           {/* About Me Section */}
           {activeSection === "about" && (
             <motion.div

@@ -239,7 +239,7 @@ const Blogs = () => {
   };
 
   return (
-    <div className="min-h-screen font-sans bg-white text-black py-8 px-3 sm:px-4">
+    <div className="min-h-screen font-sans bg-[#f6fdd9] text-black py-8 px-3 sm:px-4">
       <div className="max-w-5xl mx-auto">
         <div className="mb-6">
           <h1 className="text-4xl flex justify-center text-purple-900 mb-2">
@@ -386,7 +386,7 @@ const Blogs = () => {
             {filteredBlogs.map((blog) => (
               <article 
                 key={blog.id} 
-                className="bg-blue-200 rounded-md border-3 border-black "
+                className=" "
               >
                 <a
                   href={blog.url}

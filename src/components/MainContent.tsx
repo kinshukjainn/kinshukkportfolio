@@ -1,3 +1,5 @@
+"use client"
+
 import {
   FaAws,
   FaDocker,
@@ -10,89 +12,46 @@ import {
   FaCode,
   FaInstagram,
   FaWhatsapp,
-} from "react-icons/fa";
-import { GoRocket } from "react-icons/go";
-import { BiLinkExternal } from "react-icons/bi";
-import { GoHash } from "react-icons/go";
-import { BsPhone, BsLaptop } from "react-icons/bs";
-import {
-  SiKubernetes,
-  SiCanva,
-  SiTerraform,
-  SiTailwindcss,
-} from "react-icons/si";
-import { MdOutlineViewInAr } from "react-icons/md";
-import { TbExternalLink } from "react-icons/tb";
-import { useState } from "react";
-
-import { HiOutlineExternalLink } from "react-icons/hi";
-import { FaDiscord, FaHashnode, FaLinkedin, FaTwitter } from "react-icons/fa6";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+  FaDiscord,
+  FaLinkedin,
+  FaTwitter,
+  FaBlog,
+} from "react-icons/fa"
+import { GoRocket } from "react-icons/go"
+import { BiLinkExternal } from "react-icons/bi"
+import { GoHash } from "react-icons/go"
+import { SiKubernetes, SiCanva, SiTerraform, SiTailwindcss } from "react-icons/si"
+import { MdOutlineViewInAr } from "react-icons/md"
+import { TbExternalLink } from "react-icons/tb"
+import { HiOutlineExternalLink } from "react-icons/hi"
+import { Link } from "react-router-dom"
 
 const MainContent = () => {
-  // Animation variants
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
   const handleClick = async () => {
-    const phoneNumber = '919172702501';
-    const message = 'Hi Kinshuk, I saw your website and wanted to connect.';
-    const encodedMessage = encodeURIComponent(message);
-    const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const phoneNumber = "919172702501"
+    const message = "Hi Kinshuk, I saw your website and wanted to connect."
+    const encodedMessage = encodeURIComponent(message)
+    const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
     try {
       // Optional: API call to your server or webhook
-      await fetch('https://your-api-endpoint.com/log-whatsapp-click', {
-        method: 'POST',
+      await fetch("https://your-api-endpoint.com/log-whatsapp-click", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           timestamp: new Date().toISOString(),
-          contactType: 'WhatsApp',
+          contactType: "WhatsApp",
         }),
-      });
+      })
 
       // Redirect to WhatsApp link
-      window.open(waUrl, '_blank');
+      window.open(waUrl, "_blank")
     } catch (error) {
-      console.error('Error logging WhatsApp click:', error);
-      window.open(waUrl, '_blank'); // Still open WhatsApp even if API fails
+      console.error("Error logging WhatsApp click:", error)
+      window.open(waUrl, "_blank") // Still open WhatsApp even if API fails
     }
-  };
-
-  const staggerChildren = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemFade = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4 },
-    },
-  };
-
-  const linkHover = {
-    rest: { x: 0 },
-    hover: {
-      x: 3,
-      transition: { duration: 0.2, ease: "easeInOut" },
-    },
-  };
+  }
 
   // Tech stack data
   const techStack = [
@@ -103,7 +62,7 @@ const MainContent = () => {
     { icon: <FaDocker />, name: "Docker" },
     { icon: <SiKubernetes />, name: "Kubernetes" },
     { icon: <SiTerraform />, name: "Terraform" },
-  ];
+  ]
 
   // tools stack
   const toolsStack = [
@@ -111,65 +70,7 @@ const MainContent = () => {
     { icon: <SiCanva />, name: "Canva : Graphic Designing" },
     { icon: <FaGithub />, name: "Github / Git / Github Actions" },
     { icon: <FaLinux />, name: "Linux" },
-  ];
-  const [activeDevice, setActiveDevice] = useState<"desktop" | "mobile">(
-    "desktop"
-  );
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
-  };
-
-  const performanceData = {
-    desktop: {
-      scores: {
-        performance: 97,
-        accessibility: 89,
-        bestPractices: 100,
-        seo: 100,
-      },
-      color: "bg-green-500",
-    },
-    mobile: {
-      scores: {
-        performance: 71,
-        accessibility: 88,
-        bestPractices: 100,
-        seo: 100,
-      },
-      color: "bg-yellow-500",
-    },
-  };
-
-  const getCircleColor = (score: number): string => {
-    if (score >= 90) return "border-green-500";
-    if (score >= 50) return "border-yellow-500";
-    return "border-red-500";
-  };
-
-  interface CircleFillProps {
-    score: number;
-  }
-
-  const getCircleFill = (score: CircleFillProps["score"]): string => {
-    if (score >= 90) return "border-green-500 text-green-500 bg-green-50";
-    if (score >= 50) return "border-yellow-500 text-yellow-500 bg-yellow-50";
-    return "border-red-500 text-red-500 bg-red-50";
-  };
-
-  const activeScores = performanceData[activeDevice].scores;
+  ]
 
   // Certifications data
   const certifications = [
@@ -185,201 +86,162 @@ const MainContent = () => {
       title: "AWS Machine Learning Badge",
       link: "https://www.credly.com/badges/a0042ec2-cc6e-4a99-84de-a1516ee5775a/public_url",
     },
-  ];
+  ]
 
   return (
-    <div className="bg-[#f3ecec] text-gray-800 min-h-screen font-sans">
-      {/* Hero section with subtle animation */}
-      <motion.header
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="py-12 sm:py-20 md:py-28 border-b border-gray-100"
-      >
+    <div className="bg-[#f6fdd9] text-gray-800 min-h-screen font-sans">
+      {/* Hero section */}
+      <header className="py-8 sm:py-12 md:py-20 border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.h1
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-6xl font-light tracking-tight mb-6"
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight mb-4 sm:mb-6">
+            Hi, I'm <span className="text-gray-900">Kinshuk Jain</span>
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl leading-relaxed">
+           Aspiring Cloud Engineer | Tech Enthusiast | Open to Collaborate
+          </p>
+          <Link
+            to="/blogs"
+            className="inline-flex items-center p-2 px-4 bg-black rounded-md text-gray-100 text-base font-medium transition-all duration-200 hover:bg-gray-800"
           >
-            Hi, I'm <span className=" text-gray-900">Kinshuk Jain</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl leading-relaxed"
-          >
-            I design and deploy scalable, secure, and cost-efficient cloud
-            infrastructure using modern DevOps tools — solving real-world
-            problems with automation, performance, and purpose.
-          </motion.p>
-          <motion.div
-            initial="rest"
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.4 }}
-            whileHover="hover"
-            variants={linkHover}
-          >
-            <Link
-              to="/blogs"
-              className="inline-flex items-center p-3 px-4 bg-black rounded-md text-gray-100 text-base font-medium transition-all duration-200 hover:border-gray-400"
-            >
-              <MdOutlineViewInAr className="text-lg mr-2" />
-              View My blogs
-            </Link>
-          </motion.div>
+            <MdOutlineViewInAr className="text-lg mr-2" />
+            View My blogs
+          </Link>
         </div>
-      </motion.header>
+      </header>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
+        <section id="contact" className="mb-10 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl mb-6 sm:mb-8 flex items-center text-gray-900">
+            <span className="w-6 h-px bg-gray-400 mr-3"></span>
+            Open to Collaborate / Work :
+          </h2>
+
+          <div className="relative pl-6 sm:pl-8 mt-4 py-6 px-4 sm:px-6  text-base rounded-lg ">
+            <span className="absolute left-0 top-0 w-px h-full bg-gray-300"></span>
+            <span className="absolute left-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></span>
+
+            <p className="text-sm sm:text-base text-black mb-4 leading-relaxed">
+              Hey there! I'm always open to connecting with fellow peers , engineers, developers, or anyone curious about tech,
+              cloud, or just building cool things together. Whether you're just starting out, exploring new paths, or
+              already deep into your journey — feel free to reach out!
+            </p>
+            <p className="text-sm sm:text-base text-black mb-4 leading-relaxed">
+              I believe learning is better when shared. So if you've got ideas, want to brainstorm, collab on a project,
+              or simply talk tech (or life), I'm just a message away. Let's grow, learn, and build something meaningful
+              — together.
+            </p>
+
+            <div className="space-y-1 sm:space-y-2 text-sm sm:text-base">
+              <h3>
+                <span className="font-semibold">Email: </span> kinshuk25jan04@gmail.com
+              </h3>
+              <h3>
+                <span className="font-semibold">Alternate Email: </span> jkinshuk@outlook.com
+              </h3>
+
+              <div className="flex flex-wrap items-center gap-3 sm:gap-5 p-3 sm:p-4 mt-2">
+                <a
+                  href="https://github.com/kinshukjainn"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="GitHub"
+                >
+                  <span className="underline text-sm">@github</span>
+                  <FaGithub size={20} />
+                </a>
+                <a
+                  href="https://linkedin.com/in/kinshukjainn/"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <span className="underline text-sm">@linkedin</span>
+                  <FaLinkedin size={20} />
+                </a>
+                <a
+                  href="https://x.com/realkinshuk04"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="Twitter"
+                >
+                  <span className="underline text-sm">@twitter</span>
+                  <FaTwitter size={20} />
+                </a>
+                <a
+                  href="https://instagram.com/kinshukjain._/"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="instagram"
+                >
+                  <span className="underline text-sm">@instagram</span>
+                  <FaInstagram size={20} />
+                </a>
+                <a
+                  href="https://blog.cloudkinshuk.in"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="Hashnode"
+                >
+                  <span className="underline text-sm">@Hashnode</span>
+                  <FaBlog size={20} />
+                </a>
+                <button
+                  onClick={handleClick}
+                  className="underline flex cursor-pointer items-center space-x-1 text-gray-700 hover:text-gray-900 transition-colors"
+                >
+                  <FaWhatsapp size={20} className="mr-1" />
+                  <span className="text-sm">@WhatsApp</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
         {/* Education Section */}
-        <motion.section
-          className="mb-24"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-4xl sm:text-5xl mb-10 sm:mb-16 flex items-center text-gray-900">
-            <span className="  mr-3">
-              <GoHash className="font-bold" />
-            </span>
-            Education
-          </h2>
-
-          <motion.div className="space-y-12" variants={staggerChildren}>
-            <motion.div
-              variants={itemFade}
-              className="relative pl-8 bg-white p-6 shadow-md rounded-md"
-            >
-              <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
-              <span className="absolute left-0 top-0 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
-              <div className="flex flex-col md:flex-row md:justify-between">
-                <div>
-                  <h3 className="text-xl font-medium text-gray-900">
-                    Bachelor of Technology, Electrical Engineering
-                  </h3>
-                  <p className="text-gray-600 text-base mt-2">
-                    JSS Academy of Technical Education
-                  </p>
-                  <p className="text-gray-500 text-xs mt-1">
-                    Noida, Uttar Pradesh
-                  </p>
-                </div>
-                <div className="mt-2 md:mt-0">
-                  <span className="text-gray-500 text-sm">2022 - 2026</span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={itemFade}
-              className="relative pl-8 bg-white p-6 shadow-md rounded-md"
-            >
-              <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
-              <span className="absolute left-0 top-0 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
-              <div className="flex flex-col md:flex-row md:justify-between">
-                <div>
-                  <h3 className="text-xl font-medium text-gray-900">
-                    Higher Secondary Education (XII)
-                  </h3>
-                  <p className="text-gray-600 text-base mt-2">
-                    Sri Chaitnya Junior College
-                  </p>
-                  <p className="text-gray-500 text-xs mt-1">
-                    Pune, Maharashtra, India
-                  </p>
-                </div>
-                <div className="mt-2 md:mt-0">
-                  <span className="text-gray-500 text-sm">2020 - 2022</span>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </motion.section>
 
         {/* Tech Stack Section */}
-        <motion.section
-          className="mb-24"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-4xl sm:text-5xl mb-10 sm:mb-16 flex items-center text-gray-900">
-            <span className=" mr-3">
+        <section className="mb-16 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-gray-900">
+            <span className="mr-3">
               <GoHash />
             </span>
             Tech Stack
           </h2>
 
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
-            variants={staggerChildren}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 sm:gap-2">
             {techStack.map((tech, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={itemFade}
-                whileHover={{ x: 3 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="flex items-center space-x-4 py-3 px-4 bg-white rounded-md shadow-md"
+                className="flex items-center space-x-1 py-2 px-2"
               >
                 <span className="text-gray-600 text-xl">{tech.icon}</span>
-                <span className="text-base tracking-wide text-gray-800">
-                  {tech.name}
-                </span>
-              </motion.div>
+                <span className="text-sm sm:text-base tracking-wide text-gray-800">{tech.name}</span>
+              </div>
             ))}
-          </motion.div>
-        </motion.section>
+          </div>
+        </section>
 
-        <motion.section
-          className="mb-24"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-4xl sm:text-5xl mb-10 sm:mb-16 flex items-center text-gray-900">
-            <span className="  mr-3">
+        <section className="mb-16 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-gray-900">
+            <span className="mr-3">
               <GoHash className="font-bold" />
             </span>
             Tools
           </h2>
 
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
-            variants={staggerChildren}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-2">
             {toolsStack.map((tech, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={itemFade}
-                whileHover={{ x: 3 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="flex items-center space-x-4 py-3 px-4 bg-white rounded-md shadow-md"
+                className="flex items-center space-x-2 py-2 px-2 "
               >
                 <span className="text-gray-600 text-xl">{tech.icon}</span>
-                <span className="text-base tracking-wide text-gray-800">
-                  {tech.name}
-                </span>
-              </motion.div>
+                <span className="text-sm sm:text-base tracking-wide text-gray-800">{tech.name}</span>
+              </div>
             ))}
-          </motion.div>
-        </motion.section>
+          </div>
+        </section>
 
         {/* Certifications Section */}
-        <motion.section
-          className="mb-24"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-4xl sm:text-5xl mb-10 sm:mb-16 flex items-center text-gray-900">
+        <section className="mb-16 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-gray-900">
             <span className="mr-3">
               <GoHash />
             </span>
@@ -387,659 +249,392 @@ const MainContent = () => {
           </h2>
 
           {/* AWS Journey Banner */}
-          <motion.div
-            className="mb-16 relative pl-8 py-6 bg-white rounded-md shadow-md"
-            variants={itemFade}
-          >
+          <div className="mb-8 sm:mb-12 relative pl-6 sm:pl-8 py-4 sm:py-6  rounded-md ">
             <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
-            <h3 className="text-xl font-medium flex items-center mb-4 text-gray-900">
-              <FaAws className="mr-3 text-gray-700" /> My AWS Certification
-              Journey
+            <h3 className="text-lg sm:text-xl font-medium flex items-center mb-3 sm:mb-4 text-gray-900">
+              <FaAws className="mr-3 text-gray-700" /> My AWS Certification Journey
             </h3>
-            <p className="text-base text-gray-900 leading-relaxed">
-              I recently scored 679/1000 on the AWS Certified Cloud Practitioner
-              exam (CLF-C02). While just shy of passing, this experience has
-              <span className="font-medium text-gray-900">
-                {" "}
-                strengthened my resolve{" "}
-              </span>
-              to master cloud fundamentals and accelerated my preparation for
-              the more advanced Solutions Architect Associate certification by
-              Q3 2025.
+            <p className="text-sm sm:text-base text-gray-900 leading-relaxed">
+              I recently scored 679/1000 on the AWS Certified Cloud Practitioner exam (CLF-C02). While just shy of
+              passing, this experience has
+              <span className="font-medium text-gray-900"> strengthened my resolve </span>
+              to master cloud fundamentals and accelerated my preparation for the more advanced Solutions Architect
+              Associate certification by Q3 2025.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6"
-            variants={staggerChildren}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                className="relative pl-6 py-6 bg-white rounded-md shadow-md"
-                whileHover="hover"
-                initial="rest"
-              >
+              <div key={index} className="relative pl-6 py-4 sm:py-6  rounded-md ">
                 <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
                 <div className="flex items-start">
                   <FaAws className="text-gray-700 text-sm mr-2 mt-1" />
-                  <h3 className="text-base text-black text-3xl font-medium">
-                    {cert.title}
-                  </h3>
+                  <h3 className="text-base sm:text-lg text-black font-medium">{cert.title}</h3>
                 </div>
-                <motion.a
+                <a
                   href={cert.link}
-                  initial="rest"
-                  whileHover="hover"
-                  variants={linkHover}
-                  className="text-white p-2 rounded-md bg-black  text-xs inline-flex items-center mt-3 transition-colors duration-200"
+                  className="text-white p-2 rounded-md bg-black text-xs inline-flex items-center mt-3 transition-colors duration-200 hover:bg-gray-800"
                 >
                   View Certificate
                   <TbExternalLink className="ml-1 text-sm" />
-                </motion.a>
-              </motion.div>
+                </a>
+              </div>
             ))}
-          </motion.div>
-        </motion.section>
+          </div>
+        </section>
+        <section className="mb-16 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-gray-900">
+            <span className="mr-3">
+              <GoHash className="font-bold" />
+            </span>
+            Education
+          </h2>
+
+          <div className="space-y-6 sm:space-y-8">
+            <div className="relative pl-6 sm:pl-8  p-4 sm:p-6  rounded-md">
+              <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
+              <span className="absolute left-0 top-0 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
+              <div className="flex flex-col md:flex-row md:justify-between">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-medium text-gray-900">
+                    Bachelor of Technology, Electrical Engineering
+                  </h3>
+                  <p className="text-gray-600 text-sm sm:text-base mt-1 sm:mt-2">JSS Academy of Technical Education</p>
+                  <p className="text-gray-500 text-xs mt-1">Noida, Uttar Pradesh</p>
+                </div>
+                <div className="mt-2 md:mt-0">
+                  <span className="text-gray-500 text-sm">2022 - 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative pl-6 sm:pl-8  p-4 sm:p-6  rounded-md">
+              <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
+              <span className="absolute left-0 top-0 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
+              <div className="flex flex-col md:flex-row md:justify-between">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-medium text-gray-900">Higher Secondary Education (XII)</h3>
+                  <p className="text-gray-600 text-sm sm:text-base mt-1 sm:mt-2">Sri Chaitnya Junior College</p>
+                  <p className="text-gray-500 text-xs mt-1">Pune, Maharashtra, India</p>
+                </div>
+                <div className="mt-2 md:mt-0">
+                  <span className="text-gray-500 text-sm">2020 - 2022</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Projects Section */}
-        <motion.section
-          id="projects"
-          className="mb-24"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-4xl sm:text-5xl mb-10 sm:mb-16 flex items-center text-gray-900">
-            <span className="  mr-3">
+        <section id="projects" className="mb-16 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-gray-900">
+            <span className="mr-3">
               <GoHash className="font-bold" />
             </span>
             Projects / Work
           </h2>
 
           {/* Project 1 */}
-          <motion.div
-            className="mb-20 relative pl-8 py-6 sm:py-8 bg-white rounded-md shadow-lg"
-            whileHover="hover"
-            initial="rest"
-          >
+          <div className="mb-12 sm:mb-16 relative pl-6 sm:pl-8 py-5 sm:py-6 px-4 sm:px-6  rounded-md ">
             <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
             <span className="absolute left-0 top-6 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
 
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-5">
-              <h3 className="text-4xl font-medium mb-3 md:mb-0 text-gray-900">
-                Portfolio Website
-              </h3>
-              <motion.a
+            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+              <h3 className="text-2xl sm:text-3xl font-medium mb-2 md:mb-0 text-gray-900">Portfolio Website</h3>
+              <a
                 href="https://cloudkinshuk.in"
-                whileHover={{ y: -2 }}
-                className="inline-flex items-center mr-3 text-xs font-medium text-white transition-all bg-black p-2 w-max rounded-md hover:text-gray-200 "
+                className="inline-flex items-center mr-3 text-xs font-medium text-white transition-all bg-black p-2 w-max rounded-md hover:text-gray-200"
               >
                 View Live
-              </motion.a>
+              </a>
             </div>
 
-            <h3 className="text-3xl font-semibold ">Description : </h3>
-            <p className="text-base text-black mb-8 leading-relaxed">
-              Built and deployed a personal portfolio website using React 19,
-              TypeScript, Tailwind CSS with live blog integration and full
-              cloud-backed deployment.
-            </p>
-            <h3 className=" text-3xl font-semibold">Challenges:</h3>
-            <p className="text-base text-black mb-4 leading-relaxed">
-              Deploying my website on a cloud platform like AWS was a completely
-              new experience for me. AWS is a vast platform with numerous
-              complexities, and navigating through its features felt
-              overwhelming at times.
-            </p>
-            <p className="text-base text-black mb-4 leading-relaxed">
-              I was unfamiliar with the best practices for optimizing SEO
-              (Search Engine Optimization) while building the website. Despite
-              several attempts, I struggled to implement the right methods to
-              enhance my website’s SEO performance and overall user experience.
-            </p>
-            <p className="text-base text-black mb-4 leading-relaxed">
-              As a beginner, I constantly worried about the potential high costs
-              associated with deploying the website on AWS. The thought of
-              exceeding the free-tier traffic limits and accumulating an
-              unexpected, hefty bill added to my stress.
-            </p>
-            <p className="text-base text-black mb-4 leading-relaxed">
-              When I purchased my own domain from Hostinger, I had no idea how
-              to link it to my website. I faced several challenges in correctly
-              redirecting my custom URL to the site and encountered failures
-              multiple times before getting it right.
-            </p>
-            <h3 className=" text-3xl font-semibold">Learnings:</h3>
-            <p className="text-base text-black mb-4 leading-relaxed">
-              Gained hands-on experience with AWS services and understood how to
-              deploy static and dynamic websites using cost-effective practices.
-              I also learned how to monitor resources to avoid unexpected
-              charges.
-            </p>
-            <p className="text-base text-black mb-4 leading-relaxed">
-              Understood the importance of SEO and gradually adopted key best
-              practices such as setting up proper meta tags, improving load
-              speed, using semantic HTML, and ensuring mobile responsiveness.
-            </p>
-            <p className="text-base text-black mb-4 leading-relaxed">
-              Learned how to stay calm and analytical under pressure. I
-              developed the habit of reading official documentation and
-              community threads to troubleshoot issues instead of panicking.
-            </p>
-            <p className="text-base text-black mb-4 leading-relaxed">
-              Mastered the process of linking a custom domain to a hosted
-              website. I now understand DNS records, domain pointing, and the
-              importance of patience and debugging while working with hosting
-              and domain providers.
+            <h3 className="text-xl sm:text-2xl font-semibold mt-4">Description : </h3>
+            <p className="text-sm sm:text-base text-black mb-4 sm:mb-6 leading-relaxed">
+              Built and deployed a personal portfolio website using React 19, TypeScript, Tailwind CSS with live blog
+              integration and full cloud-backed deployment.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mt-4 sm:mt-6">
+            <h3 className="text-xl sm:text-2xl font-semibold">Challenges:</h3>
+            <p className="text-sm sm:text-base text-black mb-3 leading-relaxed">
+              Deploying my website on a cloud platform like AWS was a completely new experience for me. AWS is a vast
+              platform with numerous complexities, and navigating through its features felt overwhelming at times.
+            </p>
+            <p className="text-sm sm:text-base text-black mb-3 leading-relaxed">
+              I was unfamiliar with the best practices for optimizing SEO (Search Engine Optimization) while building
+              the website. Despite several attempts, I struggled to implement the right methods to enhance my website's
+              SEO performance and overall user experience.
+            </p>
+            <p className="text-sm sm:text-base text-black mb-3 leading-relaxed">
+              As a beginner, I constantly worried about the potential high costs associated with deploying the website
+              on AWS. The thought of exceeding the free-tier traffic limits and accumulating an unexpected, hefty bill
+              added to my stress.
+            </p>
+            <p className="text-sm sm:text-base text-black mb-3 leading-relaxed">
+              When I purchased my own domain from Hostinger, I had no idea how to link it to my website. I faced several
+              challenges in correctly redirecting my custom URL to the site and encountered failures multiple times
+              before getting it right.
+            </p>
+
+            <h3 className="text-xl sm:text-2xl font-semibold mt-4">Learnings:</h3>
+            <p className="text-sm sm:text-base text-black mb-3 leading-relaxed">
+              Gained hands-on experience with AWS services and understood how to deploy static and dynamic websites
+              using cost-effective practices. I also learned how to monitor resources to avoid unexpected charges.
+            </p>
+            <p className="text-sm sm:text-base text-black mb-3 leading-relaxed">
+              Understood the importance of SEO and gradually adopted key best practices such as setting up proper meta
+              tags, improving load speed, using semantic HTML, and ensuring mobile responsiveness.
+            </p>
+            <p className="text-sm sm:text-base text-black mb-3 leading-relaxed">
+              Learned how to stay calm and analytical under pressure. I developed the habit of reading official
+              documentation and community threads to troubleshoot issues instead of panicking.
+            </p>
+            <p className="text-sm sm:text-base text-black mb-3 leading-relaxed">
+              Mastered the process of linking a custom domain to a hosted website. I now understand DNS records, domain
+              pointing, and the importance of patience and debugging while working with hosting and domain providers.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 sm:mt-6">
               <div>
-                <h4 className="text-2xl font-semibold mb-4 text-black">
-                  Key Features
-                </h4>
-                <ul className="space-y-2  text-base text-gray-900">
+                <h4 className="text-lg sm:text-xl font-semibold mb-3 text-black">Key Features</h4>
+                <ul className="space-y-2 text-sm sm:text-base text-gray-900">
                   <li className="flex items-start">
                     <span className="text-black mr-2">→</span>
-                    Implemented responsive and dynamicsal design using Tailwind
-                    CSS and React 19, ensuring a seamless experience across
-                    devices
+                    Implemented responsive and dynamicsal design using Tailwind CSS and React 19, ensuring a seamless
+                    experience across devices
                   </li>
                   <li className="flex items-start">
                     <span className="text-black mr-2">→</span>
-                    Integrated Hashnode API for dynamic blog posts updates and
-                    everyone can checkout my latest blogs from my portfolio
+                    Integrated Hashnode API for dynamic blog posts updates and everyone can checkout my latest blogs
+                    from my portfolio
                   </li>
                   <li className="flex items-start">
                     <span className="text-black mr-2">→</span>
-                    Migrated from Netlify to AWS Amplify , to make it more
-                    cost-effective and scalable
+                    Migrated from Netlify to AWS Amplify , to make it more cost-effective and scalable
                   </li>
                 </ul>
               </div>
-              <div className="mt-6 md:mt-0">
-                <h4 className="text-2xl font-medium mb-4 text-black">
-                  Technical Details
-                </h4>
-                <ul className="space-y-2 text-base  text-black">
+              <div className="mt-4 md:mt-0">
+                <h4 className="text-lg sm:text-xl font-medium mb-3 text-black">Technical Details</h4>
+                <ul className="space-y-2 text-sm sm:text-base text-black">
                   <li className="flex items-start">
                     <span className="text-black font-semibold mr-2">→</span>
-                    Configured Amazon Route 53 for SSL and DNS management .
-                    Route 53 Hosted zones manages my DNS and SSL Certificates
+                    Configured Amazon Route 53 for SSL and DNS management . Route 53 Hosted zones manages my DNS and SSL
+                    Certificates
                   </li>
                   <li className="flex items-start">
                     <span className="text-black font-semibold mr-2">→</span>
-                    Used AI tools like chat gpt and claude to write code and to
-                    boost development efficiency
+                    Used AI tools like chat gpt and claude to write code and to boost development efficiency
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              <h4 className="text-sm font-bold text-gray-900 mb-3">
-                Technologies:
-              </h4>
+            <div className="mt-6 pt-4 border-t border-gray-200">
+              <h4 className="text-sm font-bold text-gray-900 mb-2">Technologies:</h4>
               <div className="flex flex-wrap gap-2 mt-2">
-                {[
-                  "React 19",
-                  "TypeScript",
-                  "Tailwind CSS",
-                  "AWS Amplify",
-                  "Route 53",
-                  "Hostinger",
-                ].map((tech, index) => (
-                  <motion.span
-                    key={index}
-                    whileHover={{ y: -2 }}
-                    className="inline-block text-xs bg-yellow-100 border border-black font-bold px-3 py-1 text-gray-700 rounded-sm"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
+                {["React 19", "TypeScript", "Tailwind CSS", "AWS Amplify", "Route 53", "Hostinger"].map(
+                  (tech, index) => (
+                    <span
+                      key={index}
+                      className="inline-block text-xs bg-yellow-100 border border-black font-bold px-3 py-1 text-gray-700 rounded-sm hover:-translate-y-1 transition-transform duration-200"
+                    >
+                      {tech}
+                    </span>
+                  ),
+                )}
               </div>
             </div>
-          </motion.div>
-          <motion.div
-            className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 mb-10"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
-            <motion.div
-              className="flex flex-col md:flex-row md:justify-between md:items-start mb-5"
-              variants={itemVariants}
-            >
-              <h3 className="text-3xl font-medium mb-2 md:mb-0 text-gray-900">
-                SEO of my website
-              </h3>
-              <motion.a
+          </div>
+
+          {/* SEO Section - Simplified text-based version */}
+          <div className="max-w-4xl mx-auto  rounded-lg  p-4 sm:p-6 mb-8 sm:mb-10">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+              <h3 className="text-2xl sm:text-3xl font-medium mb-2 md:mb-0 text-gray-900">SEO of my website</h3>
+              <a
                 href="https://pagespeed.web.dev/"
-                whileHover={{ y: -2 }}
-                className="inline-flex items-center  text-sm font-medium text-white transition-all bg-black p-2 w-max rounded-md hover:text-gray-200"
+                className="inline-flex items-center text-sm font-medium text-white transition-all bg-black p-2 w-max rounded-md hover:text-gray-200"
               >
-                Check Here <BiLinkExternal />
-              </motion.a>
-            </motion.div>
+                Check Here <BiLinkExternal className="ml-1" />
+              </a>
+            </div>
 
-            <motion.p
-              className="text-sm text-black mb-6 leading-relaxed"
-              variants={itemVariants}
-            >
-              Built and deployed a personal portfolio website using React 19,
-              TypeScript, Tailwind CSS with live blog integration and full
-              cloud-backed deployment.
-            </motion.p>
+            <p className="text-sm text-black mb-4 leading-relaxed">
+              Built and deployed a personal portfolio website using React 19, TypeScript, Tailwind CSS with live blog
+              integration and full cloud-backed deployment.
+            </p>
 
-            <motion.div className="mb-8" variants={itemVariants}>
-              <div className="flex justify-center mb-4 space-x-2">
-                <button
-                  onClick={() => setActiveDevice("mobile")}
-                  className={`flex items-center gap-1 px-4 py-2  ${
-                    activeDevice === "mobile"
-                      ? "border-b-3 border-black"
-                      : "text-gray-900"
-                  }`}
-                >
-                  <BsPhone /> Mobile
-                </button>
-                <button
-                  onClick={() => setActiveDevice("desktop")}
-                  className={`flex items-center gap-1 px-4 py-2  ${
-                    activeDevice === "desktop"
-                      ? "border-b-3 border-black"
-                      : " text-gray-900"
-                  }`}
-                >
-                  <BsLaptop /> Desktop
-                </button>
-              </div>
+            <div className="mb-6">
+              <h4 className="text-2xl text-gray-900 mb-3">Performance Scores</h4>
 
-              <div className="text-center mb-4">
-                <h4 className="text-lg text-gray-700 mb-4">
-                  Diagnose performance issues
-                </h4>
-              </div>
-
-              <div className="flex justify-center mb-8 flex-wrap gap-4 sm:gap-8">
-                <div className="text-center">
-                  <div
-                    className={`w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center rounded-full border-4 ${getCircleColor(
-                      activeScores.performance
-                    )}`}
-                  >
-                    <span className="text-3xl font-bold">
-                      {activeScores.performance}
-                    </span>
-                  </div>
-                  <p className="mt-2">Performance</p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                <div className=" p-3 text-center">
+                  <div className="text-2xl  text-black">97</div>
+                  <p className="text-sm text-gray-900">Desktop Performance</p>
                 </div>
-                <div className="text-center">
-                  <div
-                    className={`w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center rounded-full border-4 ${getCircleColor(
-                      activeScores.accessibility
-                    )}`}
-                  >
-                    <span className="text-3xl font-bold">
-                      {activeScores.accessibility}
-                    </span>
-                  </div>
-                  <p className="mt-2">Accessibility</p>
+                <div className=" p-3 text-center">
+                  <div className="text-2xl  text-black">71</div>
+                  <p className="text-sm text-gray-900">Mobile Performance</p>
                 </div>
-                <div className="text-center">
-                  <div
-                    className={`w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center rounded-full border-4 ${getCircleColor(
-                      activeScores.bestPractices
-                    )}`}
-                  >
-                    <span className="text-3xl font-bold">
-                      {activeScores.bestPractices}
-                    </span>
-                  </div>
-                  <p className="mt-2">Best Practices</p>
+                <div className=" p-3 text-center">
+                  <div className="text-2xl  text-black">89</div>
+                  <p className="text-sm text-gray-900">Accessibility</p>
                 </div>
-                <div className="text-center">
-                  <div
-                    className={`w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center rounded-full border-4 ${getCircleColor(
-                      activeScores.seo
-                    )}`}
-                  >
-                    <span className="text-3xl font-bold">
-                      {activeScores.seo}
-                    </span>
-                  </div>
-                  <p className="mt-2">SEO</p>
+                <div className="p-3 text-center">
+                  <div className="text-2xl  text-black">100</div>
+                  <p className="text-sm text-gray-900">SEO Score</p>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center mt-8">
-                <div
-                  className={`w-56 h-56 flex items-center justify-center rounded-full border-8 ${getCircleFill(
-                    activeScores.performance
-                  )}`}
-                >
-                  <span className="text-6xl font-bold">
-                    {activeScores.performance}
-                  </span>
-                </div>
-                <h3 className="text-2xl mt-4 mb-2">Performance</h3>
-                <p className="text-sm text-gray-600 mb-2">
-                  Values are estimated and may vary. The{" "}
-                  <a
-                    href="https://pagespeed.web.dev/"
-                    className="text-blue-500"
-                  >
-                    performance score is calculated
-                  </a>{" "}
-                  directly from these metrics.{" "}
-                  <a
-                    href="https://pagespeed.web.dev/"
-                    className="text-blue-500"
-                  >
-                    See calculator
-                  </a>
-                  .
-                </p>
+              <p className="text-xs text-gray-900 mb-2">
+                Values are estimated and may vary. The performance score is calculated directly from these metrics.
+              </p>
 
-                <div className="flex justify-center gap-6 mt-4">
-                  <div className="flex items-center">
-                    <div className="w-4 h-4 bg-red-500 rounded mr-2"></div>
-                    <span className="text-sm">0-49</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-4 h-4 bg-yellow-500 rounded mr-2"></div>
-                    <span className="text-sm">50-89</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-4 h-4 bg-green-500 rounded mr-2"></div>
-                    <span className="text-sm">90-100</span>
-                  </div>
+              <div className="flex justify-center gap-4 mt-3 text-xs">
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-red-500 rounded mr-1"></div>
+                  <span>0-49</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-yellow-500 rounded mr-1"></div>
+                  <span>50-89</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-3 h-3 bg-green-500 rounded mr-1"></div>
+                  <span>90-100</span>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Project 2 */}
-          <motion.div
-            className="relative pl-6 py-6 bg-white rounded-sm shadow-sm"
-            whileHover="hover"
-            initial="rest"
-          >
+          <div className="relative pl-6 py-5 sm:py-6 px-4 sm:px-6  rounded-md ">
             <span className="absolute left-0 top-0 w-px h-full bg-gray-200"></span>
             <span className="absolute left-0 top-6 w-1 h-1 rounded-full bg-gray-400 transform -translate-x-1/2"></span>
 
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-5">
-              <h3 className="text-3xl font-medium mb-2 md:mb-0 text-gray-900">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+              <h3 className="text-2xl sm:text-3xl font-medium mb-2 md:mb-0 text-gray-900">
                 Blog Page : Custom Domain || Hashnode
               </h3>
-              <motion.a
+              <a
                 href="https://blog.cloudkinshuk.in"
-                whileHover={{ y: -2 }}
-                className="inline-flex items-center mr-3 text-xs font-medium text-white transition-all bg-black p-2 w-max rounded-md hover:text-gray-200 "
+                className="inline-flex items-center mr-3 text-xs font-medium text-white transition-all bg-black p-2 w-max rounded-md hover:text-gray-200"
               >
                 View Blog
-              </motion.a>
+              </a>
             </div>
 
-            <p className="text-md text-black  mb-6 leading-relaxed">
-              Created and deployed a fully functional tech blog using Hashnode
-              as the content platform, with custom domain integration and
-              professional DNS configuration.
+            <p className="text-sm sm:text-base text-black mb-4 sm:mb-6 leading-relaxed">
+              Created and deployed a fully functional tech blog using Hashnode as the content platform, with custom
+              domain integration and professional DNS configuration.
             </p>
 
-            <h1 className="text-3xl mb-2">Learning : </h1>
-            <ul className="space-y-2 text-md text-black mb-6">
+            <h3 className="text-xl sm:text-2xl mb-2">Learning : </h3>
+            <ul className="space-y-2 text-sm sm:text-base text-black mb-4 sm:mb-6">
               <li className="flex items-start">
                 <span className="text-black mr-2">
                   <GoRocket />
                 </span>
-                Built a personal brand using a custom-named blog (e.g.,
-                blog.yourname.com).Showcased your knowledge and skills through
-                public writing.Shared blog links on LinkedIn, GitHub, and resume
-                to show expertise.
+                Built a personal brand using a custom-named blog (e.g., blog.yourname.com). Showcased your knowledge and
+                skills through public writing. Shared blog links on LinkedIn, GitHub, and resume to show expertise.
               </li>
               <li className="flex items-start">
                 <span className="text-black mr-2">
                   <GoRocket />
                 </span>
-                Gained hands-on experience with Hashnode, a powerful blogging
-              </li>
-              <li className="flex items-start">
-                <span className="text-black mr-2">
-                  <GoRocket />
-                </span>
-                platform that simplifies the process of creating and managing
+                Gained hands-on experience with Hashnode, a powerful blogging platform that simplifies the process of
+                creating and managing content.
               </li>
             </ul>
 
-            <h1 className="text-3xl mb-2">Description</h1>
-            <ul className="space-y-2 text-md text-black mb-6">
+            <h3 className="text-xl sm:text-2xl mb-2">Description</h3>
+            <ul className="space-y-2 text-sm sm:text-base text-black mb-4 sm:mb-6">
               <li className="flex items-start">
                 <span className="text-black mr-2">
                   <GoRocket />
                 </span>
-                Set up a developer blog with a custom domain
-                (blog.cloudkinshuk.in)
+                Set up a developer blog with a custom domain (blog.cloudkinshuk.in)
               </li>
               <li className="flex items-start">
                 <span className="text-black mr-2">
                   <GoRocket />
                 </span>
-                Configured DNS records (A, CNAME, TXT) in Route 53 for domain
-                verification and HTTPS
+                Configured DNS records (A, CNAME, TXT) in Route 53 for domain verification and HTTPS
               </li>
               <li className="flex items-start">
                 <span className="text-black mr-2">
                   <GoRocket />
                 </span>
-                Publishing technical articles covering AWS, serverless
-                architecture, and React development
+                Publishing technical articles covering AWS, serverless architecture, and React development
               </li>
             </ul>
 
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              <h4 className="text-sm font-bold text-gray-900 mb-3">
-                Technologies:
-              </h4>
+            <div className="mt-6 pt-4 border-t border-gray-200">
+              <h4 className="text-sm font-bold text-gray-900 mb-2">Technologies:</h4>
               <div className="flex flex-wrap gap-2 mt-2">
-                {[
-                  "Hashnode",
-                  "Amazon Route 53",
-                  "Hostinger",
-                  "DNS Management",
-                  "Custom Domain",
-                  "CDN",
-                ].map((tech, index) => (
-                  <motion.span
-                    key={index}
-                    whileHover={{ y: -2 }}
-                    className="inline-block text-xs bg-yellow-100 border border-black font-bold px-3 py-1 text-gray-700 rounded-sm"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
+                {["Hashnode", "Amazon Route 53", "Hostinger", "DNS Management", "Custom Domain", "CDN"].map(
+                  (tech, index) => (
+                    <span
+                      key={index}
+                      className="inline-block text-xs bg-yellow-100 border border-black font-bold px-3 py-1 text-gray-700 rounded-sm hover:-translate-y-1 transition-transform duration-200"
+                    >
+                      {tech}
+                    </span>
+                  ),
+                )}
               </div>
             </div>
-          </motion.div>
-        </motion.section>
+          </div>
+        </section>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
-        {/* reduced py-16 to py-8 */}
-        <motion.section
-          id="projects"
-          className="mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-3xl sm:text-4xl  mb-8 sm:mb-10 flex items-center text-gray-900">
-            <span className="w-6 h-px bg-gray-400 mr-3"></span>
-            Open to Collaborate / Work :
-          </h2>
-
-          <motion.div
-            className="relative pl-8 mt-6 py-8 px-6 sm:px-8 bg-white text-lg sm:text-xl rounded-lg shadow-lg"
-            whileHover="hover"
-            initial="rest"
-          >
-            <span className="absolute left-0 top-0 w-px h-full bg-gray-300"></span>
-            <span className="absolute left-0 top-6 w-1 h-1 bg-gray-500 rounded-full"></span>
-
-            <p className="text-black mb-6 leading-relaxed">
-              Hey there! I'm always open to connecting with fellow students,
-              developers, or anyone curious about tech, cloud, or just building
-              cool things together. Whether you're just starting out, exploring
-              new paths, or already deep into your journey — feel free to reach
-              out!
-            </p>
-            <p className="text-black mb-6 leading-relaxed">
-              I believe learning is better when shared. So if you’ve got ideas,
-              want to brainstorm, collab on a project, or simply talk tech (or
-              life), I’m just a message away. Let’s grow, learn, and build
-              something meaningful — together.
-            </p>
-
-            <div className="space-y-2">
-              <h3>
-                <span className="font-semibold">Email: </span>{" "}
-                kinshuk25jan04@gmail.com
-              </h3>
-              <h3>
-                <span className="font-semibold">Alternate Email: </span>{" "}
-                jkinshuk@outlook.com
-              </h3>
-              <h3>
-                <span className="font-semibold">Phone No: </span> +91 9172702501
-              </h3>
-
-              <div className="flex flex-wrap items-center gap-5 sm:gap-8 p-4 sm:p-6">
-                <a
-                  href="https://github.com/kinshukjainn"
-                  className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
-                  aria-label="GitHub"
-                >
-                  <span className="underline">@github</span>
-                  <FaGithub size={24} />
-                </a>
-                <a
-                  href="https://linkedin.com/in/kinshukjainn/"
-                  className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <span className="underline">@linkedin</span>
-                  <FaLinkedin size={24} />
-                </a>
-                <a
-                  href="https://x.com/realkinshuk04"
-                  className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
-                  aria-label="Twitter"
-                >
-                  <span className="underline">@twitter</span>
-                  <FaTwitter size={24} />
-                </a>
-                <a
-                  href="https://instagram.com/kinshukjain._/"
-                  className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
-                  aria-label="instagram"
-                >
-                  <span className="underline">@instagram</span>
-                  <FaInstagram size={24} />
-                </a>
-                <a
-                  href="https://blog.cloudkinshuk.in"
-                  className="flex items-center space-x-2 text-gray-700 hover:text-gray-900 transition-colors"
-                  aria-label="instagram"
-                >
-                  <span className="underline">@Hashnode Blogs</span>
-                  <FaHashnode size={24} />
-                </a>
-                <button
-                  onClick={handleClick}
-                  className="underline flex mr-2 cursor-pointer items-center space-x-2"
-                >
-                  <FaWhatsapp className=""/>
-                @WhatsApp
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        </motion.section>
-      </div>
-
-      <motion.div
-        className="border-t border-gray-200 mt-12 py-16 bg-white"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8">
+      <div className="border-t border-gray-200 mt-8 py-8 sm:py-12 ">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-6">
             {/* Left Content */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
                 <FaCode className="text-gray-800 text-lg" />
-                <h3 className="text-4xl font-medium text-gray-900">
-                  Fork it. Star it. Make it yours.
-                </h3>
+                <h3 className="text-xl sm:text-2xl font-medium text-gray-900">Fork it. Star it. Make it yours.</h3>
               </div>
 
-              <p className="text-sm text-gray-600 max-w-3xl leading-relaxed">
-                This portfolio is fully open-source and free to fork. Found the
-                design helpful? Feel free to use or modify it for your own site.
-                If it saved you time or gave you a good starting point, a ⭐
-                would mean a lot. Contributions, feedback, and improvements are
-                always welcome.
+              <p className="text-xs sm:text-sm text-gray-600 max-w-3xl leading-relaxed">
+                This portfolio is fully open-source and free to fork. Found the design helpful? Feel free to use or
+                modify it for your own site. If it saved you time or gave you a good starting point, a ⭐ would mean a
+                lot. Contributions, feedback, and improvements are always welcome.
               </p>
 
-              <div className="flex gap-6">
-                <motion.div
-                  className="flex items-center text-xs text-gray-500"
-                  whileHover={{ x: 5, color: "#000" }}
-                >
+              <div className="flex gap-4 sm:gap-6">
+                <div className="flex items-center text-xs text-gray-500 hover:text-black transition-colors duration-200">
                   <FaStar className="text-yellow-600 mr-2" />
                   <span>Star to show love</span>
-                </motion.div>
-                <motion.div
-                  className="flex items-center text-xs text-gray-500"
-                  whileHover={{ x: 5, color: "#000" }}
-                >
+                </div>
+                <div className="flex items-center text-xs text-gray-500 hover:text-black transition-colors duration-200">
                   <FaCodeBranch className="text-gray-500 mr-2" />
                   <span>Fork and remix</span>
-                </motion.div>
+                </div>
               </div>
             </div>
 
             {/* Right Button */}
-            <motion.a
+            <a
               href="https://github.com/kinshukjain01/kinshukkportfolio"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              className="flex items-center gap-3 text-gray-800 font-medium py-3 px-5 border border-gray-300 rounded-md bg-gray-50 text-base transition-all duration-200 hover:border-gray-800 hover:bg-gray-100"
+              className="flex items-center gap-2 text-gray-800 font-medium py-2 px-4 border border-gray-300 rounded-md bg-gray-50 text-sm transition-all duration-200 hover:border-gray-800 hover:bg-gray-100"
             >
               <FaGithub className="text-lg" />
               <span>View Repository</span>
               <HiOutlineExternalLink className="text-sm" />
-            </motion.a>
+            </a>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Footer */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="bg-gray-50 border-t border-gray-200 py-12"
-      >
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-sm text-gray-600">
+      <footer className="bg-gray-50 border-t border-gray-200 py-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <p className="text-xs sm:text-sm text-gray-600">
             Want to explore my Thinking? click on "Blogs" to Check out the{" "}
             <Link
               to="/blogs"
@@ -1050,9 +645,9 @@ const MainContent = () => {
             Page
           </p>
         </div>
-      </motion.footer>
+      </footer>
     </div>
-  );
-};
+  )
+}
 
-export default MainContent;
+export default MainContent
