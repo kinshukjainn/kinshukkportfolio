@@ -99,13 +99,13 @@ const MainContent = () => {
           <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl leading-relaxed">
            Aspiring Cloud Engineer | Tech Enthusiast | Open to Collaborate
           </p>
-          <Link
-            to="/blogs"
+          <a
+            href="https://blog.cloudkinshuk.in"
             className="inline-flex items-center p-2 px-4 bg-black rounded-md text-gray-100 text-base font-medium transition-all duration-200 hover:bg-gray-800"
           >
             <MdOutlineViewInAr className="text-lg mr-2" />
             View My blogs
-          </Link>
+          </a>
         </div>
       </header>
 
