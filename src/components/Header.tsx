@@ -4,8 +4,6 @@ import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { FaBars, FaTimes } from "react-icons/fa"
 import { AnimatePresence } from "framer-motion"
-import { FaHashnode } from "react-icons/fa6"
-import { GoPersonFill } from "react-icons/go"
 import profile from "../assets/image.jpg"
 
 const Header = () => {
@@ -31,7 +29,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-[#f6fdd9] font-sans p-4 flex flex-col sm:flex-row justify-between items-center overflow-hidden">
+    <header className="bg-[#171717]  font-poppins p-4 flex flex-col sm:flex-row justify-between items-center overflow-hidden">
       <div className="flex items-center w-full sm:w-auto justify-between mb-3 sm:mb-0 relative z-10">
         {/* Avatar Section */}
         <div className="relative mr-3 flex-shrink-0">
@@ -58,8 +56,8 @@ const Header = () => {
 
         {/* Dynamic Portfolio Name with cloud theme */}
         <div className="flex items-center">
-          <h1 className="text-lg sm:text-xl font-semibold tracking-wide text-black">
-            <Link to="/" onClick={closeMenu} className="hover:text-gray-900 transition-colors duration-300">
+          <h1 className="text-lg sm:text-xl font-semibold tracking-wide text-white">
+            <Link to="/" onClick={closeMenu} className="hover:text-gray-200 transition-colors duration-300">
               CloudKinshuk / {getPathText()}
             </Link>
           </h1>
@@ -67,7 +65,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="sm:hidden text-2xl text-white focus:outline-none bg-black hover:bg-black rounded-lg p-2"
+          className="sm:hidden text-2xl text-white focus:outline-none rounded-lg p-2"
           onClick={toggleMenu}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
@@ -82,7 +80,7 @@ const Header = () => {
       {/* Mobile Menu with improved animation */}
       <AnimatePresence>
         {menuOpen && (
-          <div className="w-full overflow-hidden sm:hidden bg-[#f6fdd9] rounded-md mt-2">
+          <div className="w-full overflow-hidden sm:hidden bg-[#202124] rounded-4xl mt-2">
             <div className="pt-3 pb-2 flex flex-col items-center gap-4">
               <NavLinks closeMenu={closeMenu} />
             </div>
@@ -110,23 +108,33 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       <div>
         <a
           href="https://blog.cloudkinshuk.in"
-          className="flex underline items-center gap-2 text-black text-lg md:text-base"
+          className="flex  items-center gap-2 text-white text-lg md:text-base"
           onClick={closeMenu}
         >
-          <FaHashnode className="text-lg text-black" />
           <span className="relative group">
-            @checkout My Blogs
+            Blogs
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300" />
           </span>
         </a>
       </div>
       <div>
         <Link
-          to="/aboutme"
-          className="flex items-center gap-2 text-black text-lg md:text-base transition-colors duration-300"
+          to="/my-personal-learning-resources"
+          className="flex items-center gap-2 text-white text-lg md:text-base transition-colors duration-300"
           onClick={closeMenu}
         >
-          <GoPersonFill className="text-lg text-black" />
+          <span className="relative group">
+            Learning.Hub
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300" />
+          </span>
+        </Link>
+      </div>
+      <div>
+        <Link
+          to="/aboutme"
+          className="flex items-center gap-2 text-white text-lg md:text-base transition-colors duration-300"
+          onClick={closeMenu}
+        >
           <span className="relative group">
             About me
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300" />

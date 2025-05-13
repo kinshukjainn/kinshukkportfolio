@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import {
   FaFilm,
   FaGamepad,
-  FaMusic,
 } from "react-icons/fa";
 import { SiMyanimelist } from "react-icons/si";
 
@@ -23,7 +22,7 @@ const AboutMe = () => {
       icon: <FaFilm className="text-2xl text-purple-500" />,
       title: "Movies",
       description:
-        "I'm a huge fan of sci-fi and psychological thrillers. Christopher Nolan and Denis Villeneuve are among my favorite directors. I enjoy films that make me think and leave me contemplating long after they end.",
+        "I'm a huge fan of sci-fi and psychological thrillers. Marvel and DC are among my favorite Genre of movies . I enjoy films that make me think and leave me contemplating long after they end.",
     },
     {
       id: 2,
@@ -38,13 +37,6 @@ const AboutMe = () => {
       title: "Gaming",
       description:
         "I enjoy both indie and AAA titles, especially RPGs and strategy games. Games with compelling narratives and innovative mechanics always catch my attention. For ex : Call of Duty Mobile, Valorant, and Warzone.",
-    },
-    {
-      id: 5,
-      icon: <FaMusic className="text-2xl text-green-500" />,
-      title: "Music",
-      description:
-        "My playlist is quite eclectic - from classical to electronic and everything in between. Music helps me focus when coding and unwind after a long day.",
     },
   ];
 
@@ -70,7 +62,7 @@ const AboutMe = () => {
   };
 
   return (
-    <div className="min-h-screen font-sans bg-[#f6fdd9] text-black py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen  font-poppins bg-[#171717] text-black py-12 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -85,8 +77,8 @@ const AboutMe = () => {
                 onClick={() => setActiveSection("about")}
                 className={`px-4 py-2 rounded-md transition-all ${
                   activeSection === "about"
-                    ? "text-gray-700 text-black"
-                    : "text-gray-900 hover:text-black"
+                    ? "text-yellow-500"
+                    : "text-white "
                 }`}
               >
                 About Me
@@ -97,8 +89,8 @@ const AboutMe = () => {
                 onClick={() => setActiveSection("interests")}
                 className={`px-4 py-2 rounded-md transition-all ${
                   activeSection === "interests"
-                    ? "text-grey-700 text-black"
-                    : "text-gray-900 hover:text-black"
+                     ?  "text-yellow-500 "
+                    : "text-white "
                 }`}
               >
                 My Interests
@@ -108,7 +100,7 @@ const AboutMe = () => {
         </nav>
 
         {/* Content */}
-        <div className="bg-[#f6fdd9] bg-opacity-50 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+        <div className="bg-[#202124] rounded-2xl p-8 shadow-xl">
           {/* About Me Section */}
           {activeSection === "about" && (
             <motion.div
@@ -121,7 +113,7 @@ const AboutMe = () => {
 
                 <div className="lg:text-left text-center">
                   <motion.h1
-                    className="text-4xl  text-black"
+                    className="text-4xl  text-yellow-500"
                     animate={{
                       backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                     }}
@@ -136,7 +128,7 @@ const AboutMe = () => {
                   >
                     Hi, I'm Kinshuk Jain
                   </motion.h1>
-                  <p className="text-gray-900 text-lg mt-2">
+                  <p className="text-green-400 text-lg mt-2">
                     Aspiring Cloud Engineer & DevOps Enthusiast
                   </p>
                   <motion.div
@@ -153,7 +145,7 @@ const AboutMe = () => {
                 </div>
               </div>
 
-              <motion.div variants={fadeIn} className="space-y-6 text-gray-900">
+              <motion.div variants={fadeIn} className="space-y-6 text-white">
                 <p className="text-lg leading-relaxed">
                   I’m Kinshuk, a third-year Electrical Engineering student from
                   a tier-3 college in India, but my passion lies in solving
@@ -193,7 +185,7 @@ const AboutMe = () => {
             >
               <motion.h2
                 variants={fadeIn}
-                className="text-2xl  text-4xl text-center mb-8 text-grey-800"
+                className="text-2xl  text-4xl text-center mb-8 text-orange-500"
               >
                 What I Love & How I Spend My Free Time
               </motion.h2>
@@ -210,11 +202,11 @@ const AboutMe = () => {
                   >
                     <div className="flex items-center mb-4">
                       {interest.icon}
-                      <h3 className="text-xl  ml-3 text-black">
+                      <h3 className="text-xl  ml-3 text-white">
                         {interest.title}
                       </h3>
                     </div>
-                    <p className="text-gray-900">{interest.description}</p>
+                    <p className="text-gray-100">{interest.description}</p>
                   </motion.div>
                 ))}
               </motion.div>

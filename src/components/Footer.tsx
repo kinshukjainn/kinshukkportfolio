@@ -12,7 +12,7 @@ const Footer = () => {
             <FaCloud />
           </span>
           <h2 className="text-xl  text-gray-100">
-            CloudKinshuk / Personal Info 
+            CloudKinshuk / Portfolio 
           </h2>
         </div>
 
