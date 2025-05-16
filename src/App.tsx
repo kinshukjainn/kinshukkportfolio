@@ -7,7 +7,7 @@ import Learningresources from "./components/Learningresources";
 function App() {
   return ( 
     <Router>
-      <Header />
+      <Header /> 
       <Routes>
         <Route path="/" element={<MainContent />} />
         <Route path="/my-personal-learning-resources" element={<Learningresources />} />

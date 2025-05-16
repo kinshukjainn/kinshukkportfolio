@@ -1,18 +1,81 @@
 import { useState, useEffect } from "react";
-import { FiExternalLink, FiSearch, FiX} from "react-icons/fi";
+import { FiExternalLink, FiSearch, FiX } from "react-icons/fi";
 
 const Learningresources = () => {
   // Sample learning resources
   const resources = [
-    { id: 1, title: "Python Tutorial : One shot part-1 Hitesh Chaudhary", link: "https://reactjs.org/docs/getting-started.html" },
-    { id: 2, title: "Python tutorial : One short part - 2 Hitesh Chaudhary", link: "https://tailwindcss.com/docs" },
-    { id: 3, title: "React Js Tutorial : One Shot Part - 1 Hitesh Chaudhary", link: "https://www.typescriptlang.org/docs/" },
-    { id: 4, title: "javascript tutorial one shot part -1 Hitesh Chaudhary", link: "https://vitejs.dev/guide/" },
-    { id: 5, title: "Javasript tutorial one shot part -2 Hitesh Chaudhary", link: "https://reactjs.org/docs/hooks-intro.html" },
-    { id: 6, title: "React Js Tutorial one short Part -2 Hitesh chaudhary ", link: "https://javascript.info/" },
-    { id: 7, title: "Tailwindcss Tutorial one short : Hitesh chaudhary", link: "https://web.dev/accessibility/" },
-    { id: 8, title: "Docker tutorial : Complete : piyush Gargh", link: "https://css-tricks.com/snippets/css/complete-guide-grid/" },
-    { id: 9, title: "Next Js tutorial : One shot : Project Based Learning : Hitesh chaudhary", link: "https://reactrouter.com/en/main" },
+    {
+      id: 1,
+      title: "Python Tutorial : One shot part-1 Hitesh Chaudhary",
+      link: "https://youtu.be/v9bOWjwdTlg?si=ZUQk3quntrvz4Gs6",
+    },
+    {
+      id: 2,
+      title: "Python tutorial : One short part - 2 Hitesh Chaudhary",
+      link: "https://youtu.be/Cri8__uGk-g?si=OvwsHDYqCV3olBqS",
+    },
+    {
+      id: 3,
+      title:
+        "Django (Backend Framework) tutorial : One short part - 2 Hitesh Chaudhary",
+      link: "https://youtu.be/Cri8__uGk-g?si=OvwsHDYqCV3olBqS",
+    },
+    {
+      id: 4,
+      title: "React Js Tutorial : One Shot Part - 1 Hitesh Chaudhary",
+      link: "https://youtu.be/FxgM9k1rg0Q?si=N5atTQ8hcZuTssV3",
+    },
+    {
+      id: 5,
+      title: "javascript tutorial one shot part -1 Hitesh Chaudhary",
+      link: "https://youtu.be/sscX432bMZo?si=MuUHInYGXrLsI7u1",
+    },
+    {
+      id: 6,
+      title: "Javasript tutorial one shot part -2 Hitesh Chaudhary",
+      link: "https://youtu.be/_TjtAyMkiTI?si=5mKoygmwk6bQGAdZ",
+    },
+    {
+      id: 7,
+      title: "React Js Tutorial one short Part -2 Hitesh chaudhary ",
+      link: "https://youtu.be/IdlF1zsUN3M?si=lA9uwUp0MMuKIaDs",
+    },
+    {
+      id: 8,
+      title: "Tailwindcss Tutorial one short : Hitesh chaudhary",
+      link: "https://youtu.be/_9mTJ84uL1Q?si=GO-wN1KyX5P7YUwQ",
+    },
+    {
+      id: 9,
+      title: "Docker tutorial : Complete : piyush Gargh",
+      link: "https://youtu.be/31k6AtW-b3Y?si=L-x0hChsen7A3-3Q",
+    },
+    {
+      id: 10,
+      title:
+        "Next Js tutorial : One shot : Project Based Learning : Hitesh chaudhary",
+      link: "https://reactrouter.com/en/main",
+    },
+    {
+      id: 11,
+      title: "Docker tutorial : One shot  part -2  : Piyush gargh",
+      link: "https://youtu.be/xPT8mXa-sJg?si=g7JprItKmCV93C_T",
+    },
+    {
+      id: 12,
+      title: "HTML Tutotrial : Code with Harry ",
+      link: "https://youtu.be/k2DSi1zGEc8?si=oR7tPbvkWGAFaokf",
+    },
+    {
+      id: 13,
+      title: "Complete Backend (MERN) One shot : Part 1 Tutotrial : Hitesh chaudhary",
+      link: "https://youtu.be/7fjOw8ApZ1I?si=bykVKQiG6RV5OLuL",
+    },
+    {
+      id: 14,
+      title: "Complete Backend (MERN) One shot : Part 2 Tutotrial : Hitesh chaudhary  ",
+      link: "https://youtu.be/8k-kK3tsJFY?si=RXBUEShmEyQ_M85Q",
+    },
   ];
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,20 +94,20 @@ const Learningresources = () => {
   }, []);
 
   // Filter resources based on search term
-  const filteredResources = resources.filter(resource => 
+  const filteredResources = resources.filter((resource) =>
     resource.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Truncate text helper
-interface TruncateTextParams {
+  interface TruncateTextParams {
     text: string;
     maxLength: number;
-}
+  }
 
-const truncateText = ({ text, maxLength }: TruncateTextParams): string => {
+  const truncateText = ({ text, maxLength }: TruncateTextParams): string => {
     if (text.length <= maxLength) return text;
-    return text.slice(0, maxLength) + '...';
-};
+    return text.slice(0, maxLength) + "...";
+  };
 
   // Determine link display length based on screen size
   const getLinkDisplayLength = () => {
@@ -79,9 +142,9 @@ const truncateText = ({ text, maxLength }: TruncateTextParams): string => {
               className="w-full bg-transparent focus:outline-none text-white text-lg sm:text-base"
             />
             {searchTerm && (
-              <button 
-                onClick={() => setSearchTerm("")} 
-                className="text-yellow-500 p-2 ml-1 flex-shrink-0" 
+              <button
+                onClick={() => setSearchTerm("")}
+                className="text-yellow-500 p-2 ml-1 flex-shrink-0"
                 title="Clear search"
                 aria-label="Clear search"
               >
@@ -95,8 +158,8 @@ const truncateText = ({ text, maxLength }: TruncateTextParams): string => {
         <div className="space-y-4 sm:space-y-6">
           {filteredResources.length > 0 ? (
             filteredResources.map((resource) => (
-              <div 
-                key={resource.id} 
+              <div
+                key={resource.id}
                 className="group border-b-3 border-yellow-500 py-3 sm:py-4 transition-all"
               >
                 <div className="flex cursor-pointer justify-between items-start">
@@ -105,26 +168,34 @@ const truncateText = ({ text, maxLength }: TruncateTextParams): string => {
                       {resource.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-white mt-1 truncate">
-                      {truncateText({ text: resource.link, maxLength: getLinkDisplayLength() })}
+                      {truncateText({
+                        text: resource.link,
+                        maxLength: getLinkDisplayLength(),
+                      })}
                     </p>
                   </div>
-                  <a 
-                    href={resource.link} 
-                    target="_blank" 
+                  <a
+                    href={resource.link}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="text-yellow-500 hover:text-blue-600 transition-colors p-2 flex-shrink-0 touch-action-manipulation"
                     title={`Visit ${resource.title}`}
                     aria-label={`Visit ${resource.title}`}
                   >
-                    <FiExternalLink size={16} className="sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                    <FiExternalLink
+                      size={16}
+                      className="sm:w-4 sm:h-4 md:w-5 md:h-5"
+                    />
                   </a>
                 </div>
               </div>
             ))
           ) : (
             <div className="text-center py-8 sm:py-12">
-              <p className="text-white text-lg sm:text-base">No resources found matching "{searchTerm}"</p>
-              <button 
+              <p className="text-white text-lg sm:text-base">
+                No resources found matching "{searchTerm}"
+              </p>
+              <button
                 onClick={() => setSearchTerm("")}
                 className="mt-4 text-white bg-blue-800 hover:bg-blue-600 cursor-pointer rounded-full text-sm sm:text-base py-2 px-4 touch-action-manipulation"
               >
@@ -137,7 +208,9 @@ const truncateText = ({ text, maxLength }: TruncateTextParams): string => {
         {/* Empty state for when there are no items */}
         {resources.length === 0 && (
           <div className="text-center py-8 sm:py-12">
-            <p className="text-yellow-500 text-sm sm:text-base">No learning resources available yet.</p>
+            <p className="text-yellow-500 text-sm sm:text-base">
+              No learning resources available yet.
+            </p>
           </div>
         )}
       </main>

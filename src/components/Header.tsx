@@ -17,6 +17,7 @@ const Header = () => {
   const getPathText = () => {
     const pathname = location.pathname
 
+    // custom route names changes for heading  : 
     if (pathname === "/") {
       return "Profile"
     } else if (pathname === "/blogs" || pathname.startsWith("/blogs/")) {
@@ -24,7 +25,7 @@ const Header = () => {
     } else if (pathname === "/aboutme" || pathname.startsWith("/aboutme/")) {
       return "Personal Info"
     } else {
-      return "Profile" // Default fallback
+      return "Profile" 
     }
   }
 
@@ -108,12 +109,11 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       <div>
         <a
           href="https://blog.cloudkinshuk.in"
-          className="flex  items-center gap-2 text-white text-lg md:text-base"
+          className="flex  border-2 border-gray-600  px-2 py-1 rounded-full items-center gap-2 text-gray-300 hover:border-2 hover:border-white hover:text-white text-lg md:text-base"
           onClick={closeMenu}
         >
           <span className="relative group">
             Blogs
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300" />
           </span>
         </a>
       </div>
@@ -145,4 +145,5 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
   )
 }
 
-export default Header
+export default Header;
+

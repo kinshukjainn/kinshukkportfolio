@@ -132,7 +132,7 @@ const AboutMe = () => {
                     Aspiring Cloud Engineer & DevOps Enthusiast
                   </p>
                   <motion.div
-                    className="mt-4 h-1 w-24 bg-black mx-auto lg:mx-0"
+                    className="mt-4 h-2 w-24 bg-white rounded-full mx-auto lg:mx-0"
                     animate={{
                       width: ["24px", "150px", "24px"],
                     }}
