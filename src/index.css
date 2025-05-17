@@ -4,8 +4,7 @@
 @import "tailwindcss";
 
 body {
-  background-color: white ; /* Dark background */
+  background-color: black ; /* Dark background */
   color: black; /* Default text color */
-  font-family: "Poppins", sans-serif;
 }
 

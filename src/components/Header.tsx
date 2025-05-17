@@ -19,11 +19,11 @@ const Header = () => {
 
     // custom route names changes for heading  : 
     if (pathname === "/") {
-      return "Profile"
-    } else if (pathname === "/blogs" || pathname.startsWith("/blogs/")) {
-      return "Blogs"
+      return "Home"
+    } else if (pathname === "/my-personal-learning-resources" || pathname.startsWith("/my-personal-learning-resources/")) {
+      return "Learning.Hub"
     } else if (pathname === "/aboutme" || pathname.startsWith("/aboutme/")) {
-      return "Personal Info"
+      return "Me"
     } else {
       return "Profile" 
     }
@@ -59,7 +59,7 @@ const Header = () => {
         <div className="flex items-center">
           <h1 className="text-lg sm:text-xl font-semibold tracking-wide text-white">
             <Link to="/" onClick={closeMenu} className="hover:text-gray-200 transition-colors duration-300">
-              CloudKinshuk / {getPathText()}
+              Kinshuk Jain  / {getPathText()}
             </Link>
           </h1>
         </div>
@@ -109,7 +109,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       <div>
         <a
           href="https://blog.cloudkinshuk.in"
-          className="flex  border-2 border-gray-600  px-2 py-1 rounded-full items-center gap-2 text-gray-300 hover:border-2 hover:border-white hover:text-white text-lg md:text-base"
+          className="flex underline   px-2 py-1  items-center gap-2 text-gray-300  text-lg md:text-base"
           onClick={closeMenu}
         >
           <span className="relative group">
@@ -123,9 +123,8 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
           className="flex items-center gap-2 text-white text-lg md:text-base transition-colors duration-300"
           onClick={closeMenu}
         >
-          <span className="relative group">
+          <span className=" hover:underline relative group">
             Learning.Hub
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300" />
           </span>
         </Link>
       </div>
@@ -135,9 +134,8 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
           className="flex items-center gap-2 text-white text-lg md:text-base transition-colors duration-300"
           onClick={closeMenu}
         >
-          <span className="relative group">
+          <span className="hover:underline relative group">
             About me
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300" />
           </span>
         </Link>
       </div>

@@ -60,24 +60,24 @@ const MainContent = () => {
 
   // Tech stack data
   const techStack = [
-    { icon: <FaAws className="text-yellow-500" />, name: "AWS Cloud" },
-    { icon: <FaReact className="text-yellow-500" />, name: "React" },
-    { icon: <FaPython className="text-yellow-500" />, name: "Python / Boto3" },
+    { icon: <FaAws className="text-gray-300" />, name: "AWS Cloud" },
+    { icon: <FaReact className="text-gray-300" />, name: "React" },
+    { icon: <FaPython className="text-gray-300" />, name: "Python / Boto3" },
     {
-      icon: <SiTailwindcss className="text-yellow-500" />,
+      icon: <SiTailwindcss className="text-gray-300" />,
       name: "TailwindCSS",
     },
-    { icon: <FaDocker className="text-yellow-500" />, name: "Docker" },
-    { icon: <SiKubernetes className="text-yellow-500" />, name: "Kubernetes" },
-    { icon: <SiTerraform className="text-yellow-500" />, name: "Terraform" },
+    { icon: <FaDocker className="text-gray-300" />, name: "Docker" },
+    { icon: <SiKubernetes className="text-gray-300" />, name: "Kubernetes" },
+    { icon: <SiTerraform className="text-gray-300" />, name: "Terraform" },
   ];
 
   // tools stack
   const toolsStack = [
-    { icon: <FaDiscord className="text-yellow-500" />, name: "Discord" },
-    { icon: <SiCanva className="text-yellow-500" />, name: "Canva" },
-    { icon: <FaGithub className="text-yellow-500" />, name: "Github" },
-    { icon: <FaLinux className="text-yellow-500" />, name: "Linux" },
+    { icon: <FaDiscord className="text-" />, name: "Discord" },
+    { icon: <SiCanva className="text-" />, name: "Canva" },
+    { icon: <FaGithub className="text-" />, name: "Github" },
+    { icon: <FaLinux className="text-" />, name: "Linux" },
   ];
 
   // Certifications data
@@ -122,7 +122,7 @@ const MainContent = () => {
   };
 
   return (
-    <div className="bg-[#171717] font-meduim  text-white min-h-screen ">
+    <div className="bg-[#171717] text-white  text-white min-h-screen ">
       {/* Hero section */}
       <motion.header
         className="py-16 md:py-24 relative overflow-hidden"
@@ -132,7 +132,7 @@ const MainContent = () => {
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl font-meduim tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500"
+            className="text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -154,7 +154,7 @@ const MainContent = () => {
           >
             <motion.a
               href="https://blog.cloudkinshuk.in"
-              className="inline-flex items-center p-2 px-2 bg-blue-600 rounded-[4px] text-white text-base font-medium transition-all duration-200"
+              className="inline-flex text-sm items-center p-1 px-2 bg-blue-600  text-white text-base rounded-lg transition-all duration-200"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -177,7 +177,7 @@ const MainContent = () => {
           variants={fadeInUp}
         >
           <motion.h2
-            className="text-4xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-blue-500 "
+            className="text-4xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-white "
             variants={fadeInUp}
           >
             <span className=" mr-3">
@@ -187,7 +187,7 @@ const MainContent = () => {
           </motion.h2>
 
           <motion.div
-            className="relative pl-6 sm:pl-8 mt-4 py-8 px-6 sm:px-8 text-base rounded-md border-2 border-gray-700 bg-[#202124]  shadow-lg"
+            className="relative pl-6 sm:pl-8 mt-4 py-8 px-6 sm:px-8 text-base      shadow-lg"
             variants={fadeInUp}
           >
             <motion.p
@@ -196,18 +196,7 @@ const MainContent = () => {
             >
               Hey there! I'm always open to connecting with fellow peers,
               engineers, developers, or anyone curious about tech, cloud, or
-              just building cool things together. Whether you're just starting
-              out, exploring new paths, or already deep into your journey — feel
-              free to reach out!
-            </motion.p>
-            <motion.p
-              className="text-sm sm:text-base text-white mb-4 leading-relaxed"
-              variants={fadeInUp}
-            >
-              I believe learning is better when shared. So if you've got ideas,
-              want to brainstorm, collab on a project, or simply talk tech (or
-              life), I'm just a message away. Let's grow, learn, and build
-              something meaningful — together.
+              just building  things together. You can reach out from below sources 
             </motion.p>
 
             <motion.div
@@ -232,27 +221,27 @@ const MainContent = () => {
               >
                 {[
                   {
-                    icon: <FaGithub size={40} className="text-black" />,
+                    icon: <FaGithub size={24} className="text-white" />,
                     label: "",
                     url: "https://github.com/kinshukjainn",
                   },
                   {
-                    icon: <FaLinkedin size={40} className="text-blue-500" />,
+                    icon: <FaLinkedin size={24} className="text-white" />,
                     label: "",
                     url: "https://linkedin.com/in/kinshukjainn/",
                   },
                   {
-                    icon: <FaTwitter size={40} className="text-blue-500" />,
+                    icon: <FaTwitter size={24} className="text-white" />,
                     label: "",
                     url: "https://x.com/realkinshuk04",
                   },
                   {
-                    icon: <FaInstagram size={40} className="text-yellow-500" />,
+                    icon: <FaInstagram size={24} className="text-white" />,
                     label: "",
                     url: "https://instagram.com/kinshukjain._/",
                   },
                   {
-                    icon: <FaBlog size={40} className="text-purple-900" />,
+                    icon: <FaBlog size={24} className="text-white" />,
                     label: "",
                     url: "https://blog.cloudkinshuk.in",
                   },
@@ -278,8 +267,8 @@ const MainContent = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <FaWhatsapp
-                    size={40}
-                    className="mr-1 text-green-500 text-lg"
+                    size={24}
+                    className="mr-1 text-white text-lg"
                   />
                 </motion.button>
               </motion.div>
@@ -298,10 +287,10 @@ const MainContent = () => {
           variants={fadeInUp}
         >
           <motion.h2
-            className="text-4xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-blue-500 "
+            className="text-4xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-white "
             variants={fadeInUp}
           >
-            <span className="mr-3 text-blue-500">
+            <span className="mr-3 text-white">
               <FaHashtag />
             </span>
             Tech Stack
@@ -314,7 +303,7 @@ const MainContent = () => {
             {techStack.map((tech, index) => (
               <motion.div
                 key={index}
-                className="flex items-center space-x-3 py-3 px-4 bg-[#202124] rounded-md border-2 border-gray-700 transition-all duration-300"
+                className="flex items-center space-x-3 py-3 px-4     transition-all duration-300"
                 variants={fadeInUp}
                 whileHover="hover"
                 initial="rest"
@@ -338,10 +327,10 @@ const MainContent = () => {
           variants={fadeInUp}
         >
           <motion.h2
-            className="text-4xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-blue-500 "
+            className="text-4xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-white "
             variants={fadeInUp}
           >
-            <span className="mr-3 text-blue-500">
+            <span className="mr-3 text-white">
               <FaHashtag />
             </span>
             Tools
@@ -354,7 +343,7 @@ const MainContent = () => {
             {toolsStack.map((tech, index) => (
               <motion.div
                 key={index}
-                className="flex items-center space-x-3 py-3 px-4 bg-[#202124] rounded-md border-2 border-gray-700 transition-all duration-300"
+                className="flex items-center space-x-3 py-3 px-4     transition-all duration-300"
                 variants={fadeInUp}
                 whileHover="hover"
                 initial="rest"
@@ -379,10 +368,10 @@ const MainContent = () => {
           variants={fadeInUp}
         >
           <motion.h2
-            className="text-2xl sm:text-3xl mb-8 sm:mb-10 flex items-center text-blue-500 "
+            className="text-2xl sm:text-3xl mb-8 sm:mb-10 flex items-center text-white "
             variants={fadeInUp}
           >
-            <span className="mr-3 text-blue-500">
+            <span className="mr-3 text-white">
               <FaHashtag />
             </span>
             Cloud Certifications
@@ -390,7 +379,7 @@ const MainContent = () => {
 
           {/* AWS Journey Banner */}
           <motion.div
-            className="mb-8 sm:mb-12 relative pl-6 sm:pl-8 py-6 sm:py-8 px-6 sm:px-8 rounded-md border-2 border-gray-700 bg-[#202124]"
+            className="mb-8 sm:mb-12 relative pl-6 sm:pl-8 py-6 sm:py-8 px-6 sm:px-8    "
             variants={fadeInUp}
           >
             <motion.h3
@@ -423,7 +412,7 @@ const MainContent = () => {
             {certifications.map((cert, index) => (
               <motion.div
                 key={index}
-                className="relative pl-6 py-6 sm:py-8 px-6 rounded-md border-2 border-gray-700 bg-[#202124] transition-all duration-300"
+                className="relative pl-6 py-6 sm:py-8 px-6     transition-all duration-300"
                 variants={fadeInUp}
                 whileHover={cardHover.hover}
                 initial={cardHover.rest}
@@ -437,7 +426,7 @@ const MainContent = () => {
                 </div>
                 <motion.a
                   href={cert.link}
-                  className="text-white p-2 rounded-[4px]  bg-blue-600 text-sm inline-flex items-center mt-4 transition-colors duration-200 hover:bg-blue-700"
+                  className="text-white p-[4.5px] rounded-lg bg-blue-600 text-sm inline-flex items-center mt-4 transition-colors duration-200 hover:bg-blue-700"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -457,10 +446,10 @@ const MainContent = () => {
           variants={fadeInUp}
         >
           <motion.h2
-            className="text-2xl sm:text-3xl mb-8 sm:mb-10 flex items-center text-blue-500 "
+            className="text-2xl sm:text-3xl mb-8 sm:mb-10 flex items-center text-white "
             variants={fadeInUp}
           >
-            <span className="mr-3 text-blue-500">
+            <span className="mr-3 text-white">
               <FaHashtag />
             </span>
             Education
@@ -471,7 +460,7 @@ const MainContent = () => {
             variants={staggerContainer}
           >
             <motion.div
-              className="relative pl-6 sm:pl-8 p-6 sm:p-8 rounded-md border-2 border-gray-700 bg-[#202124] transition-all duration-300"
+              className="relative pl-6 sm:pl-8 p-6 sm:p-8     transition-all duration-300"
               variants={fadeInUp}
               whileHover={cardHover.hover}
               initial={cardHover.rest}
@@ -479,7 +468,7 @@ const MainContent = () => {
             >
               <div className="flex flex-col md:flex-row md:justify-between">
                 <div>
-                  <h3 className="text-lg sm:text-xl text-yellow-500 font-medium">
+                  <h3 className="text-lg sm:text-xl text-white font-medium">
                     Bachelor of Technology, Electrical Engineering
                   </h3>
                   <p className="text-white text-sm sm:text-base mt-2 sm:mt-3">
@@ -490,7 +479,7 @@ const MainContent = () => {
                   </p>
                 </div>
                 <div className="mt-3 md:mt-0">
-                  <span className="text-yellow-500 text-lg  bg-blue-900/30 px-3 py-1 rounded-[4px]">
+                  <span className="text-white font-semibold text-lg px-3 py-1 ">
                     2022 - 2026
                   </span>
                 </div>
@@ -498,7 +487,7 @@ const MainContent = () => {
             </motion.div>
 
             <motion.div
-              className="relative pl-6 sm:pl-8 p-6 sm:p-8 rounded-md border-2 border-gray-700 bg-[#202124] transition-all duration-300"
+              className="relative pl-6 sm:pl-8 p-6 sm:p-8     transition-all duration-300"
               variants={fadeInUp}
               whileHover={cardHover.hover}
               initial={cardHover.rest}
@@ -506,7 +495,7 @@ const MainContent = () => {
             >
               <div className="flex flex-col md:flex-row md:justify-between">
                 <div>
-                  <h3 className="text-lg sm:text-xl text-yellow-500 font-medium">
+                  <h3 className="text-lg sm:text-xl text-white font-medium">
                     Higher Secondary Education (XII)
                   </h3>
                   <p className="text-white text-sm sm:text-base mt-2 sm:mt-3">
@@ -517,7 +506,7 @@ const MainContent = () => {
                   </p>
                 </div>
                 <div className="mt-3 md:mt-0">
-                  <span className="text-yellow-500 text-lg  bg-blue-900/30 px-3 py-1 rounded-[4px]">
+                  <span className="text-white font-semibold text-lg   px-3 py-1 ">
                     2020 - 2022
                   </span>
                 </div>
@@ -536,10 +525,10 @@ const MainContent = () => {
           variants={fadeInUp}
         >
           <motion.h2
-            className="text-2xl sm:text-3xl mb-8 sm:mb-10 flex items-center text-blue-400 "
+            className="text-2xl sm:text-3xl mb-8 sm:mb-10 flex items-center text-white "
             variants={fadeInUp}
           >
-            <span className="mr-3 text-blue-500">
+            <span className="mr-3 text-white">
               <FaHashtag />
             </span>
             Projects / Work
@@ -547,7 +536,7 @@ const MainContent = () => {
 
           {/* Project 1 */}
           <motion.div
-            className="mb-12 sm:mb-16 relative pl-6 sm:pl-8 py-8 sm:py-10 px-6 sm:px-8 rounded-md border-2 border-gray-700 bg-[#202124] transition-all duration-300"
+            className="mb-12 sm:mb-16 relative pl-6 sm:pl-8 py-8 sm:py-10 px-6 sm:px-8     transition-all duration-300"
             variants={fadeInUp}
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.3 }}
@@ -561,7 +550,7 @@ const MainContent = () => {
               </motion.h3>
               <motion.a
                 href="https://cloudkinshuk.in"
-                className="inline-flex items-center text-xs text-white transition-all bg-blue-600 p-2 w-max rounded-[4px] hover:bg-blue-700 shadow-md hover:shadow-blue-500/20"
+                className="inline-flex items-center text-xs text-white transition-all bg-blue-600 p-1 rounded-lg w-max  hover:bg-blue-700"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -673,7 +662,7 @@ const MainContent = () => {
             </motion.div>
 
             <motion.div
-              className="mt-8 pt-6 border-t border-gray-700"
+              className="mt-8 pt-6 border-t "
               variants={fadeInUp}
             >
               <h4 className="text-sm font-medium text-yellow-500 mb-3">
@@ -693,7 +682,7 @@ const MainContent = () => {
                 ].map((tech, index) => (
                   <motion.span
                     key={index}
-                    className="inline-block text-xs bg-blue-900 px-3 py-1 text-white rounded-[4px] hover:-translate-y-1 transition-transform duration-200"
+                    className="inline-block text-xs bg-blue-900 px-3 py-1 text-white  hover:-translate-y-1 transition-transform duration-200"
                     variants={fadeInUp}
                     whileHover={{ y: -4 }}
                     transition={{ type: "spring", stiffness: 300 }}
@@ -707,7 +696,7 @@ const MainContent = () => {
 
           {/* SEO Section - Simplified text-based version */}
           <motion.div
-            className="max-w-4xl mx-auto rounded-md border-2 border-gray-700 bg-[#202124] p-6 sm:p-8 mb-12 sm:mb-16"
+            className="max-w-4xl mx-auto     p-6 sm:p-8 mb-12 sm:mb-16"
             variants={fadeInUp}
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.3 }}
@@ -721,7 +710,7 @@ const MainContent = () => {
               </motion.h3>
               <motion.a
                 href="https://pagespeed.web.dev/"
-                className="inline-flex items-center text-xs text-white transition-all bg-blue-600 p-2 w-max rounded-[4px] hover:bg-blue-700 shadow-md hover:shadow-blue-500/20"
+                className="inline-flex items-center text-xs text-white transition-all bg-blue-600 p-1 rounded-lg w-max  hover:bg-blue-700  hover:shadow-blue-500/20"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -799,7 +788,7 @@ const MainContent = () => {
                     variants={fadeInUp}
                   >
                     <div
-                      className={`w-3 h-3 ${item.color} rounded-[4px] mr-2`}
+                      className={`w-3 h-3 ${item.color}  mr-2`}
                     ></div>
                     <span className="text-white">{item.range}</span>
                   </motion.div>
@@ -810,7 +799,7 @@ const MainContent = () => {
 
           {/* Project 2 */}
           <motion.div
-            className="relative pl-6 sm:pl-8 py-8 sm:py-10 px-6 sm:px-8 rounded-md border-2 border-gray-700 bg-[#202124]  transition-all duration-300"
+            className="relative pl-6 sm:pl-8 py-8 sm:py-10 px-6 sm:px-8      transition-all duration-300"
             variants={fadeInUp}
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.3 }}
@@ -824,7 +813,7 @@ const MainContent = () => {
               </motion.h3>
               <motion.a
                 href="https://blog.cloudkinshuk.in"
-                className="inline-flex items-center text-xs text-white transition-all bg-blue-600 p-2 w-max rounded-[4px] hover:bg-blue-700 shadow-md hover:shadow-blue-500/20"
+                className="inline-flex items-center text-xs text-white transition-all bg-blue-600 p-1 rounded-lg w-max  hover:bg-blue-700  hover:shadow-blue-500/20"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -901,7 +890,7 @@ const MainContent = () => {
             </motion.ul>
 
             <motion.div
-              className="mt-8 pt-6 border-t border-gray-700"
+              className="mt-8 pt-6 border-t "
               variants={fadeInUp}
             >
               <h4 className="text-sm font-medium text-yellow-500 mb-3">
@@ -921,7 +910,7 @@ const MainContent = () => {
                 ].map((tech, index) => (
                   <motion.span
                     key={index}
-                    className="inline-block text-xs bg-blue-900/30   px-3 py-1 text-white rounded-[4px] hover:-translate-y-1 transition-transform duration-200"
+                    className="inline-block text-xs bg-blue-900/30   px-3 py-1 text-white  hover:-translate-y-1 transition-transform duration-200"
                     variants={fadeInUp}
                     whileHover={{ y: -4 }}
                     transition={{ type: "spring", stiffness: 300 }}
@@ -936,7 +925,7 @@ const MainContent = () => {
       </div>
 
       <motion.div
-        className=" rounded-md border-2 border-gray-700 mt-12 mb-4 mr-4 ml-4  py-12 sm:py-16 bg-[#202124]"
+        className="    mt-12 mb-4 mr-4 ml-4  py-12 sm:py-16 "
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -951,7 +940,7 @@ const MainContent = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <FaCode className="text-white text-xl" />
-                <h3 className="text-xl sm:text-2xl font-medium text-blue-500">
+                <h3 className="text-xl sm:text-2xl font-medium text-white">
                   Fork it. Star it. Make it your own — if it serves your purpose.
                 </h3>
               </div>

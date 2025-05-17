@@ -121,7 +121,7 @@ const Learningresources = () => {
     <div className="min-h-screen font-poppins  bg-[#171717] flex flex-col">
       {/* Navigation and Menu */}
       <header className="flex flex-col items-center pt-6 pb-4 sm:pt-8 sm:pb-6 px-4">
-        <h1 className="text-yellow-500  text-3xl sm:text-4xl md:text-5xl tracking-wide">
+        <h1 className="text-white  text-3xl sm:text-4xl md:text-5xl tracking-wide">
           Learning.hub
         </h1>
         <p className="text-white mt-2 text-center text-sm sm:text-base max-w-xs sm:max-w-sm md:max-w-md">
@@ -132,7 +132,7 @@ const Learningresources = () => {
       <main className="flex-grow max-w-xs sm:max-w-sm md:max-w-md lg:max-w-3xl mx-auto px-4 pb-8 sm:pb-12 w-full">
         {/* Search bar */}
         <div className="relative mb-6 sm:mb-8">
-          <div className="flex items-center border-b-2 border-yellow-500 py-2">
+          <div className="flex items-center border-b-2 border-white py-2">
             <FiSearch className="text-white mr-2 flex-shrink-0" />
             <input
               type="text"
@@ -160,7 +160,7 @@ const Learningresources = () => {
             filteredResources.map((resource) => (
               <div
                 key={resource.id}
-                className="group border-b-3 border-yellow-500 py-3 sm:py-4 transition-all"
+                className="group  py-3 sm:py-4 transition-all"
               >
                 <div className="flex cursor-pointer justify-between items-start">
                   <div className="flex-grow pr-2">
@@ -178,7 +178,7 @@ const Learningresources = () => {
                     href={resource.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-yellow-500 hover:text-blue-600 transition-colors p-2 flex-shrink-0 touch-action-manipulation"
+                    className="text-white hover:text-blue-200 transition-colors p-2 flex-shrink-0 touch-action-manipulation"
                     title={`Visit ${resource.title}`}
                     aria-label={`Visit ${resource.title}`}
                   >
