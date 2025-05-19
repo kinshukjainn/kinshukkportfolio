@@ -13,12 +13,10 @@ import {
   FaDiscord,
   FaLinkedin,
   FaTwitter,
-  FaBlog,
   FaHashtag,
 } from "react-icons/fa"
 import { BiLinkExternal } from "react-icons/bi"
 import { SiKubernetes, SiCanva, SiTerraform, SiTailwindcss } from "react-icons/si"
-import { MdDarkMode } from "react-icons/md"
 import { TbExternalLink } from "react-icons/tb"
 import { HiOutlineExternalLink } from "react-icons/hi"
 
@@ -51,13 +49,13 @@ export default function Portfolio() {
 
   // Tech stack data
   const techStack = [
-    { icon: <FaAws className="text-gray-300" />, name: "AWS Cloud" },
-    { icon: <FaReact className="text-gray-300" />, name: "React" },
-    { icon: <FaPython className="text-gray-300" />, name: "Python / Boto3" },
-    { icon: <SiTailwindcss className="text-gray-300" />, name: "TailwindCSS" },
-    { icon: <FaDocker className="text-gray-300" />, name: "Docker" },
-    { icon: <SiKubernetes className="text-gray-300" />, name: "Kubernetes" },
-    { icon: <SiTerraform className="text-gray-300" />, name: "Terraform" },
+    { icon: <FaAws className="text-gray-900" />, name: "AWS Cloud" },
+    { icon: <FaReact className="text-gray-900" />, name: "React" },
+    { icon: <FaPython className="text-gray-900" />, name: "Python / Boto3" },
+    { icon: <SiTailwindcss className="text-gray-900" />, name: "TailwindCSS" },
+    { icon: <FaDocker className="text-gray-900" />, name: "Docker" },
+    { icon: <SiKubernetes className="text-gray-900" />, name: "Kubernetes" },
+    { icon: <SiTerraform className="text-gray-900" />, name: "Terraform" },
   ]
 
   // tools stack
@@ -85,81 +83,69 @@ export default function Portfolio() {
   ]
 
   return (
-    <div className="bg-black font-mono text-white min-h-screen p-4 md:p-8 max-w-6xl mx-auto">
+    <div className="bg-white  text-black min-h-screen p-4 md:p-8 max-w-6xl mx-auto">
       {/* Hero section */}
       <header className="py-8 md:py-12 border-b border-gray-800">
-        <h1 className="text-3xl md:text-4xl mb-4 text-white">
-          Hi, I'm <span className="text-yellow-400">Kinshuk Jain</span>
+        <h1 className="text-4xl font-semibold md:text-4xl mb-4 text-blue-900 ">
+          Hi, I'm <span className="text-gray-900">Kinshuk Jain</span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-300 mb-6">
+        <p className="text-lg md:text-xl text-black mb-6">
           Aspiring Cloud Engineer | Tech Enthusiast | Open to Collaborate
         </p>
-        <a
-          href="https://blog.cloudkinshuk.in"
-          className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-        >
-          View My Blogs
-        </a>
       </header>
 
       {/* Contact section */}
       <section id="contact" className="py-8 border-b border-gray-800">
-        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-yellow-400">
+        <h2 className="text-3xl font-bold md:text-3xl mb-6 flex items-center text-black">
+          <span className="mr-2 text-black">
             <FaHashtag />
           </span>
           Open to Collaborate / Work
         </h2>
 
         <div className="mb-6">
-          <p className="text-gray-300 mb-4">
+          <p className="text-black mb-4">
             Hey there! I'm always open to connecting with fellow peers, engineers, developers, or anyone curious about
             tech, cloud, or just building things together. You can reach out from below sources:
           </p>
 
           <div className="space-y-2 mb-6">
             <p>
-              <span className="text-yellow-500 font-bold">Email: </span>
-              <span className="text-gray-300">kinshuk25jan04@gmail.com</span>
+              <span className="text-gray-800 font-bold">Email: </span>
+              <span className=" underline text-blue-900">kinshuk25jan04@gmail.com</span>
             </p>
             <p>
-              <span className="text-yellow-500 font-bold">Alternate Email: </span>
-              <span className="text-gray-300">jkinshuk@outlook.com</span>
+              <span className="text-gray-800 font-bold">Alternate Email: </span>
+              <span className="underline text-blue-900">jkinshuk@outlook.com</span>
             </p>
           </div>
 
           <div className="flex flex-wrap gap-4 py-4 border-t border-gray-800">
             {[
               {
-                icon: <FaGithub size={20} />,
+                icon: <FaGithub size={30} />,
                 label: "GitHub",
                 url: "https://github.com/kinshukjainn",
               },
               {
-                icon: <FaLinkedin size={20} />,
+                icon: <FaLinkedin size={30} />,
                 label: "LinkedIn",
                 url: "https://linkedin.com/in/kinshukjainn/",
               },
               {
-                icon: <FaTwitter size={20} />,
+                icon: <FaTwitter size={30} />,
                 label: "Twitter",
                 url: "https://x.com/realkinshuk04",
               },
               {
-                icon: <FaInstagram size={20} />,
+                icon: <FaInstagram size={30} />,
                 label: "Instagram",
                 url: "https://instagram.com/kinshukjain._/",
-              },
-              {
-                icon: <FaBlog size={20} />,
-                label: "Blog",
-                url: "https://blog.cloudkinshuk.in",
-              },
-            ].map((item, index) => (
+              }].map((item, index) => (
               <a
                 key={index}
                 href={item.url}
-                className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors"
+                className="flex items-center gap-2 text-gray-900 hover:text-blue-900 transition-colors"
                 aria-label={item.label}
               >
                 {item.icon}
@@ -168,10 +154,10 @@ export default function Portfolio() {
             ))}
             <button
               onClick={handleClick}
-              className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
+              className="flex items-center gap-2 text-gray-900 hover:text-blue-900 transition-colors cursor-pointer"
               aria-label="WhatsApp"
             >
-              <FaWhatsapp size={20} />
+              <FaWhatsapp size={30} />
               <span>WhatsApp</span>
             </button>
           </div>
@@ -180,36 +166,36 @@ export default function Portfolio() {
 
       {/* Tech Stack Section */}
       <section className="py-8 border-b border-gray-800">
-        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-yellow-400">
+        <h2 className="text-3xl font-bold md:text-3xl mb-6 flex items-center text-black">
+          <span className="mr-2 text-gray-900">
             <FaHashtag />
           </span>
           Tech Stack
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
           {techStack.map((tech, index) => (
             <div key={index} className="flex items-center gap-3 p-2">
-              <span className="text-xl">{tech.icon}</span>
-              <span className="text-gray-300">{tech.name}</span>
+              <span className="text-3xl">{tech.icon}</span>
+              <span className="text-lg text-gray-900">{tech.name}</span>
             </div>
           ))}
         </div>
       </section>
 
       <section className="py-8 border-b border-gray-800">
-        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-yellow-400">
+        <h2 className="text-3xl md:text-3xl mb-6 flex items-center font-bold text-black">
+          <span className="mr-2 text-gray-900">
             <FaHashtag />
           </span>
           Tools
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
           {toolsStack.map((tech, index) => (
-            <div key={index} className="flex items-center gap-3 p-2">
-              <span className="text-xl">{tech.icon}</span>
-              <span className="text-gray-300">{tech.name}</span>
+            <div key={index} className="flex items-center gap-2 p-2">
+              <span className="text-3xl text-black">{tech.icon}</span>
+              <span className="text-lg text-gray-900">{tech.name}</span>
             </div>
           ))}
         </div>
@@ -217,22 +203,22 @@ export default function Portfolio() {
 
       {/* Certifications Section */}
       <section className="py-8 border-b border-gray-800">
-        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-yellow-400">
+        <h2 className="text-3xl font-bold md:text-3xl mb-6 flex items-center text-black">
+          <span className="mr-2 text-black">
             <FaHashtag />
           </span>
           Cloud Certifications
         </h2>
 
         {/* AWS Journey Banner */}
-        <div className="mb-8 border-l-4 border-yellow-500 pl-4">
-          <h3 className="text-xl flex items-center mb-3 text-yellow-500 font-medium">
+        <div className="mb-8 border-l-4 border-blue-800 pl-4">
+          <h3 className="text-xl flex items-center mb-3 text-black font-medium">
             <FaAws className="mr-2 text-2xl" /> My AWS Certification Journey
           </h3>
-          <p className="text-gray-300">
+          <p className="text-gray-900 mb-4">
             I recently scored 679/1000 on the AWS Certified Cloud Practitioner exam (CLF-C02). While just shy of
             passing, this experience has
-            <span className="text-blue-300 font-medium"> strengthened my resolve </span>
+            <span className="text-blue-900 font-medium"> strengthened my resolve </span>
             to master cloud fundamentals and accelerated my preparation for the more advanced Solutions Architect
             Associate certification by Q3 2025.
           </p>
@@ -240,16 +226,16 @@ export default function Portfolio() {
 
         <div className="space-y-6">
           {certifications.map((cert, index) => (
-            <div key={index} className="border-l-4 border-gray-800 pl-4">
+            <div key={index} className="border-l-4 border-blue-800 pl-4">
               <div className="flex items-start">
-                <FaAws className="text-yellow-500 text-2xl mr-2 mt-1" />
-                <h3 className="text-lg text-yellow-500 font-medium">{cert.title}</h3>
+                <FaAws className="text-black text-2xl mr-2 mt-1" />
+                <h3 className="text-lg text-black font-medium">{cert.title}</h3>
               </div>
               <a
                 href={cert.link}
-                className="inline-flex items-center mt-2 text-blue-400 hover:text-blue-300 transition-colors"
+                className="inline-flex items-center mt-2 text-white  bg-blue-700 p-1 px-2 border-black border-2  rounded-full hover:text-blue-100 transition-colors"
               >
-                View Certificate
+                Verify through Credly
                 <TbExternalLink className="ml-1" />
               </a>
             </div>
@@ -258,63 +244,63 @@ export default function Portfolio() {
       </section>
 
       <section className="py-8 border-b border-gray-800">
-        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-yellow-400">
+        <h2 className="text-3xl font-bold md:text-3xl mb-6 flex items-center text-black">
+          <span className="mr-2 text-gray-900">
             <FaHashtag />
           </span>
           Education
         </h2>
 
         <div className="space-y-8">
-          <div className="border-l-4 border-gray-800 pl-4">
+          <div className="border-l-4 border-blue-800 pl-4">
             <div>
-              <h3 className="text-xl text-white font-medium">Bachelor of Technology, Electrical Engineering</h3>
-              <p className="text-gray-300 mt-2">JSS Academy of Technical Education</p>
-              <p className="text-gray-400 text-sm">Noida, Uttar Pradesh</p>
-              <p className="mt-2 text-gray-300 font-mono">2022 - 2026</p>
+              <h3 className="text-xl text-black font-medium">Bachelor of Technology, Electrical Engineering</h3>
+              <p className="text-gray-900 mt-2">JSS Academy of Technical Education</p>
+              <p className="text-gray-800 text-sm">Noida, Uttar Pradesh</p>
+              <p className="mt-2 text-gray-800 font-mono">2022 - 2026</p>
             </div>
           </div>
 
-          <div className="border-l-4 border-gray-800 pl-4">
+          <div className="border-l-4 border-blue-800 pl-4">
             <div>
-              <h3 className="text-xl text-white font-medium">Higher Secondary Education (XII)</h3>
-              <p className="text-gray-300 mt-2">Sri Chaitnya Junior College</p>
-              <p className="text-gray-400 text-sm">Pune, Maharashtra, India</p>
-              <p className="mt-2 text-gray-300 font-mono">2020 - 2022</p>
+              <h3 className="text-xl text-black font-medium">Higher Secondary Education (XII)</h3>
+              <p className="text-gray-900 mt-2">Sri Chaitnya Junior College</p>
+              <p className="text-gray-800 text-sm">Pune, Maharashtra, India</p>
+              <p className="mt-2 text-gray-800 font-mono">2020 - 2022</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-8 border-b border-gray-800">
-        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-yellow-400">
+      <section id="projects" className="py-8 border-b border-gray-900">
+        <h2 className="text-3xl font-bold md:text-3xl mb-6 flex items-center text-black">
+          <span className="mr-2 text-gray-900">
             <FaHashtag />
           </span>
           Projects / Work
         </h2>
 
         {/* Project 1 */}
-        <div className="mb-12 border-l-4 border-blue-600 pl-4">
+        <div className="mb-12 border-l-4 border-blue-800 pl-4">
           <div className="flex flex-wrap justify-between items-start mb-4 gap-4">
-            <h3 className="text-2xl font-medium text-yellow-500">Portfolio Website</h3>
+            <h3 className="text-2xl font-medium text-blue-900">Portfolio Website</h3>
             <a
               href="https://cloudkinshuk.in"
-              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+              className="inline-flex items-center text-white  bg-blue-700 p-1 px-2 border-black border-2  rounded-full hover:text-blue-100 transition-colors"
             >
               View Live <BiLinkExternal className="ml-1" />
             </a>
           </div>
 
-          <h3 className="text-xl font-medium mt-6 mb-2 text-yellow-500">Description:</h3>
-          <p className="text-gray-300 mb-6">
+          <h3 className="text-xl font-medium mt-6 mb-2 text-gray-800">Description:</h3>
+          <p className="text-gray-900 mb-6">
             Built and deployed a personal portfolio website using React 19, TypeScript, Tailwind CSS with live blog
             integration and full cloud-backed deployment.
           </p>
 
-          <h3 className="text-xl font-medium mb-2 text-yellow-500">Challenges:</h3>
-          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-300">
+          <h3 className="text-xl font-medium mb-2 text-gray-800">Challenges:</h3>
+          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-900">
             <li>
               Deploying my website on a cloud platform like AWS was a completely new experience for me. AWS is a vast
               platform with numerous complexities, and navigating through its features felt overwhelming at times.
@@ -336,8 +322,8 @@ export default function Portfolio() {
             </li>
           </ul>
 
-          <h3 className="text-xl font-medium mt-6 mb-2 text-yellow-500">Learnings:</h3>
-          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-300">
+          <h3 className="text-xl font-medium mt-6 mb-2 text-grays-900">Learnings:</h3>
+          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-900">
             <li>
               Gained hands-on experience with AWS services and understood how to deploy static and dynamic websites
               using cost-effective practices. I also learned how to monitor resources to avoid unexpected charges.
@@ -358,8 +344,8 @@ export default function Portfolio() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div>
-              <h4 className="text-lg font-medium mb-2 text-yellow-500">Key Features</h4>
-              <ul className="list-disc pl-5 space-y-2 text-gray-300">
+              <h4 className="text-lg font-medium mb-2 text-gray-800">Key Features</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-900">
                 <li>
                   Implemented responsive and dynamic design using Tailwind CSS and React 19, ensuring a seamless
                   experience across devices
@@ -368,8 +354,8 @@ export default function Portfolio() {
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-medium mb-2 text-yellow-500">Technical Details</h4>
-              <ul className="list-disc pl-5 space-y-2 text-gray-300">
+              <h4 className="text-lg font-medium mb-2 text-gray-900">Technical Details</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-900">
                 <li>
                   Configured Amazon Route 53 for SSL and DNS management. Route 53 Hosted zones manages my DNS and SSL
                   Certificates
@@ -380,10 +366,10 @@ export default function Portfolio() {
           </div>
 
           <div className="mt-6 pt-4 border-t border-gray-800">
-            <h4 className="text-base font-medium text-yellow-500 mb-2">Technologies:</h4>
+            <h4 className="text-base font-medium text-gray-900 mb-2">Technologies:</h4>
             <div className="flex flex-wrap gap-2">
               {["React 19", "TypeScript", "Tailwind CSS", "AWS Amplify", "Route 53", "Hostinger"].map((tech, index) => (
-                <span key={index} className="inline-block text-sm bg-gray-800 px-2 py-1 text-gray-300">
+                <span key={index} className="inline-block text-sm bg-yellow-500 px-3 border-3 border-black py-1 rounded-full text-gray-900">
                   {tech}
                 </span>
               ))}
@@ -394,50 +380,50 @@ export default function Portfolio() {
         {/* SEO Section */}
         <div className="mb-12 border-l-4 border-blue-600 pl-4">
           <div className="flex flex-wrap justify-between items-start mb-4 gap-4">
-            <h3 className="text-2xl font-medium text-yellow-500">SEO of my website</h3>
+            <h3 className="text-2xl font-medium text-blue-900">SEO of my website</h3>
             <a
               href="https://pagespeed.web.dev/"
-              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+              className="inline-flex  items-center text-white  bg-blue-700 p-1 px-2 border-black border-2  rounded-full hover:text-blue-100 transition-colors"
             >
               Check Here <BiLinkExternal className="ml-1" />
             </a>
           </div>
 
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-900 mb-6">
             Built and deployed a personal portfolio website using React 19, TypeScript, Tailwind CSS with live blog
             integration link  and full cloud-backed deployment.
           </p>
 
           <div className="mb-6">
-            <h4 className="text-xl font-medium text-yellow-500 mb-4">Performance Scores</h4>
+            <h4 className="text-xl font-medium text-blue-900 mb-4">Performance Scores</h4>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
               {[
-                { score: 97, label: "Desktop Performance", color: "text-green-400" },
-                { score: 71, label: "Mobile Performance", color: "text-yellow-400" },
-                { score: 89, label: "Accessibility", color: "text-yellow-400" },
-                { score: 100, label: "SEO Score", color: "text-green-400" },
+                { score: 97, label: "Desktop Performance", color: "text-green-900" },
+                { score: 71, label: "Mobile Performance", color: "text-yellow-900" },
+                { score: 89, label: "Accessibility", color: "text-yellow-900" },
+                { score: 100, label: "SEO Score", color: "text-green-900" },
               ].map((item, index) => (
-                <div key={index} className="p-3 border border-gray-800">
+                <div key={index} className="p-3 border-2 border-gray-900">
                   <div className={`text-2xl font-bold ${item.color}`}>{item.score}</div>
-                  <p className="text-sm text-gray-300 mt-1">{item.label}</p>
+                  <p className="text-sm text-gray-900 mt-1">{item.label}</p>
                 </div>
               ))}
             </div>
 
-            <p className="text-xs text-yellow-400 mb-2">
+            <p className="text-xs text-yellow-900 mb-2">
               Values are estimated and may vary. The performance score is calculated directly from these metrics.
             </p>
 
             <div className="flex flex-wrap gap-4 text-xs">
               {[
-                { color: "bg-red-500", range: "0-49" },
-                { color: "bg-yellow-500", range: "50-89" },
-                { color: "bg-green-500", range: "90-100" },
+                { color: "bg-red-900", range: "0-49" },
+                { color: "bg-yellow-900", range: "50-89" },
+                { color: "bg-green-900", range: "90-100" },
               ].map((item, index) => (
                 <div key={index} className="flex items-center">
                   <div className={`w-3 h-3 ${item.color} mr-1`}></div>
-                  <span className="text-gray-300">{item.range}</span>
+                  <span className="text-gray-900">{item.range}</span>
                 </div>
               ))}
             </div>
@@ -445,24 +431,24 @@ export default function Portfolio() {
         </div>
 
         {/* Project 2 */}
-        <div className="border-l-4 border-blue-600 pl-4">
+        <div className="border-l-4 border-blue-900 pl-4">
           <div className="flex flex-wrap justify-between items-start mb-4 gap-4">
-            <h3 className="text-2xl font-medium text-yellow-500">Blog Page: Custom Domain || Hashnode</h3>
+            <h3 className="text-2xl font-medium text-blue-900">Blog Page: Custom Domain || Hashnode</h3>
             <a
               href="https://blog.cloudkinshuk.in"
-              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+              className="inline-flex items-center text-white  bg-blue-700 p-1 px-2 border-black border-2  rounded-full hover:text-blue-100transition-colors"
             >
               View Blog <BiLinkExternal className="ml-1" />
             </a>
           </div>
 
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-900 mb-6">
             Created and deployed a fully functional tech blog using Hashnode as the content platform, with custom
             domain integration and  DNS configuration.
           </p>
 
-          <h3 className="text-xl font-medium mb-2 text-yellow-500">Learning:</h3>
-          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-300">
+          <h3 className="text-xl font-medium mb-2 text-gray-900">Learning:</h3>
+          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-900">
             <li>
               Developed a personal blog page using a custom domain (e.g., blog.yourname.com) to showcase technical knowledge and writing skills.
             </li>
@@ -477,19 +463,19 @@ export default function Portfolio() {
             </li>
           </ul>
 
-          <h3 className="text-xl font-medium mb-2 text-yellow-500">Description</h3>
-          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-300">
+          <h3 className="text-xl font-medium mb-2 text-gray-900">Description</h3>
+          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-900">
             <li>Set up a developer blog with a custom domain (blog.cloudkinshuk.in)</li>
             <li>Configured DNS records (A, CNAME, TXT) in Route 53 for domain verification and HTTPS</li>
             <li>Publishing technical articles covering AWS, serverless architecture, and React development</li>
           </ul>
 
           <div className="mt-6 pt-4 border-t border-gray-800">
-            <h4 className="text-base font-medium text-yellow-500 mb-2">Technologies:</h4>
+            <h4 className="text-base font-medium text-gray-800 mb-2">Technologies:</h4>
             <div className="flex flex-wrap gap-2">
               {["Hashnode", "Amazon Route 53", "Hostinger", "DNS Management", "Custom Domain", "CDN"].map(
                 (tech, index) => (
-                  <span key={index} className="inline-block text-sm bg-gray-800 px-2 py-1 text-gray-300">
+                  <span key={index} className="inline-block text-sm bg-yellow-500 px-3 border-3 border-black  rounded-full text-gray-900  py-1 ">
                     {tech}
                   </span>
                 ),
@@ -504,13 +490,13 @@ export default function Portfolio() {
           {/* Left Content */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <FaCode className="text-white" />
-              <h3 className="text-xl font-medium text-white">
+              <FaCode className="text-black" />
+              <h3 className="text-3xl font-medium text-black">
                 Fork it. Star it. Make it your own — if it serves your purpose.
               </h3>
             </div>
 
-            <p className="text-gray-300">
+            <p className="text-gray-900">
               This portfolio project is open-source and available for forking. If the design or structure proved
               useful in your work, you're free to adapt or extend it as needed. A star is appreciated if it saved you
               time or provided a solid foundation — but not required. Feedback, contributions, and practical
@@ -518,12 +504,12 @@ export default function Portfolio() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <div className="flex items-center text-yellow-500">
-                <FaStar className="text-yellow-200 mr-1" />
+              <div className="flex items-center text-yellow-900">
+                <FaStar className="text-yellow-900 mr-1" />
                 <span>Star to show love</span>
               </div>
-              <div className="flex items-center text-yellow-500">
-                <FaCodeBranch className="text-blue-400 mr-1" />
+              <div className="flex items-center text-yellow-900">
+                <FaCodeBranch className="text-blue-900 mr-1" />
                 <span>Fork and remix</span>
               </div>
             </div>
@@ -534,7 +520,7 @@ export default function Portfolio() {
             href="https://github.com/kinshukjain01/kinshukkportfolio"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors"
+            className="flex items-center gap-2 text-black bg-blue-400 p-2 rounded-full border-2 border-black font-semibold hover:bg-blue-700 transition-colors"
           >
             <FaGithub />
             <span>@kinshukkportfolio</span>
@@ -544,20 +530,15 @@ export default function Portfolio() {
       </div>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-gray-800 mt-8">
+      <footer className="py-8 mt-8">
         <div className="text-center">
-          <p className="text-gray-300">
+          <p className="text-gray-900">
             Want to explore my Thinking? click on "Learning journey" to Check out the{" "}
-            <a href="/my-personal-learning-resources" className="text-blue-400 hover:text-blue-300 transition-colors">
+            <a href="/my-personal-learning-resources" className="text-blue-900 hover:text-blue-800 transition-colors">
               Learning Journey
             </a>{" "}
             Page
           </p>
-
-          <div className="mt-4 flex items-center justify-center text-gray-300">
-            <MdDarkMode className="mr-2" />
-            Dark Mode Enabled
-          </div>
         </div>
       </footer>
     </div>

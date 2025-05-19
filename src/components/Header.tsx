@@ -30,7 +30,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-black  font-poppins p-4 flex flex-col sm:flex-row justify-between items-center overflow-hidden">
+    <header className="bg-white p-4 flex flex-col sm:flex-row justify-between items-center overflow-hidden">
       <div className="flex items-center w-full sm:w-auto justify-between mb-3 sm:mb-0 relative z-10">
         {/* Avatar Section */}
         <div className="relative mr-3 flex-shrink-0">
@@ -57,8 +57,8 @@ const Header = () => {
 
         {/* Dynamic Portfolio Name with cloud theme */}
         <div className="flex items-center">
-          <h1 className="text-lg sm:text-xl font-semibold tracking-wide text-white">
-            <Link to="/" onClick={closeMenu} className="hover:text-gray-200 transition-colors duration-300">
+          <h1 className="text-lg sm:text-xl font-semibold tracking-wide text-black">
+            <Link to="/" onClick={closeMenu} className="hover:text-gray-900 transition-colors duration-300">
               Kinshuk Jain  / {getPathText()}
             </Link>
           </h1>
@@ -66,7 +66,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="sm:hidden text-2xl text-white focus:outline-none rounded-lg p-2"
+          className="sm:hidden text-2xl text-black focus:outline-none rounded-full bg-blue-500 border-2 border-black p-2"
           onClick={toggleMenu}
         >
           {menuOpen ? <FaTimes /> : <FaBars />}
@@ -81,7 +81,7 @@ const Header = () => {
       {/* Mobile Menu with improved animation */}
       <AnimatePresence>
         {menuOpen && (
-          <div className="w-full overflow-hidden sm:hidden bg-[#202124] rounded-4xl mt-2">
+          <div className="w-full overflow-hidden sm:hidden bg-blue-400 font-semibold border-black border-2 rounded-4xl mt-2">
             <div className="pt-3 pb-2 flex flex-col items-center gap-4">
               <NavLinks closeMenu={closeMenu} />
             </div>
@@ -109,7 +109,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       <div>
         <Link
           to="/blog"
-          className="flex underline   px-2 py-1  items-center gap-2 text-gray-300  text-lg md:text-base"
+          className="flex underline   px-2 py-1  items-center gap-2 text-gray-900  text-lg md:text-base"
           onClick={closeMenu}
         >
           <span className="relative group">
@@ -120,7 +120,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       <div>
         <Link
           to="/my-personal-learning-resources"
-          className="flex items-center gap-2 text-white text-lg md:text-base transition-colors duration-300"
+          className="flex items-center gap-2 text-black text-lg md:text-base transition-colors duration-300"
           onClick={closeMenu}
         >
           <span className=" hover:underline relative group">
@@ -131,7 +131,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       <div>
         <Link
           to="/aboutme"
-          className="flex items-center gap-2 text-white text-lg md:text-base transition-colors duration-300"
+          className="flex items-center gap-2 text-black text-lg md:text-base transition-colors duration-300"
           onClick={closeMenu}
         >
           <span className="hover:underline relative group">

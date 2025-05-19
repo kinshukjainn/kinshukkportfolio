@@ -4,7 +4,7 @@
 @import "tailwindcss";
 
 body {
-  background-color: black ; /* Dark background */
+  background-color: white ; /* Dark background */
   color: black; /* Default text color */
   font-family: "Segoe UI", Tahoma,  Verdana, sans-serif;
 }

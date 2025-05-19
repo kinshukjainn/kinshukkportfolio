@@ -118,13 +118,13 @@ const Learningresources = () => {
   };
 
   return (
-    <div className="min-h-screen font-mono  bg-black flex flex-col">
+    <div className="min-h-screen font-mono  bg-white flex flex-col">
       {/* Navigation and Menu */}
       <header className="flex flex-col items-center pt-6 pb-4 sm:pt-8 sm:pb-6 px-4">
-        <h1 className="text-white  text-3xl sm:text-4xl md:text-5xl tracking-wide">
+        <h1 className="text-black font-bold  text-4xl sm:text-4xl md:text-5xl tracking-wide">
           Learning.hub
         </h1>
-        <p className="text-white mt-2 text-center text-sm sm:text-base max-w-xs sm:max-w-sm md:max-w-md">
+        <p className="text-blue-900 mt-2 text-center text-sm sm:text-base max-w-xs sm:max-w-sm md:max-w-md">
           Curated resources to enhance your development journey
         </p>
       </header>
@@ -132,14 +132,14 @@ const Learningresources = () => {
       <main className="flex-grow max-w-xs sm:max-w-sm md:max-w-md lg:max-w-3xl mx-auto px-4 pb-8 sm:pb-12 w-full">
         {/* Search bar */}
         <div className="relative mb-6 sm:mb-8">
-          <div className="flex items-center border-b-2 border-white py-2">
-            <FiSearch className="text-white mr-2 flex-shrink-0" />
+          <div className="flex items-center border-b-2 border-black py-2">
+            <FiSearch className="text-black mr-2 flex-shrink-0" />
             <input
               type="text"
               placeholder="Search resources..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-transparent focus:outline-none text-white text-lg sm:text-base"
+              className="w-full bg-transparent focus:outline-none text-black text-lg sm:text-base"
             />
             {searchTerm && (
               <button
@@ -162,12 +162,12 @@ const Learningresources = () => {
                 key={resource.id}
                 className="group  py-3 sm:py-4 transition-all"
               >
-                <div className="flex cursor-pointer justify-between items-start">
+                <div className="flex bg-blue-200 border-3 border-black rounded-2xl  p-3  cursor-pointer justify-between items-start">
                   <div className="flex-grow pr-2">
-                    <h3 className="text-base sm:text-lg  text-white group-hover:text-grey-200 break-words">
+                    <h3 className="text-base sm:text-lg  text-blue-900 font-bold group-hover:text-blue-900 break-words">
                       {resource.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-white mt-1 truncate">
+                    <p className="text-xs sm:text-sm text-black mt-1 truncate">
                       {truncateText({
                         text: resource.link,
                         maxLength: getLinkDisplayLength(),
@@ -178,7 +178,7 @@ const Learningresources = () => {
                     href={resource.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-blue-200 transition-colors p-2 flex-shrink-0 touch-action-manipulation"
+                    className="text-white rounded-full  border-2 border-black hover:text-white bg-blue-800 transition-colors p-2 flex-shrink-0 touch-action-manipulation"
                     title={`Visit ${resource.title}`}
                     aria-label={`Visit ${resource.title}`}
                   >

@@ -1,20 +1,20 @@
 export default function Blog() {
   return (
-    <div className="min-h-screen bg-black text-gray-300 p-8 font-mono">
+    <div className="min-h-screen bg-white text-gray-900 p-8 ">
       <div className="max-w-3xl mx-auto">
         <div className="border-b border-gray-700 pb-4 mb-6">
-          <h1 className="text-2xl font-bold text-gray-100"># Blogs !!</h1>
+          <h1 className="text-2xl font-bold text-gray-900"># Blogs !!</h1>
         </div>
         <div className="flex items-center mb-4">
-          <span className="text-gray-500 text-sm">
+          <span className="text-gray-700 text-sm">
             Last updated: 19 May 2025
           </span>
         </div>
         <div className="flex items-center mb-4">
-          <span className="text-gray-500 text-sm">Time : 17:37 PM </span>
+          <span className="text-gray-700 text-sm">Time : 17:37 PM </span>
         </div>
         <div className="flex items-center mb-4">
-          <span className="text-gray-500 text-sm">Blogs Hosted on Hashnode </span>
+          <span className="text-gray-700 text-sm">Blogs Hosted on Hashnode </span>
         </div>
 
         <div className="space-y-6 leading-relaxed">
@@ -37,11 +37,9 @@ export default function Blog() {
           <div className="mt-10 pt-6 border-t border-gray-800">
             <a
               href="https://blog.cloudkinshuk.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 underline"
+              className="text-white text-sm bg-blue-900 p-2 rounded-full  hover:text-white border-2 border-black  "
             >
-              → Visit My Blog
+              Visit My Blog
             </a>
           </div>
         </div>
