@@ -30,7 +30,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-[#171717]  font-poppins p-4 flex flex-col sm:flex-row justify-between items-center overflow-hidden">
+    <header className="bg-black  font-poppins p-4 flex flex-col sm:flex-row justify-between items-center overflow-hidden">
       <div className="flex items-center w-full sm:w-auto justify-between mb-3 sm:mb-0 relative z-10">
         {/* Avatar Section */}
         <div className="relative mr-3 flex-shrink-0">
@@ -107,15 +107,15 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
       </div>
 
       <div>
-        <a
-          href="https://blog.cloudkinshuk.in"
+        <Link
+          to="/blog"
           className="flex underline   px-2 py-1  items-center gap-2 text-gray-300  text-lg md:text-base"
           onClick={closeMenu}
         >
           <span className="relative group">
             Blogs
           </span>
-        </a>
+        </Link>
       </div>
       <div>
         <Link

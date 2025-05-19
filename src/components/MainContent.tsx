@@ -1,5 +1,3 @@
-"use client";
-import { motion } from "framer-motion";
 import {
   FaAws,
   FaDocker,
@@ -17,26 +15,19 @@ import {
   FaTwitter,
   FaBlog,
   FaHashtag,
-} from "react-icons/fa";
-import { GoRocket } from "react-icons/go";
-import { BiLinkExternal } from "react-icons/bi";
-import {
-  SiKubernetes,
-  SiCanva,
-  SiTerraform,
-  SiTailwindcss,
-} from "react-icons/si";
-import { MdDarkMode } from "react-icons/md";
-import { TbExternalLink } from "react-icons/tb";
-import { HiOutlineExternalLink } from "react-icons/hi";
-import { Link } from "react-router-dom";
+} from "react-icons/fa"
+import { BiLinkExternal } from "react-icons/bi"
+import { SiKubernetes, SiCanva, SiTerraform, SiTailwindcss } from "react-icons/si"
+import { MdDarkMode } from "react-icons/md"
+import { TbExternalLink } from "react-icons/tb"
+import { HiOutlineExternalLink } from "react-icons/hi"
 
-const MainContent = () => {
+export default function Portfolio() {
   const handleClick = async () => {
-    const phoneNumber = "919172702501";
-    const message = "Hi Kinshuk, I saw your website and wanted to connect.";
-    const encodedMessage = encodeURIComponent(message);
-    const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const phoneNumber = "919172702501"
+    const message = "Hi Kinshuk, I saw your website and wanted to connect."
+    const encodedMessage = encodeURIComponent(message)
+    const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
     try {
       // Optional: API call to your server or webhook
       await fetch("https://your-api-endpoint.com/log-whatsapp-click", {
@@ -48,37 +39,34 @@ const MainContent = () => {
           timestamp: new Date().toISOString(),
           contactType: "WhatsApp",
         }),
-      });
+      })
 
       // Redirect to WhatsApp link
-      window.open(waUrl, "_blank");
+      window.open(waUrl, "_blank")
     } catch (error) {
-      console.error("Error logging WhatsApp click:", error);
-      window.open(waUrl, "_blank"); // Still open WhatsApp even if API fails
+      console.error("Error logging WhatsApp click:", error)
+      window.open(waUrl, "_blank") // Still open WhatsApp even if API fails
     }
-  };
+  }
 
   // Tech stack data
   const techStack = [
     { icon: <FaAws className="text-gray-300" />, name: "AWS Cloud" },
     { icon: <FaReact className="text-gray-300" />, name: "React" },
     { icon: <FaPython className="text-gray-300" />, name: "Python / Boto3" },
-    {
-      icon: <SiTailwindcss className="text-gray-300" />,
-      name: "TailwindCSS",
-    },
+    { icon: <SiTailwindcss className="text-gray-300" />, name: "TailwindCSS" },
     { icon: <FaDocker className="text-gray-300" />, name: "Docker" },
     { icon: <SiKubernetes className="text-gray-300" />, name: "Kubernetes" },
     { icon: <SiTerraform className="text-gray-300" />, name: "Terraform" },
-  ];
+  ]
 
   // tools stack
   const toolsStack = [
-    { icon: <FaDiscord className="text-" />, name: "Discord" },
-    { icon: <SiCanva className="text-" />, name: "Canva" },
-    { icon: <FaGithub className="text-" />, name: "Github" },
-    { icon: <FaLinux className="text-" />, name: "Linux" },
-  ];
+    { icon: <FaDiscord />, name: "Discord" },
+    { icon: <SiCanva />, name: "Canva" },
+    { icon: <FaGithub />, name: "Github" },
+    { icon: <FaLinux />, name: "Linux" },
+  ]
 
   // Certifications data
   const certifications = [
@@ -94,938 +82,488 @@ const MainContent = () => {
       title: "AWS Machine Learning Badge",
       link: "https://www.credly.com/badges/a0042ec2-cc6e-4a99-84de-a1516ee5775a/public_url",
     },
-  ];
-
-  // Animation variants
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const cardHover = {
-    rest: { scale: 1, transition: { duration: 0.2 } },
-    hover: { scale: 1.02, transition: { duration: 0.2 } },
-  };
+  ]
 
   return (
-    <div className="bg-[#171717] text-white  text-white min-h-screen ">
+    <div className="bg-black font-mono text-white min-h-screen p-4 md:p-8 max-w-6xl mx-auto">
       {/* Hero section */}
-      <motion.header
-        className="py-16 md:py-24 relative overflow-hidden"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-          <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl text-white tracking-tight mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            Hi, I'm <span>Kinshuk Jain</span>
-          </motion.h1>
-          <motion.p
-            className="text-lg  sm:text-xl md:text-2xl text-white mb-8 sm:mb-10 max-w-3xl leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-          >
-            Aspiring Cloud Engineer | Tech Enthusiast | Open to Collaborate
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <motion.a
+      <header className="py-8 md:py-12 border-b border-gray-800">
+        <h1 className="text-3xl md:text-4xl mb-4 text-white">
+          Hi, I'm <span className="text-yellow-400">Kinshuk Jain</span>
+        </h1>
+        <p className="text-lg md:text-xl text-gray-300 mb-6">
+          Aspiring Cloud Engineer | Tech Enthusiast | Open to Collaborate
+        </p>
+        <a
+          href="https://blog.cloudkinshuk.in"
+          className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+        >
+          View My Blogs
+        </a>
+      </header>
+
+      {/* Contact section */}
+      <section id="contact" className="py-8 border-b border-gray-800">
+        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
+          <span className="mr-2 text-yellow-400">
+            <FaHashtag />
+          </span>
+          Open to Collaborate / Work
+        </h2>
+
+        <div className="mb-6">
+          <p className="text-gray-300 mb-4">
+            Hey there! I'm always open to connecting with fellow peers, engineers, developers, or anyone curious about
+            tech, cloud, or just building things together. You can reach out from below sources:
+          </p>
+
+          <div className="space-y-2 mb-6">
+            <p>
+              <span className="text-yellow-500 font-bold">Email: </span>
+              <span className="text-gray-300">kinshuk25jan04@gmail.com</span>
+            </p>
+            <p>
+              <span className="text-yellow-500 font-bold">Alternate Email: </span>
+              <span className="text-gray-300">jkinshuk@outlook.com</span>
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-4 py-4 border-t border-gray-800">
+            {[
+              {
+                icon: <FaGithub size={20} />,
+                label: "GitHub",
+                url: "https://github.com/kinshukjainn",
+              },
+              {
+                icon: <FaLinkedin size={20} />,
+                label: "LinkedIn",
+                url: "https://linkedin.com/in/kinshukjainn/",
+              },
+              {
+                icon: <FaTwitter size={20} />,
+                label: "Twitter",
+                url: "https://x.com/realkinshuk04",
+              },
+              {
+                icon: <FaInstagram size={20} />,
+                label: "Instagram",
+                url: "https://instagram.com/kinshukjain._/",
+              },
+              {
+                icon: <FaBlog size={20} />,
+                label: "Blog",
+                url: "https://blog.cloudkinshuk.in",
+              },
+            ].map((item, index) => (
+              <a
+                key={index}
+                href={item.url}
+                className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors"
+                aria-label={item.label}
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </a>
+            ))}
+            <button
+              onClick={handleClick}
+              className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors cursor-pointer"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp size={20} />
+              <span>WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section className="py-8 border-b border-gray-800">
+        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
+          <span className="mr-2 text-yellow-400">
+            <FaHashtag />
+          </span>
+          Tech Stack
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {techStack.map((tech, index) => (
+            <div key={index} className="flex items-center gap-3 p-2">
+              <span className="text-xl">{tech.icon}</span>
+              <span className="text-gray-300">{tech.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-8 border-b border-gray-800">
+        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
+          <span className="mr-2 text-yellow-400">
+            <FaHashtag />
+          </span>
+          Tools
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {toolsStack.map((tech, index) => (
+            <div key={index} className="flex items-center gap-3 p-2">
+              <span className="text-xl">{tech.icon}</span>
+              <span className="text-gray-300">{tech.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section className="py-8 border-b border-gray-800">
+        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
+          <span className="mr-2 text-yellow-400">
+            <FaHashtag />
+          </span>
+          Cloud Certifications
+        </h2>
+
+        {/* AWS Journey Banner */}
+        <div className="mb-8 border-l-4 border-yellow-500 pl-4">
+          <h3 className="text-xl flex items-center mb-3 text-yellow-500 font-medium">
+            <FaAws className="mr-2 text-2xl" /> My AWS Certification Journey
+          </h3>
+          <p className="text-gray-300">
+            I recently scored 679/1000 on the AWS Certified Cloud Practitioner exam (CLF-C02). While just shy of
+            passing, this experience has
+            <span className="text-blue-300 font-medium"> strengthened my resolve </span>
+            to master cloud fundamentals and accelerated my preparation for the more advanced Solutions Architect
+            Associate certification by Q3 2025.
+          </p>
+        </div>
+
+        <div className="space-y-6">
+          {certifications.map((cert, index) => (
+            <div key={index} className="border-l-4 border-gray-800 pl-4">
+              <div className="flex items-start">
+                <FaAws className="text-yellow-500 text-2xl mr-2 mt-1" />
+                <h3 className="text-lg text-yellow-500 font-medium">{cert.title}</h3>
+              </div>
+              <a
+                href={cert.link}
+                className="inline-flex items-center mt-2 text-blue-400 hover:text-blue-300 transition-colors"
+              >
+                View Certificate
+                <TbExternalLink className="ml-1" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-8 border-b border-gray-800">
+        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
+          <span className="mr-2 text-yellow-400">
+            <FaHashtag />
+          </span>
+          Education
+        </h2>
+
+        <div className="space-y-8">
+          <div className="border-l-4 border-gray-800 pl-4">
+            <div>
+              <h3 className="text-xl text-white font-medium">Bachelor of Technology, Electrical Engineering</h3>
+              <p className="text-gray-300 mt-2">JSS Academy of Technical Education</p>
+              <p className="text-gray-400 text-sm">Noida, Uttar Pradesh</p>
+              <p className="mt-2 text-gray-300 font-mono">2022 - 2026</p>
+            </div>
+          </div>
+
+          <div className="border-l-4 border-gray-800 pl-4">
+            <div>
+              <h3 className="text-xl text-white font-medium">Higher Secondary Education (XII)</h3>
+              <p className="text-gray-300 mt-2">Sri Chaitnya Junior College</p>
+              <p className="text-gray-400 text-sm">Pune, Maharashtra, India</p>
+              <p className="mt-2 text-gray-300 font-mono">2020 - 2022</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-8 border-b border-gray-800">
+        <h2 className="text-2xl md:text-3xl mb-6 flex items-center text-white">
+          <span className="mr-2 text-yellow-400">
+            <FaHashtag />
+          </span>
+          Projects / Work
+        </h2>
+
+        {/* Project 1 */}
+        <div className="mb-12 border-l-4 border-blue-600 pl-4">
+          <div className="flex flex-wrap justify-between items-start mb-4 gap-4">
+            <h3 className="text-2xl font-medium text-yellow-500">Portfolio Website</h3>
+            <a
+              href="https://cloudkinshuk.in"
+              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              View Live <BiLinkExternal className="ml-1" />
+            </a>
+          </div>
+
+          <h3 className="text-xl font-medium mt-6 mb-2 text-yellow-500">Description:</h3>
+          <p className="text-gray-300 mb-6">
+            Built and deployed a personal portfolio website using React 19, TypeScript, Tailwind CSS with live blog
+            integration and full cloud-backed deployment.
+          </p>
+
+          <h3 className="text-xl font-medium mb-2 text-yellow-500">Challenges:</h3>
+          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-300">
+            <li>
+              Deploying my website on a cloud platform like AWS was a completely new experience for me. AWS is a vast
+              platform with numerous complexities, and navigating through its features felt overwhelming at times.
+            </li>
+            <li>
+              I was unfamiliar with the best practices for optimizing SEO (Search Engine Optimization) while building
+              the website. Despite several attempts, I struggled to implement the right methods to enhance my website's
+              SEO performance and overall user experience.
+            </li>
+            <li>
+              As a beginner, I constantly worried about the potential high costs associated with deploying the website
+              on AWS. The thought of exceeding the free-tier traffic limits and accumulating an unexpected, hefty bill
+              added to my stress.
+            </li>
+            <li>
+              When I purchased my own domain from Hostinger, I had no idea how to link it to my website. I faced
+              several challenges in correctly redirecting my custom URL to the site and encountered failures multiple
+              times before getting it right.
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-medium mt-6 mb-2 text-yellow-500">Learnings:</h3>
+          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-300">
+            <li>
+              Gained hands-on experience with AWS services and understood how to deploy static and dynamic websites
+              using cost-effective practices. I also learned how to monitor resources to avoid unexpected charges.
+            </li>
+            <li>
+              Understood the importance of SEO and gradually adopted key best practices such as setting up proper meta
+              tags, improving load speed, using semantic HTML, and ensuring mobile responsiveness.
+            </li>
+            <li>
+              Learned how to stay calm and analytical under pressure. I developed the habit of reading official
+              documentation and community threads to troubleshoot issues instead of panicking.
+            </li>
+            <li>
+              Mastered the process of linking a custom domain to a hosted website. I now understand DNS records, domain
+              pointing, and the importance of patience and debugging while working with hosting and domain providers.
+            </li>
+          </ul>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div>
+              <h4 className="text-lg font-medium mb-2 text-yellow-500">Key Features</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-300">
+                <li>
+                  Implemented responsive and dynamic design using Tailwind CSS and React 19, ensuring a seamless
+                  experience across devices
+                </li>
+                <li>Migrated from Netlify to AWS Amplify, to make it more cost-effective and scalable</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-medium mb-2 text-yellow-500">Technical Details</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-300">
+                <li>
+                  Configured Amazon Route 53 for SSL and DNS management. Route 53 Hosted zones manages my DNS and SSL
+                  Certificates
+                </li>
+                <li>Used AI tools like chat gpt and claude to write code and to boost development efficiency</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-gray-800">
+            <h4 className="text-base font-medium text-yellow-500 mb-2">Technologies:</h4>
+            <div className="flex flex-wrap gap-2">
+              {["React 19", "TypeScript", "Tailwind CSS", "AWS Amplify", "Route 53", "Hostinger"].map((tech, index) => (
+                <span key={index} className="inline-block text-sm bg-gray-800 px-2 py-1 text-gray-300">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* SEO Section */}
+        <div className="mb-12 border-l-4 border-blue-600 pl-4">
+          <div className="flex flex-wrap justify-between items-start mb-4 gap-4">
+            <h3 className="text-2xl font-medium text-yellow-500">SEO of my website</h3>
+            <a
+              href="https://pagespeed.web.dev/"
+              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              Check Here <BiLinkExternal className="ml-1" />
+            </a>
+          </div>
+
+          <p className="text-gray-300 mb-6">
+            Built and deployed a personal portfolio website using React 19, TypeScript, Tailwind CSS with live blog
+            integration and full cloud-backed deployment.
+          </p>
+
+          <div className="mb-6">
+            <h4 className="text-xl font-medium text-yellow-500 mb-4">Performance Scores</h4>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+              {[
+                { score: 97, label: "Desktop Performance", color: "text-green-400" },
+                { score: 71, label: "Mobile Performance", color: "text-yellow-400" },
+                { score: 89, label: "Accessibility", color: "text-yellow-400" },
+                { score: 100, label: "SEO Score", color: "text-green-400" },
+              ].map((item, index) => (
+                <div key={index} className="p-3 border border-gray-800">
+                  <div className={`text-2xl font-bold ${item.color}`}>{item.score}</div>
+                  <p className="text-sm text-gray-300 mt-1">{item.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-xs text-yellow-400 mb-2">
+              Values are estimated and may vary. The performance score is calculated directly from these metrics.
+            </p>
+
+            <div className="flex flex-wrap gap-4 text-xs">
+              {[
+                { color: "bg-red-500", range: "0-49" },
+                { color: "bg-yellow-500", range: "50-89" },
+                { color: "bg-green-500", range: "90-100" },
+              ].map((item, index) => (
+                <div key={index} className="flex items-center">
+                  <div className={`w-3 h-3 ${item.color} mr-1`}></div>
+                  <span className="text-gray-300">{item.range}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Project 2 */}
+        <div className="border-l-4 border-blue-600 pl-4">
+          <div className="flex flex-wrap justify-between items-start mb-4 gap-4">
+            <h3 className="text-2xl font-medium text-yellow-500">Blog Page: Custom Domain || Hashnode</h3>
+            <a
               href="https://blog.cloudkinshuk.in"
-              className="inline-flex text-sm items-center p-1 px-2 bg-blue-600  text-white text-base rounded-lg transition-all duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
             >
-              View My Blogs
-            </motion.a>
-          </motion.div>
-        </div>
+              View Blog <BiLinkExternal className="ml-1" />
+            </a>
+          </div>
 
-        {/* Subtle background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-[#303134] to-transparent pointer-events-none"></div>
-      </motion.header>
+          <p className="text-gray-300 mb-6">
+            Created and deployed a fully functional tech blog using Hashnode as the content platform, with custom
+            domain integration and professional DNS configuration.
+          </p>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
-        <motion.section
-          id="contact"
-          className="mb-16 sm:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-        >
-          <motion.h2
-            className="text-4xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-white "
-            variants={fadeInUp}
-          >
-            <span className=" mr-3">
-              <FaHashtag />
-            </span>
-            Open to Collaborate / Work
-          </motion.h2>
+          <h3 className="text-xl font-medium mb-2 text-yellow-500">Learning:</h3>
+          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-300">
+            <li>
+              Built a personal brand using a custom-named blog (e.g., blog.yourname.com). Showcased your knowledge and
+              skills through public writing. Shared blog links on LinkedIn, GitHub, and resume to show expertise.
+            </li>
+            <li>
+              Gained hands-on experience with Hashnode, a powerful blogging platform that simplifies the process of
+              creating and managing content.
+            </li>
+            <li>
+              The major reason of why i made this blog page was due to the gap which i was getting in while i was
+              learning new skills.
+            </li>
+            <li>
+              Gained hands-on experience with Hashnode, a powerful blogging platform that simplifies the process of
+              creating and managing content.
+            </li>
+          </ul>
 
-          <motion.div
-            className="relative pl-6 sm:pl-8 mt-4 py-8 px-6 sm:px-8 text-base      shadow-lg"
-            variants={fadeInUp}
-          >
-            <motion.p
-              className="text-sm sm:text-base text-white mb-4 leading-relaxed"
-              variants={fadeInUp}
-            >
-              Hey there! I'm always open to connecting with fellow peers,
-              engineers, developers, or anyone curious about tech, cloud, or
-              just building  things together. You can reach out from below sources 
-            </motion.p>
+          <h3 className="text-xl font-medium mb-2 text-yellow-500">Description</h3>
+          <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-300">
+            <li>Set up a developer blog with a custom domain (blog.cloudkinshuk.in)</li>
+            <li>Configured DNS records (A, CNAME, TXT) in Route 53 for domain verification and HTTPS</li>
+            <li>Publishing technical articles covering AWS, serverless architecture, and React development</li>
+          </ul>
 
-            <motion.div
-              className="space-y-1 sm:space-y-2 text-sm sm:text-base"
-              variants={fadeInUp}
-            >
-              <h3>
-                <span className="text-yellow-500">Email: </span>{" "}
-                kinshuk25jan04@gmail.com
-              </h3>
-              <h3>
-                <span className="text-yellow-500">Alternate Email: </span>{" "}
-                jkinshuk@outlook.com
-              </h3>
-
-              <motion.div
-                className="flex flex-wrap items-center gap-4 sm:gap-6 p-4 sm:p-5 mt-4  rounded-lg"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                {[
-                  {
-                    icon: <FaGithub size={24} className="text-white" />,
-                    label: "",
-                    url: "https://github.com/kinshukjainn",
-                  },
-                  {
-                    icon: <FaLinkedin size={24} className="text-white" />,
-                    label: "",
-                    url: "https://linkedin.com/in/kinshukjainn/",
-                  },
-                  {
-                    icon: <FaTwitter size={24} className="text-white" />,
-                    label: "",
-                    url: "https://x.com/realkinshuk04",
-                  },
-                  {
-                    icon: <FaInstagram size={24} className="text-white" />,
-                    label: "",
-                    url: "https://instagram.com/kinshukjain._/",
-                  },
-                  {
-                    icon: <FaBlog size={24} className="text-white" />,
-                    label: "",
-                    url: "https://blog.cloudkinshuk.in",
-                  },
-                ].map((item, index) => (
-                  <motion.a
-                    key={index}
-                    href={item.url}
-                    className="flex items-center space-x-1 text-white  transition-colors duration-300"
-                    aria-label={item.label}
-                    variants={fadeInUp}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span className=" text-lg ">{item.label}</span>
-                    {item.icon}
-                  </motion.a>
-                ))}
-                <motion.button
-                  onClick={handleClick}
-                  className="flex cursor-pointer items-center space-x-1 text-white hover:text-blue-400 transition-colors duration-300"
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <FaWhatsapp
-                    size={24}
-                    className="mr-1 text-white text-lg"
-                  />
-                </motion.button>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </motion.section>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
-        {/* Tech Stack Section */}
-        <motion.section
-          className="mb-16 sm:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-        >
-          <motion.h2
-            className="text-4xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-white "
-            variants={fadeInUp}
-          >
-            <span className="mr-3 text-white">
-              <FaHashtag />
-            </span>
-            Tech Stack
-          </motion.h2>
-
-          <motion.div
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
-            variants={staggerContainer}
-          >
-            {techStack.map((tech, index) => (
-              <motion.div
-                key={index}
-                className="flex items-center space-x-3 py-3 px-4     transition-all duration-300"
-                variants={fadeInUp}
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
-                custom={index}
-              >
-                <span className="text-white text-2xl">{tech.icon}</span>
-                <span className="text-sm sm:text-base tracking-wide text-white">
-                  {tech.name}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.section>
-
-        <motion.section
-          className="mb-16 sm:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-        >
-          <motion.h2
-            className="text-4xl sm:text-4xl mb-8 sm:mb-10 flex items-center text-white "
-            variants={fadeInUp}
-          >
-            <span className="mr-3 text-white">
-              <FaHashtag />
-            </span>
-            Tools
-          </motion.h2>
-
-          <motion.div
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
-            variants={staggerContainer}
-          >
-            {toolsStack.map((tech, index) => (
-              <motion.div
-                key={index}
-                className="flex items-center space-x-3 py-3 px-4     transition-all duration-300"
-                variants={fadeInUp}
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
-                custom={index}
-              >
-                <span className="text-white text-2xl">{tech.icon}</span>
-                <span className="text-sm sm:text-base tracking-wide text-white">
-                  {tech.name}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.section>
-
-        {/* Certifications Section */}
-        <motion.section
-          className="mb-16 sm:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-        >
-          <motion.h2
-            className="text-2xl sm:text-3xl mb-8 sm:mb-10 flex items-center text-white "
-            variants={fadeInUp}
-          >
-            <span className="mr-3 text-white">
-              <FaHashtag />
-            </span>
-            Cloud Certifications
-          </motion.h2>
-
-          {/* AWS Journey Banner */}
-          <motion.div
-            className="mb-8 sm:mb-12 relative pl-6 sm:pl-8 py-6 sm:py-8 px-6 sm:px-8    "
-            variants={fadeInUp}
-          >
-            <motion.h3
-              className="text-lg sm:text-xl flex items-center mb-3 sm:mb-4 text-yellow-500 font-medium"
-              variants={fadeInUp}
-            >
-              <FaAws className="mr-3 text-4xl text-yellow-500" /> My AWS
-              Certification Journey
-            </motion.h3>
-            <motion.p
-              className="text-md sm:text-base text-white leading-relaxed"
-              variants={fadeInUp}
-            >
-              I recently scored 679/1000 on the AWS Certified Cloud Practitioner
-              exam (CLF-C02). While just shy of passing, this experience has
-              <span className="text-blue-300 font-medium">
-                {" "}
-                strengthened my resolve{" "}
-              </span>
-              to master cloud fundamentals and accelerated my preparation for
-              the more advanced Solutions Architect Associate certification by
-              Q3 2025.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4"
-            variants={staggerContainer}
-          >
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                className="relative pl-6 py-6 sm:py-8 px-6     transition-all duration-300"
-                variants={fadeInUp}
-                whileHover={cardHover.hover}
-                initial={cardHover.rest}
-                animate={cardHover.rest}
-              >
-                <div className="flex items-start">
-                  <FaAws className="text-yellow-500 text-4xl mr-3 mt-1" />
-                  <h3 className="text-base sm:text-lg text-yellow-500 font-medium">
-                    {cert.title}
-                  </h3>
-                </div>
-                <motion.a
-                  href={cert.link}
-                  className="text-white p-[4.5px] rounded-lg bg-blue-600 text-sm inline-flex items-center mt-4 transition-colors duration-200 hover:bg-blue-700"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  View Certificate
-                  <TbExternalLink className="ml-2 text-lg" />
-                </motion.a>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.section>
-
-        <motion.section
-          className="mb-16 sm:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-        >
-          <motion.h2
-            className="text-2xl sm:text-3xl mb-8 sm:mb-10 flex items-center text-white "
-            variants={fadeInUp}
-          >
-            <span className="mr-3 text-white">
-              <FaHashtag />
-            </span>
-            Education
-          </motion.h2>
-
-          <motion.div
-            className="space-y-6 sm:space-y-8"
-            variants={staggerContainer}
-          >
-            <motion.div
-              className="relative pl-6 sm:pl-8 p-6 sm:p-8     transition-all duration-300"
-              variants={fadeInUp}
-              whileHover={cardHover.hover}
-              initial={cardHover.rest}
-              animate={cardHover.rest}
-            >
-              <div className="flex flex-col md:flex-row md:justify-between">
-                <div>
-                  <h3 className="text-lg sm:text-xl text-white font-medium">
-                    Bachelor of Technology, Electrical Engineering
-                  </h3>
-                  <p className="text-white text-sm sm:text-base mt-2 sm:mt-3">
-                    JSS Academy of Technical Education
-                  </p>
-                  <p className="text-white text-xs mt-1">
-                    Noida, Uttar Pradesh
-                  </p>
-                </div>
-                <div className="mt-3 md:mt-0">
-                  <span className="text-white font-semibold text-lg px-3 py-1 ">
-                    2022 - 2026
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="relative pl-6 sm:pl-8 p-6 sm:p-8     transition-all duration-300"
-              variants={fadeInUp}
-              whileHover={cardHover.hover}
-              initial={cardHover.rest}
-              animate={cardHover.rest}
-            >
-              <div className="flex flex-col md:flex-row md:justify-between">
-                <div>
-                  <h3 className="text-lg sm:text-xl text-white font-medium">
-                    Higher Secondary Education (XII)
-                  </h3>
-                  <p className="text-white text-sm sm:text-base mt-2 sm:mt-3">
-                    Sri Chaitnya Junior College
-                  </p>
-                  <p className="text-white text-xs mt-1">
-                    Pune, Maharashtra, India
-                  </p>
-                </div>
-                <div className="mt-3 md:mt-0">
-                  <span className="text-white font-semibold text-lg   px-3 py-1 ">
-                    2020 - 2022
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </motion.section>
-
-        {/* Projects Section */}
-        <motion.section
-          id="projects"
-          className="mb-16 sm:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeInUp}
-        >
-          <motion.h2
-            className="text-2xl sm:text-3xl mb-8 sm:mb-10 flex items-center text-white "
-            variants={fadeInUp}
-          >
-            <span className="mr-3 text-white">
-              <FaHashtag />
-            </span>
-            Projects / Work
-          </motion.h2>
-
-          {/* Project 1 */}
-          <motion.div
-            className="mb-12 sm:mb-16 relative pl-6 sm:pl-8 py-8 sm:py-10 px-6 sm:px-8     transition-all duration-300"
-            variants={fadeInUp}
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
-              <motion.h3
-                className="text-2xl sm:text-3xl font-medium mb-3 md:mb-0 text-yellow-500"
-                variants={fadeInUp}
-              >
-                Portfolio Website
-              </motion.h3>
-              <motion.a
-                href="https://cloudkinshuk.in"
-                className="inline-flex items-center text-xs text-white transition-all bg-blue-600 p-1 rounded-lg w-max  hover:bg-blue-700"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Live
-              </motion.a>
-            </div>
-
-            <motion.h3
-              className="text-xl sm:text-2xl font-medium mt-6 mb-3 text-yellow-500"
-              variants={fadeInUp}
-            >
-              Description :
-            </motion.h3>
-            <motion.p
-              className="text-sm sm:text-base text-white mb-6 sm:mb-8 leading-relaxed"
-              variants={fadeInUp}
-            >
-              Built and deployed a personal portfolio website using React 19,
-              TypeScript, Tailwind CSS with live blog integration and full
-              cloud-backed deployment.
-            </motion.p>
-
-            <motion.h3
-              className="text-xl sm:text-2xl font-medium mb-3 text-yellow-500"
-              variants={fadeInUp}
-            >
-              Challenges:
-            </motion.h3>
-
-            <motion.div className="space-y-3 mb-6" variants={staggerContainer}>
-              {[
-                "Deploying my website on a cloud platform like AWS was a completely new experience for me. AWS is a vast platform with numerous complexities, and navigating through its features felt overwhelming at times.",
-                "I was unfamiliar with the best practices for optimizing SEO (Search Engine Optimization) while building the website. Despite several attempts, I struggled to implement the right methods to enhance my website's SEO performance and overall user experience.",
-                "As a beginner, I constantly worried about the potential high costs associated with deploying the website on AWS. The thought of exceeding the free-tier traffic limits and accumulating an unexpected, hefty bill added to my stress.",
-                "When I purchased my own domain from Hostinger, I had no idea how to link it to my website. I faced several challenges in correctly redirecting my custom URL to the site and encountered failures multiple times before getting it right.",
-              ].map((challenge, index) => (
-                <motion.p
-                  key={index}
-                  className="text-sm sm:text-base text-white leading-relaxed"
-                  variants={fadeInUp}
-                >
-                  {challenge}
-                </motion.p>
-              ))}
-            </motion.div>
-
-            <motion.h3
-              className="text-xl sm:text-2xl font-medium mt-6 mb-3 text-yellow-500"
-              variants={fadeInUp}
-            >
-              Learnings:
-            </motion.h3>
-
-            <motion.div className="space-y-3 mb-6" variants={staggerContainer}>
-              {[
-                "Gained hands-on experience with AWS services and understood how to deploy static and dynamic websites using cost-effective practices. I also learned how to monitor resources to avoid unexpected charges.",
-                "Understood the importance of SEO and gradually adopted key best practices such as setting up proper meta tags, improving load speed, using semantic HTML, and ensuring mobile responsiveness.",
-                "Learned how to stay calm and analytical under pressure. I developed the habit of reading official documentation and community threads to troubleshoot issues instead of panicking.",
-                "Mastered the process of linking a custom domain to a hosted website. I now understand DNS records, domain pointing, and the importance of patience and debugging while working with hosting and domain providers.",
-              ].map((learning, index) => (
-                <motion.p
-                  key={index}
-                  className="text-sm sm:text-base text-white leading-relaxed"
-                  variants={fadeInUp}
-                >
-                  {learning}
-                </motion.p>
-              ))}
-            </motion.div>
-
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 sm:mt-8"
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp}>
-                <h4 className="text-lg sm:text-xl font-medium mb-3 text-yellow-500">
-                  Key Features
-                </h4>
-                <ul className="space-y-3 text-sm sm:text-base text-white">
-                  <li className="flex items-start">
-                    <span className="text-blue-400 mr-2">→</span>
-                    Implemented responsive and dynamic design using Tailwind CSS
-                    and React 19, ensuring a seamless experience across devices
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-400 mr-2">→</span>
-                    Migrated from Netlify to AWS Amplify, to make it more
-                    cost-effective and scalable
-                  </li>
-                </ul>
-              </motion.div>
-              <motion.div variants={fadeInUp}>
-                <h4 className="text-lg sm:text-xl font-medium mb-3 text-yellow-500">
-                  Technical Details
-                </h4>
-                <ul className="space-y-3 text-sm sm:text-base text-white">
-                  <li className="flex items-start">
-                    <span className="text-blue-400 mr-2">→</span>
-                    Configured Amazon Route 53 for SSL and DNS management. Route
-                    53 Hosted zones manages my DNS and SSL Certificates
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-400 mr-2">→</span>
-                    Used AI tools like chat gpt and claude to write code and to
-                    boost development efficiency
-                  </li>
-                </ul>
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              className="mt-8 pt-6 border-t "
-              variants={fadeInUp}
-            >
-              <h4 className="text-sm font-medium text-yellow-500 mb-3">
-                Technologies:
-              </h4>
-              <motion.div
-                className="flex flex-wrap gap-2 mt-2"
-                variants={staggerContainer}
-              >
-                {[
-                  "React 19",
-                  "TypeScript",
-                  "Tailwind CSS",
-                  "AWS Amplify",
-                  "Route 53",
-                  "Hostinger",
-                ].map((tech, index) => (
-                  <motion.span
-                    key={index}
-                    className="inline-block text-xs bg-blue-900 px-3 py-1 text-white  hover:-translate-y-1 transition-transform duration-200"
-                    variants={fadeInUp}
-                    whileHover={{ y: -4 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
+          <div className="mt-6 pt-4 border-t border-gray-800">
+            <h4 className="text-base font-medium text-yellow-500 mb-2">Technologies:</h4>
+            <div className="flex flex-wrap gap-2">
+              {["Hashnode", "Amazon Route 53", "Hostinger", "DNS Management", "Custom Domain", "CDN"].map(
+                (tech, index) => (
+                  <span key={index} className="inline-block text-sm bg-gray-800 px-2 py-1 text-gray-300">
                     {tech}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </motion.div>
-          </motion.div>
-
-          {/* SEO Section - Simplified text-based version */}
-          <motion.div
-            className="max-w-4xl mx-auto     p-6 sm:p-8 mb-12 sm:mb-16"
-            variants={fadeInUp}
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
-              <motion.h3
-                className="text-2xl sm:text-3xl font-medium mb-3 md:mb-0 text-yellow-500"
-                variants={fadeInUp}
-              >
-                SEO of my website
-              </motion.h3>
-              <motion.a
-                href="https://pagespeed.web.dev/"
-                className="inline-flex items-center text-xs text-white transition-all bg-blue-600 p-1 rounded-lg w-max  hover:bg-blue-700  hover:shadow-blue-500/20"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Check Here <BiLinkExternal className="ml-1" />
-              </motion.a>
-            </div>
-
-            <motion.p
-              className="text-sm sm:text-base text-white mb-6 leading-relaxed"
-              variants={fadeInUp}
-            >
-              Built and deployed a personal portfolio website using React 19,
-              TypeScript, Tailwind CSS with live blog integration and full
-              cloud-backed deployment.
-            </motion.p>
-
-            <motion.div className="mb-8" variants={fadeInUp}>
-              <h4 className="text-xl sm:text-2xl font-medium text-yellow-500 mb-4">
-                Performance Scores
-              </h4>
-
-              <motion.div
-                className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6"
-                variants={staggerContainer}
-              >
-                {[
-                  { score: 97, label: "Desktop Performance" },
-                  { score: 71, label: "Mobile Performance" },
-                  { score: 89, label: "Accessibility" },
-                  { score: 100, label: "SEO Score" },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="p-4 text-center"
-                    variants={fadeInUp}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <motion.div
-                      className={`text-3xl font-bold ${
-                        item.score >= 90
-                          ? "text-green-400"
-                          : item.score >= 50
-                          ? "text-yellow-400"
-                          : "text-red-400"
-                      }`}
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.1 * index }}
-                    >
-                      {item.score}
-                    </motion.div>
-                    <p className="text-sm text-white mt-2">{item.label}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              <p className="text-xs text-yellow-400 mb-3">
-                Values are estimated and may vary. The performance score is
-                calculated directly from these metrics.
-              </p>
-
-              <motion.div
-                className="flex justify-center gap-6 mt-4 text-xs"
-                variants={staggerContainer}
-              >
-                {[
-                  { color: "bg-red-500", range: "0-49" },
-                  { color: "bg-yellow-500", range: "50-89" },
-                  { color: "bg-green-500", range: "90-100" },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-center"
-                    variants={fadeInUp}
-                  >
-                    <div
-                      className={`w-3 h-3 ${item.color}  mr-2`}
-                    ></div>
-                    <span className="text-white">{item.range}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          </motion.div>
-
-          {/* Project 2 */}
-          <motion.div
-            className="relative pl-6 sm:pl-8 py-8 sm:py-10 px-6 sm:px-8      transition-all duration-300"
-            variants={fadeInUp}
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
-              <motion.h3
-                className="text-2xl sm:text-3xl font-medium mb-3 md:mb-0 text-yellow-500"
-                variants={fadeInUp}
-              >
-                Blog Page : Custom Domain || Hashnode
-              </motion.h3>
-              <motion.a
-                href="https://blog.cloudkinshuk.in"
-                className="inline-flex items-center text-xs text-white transition-all bg-blue-600 p-1 rounded-lg w-max  hover:bg-blue-700  hover:shadow-blue-500/20"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Blog
-              </motion.a>
-            </div>
-
-            <motion.p
-              className="text-sm sm:text-base text-white mb-6 sm:mb-8 leading-relaxed"
-              variants={fadeInUp}
-            >
-              Created and deployed a fully functional tech blog using Hashnode
-              as the content platform, with custom domain integration and
-              professional DNS configuration.
-            </motion.p>
-
-            <motion.h3
-              className="text-xl sm:text-2xl font-medium mb-3 text-yellow-500"
-              variants={fadeInUp}
-            >
-              Learning :
-            </motion.h3>
-
-            <motion.ul
-              className="space-y-3 text-sm sm:text-base text-white mb-6 sm:mb-8"
-              variants={staggerContainer}
-            >
-              {[
-                "Built a personal brand using a custom-named blog (e.g., blog.yourname.com). Showcased your knowledge and skills through public writing. Shared blog links on LinkedIn, GitHub, and resume to show expertise.",
-                "Gained hands-on experience with Hashnode, a powerful blogging platform that simplifies the process of creating and managing content.",
-                "The major reason of why i made this blog page was due to the gap which i was getting in while i was learning new skills.",
-                "Gained hands-on experience with Hashnode, a powerful blogging platform that simplifies the process of creating and managing content.",
-              ].map((item, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-start"
-                  variants={fadeInUp}
-                >
-                  <span className="text-blue-400 mr-2 mt-1">
-                    <GoRocket />
                   </span>
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
-
-            <motion.h3
-              className="text-xl sm:text-2xl font-medium mb-3 text-yellow-500"
-              variants={fadeInUp}
-            >
-              Description
-            </motion.h3>
-
-            <motion.ul
-              className="space-y-3 text-sm sm:text-base text-white mb-6 sm:mb-8"
-              variants={staggerContainer}
-            >
-              {[
-                "Set up a developer blog with a custom domain (blog.cloudkinshuk.in)",
-                "Configured DNS records (A, CNAME, TXT) in Route 53 for domain verification and HTTPS",
-                "Publishing technical articles covering AWS, serverless architecture, and React development",
-              ].map((item, index) => (
-                <motion.li
-                  key={index}
-                  className="flex items-start"
-                  variants={fadeInUp}
-                >
-                  <span className="text-blue-400 mr-2 mt-1">
-                    <GoRocket />
-                  </span>
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
-
-            <motion.div
-              className="mt-8 pt-6 border-t "
-              variants={fadeInUp}
-            >
-              <h4 className="text-sm font-medium text-yellow-500 mb-3">
-                Technologies:
-              </h4>
-              <motion.div
-                className="flex flex-wrap gap-2 mt-2"
-                variants={staggerContainer}
-              >
-                {[
-                  "Hashnode",
-                  "Amazon Route 53",
-                  "Hostinger",
-                  "DNS Management",
-                  "Custom Domain",
-                  "CDN",
-                ].map((tech, index) => (
-                  <motion.span
-                    key={index}
-                    className="inline-block text-xs bg-blue-900/30   px-3 py-1 text-white  hover:-translate-y-1 transition-transform duration-200"
-                    variants={fadeInUp}
-                    whileHover={{ y: -4 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </motion.section>
-      </div>
-
-      <motion.div
-        className="    mt-12 mb-4 mr-4 ml-4  py-12 sm:py-16 "
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            className="flex flex-col md:flex-row justify-between items-start gap-8"
-            variants={fadeInUp}
-          >
-            {/* Left Content */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <FaCode className="text-white text-xl" />
-                <h3 className="text-xl sm:text-2xl font-medium text-white">
-                  Fork it. Star it. Make it your own — if it serves your purpose.
-                </h3>
-              </div>
-
-              <p className="text-base sm:text-lg text-white max-w-3xl leading-relaxed">
-                This portfolio project is open-source and available for forking.
-                If the design or structure proved useful in your work, you're
-                free to adapt or extend it as needed. A star is appreciated if
-                it saved you time or provided a solid foundation — but not
-                required. Feedback, contributions, and practical improvements
-                are welcome. Keep it efficient. Keep it clean.
-              </p>
-
-              <div className="flex gap-6 sm:gap-8">
-                <motion.div
-                  className="flex items-center text-sm text-yellow-500 transition-colors duration-300"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <FaStar className="text-yellow-200 mr-2" />
-                  <span>Star to show love</span>
-                </motion.div>
-                <motion.div
-                  className="flex items-center text-sm text-yellow-500 transition-colors duration-300"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <FaCodeBranch className="text-blue-400 mr-2" />
-                  <span>Fork and remix</span>
-                </motion.div>
-              </div>
+                ),
+              )}
             </div>
-
-            {/* Right Button */}
-            <motion.a
-              href="https://github.com/kinshukjain01/kinshukkportfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 font-mono text-white transition-colors duration-300 group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaGithub className="text-2xl" />
-              <span className="text-sm group-hover:border-blue-400">
-                @kinshukkportfolio
-              </span>
-              <HiOutlineExternalLink className="text-sm" />
-            </motion.a>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </section>
+
+      <div className="py-8 border-b border-gray-800">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-6">
+          {/* Left Content */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <FaCode className="text-white" />
+              <h3 className="text-xl font-medium text-white">
+                Fork it. Star it. Make it your own — if it serves your purpose.
+              </h3>
+            </div>
+
+            <p className="text-gray-300">
+              This portfolio project is open-source and available for forking. If the design or structure proved
+              useful in your work, you're free to adapt or extend it as needed. A star is appreciated if it saved you
+              time or provided a solid foundation — but not required. Feedback, contributions, and practical
+              improvements are welcome. Keep it efficient. Keep it clean.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <div className="flex items-center text-yellow-500">
+                <FaStar className="text-yellow-200 mr-1" />
+                <span>Star to show love</span>
+              </div>
+              <div className="flex items-center text-yellow-500">
+                <FaCodeBranch className="text-blue-400 mr-1" />
+                <span>Fork and remix</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Button */}
+          <a
+            href="https://github.com/kinshukjain01/kinshukkportfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors"
+          >
+            <FaGithub />
+            <span>@kinshukkportfolio</span>
+            <HiOutlineExternalLink />
+          </a>
+        </div>
+      </div>
 
       {/* Footer */}
-      <motion.footer
-        className="bg-[#171717] border-t border-gray-800 py-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <motion.p
-            className="text-xs sm:text-sm text-white"
-            variants={fadeInUp}
-          >
-            Want to explore my Thinking? click on "Learning journey" to Check
-            out the{" "}
-            <Link
-              to="/my-personal-learning-resources"
-              className="text-blue-400  pb-px hover:text-blue-300  transition-colors duration-200"
-            >
+      <footer className="py-8 border-t border-gray-800 mt-8">
+        <div className="text-center">
+          <p className="text-gray-300">
+            Want to explore my Thinking? click on "Learning journey" to Check out the{" "}
+            <a href="/my-personal-learning-resources" className="text-blue-400 hover:text-blue-300 transition-colors">
               Learning Journey
-            </Link>{" "}
+            </a>{" "}
             Page
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="mt-4 flex items-center justify-center text-white text-xs"
-            variants={fadeInUp}
-          >
+          <div className="mt-4 flex items-center justify-center text-gray-300">
             <MdDarkMode className="mr-2" />
             Dark Mode Enabled
-          </motion.div>
+          </div>
         </div>
-      </motion.footer>
+      </footer>
     </div>
-  );
-};
-
-export default MainContent;
+  )
+}
