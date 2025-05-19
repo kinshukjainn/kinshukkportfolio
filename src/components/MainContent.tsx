@@ -405,7 +405,7 @@ export default function Portfolio() {
 
           <p className="text-gray-300 mb-6">
             Built and deployed a personal portfolio website using React 19, TypeScript, Tailwind CSS with live blog
-            integration and full cloud-backed deployment.
+            integration link  and full cloud-backed deployment.
           </p>
 
           <div className="mb-6">
@@ -458,26 +458,22 @@ export default function Portfolio() {
 
           <p className="text-gray-300 mb-6">
             Created and deployed a fully functional tech blog using Hashnode as the content platform, with custom
-            domain integration and professional DNS configuration.
+            domain integration and  DNS configuration.
           </p>
 
           <h3 className="text-xl font-medium mb-2 text-yellow-500">Learning:</h3>
           <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-300">
             <li>
-              Built a personal brand using a custom-named blog (e.g., blog.yourname.com). Showcased your knowledge and
-              skills through public writing. Shared blog links on LinkedIn, GitHub, and resume to show expertise.
+              Developed a personal blog page using a custom domain (e.g., blog.yourname.com) to showcase technical knowledge and writing skills.
             </li>
             <li>
-              Gained hands-on experience with Hashnode, a powerful blogging platform that simplifies the process of
-              creating and managing content.
+            Published blog posts regularly to demonstrate expertise in cloud computing, DevOps, and emerging technologies. Shared links on LinkedIn, GitHub, and resume to strengthen my personal brand.
             </li>
             <li>
-              The major reason of why i made this blog page was due to the gap which i was getting in while i was
-              learning new skills.
+             Created the blog to bridge the gap between learning and understanding new skills by documenting insights, challenges, and solutions in a structured format.
             </li>
             <li>
-              Gained hands-on experience with Hashnode, a powerful blogging platform that simplifies the process of
-              creating and managing content.
+              Gained hands-on experience with Hashnode, a developer-friendly blogging platform, for content management, custom domain integration, and SEO optimization.
             </li>
           </ul>
 
