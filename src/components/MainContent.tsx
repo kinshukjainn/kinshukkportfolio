@@ -87,10 +87,10 @@ export default function Portfolio() {
       {/* Hero section */}
       <header className="py-8 md:py-12 border-b border-gray-800">
         <h1 className="text-4xl font-semibold md:text-4xl mb-4 text-blue-900 ">
-          Hi, I'm <span className="text-gray-900">Kinshuk Jain</span>
+          Aspiring <span className="text-gray-900">Cloud Engineer | Tech Enthusiast | Open to Collaborate</span>
         </h1>
         <p className="text-lg md:text-xl text-black mb-6">
-          Aspiring Cloud Engineer | Tech Enthusiast | Open to Collaborate
+          Currently exploring: AWS | Docker | Terraform | Blogging | React | AWS SDK 
         </p>
       </header>
 
@@ -105,8 +105,7 @@ export default function Portfolio() {
 
         <div className="mb-6">
           <p className="text-black mb-4">
-            Hey there! I'm always open to connecting with fellow peers, engineers, developers, or anyone curious about
-            tech, cloud, or just building things together. You can reach out from below sources:
+     Hey there! I’m always open to connecting with peers, engineers, developers, or anyone curious about tech, cloud, or simply building cool things together.
           </p>
 
           <div className="space-y-2 mb-6">
