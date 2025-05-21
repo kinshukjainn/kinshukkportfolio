@@ -2,23 +2,25 @@ export default function Blog() {
   return (
     <>
       <section>
-        <div className="min-h-screen bg-white text-gray-900 p-8 ">
+        <div className="min-h-screen bg-[#161b22] text-gray-100 p-8 ">
           <div className="max-w-3xl mx-auto">
-            <div className="border-b border-gray-700 pb-4 mb-6">
-              <h1 className="text-2xl font-bold text-gray-900"># Blogs !!</h1>
+            <div className="border-b border-gray-200 pb-4 mb-6">
+              <h1 className="text-2xl font-bold text-blue-300"># Blogs !!</h1>
             </div>
+            <div className="p-5 border-2 border-gray-800  bg-gray-900 rounded-lg mb-4 w-max ">
             <div className="flex items-center mb-4">
-              <span className="text-gray-700 text-sm">
+              <span className="text-gray-200 text-sm">
                 Last updated: 19 May 2025
               </span>
             </div>
             <div className="flex items-center mb-4">
-              <span className="text-gray-700 text-sm">Time : 17:37 PM </span>
+              <span className="text-gray-200 text-sm">Time : 17:37 PM </span>
             </div>
             <div className="flex items-center mb-4">
-              <span className="text-gray-700 text-sm">
+              <span className="text-gray-200 text-sm">
                 Blogs Hosted on Hashnode{" "}
               </span>
+            </div>
             </div>
 
             <div className="space-y-6 leading-relaxed">
@@ -42,7 +44,7 @@ export default function Blog() {
               <div className="mt-10 pt-6 border-t border-gray-800">
                 <a
                   href="https://blog.cloudkinshuk.in"
-                  className="text-white text-sm bg-blue-900 p-2 rounded-full  hover:text-white border-2 border-black  "
+                  className="text-white text-sm bg-blue-900 p-2 rounded-lg  hover:text-white   "
                 >
                   Visit My Blog
                 </a>
@@ -52,25 +54,28 @@ export default function Blog() {
         </div>
       </section>
       <section>
-        <div className="min-h-screen bg-white text-gray-900 p-8 ">
+        <div className="min-h-screen bg-[#161b22] text-gray-100 p-8 ">
           <div className="max-w-3xl mx-auto">
             <div className="border-b border-gray-700 pb-4 mb-6">
-              <h1 className="text-2xl font-bold text-gray-900">
+              <h1 className="text-2xl font-bold text-blue-200">
                 # Reasons of Starting Blogging : !!
               </h1>
             </div>
+            <div className="p-5 border-2 border-gray-800  bg-gray-900 rounded-lg mb-4 w-max ">
+
             <div className="flex items-center mb-4">
-              <span className="text-gray-700 text-sm">
+              <span className="text-gray-200 text-sm">
                 Last updated: 20 May 2025
               </span>
             </div>
             <div className="flex items-center mb-4">
-              <span className="text-gray-700 text-sm">Time : 00:09 AM  </span>
+              <span className="text-gray-200 text-sm">Time : 00:09 AM  </span>
             </div>
             <div className="flex items-center mb-4">
-              <span className="text-gray-700 text-sm">
+              <span className="text-gray-200 text-sm">
                 Blogs Hosted on Hashnode{" "}
               </span>
+            </div>
             </div>
 
             <div className="space-y-6 leading-relaxed">
@@ -92,7 +97,7 @@ export default function Blog() {
               <div className="mt-10 pt-6 border-t border-gray-800">
                 <a
                   href="https://blog.cloudkinshuk.in/reasons-why-you-should-start-blogging-to-build-you-career"
-                  className="text-white text-sm bg-blue-900 p-2 rounded-full  hover:text-white border-2 border-black  "
+                  className="text-white text-sm bg-blue-900 p-2 rounded-lg  hover:text-white"
                 >
                   Checkout my Blog 
                 </a>

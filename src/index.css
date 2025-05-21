@@ -5,8 +5,7 @@
 @import "tailwindcss";
 
 body {
-  background-color: white;  /* Light background */
-  color: black;             /* Text color */
+  background-color: #0d1117;  /* Light background */
   font-family: 'Rubik', Tahoma, Verdana, sans-serif;
 }
 

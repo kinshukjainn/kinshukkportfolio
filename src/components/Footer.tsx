@@ -4,7 +4,7 @@ import { FaCloud } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-black font-sans text-gray-300 py-6 border-t border-gray-800 mt-4">
+    <footer className="bg-[#0d1117] text-gray-300 py-6 border-t border-gray-800 mt-4">
       <div className="container mx-auto px-4 flex flex-col items-center text-center">
         {/* Name & Tagline */}
         <div className="flex items-center gap-2">

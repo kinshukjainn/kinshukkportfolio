@@ -9,73 +9,6 @@ const Learningresources = () => {
       title: "Python Tutorial : One shot part-1 Hitesh Chaudhary",
       link: "https://youtu.be/v9bOWjwdTlg?si=ZUQk3quntrvz4Gs6",
     },
-    {
-      id: 2,
-      title: "Python tutorial : One short part - 2 Hitesh Chaudhary",
-      link: "https://youtu.be/Cri8__uGk-g?si=OvwsHDYqCV3olBqS",
-    },
-    {
-      id: 3,
-      title:
-        "Django (Backend Framework) tutorial : One short part - 2 Hitesh Chaudhary",
-      link: "https://youtu.be/Cri8__uGk-g?si=OvwsHDYqCV3olBqS",
-    },
-    {
-      id: 4,
-      title: "React Js Tutorial : One Shot Part - 1 Hitesh Chaudhary",
-      link: "https://youtu.be/FxgM9k1rg0Q?si=N5atTQ8hcZuTssV3",
-    },
-    {
-      id: 5,
-      title: "javascript tutorial one shot part -1 Hitesh Chaudhary",
-      link: "https://youtu.be/sscX432bMZo?si=MuUHInYGXrLsI7u1",
-    },
-    {
-      id: 6,
-      title: "Javasript tutorial one shot part -2 Hitesh Chaudhary",
-      link: "https://youtu.be/_TjtAyMkiTI?si=5mKoygmwk6bQGAdZ",
-    },
-    {
-      id: 7,
-      title: "React Js Tutorial one short Part -2 Hitesh chaudhary ",
-      link: "https://youtu.be/IdlF1zsUN3M?si=lA9uwUp0MMuKIaDs",
-    },
-    {
-      id: 8,
-      title: "Tailwindcss Tutorial one short : Hitesh chaudhary",
-      link: "https://youtu.be/_9mTJ84uL1Q?si=GO-wN1KyX5P7YUwQ",
-    },
-    {
-      id: 9,
-      title: "Docker tutorial : Complete : piyush Gargh",
-      link: "https://youtu.be/31k6AtW-b3Y?si=L-x0hChsen7A3-3Q",
-    },
-    {
-      id: 10,
-      title:
-        "Next Js tutorial : One shot : Project Based Learning : Hitesh chaudhary",
-      link: "https://reactrouter.com/en/main",
-    },
-    {
-      id: 11,
-      title: "Docker tutorial : One shot  part -2  : Piyush gargh",
-      link: "https://youtu.be/xPT8mXa-sJg?si=g7JprItKmCV93C_T",
-    },
-    {
-      id: 12,
-      title: "HTML Tutotrial : Code with Harry ",
-      link: "https://youtu.be/k2DSi1zGEc8?si=oR7tPbvkWGAFaokf",
-    },
-    {
-      id: 13,
-      title: "Complete Backend (MERN) One shot : Part 1 Tutotrial : Hitesh chaudhary",
-      link: "https://youtu.be/7fjOw8ApZ1I?si=bykVKQiG6RV5OLuL",
-    },
-    {
-      id: 14,
-      title: "Complete Backend (MERN) One shot : Part 2 Tutotrial : Hitesh chaudhary  ",
-      link: "https://youtu.be/8k-kK3tsJFY?si=RXBUEShmEyQ_M85Q",
-    },
   ];
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -125,7 +58,7 @@ const Learningresources = () => {
           Learning.hub
         </h1>
         <p className="text-blue-900 mt-2 text-center text-sm sm:text-base max-w-xs sm:max-w-sm md:max-w-md">
-          Curated resources to enhance your development journey
+          Currently in development. This page will be updated with more resources
         </p>
       </header>
 

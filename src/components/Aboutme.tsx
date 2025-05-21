@@ -3,8 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { FaFilm, FaGamepad, FaHashtag } from "react-icons/fa"
-import { SiMyanimelist } from "react-icons/si"
+import { FaBlog, FaHashtag, FaPodcast } from "react-icons/fa"
 
 interface Interest {
   id: number
@@ -19,45 +18,38 @@ export default function AboutMe() {
   const interests: Interest[] = [
     {
       id: 1,
-      icon: <FaFilm className="text-white " />,
-      title: "Movies",
+      icon: <FaPodcast className="text-white " />,
+      title: "Listining to People understanding their vision and mentality , thought process , and ya processing knowledge",
       description:
-        "I'm a huge fan of sci-fi and psychological thrillers. Marvel and DC are among my favorite Genre of movies. I enjoy films that make me think and leave me contemplating long after they end.",
+        "I really like to listen to people and understand their vision and mentality, thought process, and ya processing knowledge. I am a big fan of podcasts and I really like to listen to podcasts on various topics like technology, personal development, and other things.",
     },
     {
       id: 2,
-      icon: <SiMyanimelist className="text-white" />,
-      title: "Anime",
+      icon: <FaBlog className="text-white " />,
+      title: "Writing Blogs and Keep scrolling through the developers portfolio",
       description:
-        "I love anime with deep storylines and unique art styles. Some of my favorites include 'Attack on Titan', 'One Punch Man', and 'Demon Slayer'. I appreciate how anime can explore complex themes in creative ways.",
-    },
-    {
-      id: 3,
-      icon: <FaGamepad className="text-white" />,
-      title: "Gaming",
-      description:
-        "I enjoy both indie and AAA titles, especially RPGs and strategy games. Games with compelling narratives and innovative mechanics always catch my attention. For ex: Call of Duty Mobile, Valorant, and Warzone.",
+        "Alright so whenever I get time I just keep scrolling through the developers portfolio and try to understand how they are building thier portfolio and what are the things they are doing to make it look good and also I try to write blogs on various topics mostly related to cloud computing and DevOps , web development and other things non-technical in nature too.",
     },
   ]
 
   return (
-    <div className="bg-white  text-black min-h-screen p-4 md:p-8 max-w-4xl mx-auto">
+    <div className="bg-[#0d1117]  text-white min-h-screen p-4 md:p-8 max-w-4xl mx-auto">
       {/* Header */}
       <header className="py-8 border-b border-gray-800">
         <h1 className="text-3xl md:text-4xl mb-4 text-white">
-          <span className="text-black font-bold">Kinshuk Jain</span>
+          <span className="text-white font-bold">Kinshuk Jain</span>
         </h1>
-        <p className="text-lg text-gray-900">Aspiring Cloud Engineer & DevOps Enthusiast</p>
+        <p className="text-lg text-green-300">Aspiring Cloud Engineer & DevOps Enthusiast</p>
       </header>
 
       {/* Navigation */}
-      <nav className="py-6 border-b-3 border-gray-800 mb-8">
+      <nav className="py-6 border-b-3 border-gray-400 mb-8">
         <ul className="flex space-x-8">
           <li>
             <button
               onClick={() => setActiveSection("about")}
               className={`${
-                activeSection === "about" ? "text-blue-900 font-bold" : "text-gray-900 hover:text-gray-900"
+                activeSection === "about" ? "text-blue-200 font-bold" : "text-gray-200 hover:text-gray-200"
               }`}
             >
               About Me
@@ -67,7 +59,7 @@ export default function AboutMe() {
             <button
               onClick={() => setActiveSection("interests")}
               className={`${
-                activeSection === "interests" ? "text-blue-900 font-bold" : "text-gray-900 hover:text-gray-900"
+                activeSection === "interests" ? "text-blue-200 font-bold" : "text-gray-200 hover:text-gray-200"
               }`}
             >
               My Interests
@@ -80,15 +72,15 @@ export default function AboutMe() {
       <main>
         {activeSection === "about" && (
           <section className="py-4">
-            <h2 className="text-2xl mb-6 flex items-center text-black">
-              <span className="mr-2 text-grey-900">
+            <h2 className="text-2xl mb-6 flex items-center text-white">
+              <span className="mr-2 text-blue-500">
                 <FaHashtag />
               </span>
               About Me
             </h2>
 
-            <div className="border-l-4 border-blue-900 pl-4 mb-6">
-              <p className="text-gray-900 mb-4">
+            <div className=" pl-4 mb-6">
+              <p className="text-gray-100 mb-4">
                 I'm Kinshuk, a third-year Electrical Engineering student from a tier-3 college in India, but my passion
                 lies in solving real-world problems through modern cloud and automation technologies. I'm an INTJ —
                 someone who thrives on strategic thinking, deep focus, and building systems that work in the background
@@ -96,15 +88,15 @@ export default function AboutMe() {
               </p>
             </div>
 
-            <div className="border-l-4 border-blue-900 pl-4 mb-6">
-              <p className="text-gray-900 mb-4">
+            <div className=" pl-4 mb-6">
+              <p className="text-gray-100 mb-4">
                 Coming from a non-CS background, I've self-learned DevOps, AWS, and cloud-native tools through hands-on
                 projects and consistent upskilling. I believe skills are built through action, not credentials.
               </p>
             </div>
 
-            <div className="border-l-4 border-blue-900 pl-4">
-              <p className="text-gray-900">
+            <div className=" pl-4">
+              <p className="text-gray-100">
                 Outside tech, I'm a tactical FPS gamer (CODM/Warzone) — a hobby that sharpened my decision-making,
                 patience, and adaptability. I value team building, collaboration, learning by doing, and staying
                 consistent all time. I'm currently looking to apply my skills in cloud and DevOps-focused environments
@@ -116,8 +108,8 @@ export default function AboutMe() {
 
         {activeSection === "interests" && (
           <section className="py-4">
-            <h2 className="text-2xl mb-6 flex items-center text-black">
-              <span className="mr-2 text-gray-900">
+            <h2 className="text-2xl mb-6 flex items-center text-white">
+              <span className="mr-2 text-blue-500">
                 <FaHashtag />
               </span>
               What I Love & How I Spend My Free Time
@@ -125,12 +117,12 @@ export default function AboutMe() {
 
             <div className="space-y-8">
               {interests.map((interest) => (
-                <div key={interest.id} className="border-l-4 border-gray-800 pl-4">
+                <div key={interest.id} className=" pl-4">
                   <div className="flex items-center mb-2">
-                    <span className="mr-2 bg-blue-900 p-2 rounded-full border-black border-2 text-xl">{interest.icon}</span>
-                    <h3 className="text-lg font-medium text-black">{interest.title}</h3>
+                    <span className="mr-2 bg-blue-900 p-2 rounded-lg text-xl">{interest.icon}</span>
+                    <h3 className="text-lg font-medium text-blue-300">{interest.title}</h3>
                   </div>
-                  <p className="text-gray-900">{interest.description}</p>
+                  <p className="text-gray-100">{interest.description}</p>
                 </div>
               ))}
             </div>
