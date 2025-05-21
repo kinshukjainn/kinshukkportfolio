@@ -118,7 +118,7 @@ const Learningresources = () => {
   };
 
   return (
-    <div className="min-h-screen font-mono  bg-white flex flex-col">
+    <div className="min-h-screen font-rubik bg-white flex flex-col">
       {/* Navigation and Menu */}
       <header className="flex flex-col items-center pt-6 pb-4 sm:pt-8 sm:pb-6 px-4">
         <h1 className="text-black font-bold  text-4xl sm:text-4xl md:text-5xl tracking-wide">
