@@ -30,7 +30,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-[#161b22] p-4 flex flex-col sm:flex-row justify-between items-center overflow-hidden">
+    <header className="bg-black p-1 flex flex-col sm:flex-row justify-between items-center overflow-hidden">
       <div className="flex items-center w-full sm:w-auto justify-between mb-3 sm:mb-0 relative z-10">
         {/* Avatar Section */}
         <div className="relative mr-3 flex-shrink-0">
@@ -59,7 +59,10 @@ const Header = () => {
         <div className="flex items-center">
           <h1 className="text-lg sm:text-xl font-semibold tracking-wide text-white">
             <Link to="/" onClick={closeMenu} className="hover:text-gray-100 transition-colors duration-300">
-              Kinshuk Jain  / {getPathText()}
+              Kinshuk Jain  | <span className="ml-2 text-white">
+  {getPathText()}
+</span>
+ 
             </Link>
           </h1>
         </div>
@@ -98,7 +101,7 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
     <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 w-full sm:w-auto">
       <div className="group">
         <Link
-          to="/"
+          to="|"
           className="flex items-center gap-2 hover:text-blue-300 transition-colors duration-300"
           onClick={closeMenu}
         >

@@ -33,10 +33,10 @@ export default function AboutMe() {
   ]
 
   return (
-    <div className="bg-[#0d1117]  text-white min-h-screen p-4 md:p-8 max-w-4xl mx-auto">
+    <div className="bg-gradient-to-tr from-black to-[#171717]  text-white min-h-screen p-4 md:p-8 mx-auto">
       {/* Header */}
       <header className="py-8 border-b border-gray-800">
-        <h1 className="text-3xl md:text-4xl mb-4 text-white">
+        <h1 className="text-5xl md:text-5xl mb-4 text-white">
           <span className="text-white font-bold">Kinshuk Jain</span>
         </h1>
         <p className="text-lg text-green-300">Aspiring Cloud Engineer & DevOps Enthusiast</p>

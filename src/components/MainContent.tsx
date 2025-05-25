@@ -83,7 +83,7 @@ export default function Portfolio() {
   // All portfolio data in a single component
   const personalInfo = {
     name: "Kinshuk Jain",
-    title: "Cloud Engineer | Tech Enthusiast | Open to Collaborate",
+    title: "Cloud Engineer , Open to Collaborate",
     currentlyExploring: "AWS || Blogging || React",
     contactMessage:
       "Hey there! I'm always open to connecting with peers, engineers, developers, or anyone curious about tech, cloud, or simply building cool things together.",
@@ -349,10 +349,11 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="bg-[#0d1117] text-black min-h-screen p-4 md:p-8 max-w-6xl mx-auto">
+    <div className="bg-gradient-to-tr from-black to-[#171717] text-white min-h-screen p-4 md:p-8 max-w-7xl mx-auto
+ text-black min-h-screen p-4 md:p-8 mx-auto">
       {/* Hero section */}
       <header className="py-8 md:py-12 border-b border-gray-800">
-        <h1 className="text-4xl font-semibold md:text-4xl mb-4 text-blue-200">
+        <h1 className="text-4xl font-thin md:text-4xl mb-4 text-blue-200">
           Aspiring <span className="text-white">{personalInfo.title}</span>
         </h1>
         <p className="text-lg md:text-xl text-yellow-200 mb-6">
@@ -394,7 +395,7 @@ export default function Portfolio() {
               <a
                 key={index}
                 href={item.url}
-                className="flex items-center gap-2 text-gray-300 hover:text-blue-500 transition-colors"
+                className="flex items-center gap-2 text-gray-300 hover:text-blue-300 transition-colors"
                 aria-label={item.label}
               >
                 {item.icon}
@@ -418,7 +419,7 @@ export default function Portfolio() {
           {/* Left Content */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <FaCode className="text-blue-500" />
+              <FaCode className="text-blue-300" />
               <h3 className="text-3xl  text-white">{openSourceInfo.message}</h3>
             </div>
 
@@ -441,7 +442,10 @@ export default function Portfolio() {
             href={openSourceInfo.repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white bg-slate-900 p-2 rounded-xl  hover:bg-slate-700 transition-colors"
+            title="View portfolio source code on GitHub repository"
+            aria-label="View portfolio source code on GitHub repository"
+            role="link"
+            className="flex items-center gap-2 text-white bg-[#212121] p-2 rounded-lg   transition-colors"
           >
             <FaGithub />
             <span>@kinshukkportfolio</span>
@@ -451,27 +455,27 @@ export default function Portfolio() {
       </div>
       <section className="py-8 border-b border-gray-400">
         <h2 className="text-3xl font-meduim md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-blue-500">
+          <span className="mr-2 text-blue-300">
             <FaHashtag />
           </span>
           Projects Repository , for contribution , fork
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
-          <div className="flex items-center bg-slate-900 w-max rounded-lg gap-3 p-2">
+          <div className="flex items-center underline bg-[#171717] p-2 w-max rounded-lg gap-2 p-1">
             <FaGit className="text-white"/>
             <a
               href="https://github.com/kinshukjainn/encrypted-password-project"
-              className="text-xl text-white"
+              className="text-sm font-bold text-white"
             >
               Passgentoo
             </a>
           </div>
-          <div className="flex items-center bg-slate-900 w-max rounded-lg gap-3 p-2">
-            <FaGit className="text-white"/>
+          <div className="flex items-center underline bg-[#171717] w-max p-2 rounded-lg gap-2 p-1">
+            <FaGit className=" text-white"/>
             <a
               href="https://github.com/kinshukjainn/kinshukkportfolio"
-              className="text-xl text-white"
+              className="text-sm font-bold text-white"
             >
               Portfolio
             </a>
@@ -481,8 +485,8 @@ export default function Portfolio() {
 
       {/* Tech Stack Section */}
       <section className="py-8 border-b border-gray-400">
-        <h2 className="text-3xl font-meduim md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-blue-500">
+        <h2 className="text-3xl font-thin md:text-3xl mb-6 flex items-center text-white">
+          <span className="mr-2 text-blue-300">
             <FaHashtag />
           </span>
           Tech Stack
@@ -500,7 +504,7 @@ export default function Portfolio() {
 
       <section className="py-8 border-b border-gray-800">
         <h2 className="text-3xl md:text-3xl mb-6 flex items-center font-meduim text-white">
-          <span className="mr-2 text-blue-500">
+          <span className="mr-2 text-blue-300">
             <FaHashtag />
           </span>
           Tools
@@ -519,7 +523,7 @@ export default function Portfolio() {
       {/* Certifications Section */}
       <section className="py-8 border-b border-gray-800">
         <h2 className="text-3xl  md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-blue-500">
+          <span className="mr-2 text-blue-300">
             <FaHashtag />
           </span>
           Cloud Certifications
@@ -527,7 +531,7 @@ export default function Portfolio() {
 
         {/* AWS Journey Banner */}
         <div className="mb-8  pl-4">
-          <h3 className="text-xl flex items-center mb-3 text-white font-medium">
+          <h3 className="text-xl flex items-center mb-3 text-white font-thin">
             <FaAws className="mr-2 text-2xl" /> {awsJourney.title}
           </h3>
           <p className="text-gray-100 mb-4">
@@ -537,7 +541,7 @@ export default function Portfolio() {
                 i === 0 ? (
                   <React.Fragment key={i}>
                     {part}
-                    <span className="text-blue-500 font-medium">
+                    <span className="text-blue-300 font-thin">
                       strengthened my resolve
                     </span>
                   </React.Fragment>
@@ -556,11 +560,13 @@ export default function Portfolio() {
                 <h3 className="text-lg text-white ">{cert.title}</h3>
               </div>
               <a
+                target="_blank"
                 href={cert.link}
-                className="inline-flex items-center mt-2 text-white bg-slate-900 p-1 px-2 rounded-md hover:text-blue-100 transition-colors"
+                title={`View certificate: ${cert.title}`}
+                aria-label={`View certificate: ${cert.title}`}
+                className="inline-flex items-center mt-2 text-white bg-[#171717] rounded-md font-semibold p-1 px-2  transition-colors"
               >
-                Verify
-                <TbExternalLink className="ml-1" />
+                View Certificate <TbExternalLink className="ml-1" />
               </a>
             </div>
           ))}
@@ -570,7 +576,7 @@ export default function Portfolio() {
       {/* Projects Section */}
       <section id="projects" className="py-8 border-b border-gray-900">
         <h2 className="text-3xl font-meduim md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-blue-500">
+          <span className="mr-2 text-blue-300">
             <FaHashtag />
           </span>
           Projects / Work
@@ -581,13 +587,13 @@ export default function Portfolio() {
           <div key={project.id} className="mb-12  pl-4">
             {/* Project Header */}
             <div className="flex flex-wrap justify-between items-start mb-4 gap-4">
-              <h3 className="text-2xl font-medium text-blue-300">
+              <h3 className="text-2xl font-thin text-blue-300">
                 {project.title}
               </h3>
               {project.liveLink && (
                 <a
                   href={project.liveLink}
-                  className="inline-flex items-center text-white bg-slate-900 p-1 px-2  rounded-lg hover:text-blue-100 transition-colors"
+                  className="inline-flex items-center text-white font-semibold  p-1 px-2  rounded-md bg-[#171717] transition-colors"
                 >
                   View {project.isPerformanceProject ? "Here" : "Live"}{" "}
                   <BiLinkExternal className="ml-1" />
@@ -600,7 +606,7 @@ export default function Portfolio() {
 
             {project.isPerformanceProject ? (
               <div className="mb-6">
-                <h4 className="text-xl font-medium text-blue-100 mb-4">
+                <h4 className="text-xl font-thin text-blue-100 mb-4">
                   Performance Scores
                 </h4>
 
@@ -633,7 +639,7 @@ export default function Portfolio() {
               <>
                 {project.challenges && project.challenges.length > 0 && (
                   <>
-                    <h3 className="text-xl font-medium mb-2 text-green-200">
+                    <h3 className="text-xl font-thin mb-2 text-green-200">
                       Challenges:
                     </h3>
                     <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-100">
@@ -646,7 +652,7 @@ export default function Portfolio() {
 
                 {project.learnings && project.learnings.length > 0 && (
                   <>
-                    <h3 className="text-xl font-medium mt-6 mb-2 text-green-200">
+                    <h3 className="text-xl font-thin mt-6 mb-2 text-green-200">
                       Learnings:
                     </h3>
                     <ul className="list-disc pl-5 mb-6 space-y-2 text-gray-100">
@@ -661,7 +667,7 @@ export default function Portfolio() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                     {project.keyFeatures && project.keyFeatures.length > 0 && (
                       <div>
-                        <h4 className="text-lg font-medium mb-2 text-green-200">
+                        <h4 className="text-lg font-thin mb-2 text-green-200">
                           Key Features
                         </h4>
                         <ul className="list-disc pl-5 space-y-2 text-gray-100">
@@ -674,7 +680,7 @@ export default function Portfolio() {
                     {project.technicalDetails &&
                       project.technicalDetails.length > 0 && (
                         <div>
-                          <h4 className="text-lg font-medium mb-2 text-green-200">
+                          <h4 className="text-lg font-thin mb-2 text-green-200">
                             Technical Details
                           </h4>
                           <ul className="list-disc pl-5 space-y-2 text-gray-100">
@@ -691,7 +697,7 @@ export default function Portfolio() {
 
             {project.technologies && project.technologies.length > 0 && (
               <div className="mt-6 pt-4 border-t border-gray-800">
-                <h4 className="text-base font-medium text-green-200 mb-2">
+                <h4 className="text-base font-thin text-green-200 mb-2">
                   Technologies:
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -712,7 +718,7 @@ export default function Portfolio() {
 
       <section className="py-8 border-b border-gray-800">
         <h2 className="text-3xl font-meduim md:text-3xl mb-6 flex items-center text-white">
-          <span className="mr-2 text-blue-500">
+          <span className="mr-2 text-blue-300">
             <FaHashtag />
           </span>
           Education
@@ -722,7 +728,7 @@ export default function Portfolio() {
           {educationHistory.map((edu, index) => (
             <div key={index} className=" pl-4">
               <div>
-                <h3 className="text-xl text-white font-medium">{edu.degree}</h3>
+                <h3 className="text-xl text-white font-thin">{edu.degree}</h3>
                 <p className="text-gray-200 mt-2">{edu.institution}</p>
                 <p className="text-gray-300 text-sm">{edu.location}</p>
                 <p className="mt-2 text-gray-400 font-mono">{edu.period}</p>
@@ -742,7 +748,7 @@ export default function Portfolio() {
                   {part}
                   <a
                     href={footerInfo.learningJourneyUrl}
-                    className="text-blue-500 hover:text-blue-200 transition-colors"
+                    className="text-blue-300 hover:text-blue-200 transition-colors"
                   >
                     Learning Journey
                   </a>

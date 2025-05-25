@@ -2,12 +2,12 @@ export default function Blog() {
   return (
     <>
       <section>
-        <div className="min-h-screen bg-[#161b22] text-gray-100 p-8 ">
+        <div className="min-h-screen bg-gradient-to-tr from-black to-gray-900 text-gray-100 p-8 ">
           <div className="max-w-3xl mx-auto">
             <div className="border-b border-gray-200 pb-4 mb-6">
               <h1 className="text-2xl font-bold text-blue-300"># Blogs !!</h1>
             </div>
-            <div className="p-5 border-2 border-gray-800  bg-gray-900 rounded-lg mb-4 w-max ">
+            <div className="p-5 border-2 border-gray-800  bg-[#171717] rounded-lg mb-4 w-max ">
             <div className="flex items-center mb-4">
               <span className="text-gray-200 text-sm">
                 Last updated: 19 May 2025
@@ -54,14 +54,14 @@ export default function Blog() {
         </div>
       </section>
       <section>
-        <div className="min-h-screen bg-[#161b22] text-gray-100 p-8 ">
+        <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 text-gray-100 p-8 ">
           <div className="max-w-3xl mx-auto">
             <div className="border-b border-gray-700 pb-4 mb-6">
               <h1 className="text-2xl font-bold text-blue-200">
                 # Reasons of Starting Blogging : !!
               </h1>
             </div>
-            <div className="p-5 border-2 border-gray-800  bg-gray-900 rounded-lg mb-4 w-max ">
+            <div className="p-5 border-2 border-gray-800  bg-[#171717] rounded-lg mb-4 w-max ">
 
             <div className="flex items-center mb-4">
               <span className="text-gray-200 text-sm">
