@@ -349,8 +349,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="bg-gradient-to-tr from-black to-[#171717] text-white min-h-screen p-4 md:p-8 max-w-7xl mx-auto
- text-black min-h-screen p-4 md:p-8 mx-auto">
+     <div className="bg-[#1B1A19] text-white min-h-screen p-4 md:p-8 w-full">
       {/* Hero section */}
       <header className="py-8 md:py-12 border-b border-gray-800">
         <h1 className="text-4xl font-thin md:text-4xl mb-4 text-blue-200">
@@ -363,7 +362,7 @@ export default function Portfolio() {
 
       {/* Contact section */}
       <section id="contact" className="py-8 border-b border-gray-400">
-        <h2 className="text-3xl font-meduim md:text-3xl mb-6 flex items-center text-white">
+        <h2 className="text-3xl font-semibold md:text-3xl mb-6 flex items-center text-white">
           <span className="mr-2 text-blue-400">
             <FaHashtag />
           </span>
@@ -420,7 +419,7 @@ export default function Portfolio() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <FaCode className="text-blue-300" />
-              <h3 className="text-3xl  text-white">{openSourceInfo.message}</h3>
+              <h3 className="text-3xl font-semibold text-white">{openSourceInfo.message}</h3>
             </div>
 
             <p className="text-gray-100">{openSourceInfo.description}</p>
@@ -445,7 +444,7 @@ export default function Portfolio() {
             title="View portfolio source code on GitHub repository"
             aria-label="View portfolio source code on GitHub repository"
             role="link"
-            className="flex items-center gap-2 text-white bg-[#212121] p-2 rounded-lg   transition-colors"
+            className="flex items-center gap-2 border border-gray-500 text-white bg-[#171717] p-2 rounded-lg   transition-colors"
           >
             <FaGithub />
             <span>@kinshukkportfolio</span>
@@ -454,7 +453,7 @@ export default function Portfolio() {
         </div>
       </div>
       <section className="py-8 border-b border-gray-400">
-        <h2 className="text-3xl font-meduim md:text-3xl mb-6 flex items-center text-white">
+        <h2 className="text-3xl font-semibold md:text-3xl mb-6 flex items-center text-white">
           <span className="mr-2 text-blue-300">
             <FaHashtag />
           </span>
@@ -462,20 +461,20 @@ export default function Portfolio() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
-          <div className="flex items-center underline bg-[#171717] p-2 w-max rounded-lg gap-2 p-1">
+          <div className="flex items-center  border border-gray-500 text-white bg-[#171717] p-2 w-max rounded-lg gap-2 p-1">
             <FaGit className="text-white"/>
             <a
               href="https://github.com/kinshukjainn/encrypted-password-project"
-              className="text-sm font-bold text-white"
+              className="text-sm font-bold "
             >
               Passgentoo
             </a>
           </div>
-          <div className="flex items-center underline bg-[#171717] w-max p-2 rounded-lg gap-2 p-1">
+          <div className="flex items-center border border-gray-500 text-white bg-[#171717] w-max p-2 rounded-lg gap-2 p-1">
             <FaGit className=" text-white"/>
             <a
               href="https://github.com/kinshukjainn/kinshukkportfolio"
-              className="text-sm font-bold text-white"
+              className="text-sm font-bold"
             >
               Portfolio
             </a>
@@ -485,7 +484,7 @@ export default function Portfolio() {
 
       {/* Tech Stack Section */}
       <section className="py-8 border-b border-gray-400">
-        <h2 className="text-3xl font-thin md:text-3xl mb-6 flex items-center text-white">
+        <h2 className="text-3xl font-semibold md:text-3xl mb-6 flex items-center text-white">
           <span className="mr-2 text-blue-300">
             <FaHashtag />
           </span>
@@ -503,7 +502,7 @@ export default function Portfolio() {
       </section>
 
       <section className="py-8 border-b border-gray-800">
-        <h2 className="text-3xl md:text-3xl mb-6 flex items-center font-meduim text-white">
+        <h2 className="text-3xl md:text-3xl mb-6 flex items-center font-semibold text-white">
           <span className="mr-2 text-blue-300">
             <FaHashtag />
           </span>
@@ -564,7 +563,7 @@ export default function Portfolio() {
                 href={cert.link}
                 title={`View certificate: ${cert.title}`}
                 aria-label={`View certificate: ${cert.title}`}
-                className="inline-flex items-center mt-2 text-white bg-[#171717] rounded-md font-semibold p-1 px-2  transition-colors"
+                className="inline-flex items-center mt-2 border border-gray-500 text-white bg-[#171717] rounded-md font-semibold p-1 px-2  transition-colors"
               >
                 View Certificate <TbExternalLink className="ml-1" />
               </a>
@@ -593,7 +592,7 @@ export default function Portfolio() {
               {project.liveLink && (
                 <a
                   href={project.liveLink}
-                  className="inline-flex items-center text-white font-semibold  p-1 px-2  rounded-md bg-[#171717] transition-colors"
+                  className="inline-flex items-center border border-gray-500 text-white bg-[#171717] font-semibold  p-1 px-2  rounded-md  transition-colors"
                 >
                   View {project.isPerformanceProject ? "Here" : "Live"}{" "}
                   <BiLinkExternal className="ml-1" />
@@ -717,7 +716,7 @@ export default function Portfolio() {
       </section>
 
       <section className="py-8 border-b border-gray-800">
-        <h2 className="text-3xl font-meduim md:text-3xl mb-6 flex items-center text-white">
+        <h2 className="text-3xl font-semibold md:text-3xl mb-6 flex items-center text-white">
           <span className="mr-2 text-blue-300">
             <FaHashtag />
           </span>

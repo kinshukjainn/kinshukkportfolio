@@ -84,7 +84,7 @@ const Header = () => {
       {/* Mobile Menu with improved animation */}
       <AnimatePresence>
         {menuOpen && (
-          <div className="w-full overflow-hidden sm:hidden bg-slate-900 font-semibold rounded-4xl mt-2">
+          <div className="w-full overflow-hidden sm:hidden font-semibold rounded-4xl mt-2">
             <div className="pt-3 pb-2 flex flex-col items-center gap-4">
               <NavLinks closeMenu={closeMenu} />
             </div>
