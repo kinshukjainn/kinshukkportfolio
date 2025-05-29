@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        rubik: ['Rubik', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+        poppins: ['Poppins', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
       },
     },
   },

@@ -5,10 +5,36 @@
 @import "tailwindcss";
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: black;
-  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
-  color: white; /* Optional: white text for readability */
+  min-height: 100vh;
+  color: white; /* For readability */
+  background: linear-gradient(
+    to bottom right,
+    #0c0f1a,
+    #0a0d17 20%,
+    #090b13 40%,
+    #080a11 60%,
+    #050608 80%,
+    #020203 90%,
+    #000000
+  );
 }
+
+/* Add this in your global CSS file */
+.blend-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 10%, transparent 100%);
+}
+
+.blend-vertical {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+}
+
+.blend-horizontal {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
 
