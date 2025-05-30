@@ -23,9 +23,6 @@ import {
   FaHeart,
   FaMapMarkerAlt,
   FaCalendarAlt,
-  FaGoogle,
-  FaWatchmanMonitoring,
-  FaDev,
   FaLink,
   FaLockOpen,
 } from "react-icons/fa"
