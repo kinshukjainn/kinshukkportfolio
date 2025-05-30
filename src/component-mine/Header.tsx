@@ -30,7 +30,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-black p-1 flex flex-col sm:flex-row justify-between items-center overflow-hidden">
+    <header className="bg-blue-900 p-3 flex flex-col  sm:flex-row justify-between items-center overflow-hidden">
       <div className="flex items-center w-full sm:w-auto justify-between mb-3 sm:mb-0 relative z-10">
         {/* Avatar Section */}
         <div className="relative mr-3 flex-shrink-0">
@@ -100,47 +100,31 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
   return (
     <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 w-full sm:w-auto">
       <div className="group">
-        <Link
-          to="|"
-          className="flex items-center gap-2 hover:text-blue-300 transition-colors duration-300"
-          onClick={closeMenu}
-        >
-          <div></div>
-        </Link>
-      </div>
-
-      <div>
-        <Link
-          to="/blog"
-          className="flex underline   px-2 py-1  items-center gap-2 text-gray-100  text-lg md:text-base"
-          onClick={closeMenu}
-        >
-          <span className="relative group">
-            Blogs
-          </span>
-        </Link>
-      </div>
-      <div>
-        <Link
-          to="/my-personal-learning-resources"
-          className="flex items-center gap-2 text-white text-lg md:text-base transition-colors duration-300"
-          onClick={closeMenu}
-        >
-          <span className=" hover:underline relative group">
-            Learning.Hub
-          </span>
-        </Link>
-      </div>
-      <div>
-        <Link
-          to="/aboutme"
-          className="flex items-center gap-2 text-white text-lg md:text-base transition-colors duration-300"
-          onClick={closeMenu}
-        >
-          <span className="hover:underline relative group">
-            About me
-          </span>
-        </Link>
+      <Link
+  to="/blog"
+  className="flex hover:underline px-2 py-1 items-center gap-2 text-white text-lg md:text-base transition-all duration-300 ease-in-out hover:scale-105"
+  onClick={closeMenu}
+>
+  <span className="relative group">Blogs</span>
+</Link>
+</div>
+<div>
+  <Link
+    to="/my-personal-learning-resources"
+    className="flex items-center gap-2 text-white text-lg md:text-base transition-all duration-300 ease-in-out hover:scale-105"
+    onClick={closeMenu}
+  >
+    <span className="hover:underline relative group">Learning.Hub</span>
+  </Link>
+</div>
+<div>
+  <Link
+    to="/aboutme"
+    className="flex items-center gap-2 text-white text-lg md:text-base transition-all duration-300 ease-in-out hover:scale-105"
+    onClick={closeMenu}
+  >
+    <span className="hover:underline relative group">About me</span>
+  </Link>
       </div>
     </div>
   )

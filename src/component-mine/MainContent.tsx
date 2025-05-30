@@ -23,6 +23,11 @@ import {
   FaHeart,
   FaMapMarkerAlt,
   FaCalendarAlt,
+  FaGoogle,
+  FaWatchmanMonitoring,
+  FaDev,
+  FaLink,
+  FaLockOpen,
 } from "react-icons/fa"
 import { SiKubernetes, SiCanva, SiTerraform, SiTailwindcss } from "react-icons/si"
 
@@ -49,13 +54,13 @@ const scaleOnHover = {
 export default function MetaPortfolio() {
   const personalInfo = {
     name: "Kinshuk Jain",
-    title: "Cloud Engineer",
-    subtitle: "Open to Collaborate",
+    title: "Exploring in cloud !",
+    subtitle: "Open to Collaborations",
     currentlyExploring: "AWS || Blogging || React",
     email: "kinshuk25jan04@gmail.com",
-    alternateEmail: "jkinshuk@outlook.com",
+    alternateEmail: "socialofficialkinshuk@gmail.com",
     whatsappNumber: "919172702501",
-    location: "Noida, Uttar Pradesh, India",
+    location: "Ghaziabad, Uttar Pradesh, India",
     availability: "Available for opportunities",
   }
 
@@ -91,10 +96,10 @@ export default function MetaPortfolio() {
     {
       category: "Backend & DevOps",
       items: [
-        { name: "Python/Boto3", icon: <FaPython className="text-[#3776AB]" />, level: "Intermediate", years: "2+" },
-        { name: "Docker", icon: <FaDocker className="text-[#2496ED]" />, level: "Beginner", years: "1+" },
-        { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" />, level: "Beginner", years: "1+" },
-        { name: "Terraform", icon: <SiTerraform className="text-[#7B42BC]" />, level: "Beginner", years: "1+" },
+        { name: "Python/Boto3", icon: <FaPython className="text-[#3776AB]" />},
+        { name: "Docker", icon: <FaDocker className="text-[#2496ED]" />},
+        { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" />},
+        { name: "Terraform", icon: <SiTerraform className="text-[#7B42BC]" />},
       ],
     },
     {
@@ -270,8 +275,7 @@ export default function MetaPortfolio() {
       institution: "JSS Academy of Technical Education",
       location: "Noida, Uttar Pradesh",
       period: "2022 - 2026",
-      status: "In Progress",
-      gpa: "Current CGPA: 8.2/10",
+      status: "Ongoing",
     },
     {
       degree: "Higher Secondary Education (XII)",
@@ -280,7 +284,6 @@ export default function MetaPortfolio() {
       location: "Pune, Maharashtra",
       period: "2020 - 2022",
       status: "Completed",
-      percentage: "85.4%",
     },
   ]
 
@@ -291,7 +294,7 @@ export default function MetaPortfolio() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 lg:py-12">
+      <div className="max-w-5xl mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 lg:py-12">
         {/* Header */}
         <motion.div
           className="text-center mb-12 sm:mb-16 lg:mb-20"
@@ -311,7 +314,7 @@ export default function MetaPortfolio() {
           </motion.div>
 
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4 sm:mb-6 tracking-tight leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-blue-600 via-purple-900 via-blue-900 via-blue-700 via-green-800 to-green-800  bg-clip-text text-transparent mb-4 sm:mb-6 tracking-tight leading-tight"
             variants={fadeInUp}
           >
             {personalInfo.name}
@@ -344,7 +347,7 @@ export default function MetaPortfolio() {
             variants={fadeInUp}
           >
             Currently exploring:{" "}
-            <span className="font-mono bg-white border border-gray-300 px-3 sm:px-4 py-2 rounded-lg text-blue-600 inline-block mt-2 sm:mt-0">
+            <span className="font-mono  px-3 sm:px-4 py-2  text-blue-600 inline-block mt-2 sm:mt-0">
               {personalInfo.currentlyExploring}
             </span>
           </motion.p>
@@ -357,7 +360,7 @@ export default function MetaPortfolio() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium shadow-sm hover:bg-gray-50 hover:border-blue-300 transition-all text-sm sm:text-base"
+                  className="inline-flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-white border border-gray-300 rounded-2xl text-gray-700 font-medium shadow-sm hover:bg-gray-100 hover:border-blue-300 transition-all text-sm sm:text-base"
                 >
                   <span className="text-base sm:text-lg">{social.icon}</span>
                   <span className="hidden sm:inline">{social.username}</span>
@@ -378,11 +381,11 @@ export default function MetaPortfolio() {
         </motion.div>
 
         <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
             <div className="p-4 sm:p-6 border-b border-gray-100">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-red-50 rounded-lg">
-                  <FaHeart className="text-red-600 text-lg sm:text-xl" />
+                  <FaLockOpen className="text-red-600 text-lg sm:text-xl" />
                 </div>
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Open Source Contributions</h2>
               </div>
@@ -392,10 +395,7 @@ export default function MetaPortfolio() {
             </div>
             <div className="p-4 sm:p-6">
               <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">
-                This portfolio project is open-source and available for forking. If the design or structure proved
-                useful in your work, you're free to adapt or extend it as needed. A star is appreciated if it saved you
-                time or provided a solid foundation — but not required. Feedback, contributions, and practical
-                improvements are welcome.
+                This portfolio project is open-source and available to fork. If the design or structure helped accelerate your workflow or served as a useful starting point, feel free to build on it. Giving the repo a star is appreciated, but entirely optional. Feedback, contributions, and practical enhancements are always welcome
               </p>
 
               <div className="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8">
@@ -404,7 +404,7 @@ export default function MetaPortfolio() {
                     href="https://github.com/kinshukjainn/kinshukkportfolio"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium shadow-sm hover:bg-gray-50 hover:border-gray-400 transition-all text-xs sm:text-sm"
+                    className="inline-flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-gray-900 border border-gray-300 rounded-2xl text-gray-100 font-medium shadow-sm hover:bg-gray-800 hover:border-gray-400 transition-all text-xs sm:text-sm"
                   >
                     <FaGithub className="text-base sm:text-lg" />
                     Portfolio Repository
@@ -415,7 +415,7 @@ export default function MetaPortfolio() {
                     href="https://github.com/kinshukjainn/encrypted-password-project"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium shadow-sm hover:bg-gray-50 hover:border-gray-400 transition-all text-xs sm:text-sm"
+                    className="inline-flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-gray-900 border border-gray-300 rounded-2xl text-gray-100 font-medium shadow-sm hover:bg-gray-800 hover:border-gray-400 transition-all text-xs sm:text-sm"
                   >
                     <FaGithub className="text-base sm:text-lg" />
                     PassGentoo Repository
@@ -426,13 +426,13 @@ export default function MetaPortfolio() {
               <div className="h-px bg-gray-200 my-6 sm:my-8"></div>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-gray-500">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center bg-gray-900 p-3 rounded-2xl gap-3">
                   <FaStar className="text-yellow-500 text-lg sm:text-xl" />
-                  <span className="text-sm sm:text-base lg:text-lg">Star to show appreciation</span>
+                  <span className="text-sm text-white sm:text-base lg:text-lg">Star to show appreciation</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center bg-gray-900 rounded-2xl p-3  gap-3">
                   <FaCodeBranch className="text-blue-500 text-lg sm:text-xl" />
-                  <span className="text-sm sm:text-base lg:text-lg">Fork and customize</span>
+                  <span className="text-sm text-white sm:text-base lg:text-lg">Fork and customize</span>
                 </div>
               </div>
             </div>
@@ -441,7 +441,7 @@ export default function MetaPortfolio() {
 
         {/* Contact Section */}
         <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
             <div className="p-4 sm:p-6 border-b border-gray-100">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-blue-50 rounded-lg">
@@ -457,7 +457,7 @@ export default function MetaPortfolio() {
             <div className="p-4 sm:p-6">
               <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
                 <motion.div
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 border border-gray-100 rounded-xl"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 border border-gray-100 rounded-2xl"
                   {...scaleOnHover}
                 >
                   <div className="p-2 sm:p-3 bg-blue-50 rounded-lg flex-shrink-0">
@@ -469,7 +469,7 @@ export default function MetaPortfolio() {
                   </div>
                 </motion.div>
                 <motion.div
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 border border-gray-100 rounded-xl"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 border border-gray-100 rounded-2xl"
                   {...scaleOnHover}
                 >
                   <div className="p-2 sm:p-3 bg-purple-50 rounded-lg flex-shrink-0">
@@ -489,7 +489,7 @@ export default function MetaPortfolio() {
 
         {/* Tech Stack Section */}
         <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
             <div className="p-4 sm:p-6 border-b border-gray-100">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-green-50 rounded-lg">
@@ -521,20 +521,6 @@ export default function MetaPortfolio() {
                                 <span className="text-xl">{tech.icon}</span>
                                 <span className="font-medium text-gray-800">{tech.name}</span>
                               </div>
-                              <div className="flex justify-between items-center text-sm">
-                                <span
-                                  className={`inline-block px-2 py-1 rounded-full font-medium ${
-                                    tech.level === "Advanced"
-                                      ? "bg-green-100 text-green-700"
-                                      : tech.level === "Intermediate"
-                                        ? "bg-blue-100 text-blue-700"
-                                        : "bg-gray-100 text-gray-700"
-                                  }`}
-                                >
-                                  {tech.level}
-                                </span>
-                                <span className="text-gray-600 font-mono">{tech.years}</span>
-                              </div>
                             </motion.div>
                           ))}
                         </div>
@@ -546,12 +532,7 @@ export default function MetaPortfolio() {
                               <th className="text-left py-3 sm:py-4 px-3 sm:px-6 font-semibold text-gray-600 text-sm sm:text-base">
                                 Technology
                               </th>
-                              <th className="text-left py-3 sm:py-4 px-3 sm:px-6 font-semibold text-gray-600 text-sm sm:text-base">
-                                Proficiency
-                              </th>
-                              <th className="text-left py-3 sm:py-4 px-3 sm:px-6 font-semibold text-gray-600 text-sm sm:text-base">
-                                Experience
-                              </th>
+                        
                             </tr>
                           </thead>
                           <tbody>
@@ -568,22 +549,6 @@ export default function MetaPortfolio() {
                                     <span className="font-medium text-gray-800 text-sm sm:text-lg">{tech.name}</span>
                                   </div>
                                 </td>
-                                <td className="py-3 sm:py-4 px-3 sm:px-6">
-                                  <span
-                                    className={`inline-block text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full font-medium ${
-                                      tech.level === "Advanced"
-                                        ? "bg-green-100 text-green-700"
-                                        : tech.level === "Intermediate"
-                                          ? "bg-blue-100 text-blue-700"
-                                          : "bg-gray-100 text-gray-700"
-                                    }`}
-                                  >
-                                    {tech.level}
-                                  </span>
-                                </td>
-                                <td className="py-3 sm:py-4 px-3 sm:px-6">
-                                  <span className="text-gray-600 font-mono text-xs sm:text-sm">{tech.years}</span>
-                                </td>
                               </motion.tr>
                             ))}
                           </tbody>
@@ -599,13 +564,13 @@ export default function MetaPortfolio() {
 
         {/* Projects Section */}
         <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
             <div className="p-4 sm:p-6 border-b border-gray-100">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-orange-50 rounded-lg">
                   <FaRocket className="text-orange-600 text-lg sm:text-xl" />
                 </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Featured Projects</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Featured Projects</h2>
               </div>
               <p className="text-gray-600 text-base sm:text-lg">
                 Recent work and contributions showcasing my technical expertise
@@ -616,7 +581,7 @@ export default function MetaPortfolio() {
                 {projects.map((project, index) => (
                   <motion.div
                     key={index}
-                    className="border border-gray-200 bg-white rounded-xl p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-all"
+                    className="border border-gray-200 bg-white rounded-2xl p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-all"
                     {...scaleOnHover}
                   >
                     <div className="flex flex-col gap-4 sm:gap-6 mb-4 sm:mb-6">
@@ -624,15 +589,15 @@ export default function MetaPortfolio() {
                         <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
                           <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800">{project.title}</h3>
                           {project.featured && (
-                            <span className="inline-block px-2 sm:px-3 py-1 text-xs font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-full">
+                            <span className="inline-block px-2 sm:px-3 py-1 text-xs font-medium text-white bg-gradient-to-r from-blue-900 to-purple-900 rounded-full">
                               Featured
                             </span>
                           )}
-                          <span className="inline-block px-2 sm:px-3 py-1 text-xs font-medium text-green-700 bg-green-50 border border-green-200 rounded-full">
+                          <span className="inline-block px-2 sm:px-3 py-1 text-xs font-semibold bg-yellow-500 text-black border-3 border-black rounded-full">
                             {project.status}
                           </span>
                         </div>
-                        <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed">
+                        <p className="text-gray-900 text-sm sm:text-base lg:text-lg leading-relaxed">
                           {project.description}
                         </p>
                       </div>
@@ -641,17 +606,17 @@ export default function MetaPortfolio() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium shadow-sm hover:bg-blue-50 hover:border-blue-300 transition-all text-xs sm:text-sm"
+                          className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-900 border border-gray-300 rounded-2xl text-gray-100 font-medium shadow-sm hover:bg-gray-800 hover:border-blue-300 transition-all text-xs sm:text-sm"
                         >
-                          <FaExternalLinkAlt className="w-3 h-3 sm:w-4 sm:h-4" />
-                          {project.isPerformanceProject ? "View Report" : "Live Demo"}
+                          <FaLink className="w-3 h-3 sm:w-4 sm:h-4" />
+                          {project.isPerformanceProject ? "Check Score" : "Check Live Demo"}
                         </a>
                         {project.repoUrl && (
                           <a
                             href={project.repoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium shadow-sm hover:bg-gray-50 hover:border-gray-400 transition-all text-xs sm:text-sm"
+                            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-900 border border-gray-300 rounded-2xl text-gray-100 font-medium shadow-sm hover:bg-gray-800 hover:border-gray-400 transition-all text-xs sm:text-sm"
                           >
                             <FaGithub className="w-3 h-3 sm:w-4 sm:h-4" />
                             Source Code
@@ -667,7 +632,7 @@ export default function MetaPortfolio() {
                           {project.performanceScores?.map((score, idx) => (
                             <div
                               key={idx}
-                              className="bg-gray-50 border border-gray-200 p-3 sm:p-4 lg:p-6 rounded-xl text-center shadow-sm"
+                              className="bg-blue-100 border-3 border-gray-900 p-2 sm:p-4 lg:p-6 rounded-3xl text-center shadow-lg shadow-green-200"
                             >
                               <div className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 ${score.color}`}>
                                 {score.score}
@@ -675,7 +640,7 @@ export default function MetaPortfolio() {
                               <p className="text-gray-800 font-medium mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">
                                 {score.label}
                               </p>
-                              <p className="text-xs text-gray-500">{score.description}</p>
+                              <p className="text-sm text-gray-900">{score.description}</p>
                             </div>
                           ))}
                         </div>
@@ -702,13 +667,13 @@ export default function MetaPortfolio() {
                               <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0"></div>
                               Challenges Faced
                             </h4>
-                            <ul className="space-y-3 sm:space-y-4 text-gray-600">
+                            <ul className="space-y-3 sm:space-y-4 text-gray-900">
                               {project.challenges.map((challenge, idx) => (
                                 <li
                                   key={idx}
                                   className="flex gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-100"
                                 >
-                                  <span className="text-red-500 mt-1 text-base sm:text-lg flex-shrink-0">•</span>
+                                  <span className="text-blue-900 mt-1 text-base sm:text-lg flex-shrink-0">•</span>
                                   <span className="leading-relaxed text-sm sm:text-base">{challenge}</span>
                                 </li>
                               ))}
@@ -722,7 +687,7 @@ export default function MetaPortfolio() {
                               <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
                               Key Learnings
                             </h4>
-                            <ul className="space-y-3 sm:space-y-4 text-gray-600">
+                            <ul className="space-y-3 sm:space-y-4 text-gray-900">
                               {project.learnings.map((learning, idx) => (
                                 <li
                                   key={idx}
@@ -744,7 +709,7 @@ export default function MetaPortfolio() {
                                   <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
                                   Key Features
                                 </h4>
-                                <ul className="space-y-3 text-gray-600">
+                                <ul className="space-y-3 text-gray-900">
                                   {project.keyFeatures.map((feature, idx) => (
                                     <li
                                       key={idx}
@@ -763,7 +728,7 @@ export default function MetaPortfolio() {
                                   <div className="w-2 h-2 bg-purple-500 rounded-full flex-shrink-0"></div>
                                   Technical Implementation
                                 </h4>
-                                <ul className="space-y-3 text-gray-600">
+                                <ul className="space-y-3 text-gray-900">
                                   {project.technicalDetails.map((detail, idx) => (
                                     <li
                                       key={idx}
@@ -790,7 +755,7 @@ export default function MetaPortfolio() {
                           {project.technologies.map((tech, techIndex) => (
                             <span
                               key={techIndex}
-                              className="inline-block px-2 sm:px-3 py-1 text-xs sm:text-sm text-gray-700 bg-gray-100 border border-gray-200 rounded-full"
+                              className="inline-block px-2 sm:px-3 py-1 text-xs sm:text-sm text-white bg-blue-900 font-semibold border-3 border-black rounded-full"
                             >
                               {tech}
                             </span>
@@ -807,7 +772,7 @@ export default function MetaPortfolio() {
 
         {/* Certifications Section */}
         <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
             <div className="p-4 sm:p-6 border-b border-gray-100">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-yellow-50 rounded-lg">
@@ -820,10 +785,10 @@ export default function MetaPortfolio() {
               </p>
             </div>
             <div className="p-4 sm:p-6">
-              <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-xl">
+              <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-purple-50 border-3 border-black rounded-3xl">
                 <h3 className="font-bold text-blue-700 mb-3 text-base sm:text-lg">🎯 AWS Certification Journey</h3>
-                <p className="text-blue-600 leading-relaxed text-sm sm:text-base">
-                  Recently scored 679/1000 on AWS Cloud Practitioner (CLF-C02). While just shy of passing, this
+                <p className="text-black leading-relaxed text-sm sm:text-base">
+                  Recently scored 679/1000 on AWS Cloud Practitioner (CLF-C02) On January 24 2025. While just shy of passing, this
                   experience has strengthened my resolve to master cloud fundamentals and accelerated my preparation for
                   Solutions Architect Associate by Q3 2025.
                 </p>
@@ -833,7 +798,7 @@ export default function MetaPortfolio() {
                 {certifications.map((cert, index) => (
                   <motion.div
                     key={index}
-                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 sm:p-6 border border-gray-200 bg-white rounded-xl shadow-sm"
+                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 sm:p-6 border border-gray-200 bg-white rounded-2xl shadow-sm"
                     {...scaleOnHover}
                   >
                     <div className="flex-1">
@@ -841,7 +806,7 @@ export default function MetaPortfolio() {
                         <h3 className="font-bold text-gray-800 text-base sm:text-lg">{cert.title}</h3>
                         <span
                           className={`inline-block px-2 sm:px-3 py-1 text-xs font-medium rounded-full ${
-                            cert.status === "Completed" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"
+                            cert.status === "Completed" ? "bg-yellow-500 text-black border-3 border-black " : "bg-blue-500 border-black border-3 text-black"
                           }`}
                         >
                           {cert.status}
@@ -864,7 +829,7 @@ export default function MetaPortfolio() {
                           href={cert.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium shadow-sm hover:bg-blue-50 hover:border-blue-300 transition-all text-xs sm:text-sm"
+                          className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-900 border border-gray-300 rounded-2xl text-gray-100 font-medium shadow-sm hover:bg-blue-900 hover:border-blue-300 transition-all text-xs sm:text-sm"
                         >
                           <FaExternalLinkAlt className="w-3 h-3" />
                           View Certificate
@@ -880,7 +845,7 @@ export default function MetaPortfolio() {
 
         {/* Education Section */}
         <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
             <div className="p-4 sm:p-6 border-b border-gray-100">
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-purple-50 rounded-lg">
@@ -907,14 +872,14 @@ export default function MetaPortfolio() {
                         </div>
                         <span
                           className={`inline-block px-2 sm:px-3 py-1 text-xs font-medium rounded-full self-start ${
-                            edu.status === "Completed" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"
+                            edu.status === "Completed" ? "bg-yellow-500 text-black border-black border-3 font-semibold" : "bg-blue-500 font-semibold text-black border-3 border-black"
                           }`}
                         >
                           {edu.status}
                         </span>
                       </div>
                     </div>
-                    <p className="text-gray-600 font-medium mb-2 text-sm sm:text-base">{edu.institution}</p>
+                    <p className="text-gray-900 font-medium mb-2 text-sm sm:text-base">{edu.institution}</p>
                     <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-gray-500 text-xs sm:text-sm">
                       <div className="flex items-center gap-2">
                         <FaMapMarkerAlt className="text-blue-600 flex-shrink-0" />
@@ -924,12 +889,6 @@ export default function MetaPortfolio() {
                         <FaCalendarAlt className="text-blue-600 flex-shrink-0" />
                         <span>{edu.period}</span>
                       </div>
-                      {(edu.gpa || edu.percentage) && (
-                        <div className="flex items-center gap-2">
-                          <FaStar className="text-yellow-600 flex-shrink-0" />
-                          <span>{edu.gpa || edu.percentage}</span>
-                        </div>
-                      )}
                     </div>
                   </motion.div>
                 ))}
