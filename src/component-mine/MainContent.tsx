@@ -270,7 +270,7 @@ export default function MetaPortfolio() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans antialiased">
+    <div className="min-h-screen bg-white text-gray-900 font-poppins antialiased">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         {/* Header */}
         <header className="text-center mb-16 sm:mb-20 lg:mb-24">
