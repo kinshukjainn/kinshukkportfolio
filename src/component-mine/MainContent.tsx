@@ -1,5 +1,6 @@
 "use client"
 
+import { Link } from 'react-router-dom'
 import {
   FaAws,
   FaDocker,
@@ -739,18 +740,18 @@ export default function MetaPortfolio() {
           <div className="max-w-2xl mx-auto">
             <p className="text-black leading-relaxed mb-6">
               Want to explore my thinking process and learning journey? Check out my comprehensive{" "}
-              <a
-                href="/my-personal-learning-resources"
+              <Link
+                to="/blog"
                 className="text-blue-600 hover:text-black font-semibold underline decoration-blue-300 hover:decoration-blue-500 underline-offset-4 transition-colors duration-200"
               >
-                Learning Resources
-              </a>{" "}
+                Blogs
+              </Link>{" "}
               page where I document insights, challenges, and solutions.
             </p>
             <div className="flex items-center justify-center gap-2 text-gray-500">
               <span>Built with</span>
               <FaHeart className="text-red-500" />
-              <span>and lots of ☕</span>
+              <span>and lots of chai</span>
             </div>
           </div>
         </footer>
