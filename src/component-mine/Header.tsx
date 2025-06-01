@@ -109,13 +109,6 @@ const NavLinks = ({ closeMenu }: { closeMenu: () => void }) => {
 </Link>
 </div>
 <div>
-  <Link
-    to="/my-personal-learning-resources"
-    className="flex items-center gap-2 text-white text-lg md:text-base transition-all duration-300 ease-in-out hover:scale-105"
-    onClick={closeMenu}
-  >
-    <span className="hover:underline relative group">Learning.Hub</span>
-  </Link>
 </div>
 <div>
   <Link

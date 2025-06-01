@@ -1,5 +1,5 @@
 "use client"
-import { motion } from "framer-motion"
+
 import {
   FaAws,
   FaDocker,
@@ -27,26 +27,6 @@ import {
   FaLockOpen,
 } from "react-icons/fa"
 import { SiKubernetes, SiCanva, SiTerraform, SiTailwindcss } from "react-icons/si"
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
-}
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const scaleOnHover = {
-  whileHover: { scale: 1.02 },
-  whileTap: { scale: 0.98 },
-  transition: { type: "spring", stiffness: 400, damping: 25 },
-}
 
 export default function MetaPortfolio() {
   const personalInfo = {
@@ -77,35 +57,35 @@ export default function MetaPortfolio() {
     {
       category: "Cloud & Infrastructure",
       items: [
-        { name: "AWS Cloud", icon: <FaAws className="text-[#FF9900]" />, level: "Intermediate", years: "2+" },
-        { name: "Route 53", icon: <FaAws className="text-[#FF9900]" />, level: "Beginner", years: "1+" },
-        { name: "AWS Amplify", icon: <FaAws className="text-[#FF9900]" />, level: "Beginner", years: "1+" },
+        { name: "AWS Cloud", icon: <FaAws className="text-black" />, level: "Intermediate", years: "2+" },
+        { name: "Route 53", icon: <FaAws className="text-black" />, level: "Beginner", years: "1+" },
+        { name: "AWS Amplify", icon: <FaAws className="text-black" />, level: "Beginner", years: "1+" },
       ],
     },
     {
       category: "Frontend Development",
       items: [
-        { name: "React", icon: <FaReact className="text-[#61DAFB]" />, level: "Intermediate", years: "2+" },
-        { name: "TypeScript", icon: <FaCode className="text-[#3178C6]" />, level: "Intermediate", years: "1+" },
-        { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06B6D4]" />, level: "Advanced", years: "2+" },
+        { name: "React", icon: <FaReact className="text-black" />, level: "Intermediate", years: "2+" },
+        { name: "TypeScript", icon: <FaCode className="text-black" />, level: "Intermediate", years: "1+" },
+        { name: "Tailwind CSS", icon: <SiTailwindcss className="text-black" />, level: "Advanced", years: "2+" },
       ],
     },
     {
       category: "Backend & DevOps",
       items: [
-        { name: "Python/Boto3", icon: <FaPython className="text-[#3776AB]" />},
-        { name: "Docker", icon: <FaDocker className="text-[#2496ED]" />},
-        { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" />},
-        { name: "Terraform", icon: <SiTerraform className="text-[#7B42BC]" />},
+        { name: "Python/Boto3", icon: <FaPython className="text-black" /> },
+        { name: "Docker", icon: <FaDocker className="text-black" /> },
+        { name: "Kubernetes", icon: <SiKubernetes className="text-black" /> },
+        { name: "Terraform", icon: <SiTerraform className="text-black" /> },
       ],
     },
     {
       category: "Tools & Platforms",
       items: [
-        { name: "Git/GitHub", icon: <FaGithub className="text-[#181717]" />, level: "Advanced", years: "3+" },
-        { name: "Linux", icon: <FaLinux className="text-[#FCC624]" />, level: "Intermediate", years: "2+" },
-        { name: "Discord", icon: <FaDiscord className="text-[#5865F2]" />, level: "Advanced", years: "3+" },
-        { name: "Canva", icon: <SiCanva className="text-[#00C4CC]" />, level: "Advanced", years: "2+" },
+        { name: "Git/GitHub", icon: <FaGithub className="text-black" />, level: "Advanced", years: "3+" },
+        { name: "Linux", icon: <FaLinux className="text-black" />, level: "Intermediate", years: "2+" },
+        { name: "Discord", icon: <FaDiscord className="text-black" />, level: "Advanced", years: "3+" },
+        { name: "Canva", icon: <SiCanva className="text-black" />, level: "Advanced", years: "2+" },
       ],
     },
   ]
@@ -290,630 +270,491 @@ export default function MetaPortfolio() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-5xl mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 lg:py-12">
+    <div className="min-h-screen bg-white text-gray-900 font-mono antialiased">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         {/* Header */}
-        <motion.div
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
-          initial="initial"
-          animate="animate"
-          variants={staggerContainer}
-        >
-          <motion.div
-            className="inline-block p-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mb-6 sm:mb-8"
-            variants={fadeInUp}
-          >
-            <div className="bg-white rounded-full p-4 sm:p-6 lg:p-8 shadow-lg">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl font-bold shadow-xl">
-                KJ
-              </div>
+        <header className="text-center mb-16 sm:mb-20 lg:mb-24">
+          <div className="mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none mb-6">
+              {personalInfo.name}
+            </h1>
+
+            <div className="space-y-3 mb-8">
+              <p className="text-xl sm:text-2xl lg:text-3xl font-semibold font-black">{personalInfo.title}</p>
+              <p className="text-lg sm:text-xl text-gray-900 font-medium">{personalInfo.subtitle}</p>
+              <p className="text-base sm:text-lg text-green-900 font-semibold">{personalInfo.availability}</p>
             </div>
-          </motion.div>
 
-          <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-blue-600 via-purple-900 via-blue-900 via-blue-700 via-green-800 to-green-800  bg-clip-text text-transparent mb-4 sm:mb-6 tracking-tight leading-tight"
-            variants={fadeInUp}
-          >
-            {personalInfo.name}
-          </motion.h1>
-
-          <motion.div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 px-2" variants={fadeInUp}>
-            <span className="text-sm sm:text-base lg:text-lg px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 bg-blue-50 text-blue-700 rounded-full font-medium border border-blue-200">
-              {personalInfo.title}
-            </span>
-            <span className="text-sm sm:text-base lg:text-lg px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 bg-white border border-gray-300 text-gray-700 rounded-full font-medium">
-              {personalInfo.subtitle}
-            </span>
-            <span className="text-sm sm:text-base lg:text-lg px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 bg-green-50 border border-green-300 text-green-700 rounded-full font-medium">
-              {personalInfo.availability}
-            </span>
-          </motion.div>
-
-          <motion.div
-            className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8 text-gray-600 text-sm sm:text-base"
-            variants={fadeInUp}
-          >
-            <div className="flex items-center gap-2">
-              <FaMapMarkerAlt className="text-blue-600 flex-shrink-0" />
-              <span className="break-words">{personalInfo.location}</span>
+            <div className="flex items-center justify-center gap-2 text-gray-500 mb-8">
+              <FaMapMarkerAlt className="text-black" />
+              <span className="text-sm sm:text-base">{personalInfo.location}</span>
             </div>
-          </motion.div>
 
-          <motion.p
-            className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 sm:mb-10 max-w-4xl mx-auto leading-relaxed px-2"
-            variants={fadeInUp}
-          >
-            Currently exploring:{" "}
-            <span className="font-mono  px-3 sm:px-4 py-2  text-blue-600 inline-block mt-2 sm:mt-0">
-              {personalInfo.currentlyExploring}
-            </span>
-          </motion.p>
+            <div className="mb-8">
+              <p className="text-lg sm:text-xl text-black mb-2">Currently exploring:</p>
+              <code className="text-base sm:text-lg font-mono bg-gray-100 px-4 py-2 rounded text-black font-bold">
+                {personalInfo.currentlyExploring}
+              </code>
+            </div>
+          </div>
 
           {/* Social Links */}
-          <motion.div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4" variants={fadeInUp}>
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {socialLinks.map((social, index) => (
-              <motion.div key={index} {...scaleOnHover}>
-                <a
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-white border border-gray-300 rounded-2xl text-gray-700 font-medium shadow-sm hover:bg-gray-100 hover:border-blue-300 transition-all text-sm sm:text-base"
-                >
-                  <span className="text-base sm:text-lg">{social.icon}</span>
-                  <span className="hidden sm:inline">{social.username}</span>
-                  <span className="sm:hidden">{social.label}</span>
-                </a>
-              </motion.div>
-            ))}
-            <motion.div {...scaleOnHover}>
-              <button
-                onClick={handleWhatsAppClick}
-                className="inline-flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-white border border-gray-300 rounded-lg text-gray-700 font-medium shadow-sm hover:bg-gray-50 hover:border-green-300 transition-all text-sm sm:text-base"
+              <a
+                key={index}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-black hover:text-blue-600 transition-colors duration-200 text-sm sm:text-base font-medium underline decoration-gray-300 hover:decoration-blue-500 underline-offset-4"
               >
-                <FaWhatsapp className="text-green-600 text-base sm:text-lg" />
-                <span>WhatsApp</span>
-              </button>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+                <span className="text-lg">{social.icon}</span>
+                <span className="hidden sm:inline">{social.username}</span>
+                <span className="sm:hidden">{social.label}</span>
+              </a>
+            ))}
+            <button
+              onClick={handleWhatsAppClick}
+              className="inline-flex items-center gap-2 text-black hover:text-green-600 transition-colors duration-200 text-sm sm:text-base font-medium underline decoration-gray-300 hover:decoration-green-500 underline-offset-4"
+            >
+              <FaWhatsapp className="text-lg" />
+              <span>WhatsApp</span>
+            </button>
+          </div>
+        </header>
 
-        <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
-            <div className="p-4 sm:p-6 border-b border-gray-100">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 bg-red-50 rounded-lg">
-                  <FaLockOpen className="text-red-600 text-lg sm:text-xl" />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Open Source Contributions</h2>
+        {/* Open Source Section */}
+        <section className="mb-16 sm:mb-20">
+          <div className="pl-6 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
+              <FaLockOpen className="text-black" />
+              Open Source Contributions
+            </h2>
+            <p className="text-lg text-black font-medium">
+              Fork it. Star it. Make it your own — if it serves your purpose.
+            </p>
+          </div>
+
+          <div className="prose prose-lg max-w-none mb-8">
+            <p className="text-black leading-relaxed">
+              This portfolio project is open-source and available to fork. If the design or structure helped accelerate
+              your workflow or served as a useful starting point, feel free to build on it. Giving the repo a star is
+              appreciated, but entirely optional. Feedback, contributions, and practical enhancements are always
+              welcome.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-4 mb-8">
+            <a
+              href="https://github.com/kinshukjainn/kinshukkportfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gray-900 hover:text-blue-600 transition-colors duration-200 font-semibold underline decoration-gray-400 hover:decoration-blue-500 underline-offset-4"
+            >
+              <FaGithub className="text-xl" />
+              Portfolio Repository
+            </a>
+            <a
+              href="https://github.com/kinshukjainn/encrypted-password-project"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gray-900 hover:text-blue-600 transition-colors duration-200 font-semibold underline decoration-gray-400 hover:decoration-blue-500 underline-offset-4"
+            >
+              <FaGithub className="text-xl" />
+              PassGentoo Repository
+            </a>
+          </div>
+
+          <div className="border-t border-gray-200 pt-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-black">
+              <div className="flex items-center gap-2">
+                <FaStar className="text-yellow-500 text-xl" />
+                <span className="font-medium">Star to show appreciation</span>
               </div>
-              <p className="text-gray-600 text-base sm:text-lg">
-                Fork it. Star it. Make it your own — if it serves your purpose.
-              </p>
-            </div>
-            <div className="p-4 sm:p-6">
-              <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">
-                This portfolio project is open-source and available to fork. If the design or structure helped accelerate your workflow or served as a useful starting point, feel free to build on it. Giving the repo a star is appreciated, but entirely optional. Feedback, contributions, and practical enhancements are always welcome
-              </p>
-
-              <div className="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8">
-                <motion.div {...scaleOnHover}>
-                  <a
-                    href="https://github.com/kinshukjainn/kinshukkportfolio"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-gray-900 border border-gray-300 rounded-2xl text-gray-100 font-medium shadow-sm hover:bg-gray-800 hover:border-gray-400 transition-all text-xs sm:text-sm"
-                  >
-                    <FaGithub className="text-base sm:text-lg" />
-                    Portfolio Repository
-                  </a>
-                </motion.div>
-                <motion.div {...scaleOnHover}>
-                  <a
-                    href="https://github.com/kinshukjainn/encrypted-password-project"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-gray-900 border border-gray-300 rounded-2xl text-gray-100 font-medium shadow-sm hover:bg-gray-800 hover:border-gray-400 transition-all text-xs sm:text-sm"
-                  >
-                    <FaGithub className="text-base sm:text-lg" />
-                    PassGentoo Repository
-                  </a>
-                </motion.div>
-              </div>
-
-              <div className="h-px bg-gray-200 my-6 sm:my-8"></div>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-gray-500">
-                <div className="flex items-center bg-gray-900 p-3 rounded-2xl gap-3">
-                  <FaStar className="text-yellow-500 text-lg sm:text-xl" />
-                  <span className="text-sm text-white sm:text-base lg:text-lg">Star to show appreciation</span>
-                </div>
-                <div className="flex items-center bg-gray-900 rounded-2xl p-3  gap-3">
-                  <FaCodeBranch className="text-blue-500 text-lg sm:text-xl" />
-                  <span className="text-sm text-white sm:text-base lg:text-lg">Fork and customize</span>
-                </div>
+              <div className="flex items-center gap-2">
+                <FaCodeBranch className="text-black text-xl" />
+                <span className="font-medium">Fork and customize</span>
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Contact Section */}
-        <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
-            <div className="p-4 sm:p-6 border-b border-gray-100">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 bg-blue-50 rounded-lg">
-                  <FaEnvelope className="text-blue-600 text-lg sm:text-xl" />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Get In Touch</h2>
+        <section className="mb-16 sm:mb-20">
+          <div className="border-l-4 border-blue-500 pl-6 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
+              <FaEnvelope className="text-black" />
+              Get In Touch
+            </h2>
+            <p className="text-lg text-black font-medium">
+              Always open to connecting with peers, engineers, developers, or anyone curious about tech and cloud
+              computing.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex items-center gap-4">
+              <FaEnvelope className="text-black text-xl flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-gray-900">Primary Email</p>
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="text-blue-600 hover:text-black font-mono text-sm sm:text-base underline decoration-blue-300 hover:decoration-blue-500 underline-offset-2"
+                >
+                  {personalInfo.email}
+                </a>
               </div>
-              <p className="text-gray-600 text-base sm:text-lg">
-                Always open to connecting with peers, engineers, developers, or anyone curious about tech and cloud
-                computing.
-              </p>
             </div>
-            <div className="p-4 sm:p-6">
-              <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
-                <motion.div
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 border border-gray-100 rounded-2xl"
-                  {...scaleOnHover}
+            <div className="flex items-center gap-4">
+              <FaEnvelope className="text-purple-500 text-xl flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-gray-900">Alternate Email</p>
+                <a
+                  href={`mailto:${personalInfo.alternateEmail}`}
+                  className="text-purple-600 hover:text-purple-700 font-mono text-sm sm:text-base underline decoration-purple-300 hover:decoration-purple-500 underline-offset-2"
                 >
-                  <div className="p-2 sm:p-3 bg-blue-50 rounded-lg flex-shrink-0">
-                    <FaEnvelope className="text-blue-600 text-lg sm:text-xl" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-gray-800 text-sm sm:text-base">Primary Email</p>
-                    <p className="text-xs sm:text-sm text-gray-600 font-mono break-all">{personalInfo.email}</p>
-                  </div>
-                </motion.div>
-                <motion.div
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 border border-gray-100 rounded-2xl"
-                  {...scaleOnHover}
-                >
-                  <div className="p-2 sm:p-3 bg-purple-50 rounded-lg flex-shrink-0">
-                    <FaEnvelope className="text-purple-600 text-lg sm:text-xl" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-gray-800 text-sm sm:text-base">Alternate Email</p>
-                    <p className="text-xs sm:text-sm text-gray-600 font-mono break-all">
-                      {personalInfo.alternateEmail}
-                    </p>
-                  </div>
-                </motion.div>
+                  {personalInfo.alternateEmail}
+                </a>
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Tech Stack Section */}
-        <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
-            <div className="p-4 sm:p-6 border-b border-gray-100">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 bg-green-50 rounded-lg">
-                  <FaCode className="text-green-600 text-lg sm:text-xl" />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Technical Skills</h2>
-              </div>
-              <p className="text-gray-600 text-base sm:text-lg">Technologies and tools I work with professionally</p>
-            </div>
-            <div className="p-4 sm:p-6">
-              <div className="space-y-8 sm:space-y-10">
-                {techStack.map((category, categoryIndex) => (
-                  <div key={categoryIndex}>
-                    <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-gray-800 flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
-                      {category.category}
-                    </h3>
-                    <div className="overflow-x-auto">
-                      <div className="min-w-full">
-                        {/* Mobile Card Layout */}
-                        <div className="block sm:hidden space-y-3">
-                          {category.items.map((tech, techIndex) => (
-                            <motion.div
-                              key={techIndex}
-                              className="bg-gray-50 border border-gray-200 p-4 rounded-lg"
-                              {...scaleOnHover}
-                            >
-                              <div className="flex items-center gap-3 mb-2">
-                                <span className="text-xl">{tech.icon}</span>
-                                <span className="font-medium text-gray-800">{tech.name}</span>
-                              </div>
-                            </motion.div>
-                          ))}
-                        </div>
+        <section className="mb-16 sm:mb-20">
+          <div className=" pl-6 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
+              <FaCode className="text-black" />
+              Technical Skills
+            </h2>
+            <p className="text-lg text-black font-medium">Technologies and tools I work with professionally</p>
+          </div>
 
-                        {/* Desktop Table Layout */}
-                        <table className="hidden sm:table w-full">
-                          <thead>
-                            <tr className="border-b border-gray-200">
-                              <th className="text-left py-3 sm:py-4 px-3 sm:px-6 font-semibold text-gray-600 text-sm sm:text-base">
-                                Technology
-                              </th>
-                        
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {category.items.map((tech, techIndex) => (
-                              <motion.tr
-                                key={techIndex}
-                                className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                                whileHover={{ x: 4 }}
-                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                              >
-                                <td className="py-3 sm:py-4 px-3 sm:px-6">
-                                  <div className="flex items-center gap-3 sm:gap-4">
-                                    <span className="text-xl sm:text-2xl">{tech.icon}</span>
-                                    <span className="font-medium text-gray-800 text-sm sm:text-lg">{tech.name}</span>
-                                  </div>
-                                </td>
-                              </motion.tr>
-                            ))}
-                          </tbody>
-                        </table>
+          <div className="space-y-12">
+            {techStack.map((category, categoryIndex) => (
+              <div key={categoryIndex}>
+                <h3 className="text-xl sm:text-2xl font-bold text-black mb-6  pb-2">
+                  {category.category}
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {category.items.map((tech, techIndex) => (
+                    <div key={techIndex} className="flex items-center gap-3 group">
+                      <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
+                        {tech.icon}
+                      </span>
+                      <span className="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-200">
+                        {tech.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section className="mb-16 sm:mb-20">
+          <div className="pl-6 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
+              <FaRocket className="text-black" />
+              Featured Projects
+            </h2>
+            <p className="text-lg text-black font-medium">
+              Recent work and contributions showcasing my technical expertise
+            </p>
+          </div>
+
+          <div className="space-y-16">
+            {projects.map((project, index) => (
+              <article key={index} className="border-b border-gray-200 pb-12 last:border-b-0">
+                <header className="mb-6">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <h3 className="text-xl sm:text-2xl font-black text-gray-900">{project.title}</h3>
+                    {project.featured && (
+                      <span className="text-xs font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-full">
+                        FEATURED
+                      </span>
+                    )}
+                    <span className="text-xs font-bold bg-yellow-400 text-black px-3 py-1 rounded-full">
+                      {project.status}
+                    </span>
+                  </div>
+
+                  <p className="text-black text-lg leading-relaxed mb-4">{project.description}</p>
+
+                  <div className="flex flex-wrap gap-4">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-black font-semibold underline decoration-blue-300 hover:decoration-blue-500 underline-offset-4 transition-colors duration-200"
+                    >
+                      <FaLink />
+                      {project.isPerformanceProject ? "Check Score" : "Live Demo"}
+                    </a>
+                    {project.repoUrl && (
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-black hover:text-gray-900 font-semibold underline decoration-gray-400 hover:decoration-gray-600 underline-offset-4 transition-colors duration-200"
+                      >
+                        <FaGithub />
+                        Source Code
+                      </a>
+                    )}
+                  </div>
+                </header>
+
+                {project.isPerformanceProject ? (
+                  <div className="space-y-8">
+                    <h4 className="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2">
+                      Performance Metrics
+                    </h4>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                      {project.performanceScores?.map((score, idx) => (
+                        <div key={idx} className="text-center">
+                          <div className={`text-4xl font-black mb-2 ${score.color}`}>{score.score}</div>
+                          <p className="font-semibold text-gray-800 mb-1">{score.label}</p>
+                          <p className="text-sm text-black">{score.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="text-sm text-gray-500 space-y-2">
+                      <p>
+                        Performance scores are calculated using Google Lighthouse and may vary based on network
+                        conditions.
+                      </p>
+                      <div className="flex flex-wrap gap-4">
+                        {project.scoreRanges?.map((range, idx) => (
+                          <div key={idx} className="flex items-center gap-2">
+                            <div className={`w-3 h-3 ${range.color} rounded`}></div>
+                            <span>
+                              {range.range} - {range.label}
+                            </span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Projects Section */}
-        <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
-            <div className="p-4 sm:p-6 border-b border-gray-100">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 bg-orange-50 rounded-lg">
-                  <FaRocket className="text-orange-600 text-lg sm:text-xl" />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Featured Projects</h2>
-              </div>
-              <p className="text-gray-600 text-base sm:text-lg">
-                Recent work and contributions showcasing my technical expertise
-              </p>
-            </div>
-            <div className="p-4 sm:p-6">
-              <div className="space-y-8 sm:space-y-10">
-                {projects.map((project, index) => (
-                  <motion.div
-                    key={index}
-                    className="border border-gray-200 bg-white rounded-2xl p-4 sm:p-6 lg:p-8 hover:shadow-lg transition-all"
-                    {...scaleOnHover}
-                  >
-                    <div className="flex flex-col gap-4 sm:gap-6 mb-4 sm:mb-6">
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
-                          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800">{project.title}</h3>
-                          {project.featured && (
-                            <span className="inline-block px-2 sm:px-3 py-1 text-xs font-medium text-white bg-gradient-to-r from-blue-900 to-purple-900 rounded-full">
-                              Featured
-                            </span>
-                          )}
-                          <span className="inline-block px-2 sm:px-3 py-1 text-xs font-semibold bg-yellow-500 text-black border-3 border-black rounded-full">
-                            {project.status}
-                          </span>
-                        </div>
-                        <p className="text-gray-900 text-sm sm:text-base lg:text-lg leading-relaxed">
-                          {project.description}
-                        </p>
-                      </div>
-                      <div className="flex flex-wrap gap-2 sm:gap-3">
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-900 border border-gray-300 rounded-2xl text-gray-100 font-medium shadow-sm hover:bg-gray-800 hover:border-blue-300 transition-all text-xs sm:text-sm"
-                        >
-                          <FaLink className="w-3 h-3 sm:w-4 sm:h-4" />
-                          {project.isPerformanceProject ? "Check Score" : "Check Live Demo"}
-                        </a>
-                        {project.repoUrl && (
-                          <a
-                            href={project.repoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-900 border border-gray-300 rounded-2xl text-gray-100 font-medium shadow-sm hover:bg-gray-800 hover:border-gray-400 transition-all text-xs sm:text-sm"
-                          >
-                            <FaGithub className="w-3 h-3 sm:w-4 sm:h-4" />
-                            Source Code
-                          </a>
-                        )}
-                      </div>
-                    </div>
-
-                    {project.isPerformanceProject ? (
-                      <div className="space-y-6 sm:space-y-8">
-                        <h4 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">Performance Metrics</h4>
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-                          {project.performanceScores?.map((score, idx) => (
-                            <div
-                              key={idx}
-                              className="bg-blue-100 border-3 border-gray-900 p-2 sm:p-4 lg:p-6 rounded-3xl text-center shadow-lg shadow-green-200"
-                            >
-                              <div className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 ${score.color}`}>
-                                {score.score}
-                              </div>
-                              <p className="text-gray-800 font-medium mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">
-                                {score.label}
-                              </p>
-                              <p className="text-sm text-gray-900">{score.description}</p>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="flex flex-wrap gap-3 sm:gap-6 text-xs sm:text-sm">
-                          <p className="text-gray-500 mb-4 w-full">
-                            Performance scores are calculated using Google Lighthouse and may vary based on network
-                            conditions.
-                          </p>
-                          {project.scoreRanges?.map((range, idx) => (
-                            <div key={idx} className="flex items-center gap-2 sm:gap-3">
-                              <div className={`w-3 h-3 sm:w-4 sm:h-4 ${range.color} rounded`}></div>
-                              <span className="text-gray-600">
-                                {range.range} - {range.label}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="space-y-6 sm:space-y-8">
-                        {project.challenges && project.challenges.length > 0 && (
-                          <div>
-                            <h4 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
-                              <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0"></div>
-                              Challenges Faced
-                            </h4>
-                            <ul className="space-y-3 sm:space-y-4 text-gray-900">
-                              {project.challenges.map((challenge, idx) => (
-                                <li
-                                  key={idx}
-                                  className="flex gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-100"
-                                >
-                                  <span className="text-blue-900 mt-1 text-base sm:text-lg flex-shrink-0">•</span>
-                                  <span className="leading-relaxed text-sm sm:text-base">{challenge}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                        {project.learnings && project.learnings.length > 0 && (
-                          <div>
-                            <h4 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
-                              <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
-                              Key Learnings
-                            </h4>
-                            <ul className="space-y-3 sm:space-y-4 text-gray-900">
-                              {project.learnings.map((learning, idx) => (
-                                <li
-                                  key={idx}
-                                  className="flex gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-100"
-                                >
-                                  <span className="text-green-600 mt-1 text-base sm:text-lg flex-shrink-0">•</span>
-                                  <span className="leading-relaxed text-sm sm:text-base">{learning}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                        {(project.keyFeatures || project.technicalDetails) && (
-                          <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
-                            {project.keyFeatures && project.keyFeatures.length > 0 && (
-                              <div>
-                                <h4 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
-                                  <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
-                                  Key Features
-                                </h4>
-                                <ul className="space-y-3 text-gray-900">
-                                  {project.keyFeatures.map((feature, idx) => (
-                                    <li
-                                      key={idx}
-                                      className="flex gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100"
-                                    >
-                                      <span className="text-blue-600 mt-1 flex-shrink-0">•</span>
-                                      <span className="leading-relaxed text-sm sm:text-base">{feature}</span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-                            {project.technicalDetails && project.technicalDetails.length > 0 && (
-                              <div>
-                                <h4 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
-                                  <div className="w-2 h-2 bg-purple-500 rounded-full flex-shrink-0"></div>
-                                  Technical Implementation
-                                </h4>
-                                <ul className="space-y-3 text-gray-900">
-                                  {project.technicalDetails.map((detail, idx) => (
-                                    <li
-                                      key={idx}
-                                      className="flex gap-3 p-3 bg-gray-50 rounded-lg border border-gray-100"
-                                    >
-                                      <span className="text-purple-600 mt-1 flex-shrink-0">•</span>
-                                      <span className="leading-relaxed text-sm sm:text-base">{detail}</span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {project.technologies && project.technologies.length > 0 && (
-                      <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
-                        <h4 className="font-semibold mb-3 sm:mb-4 text-gray-800 text-sm sm:text-base">
-                          Technology Stack:
+                ) : (
+                  <div className="space-y-8">
+                    {project.challenges && project.challenges.length > 0 && (
+                      <div>
+                        <h4 className="text-lg font-bold text-gray-800 mb-4 border-b border-red-200 pb-2">
+                          Challenges Faced
                         </h4>
-                        <div className="flex flex-wrap gap-2 sm:gap-3">
-                          {project.technologies.map((tech, techIndex) => (
-                            <span
-                              key={techIndex}
-                              className="inline-block px-2 sm:px-3 py-1 text-xs sm:text-sm text-white bg-blue-900 font-semibold border-3 border-black rounded-full"
-                            >
-                              {tech}
-                            </span>
+                        <ul className="space-y-3">
+                          {project.challenges.map((challenge, idx) => (
+                            <li key={idx} className="flex gap-3">
+                              <span className="text-red-500 font-bold mt-1 flex-shrink-0">•</span>
+                              <span className="text-black leading-relaxed">{challenge}</span>
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
                     )}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+
+                    {project.learnings && project.learnings.length > 0 && (
+                      <div>
+                        <h4 className="text-lg font-bold text-gray-800 mb-4 border-b border-green-200 pb-2">
+                          Key Learnings
+                        </h4>
+                        <ul className="space-y-3">
+                          {project.learnings.map((learning, idx) => (
+                            <li key={idx} className="flex gap-3">
+                              <span className="text-green-500 font-bold mt-1 flex-shrink-0">•</span>
+                              <span className="text-black leading-relaxed">{learning}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {(project.keyFeatures || project.technicalDetails) && (
+                      <div className="grid gap-8 lg:grid-cols-2">
+                        {project.keyFeatures && project.keyFeatures.length > 0 && (
+                          <div>
+                            <h4 className="text-lg font-bold text-gray-800 mb-4 border-b border-blue-200 pb-2">
+                              Key Features
+                            </h4>
+                            <ul className="space-y-3">
+                              {project.keyFeatures.map((feature, idx) => (
+                                <li key={idx} className="flex gap-3">
+                                  <span className="text-black font-bold mt-1 flex-shrink-0">•</span>
+                                  <span className="text-black leading-relaxed">{feature}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {project.technicalDetails && project.technicalDetails.length > 0 && (
+                          <div>
+                            <h4 className="text-lg font-bold text-gray-800 mb-4 border-b border-purple-200 pb-2">
+                              Technical Implementation
+                            </h4>
+                            <ul className="space-y-3">
+                              {project.technicalDetails.map((detail, idx) => (
+                                <li key={idx} className="flex gap-3">
+                                  <span className="text-purple-500 font-bold mt-1 flex-shrink-0">•</span>
+                                  <span className="text-black leading-relaxed">{detail}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {project.technologies && project.technologies.length > 0 && (
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    <h4 className="font-bold mb-3 text-gray-800">Technology Stack:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="text-xs font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </article>
+            ))}
           </div>
-        </motion.section>
+        </section>
 
         {/* Certifications Section */}
-        <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
-            <div className="p-4 sm:p-6 border-b border-gray-100">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 bg-yellow-50 rounded-lg">
-                  <FaCertificate className="text-yellow-600 text-lg sm:text-xl" />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Certifications & Learning Journey</h2>
-              </div>
-              <p className="text-gray-600 text-base sm:text-lg">
-                AWS certifications and continuous professional development
-              </p>
-            </div>
-            <div className="p-4 sm:p-6">
-              <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gradient-to-r from-blue-50 to-purple-50 border-3 border-black rounded-3xl">
-                <h3 className="font-bold text-blue-700 mb-3 text-base sm:text-lg">🎯 AWS Certification Journey</h3>
-                <p className="text-black leading-relaxed text-sm sm:text-base">
-                  Recently scored 679/1000 on AWS Cloud Practitioner (CLF-C02) On January 24 2025. While just shy of passing, this
-                  experience has strengthened my resolve to master cloud fundamentals and accelerated my preparation for
-                  Solutions Architect Associate by Q3 2025.
-                </p>
-              </div>
-
-              <div className="space-y-4 sm:space-y-6">
-                {certifications.map((cert, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 sm:p-6 border border-gray-200 bg-white rounded-2xl shadow-sm"
-                    {...scaleOnHover}
-                  >
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
-                        <h3 className="font-bold text-gray-800 text-base sm:text-lg">{cert.title}</h3>
-                        <span
-                          className={`inline-block px-2 sm:px-3 py-1 text-xs font-medium rounded-full ${
-                            cert.status === "Completed" ? "bg-yellow-500 text-black border-3 border-black " : "bg-blue-500 border-black border-3 text-black"
-                          }`}
-                        >
-                          {cert.status}
-                        </span>
-                      </div>
-                      <p className="text-gray-600 mb-2 text-sm sm:text-base">{cert.description}</p>
-                      <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500">
-                        <span>Issued by: {cert.issuer}</span>
-                        <span className="hidden sm:inline">•</span>
-                        <span>
-                          {cert.status === "Completed"
-                            ? `Completed: ${cert.completedDate}`
-                            : `Expected: ${cert.expectedDate}`}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      {cert.status === "Completed" && (
-                        <a
-                          href={cert.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-900 border border-gray-300 rounded-2xl text-gray-100 font-medium shadow-sm hover:bg-blue-900 hover:border-blue-300 transition-all text-xs sm:text-sm"
-                        >
-                          <FaExternalLinkAlt className="w-3 h-3" />
-                          View Certificate
-                        </a>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+        <section className="mb-16 sm:mb-20">
+          <div className="border-l-4 border-yellow-500 pl-6 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
+              <FaCertificate className="text-black" />
+              Certifications & Learning Journey
+            </h2>
+            <p className="text-lg text-black font-medium">
+              AWS certifications and continuous professional development
+            </p>
           </div>
-        </motion.section>
+
+          <div className="mb-8 p-6 ">
+            <h3 className="font-bold text-black mb-3 text-lg">🎯 AWS Certification Journey</h3>
+            <p className="text-gray-800 leading-relaxed">
+              Recently scored 679/1000 on AWS Cloud Practitioner (CLF-C02) On January 24 2025. While just shy of
+              passing, this experience has strengthened my resolve to master cloud fundamentals and accelerated my
+              preparation for Solutions Architect Associate by Q3 2025.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {certifications.map((cert, index) => (
+              <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                      <h3 className="font-bold text-gray-800 text-lg">{cert.title}</h3>
+                      <span
+                        className={`text-xs font-bold px-3 py-1 rounded-full ${
+                          cert.status === "Completed" ? "bg-green-100 text-green-800" : "bg-blue-100 text-blue-800"
+                        }`}
+                      >
+                        {cert.status}
+                      </span>
+                    </div>
+                    <p className="text-black mb-2">{cert.description}</p>
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                      <span>Issued by: {cert.issuer}</span>
+                      <span className="hidden sm:inline">•</span>
+                      <span>
+                        {cert.status === "Completed"
+                          ? `Completed: ${cert.completedDate}`
+                          : `Expected: ${cert.expectedDate}`}
+                      </span>
+                    </div>
+                  </div>
+                  {cert.status === "Completed" && (
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-black font-semibold underline decoration-blue-300 hover:decoration-blue-500 underline-offset-4 transition-colors duration-200"
+                    >
+                      <FaExternalLinkAlt />
+                      View Certificate
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Education Section */}
-        <motion.section className="mb-12 sm:mb-16" variants={fadeInUp}>
-          <div className="bg-white border border-gray-200 rounded-2xl sm:rounded-2xl shadow-sm overflow-hidden">
-            <div className="p-4 sm:p-6 border-b border-gray-100">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 bg-purple-50 rounded-lg">
-                  <FaGraduationCap className="text-purple-600 text-lg sm:text-xl" />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Education</h2>
-              </div>
-              <p className="text-gray-600 text-base sm:text-lg">Academic background and qualifications</p>
-            </div>
-            <div className="p-4 sm:p-6">
-              <div className="space-y-6 sm:space-y-8">
-                {education.map((edu, index) => (
-                  <motion.div
-                    key={index}
-                    className="border-l-4 border-blue-500 pl-4 sm:pl-6 lg:pl-8 pb-6 sm:pb-8 relative"
-                    {...scaleOnHover}
-                  >
-                    <div className="absolute -left-2 top-0 w-4 h-4 bg-blue-500 rounded-full"></div>
-                    <div className="flex flex-col gap-3 sm:gap-4 mb-4">
-                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4">
-                        <div className="flex-1">
-                          <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">{edu.degree}</h3>
-                          <p className="text-gray-700 font-semibold text-base sm:text-lg">{edu.field}</p>
-                        </div>
-                        <span
-                          className={`inline-block px-2 sm:px-3 py-1 text-xs font-medium rounded-full self-start ${
-                            edu.status === "Completed" ? "bg-yellow-500 text-black border-black border-3 font-semibold" : "bg-blue-500 font-semibold text-black border-3 border-black"
-                          }`}
-                        >
-                          {edu.status}
-                        </span>
-                      </div>
-                    </div>
-                    <p className="text-gray-900 font-medium mb-2 text-sm sm:text-base">{edu.institution}</p>
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-gray-500 text-xs sm:text-sm">
-                      <div className="flex items-center gap-2">
-                        <FaMapMarkerAlt className="text-blue-600 flex-shrink-0" />
-                        <span>{edu.location}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <FaCalendarAlt className="text-blue-600 flex-shrink-0" />
-                        <span>{edu.period}</span>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+        <section className="mb-16 sm:mb-20">
+          <div className=" pl-6 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
+              <FaGraduationCap className="text-black" />
+              Education
+            </h2>
+            <p className="text-lg text-black font-medium">Academic background and qualifications</p>
           </div>
-        </motion.section>
-        
+
+          <div className="space-y-8">
+            {education.map((edu, index) => (
+              <div key={index} className=" pl-6 relative">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">{edu.degree}</h3>
+                    <p className="text-black font-semibold text-lg">{edu.field}</p>
+                  </div>
+                  <span
+                    className={`text-xs font-bold px-3 py-1 rounded-full self-start ${
+                      edu.status === "Completed" ? "bg-green-100 text-green-800" : "bg-blue-100 text-blue-800"
+                    }`}
+                  >
+                    {edu.status}
+                  </span>
+                </div>
+                <p className="text-gray-800 font-medium mb-2">{edu.institution}</p>
+                <div className="flex flex-wrap items-center gap-4 text-gray-500 text-sm">
+                  <div className="flex items-center gap-2">
+                    <FaMapMarkerAlt className="text-black" />
+                    <span>{edu.location}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FaCalendarAlt className="text-black" />
+                    <span>{edu.period}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Footer */}
-        <motion.footer className="text-center py-8 sm:py-12" variants={fadeInUp}>
-          <div className="max-w-2xl mx-auto px-4">
-            <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6">
+        <footer className="text-center py-12 border-t border-gray-200">
+          <div className="max-w-2xl mx-auto">
+            <p className="text-black leading-relaxed mb-6">
               Want to explore my thinking process and learning journey? Check out my comprehensive{" "}
               <a
                 href="/my-personal-learning-resources"
-                className="text-blue-600 hover:text-blue-700 font-semibold underline decoration-blue-200 underline-offset-4 transition-colors"
+                className="text-blue-600 hover:text-black font-semibold underline decoration-blue-300 hover:decoration-blue-500 underline-offset-4 transition-colors duration-200"
               >
                 Learning Resources
               </a>{" "}
               page where I document insights, challenges, and solutions.
             </p>
-            <div className="flex items-center justify-center gap-2 text-gray-500 text-sm sm:text-base">
+            <div className="flex items-center justify-center gap-2 text-gray-500">
               <span>Built with</span>
               <FaHeart className="text-red-500" />
               <span>and lots of ☕</span>
             </div>
           </div>
-        </motion.footer>
+        </footer>
       </div>
     </div>
   )
