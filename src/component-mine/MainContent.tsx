@@ -31,7 +31,7 @@ import { SiKubernetes, SiCanva, SiTerraform, SiTailwindcss } from "react-icons/s
 export default function MetaPortfolio() {
   const personalInfo = {
     name: "Kinshuk Jain",
-    title: "Exploring in cloud !",
+    title: "Crafting Cloud-Native Solutions with AWS",
     subtitle: "Open to Collaborations",
     currentlyExploring: "AWS || Blogging || React",
     email: "kinshuk25jan04@gmail.com",
@@ -270,7 +270,7 @@ export default function MetaPortfolio() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-mono antialiased">
+    <div className="min-h-screen bg-white text-gray-900 font-sans antialiased">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         {/* Header */}
         <header className="text-center mb-16 sm:mb-20 lg:mb-24">
@@ -291,7 +291,6 @@ export default function MetaPortfolio() {
             </div>
 
             <div className="mb-8">
-              <p className="text-lg sm:text-xl text-black mb-2">Currently exploring:</p>
               <code className="text-base sm:text-lg font-mono bg-gray-100 px-4 py-2 rounded text-black font-bold">
                 {personalInfo.currentlyExploring}
               </code>
@@ -306,7 +305,7 @@ export default function MetaPortfolio() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-black hover:text-blue-600 transition-colors duration-200 text-sm sm:text-base font-medium underline decoration-gray-300 hover:decoration-blue-500 underline-offset-4"
+                className="inline-flex items-center gap-2 text-black hover:text-blue-600 transition-colors duration-200 text-sm sm:text-base font-medium underline decoration-gray-300 hover:decoration-blue-500 p-3  underline-offset-4"
               >
                 <span className="text-lg">{social.icon}</span>
                 <span className="hidden sm:inline">{social.username}</span>
@@ -427,7 +426,7 @@ export default function MetaPortfolio() {
               <FaCode className="text-black" />
               Technical Skills
             </h2>
-            <p className="text-lg text-black font-medium">Technologies and tools I work with professionally</p>
+            <p className="text-lg text-black font-medium">Technologies and tools I work with </p>
           </div>
 
           <div className="space-y-12">
