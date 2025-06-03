@@ -1,6 +1,7 @@
 "use client"
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
+import { motion } from "framer-motion"
 import {
   FaAws,
   FaDocker,
@@ -58,35 +59,35 @@ export default function MetaPortfolio() {
     {
       category: "Cloud & Infrastructure",
       items: [
-        { name: "AWS Cloud", icon: <FaAws className="text-black" />, level: "Intermediate", years: "2+" },
-        { name: "Route 53", icon: <FaAws className="text-black" />, level: "Beginner", years: "1+" },
-        { name: "AWS Amplify", icon: <FaAws className="text-black" />, level: "Beginner", years: "1+" },
+        { name: "AWS Cloud", icon: <FaAws />, level: "Intermediate", years: "2+" },
+        { name: "Route 53", icon: <FaAws />, level: "Beginner", years: "1+" },
+        { name: "AWS Amplify", icon: <FaAws />, level: "Beginner", years: "1+" },
       ],
     },
     {
       category: "Frontend Development",
       items: [
-        { name: "React", icon: <FaReact className="text-black" />, level: "Intermediate", years: "2+" },
-        { name: "TypeScript", icon: <FaCode className="text-black" />, level: "Intermediate", years: "1+" },
-        { name: "Tailwind CSS", icon: <SiTailwindcss className="text-black" />, level: "Advanced", years: "2+" },
+        { name: "React", icon: <FaReact />, level: "Intermediate", years: "2+" },
+        { name: "TypeScript", icon: <FaCode />, level: "Intermediate", years: "1+" },
+        { name: "Tailwind CSS", icon: <SiTailwindcss />, level: "Advanced", years: "2+" },
       ],
     },
     {
       category: "Backend & DevOps",
       items: [
-        { name: "Python/Boto3", icon: <FaPython className="text-black" /> },
-        { name: "Docker", icon: <FaDocker className="text-black" /> },
-        { name: "Kubernetes", icon: <SiKubernetes className="text-black" /> },
-        { name: "Terraform", icon: <SiTerraform className="text-black" /> },
+        { name: "Python/Boto3", icon: <FaPython /> },
+        { name: "Docker", icon: <FaDocker /> },
+        { name: "Kubernetes", icon: <SiKubernetes /> },
+        { name: "Terraform", icon: <SiTerraform /> },
       ],
     },
     {
       category: "Tools & Platforms",
       items: [
-        { name: "Git/GitHub", icon: <FaGithub className="text-black" />, level: "Advanced", years: "3+" },
-        { name: "Linux", icon: <FaLinux className="text-black" />, level: "Intermediate", years: "2+" },
-        { name: "Discord", icon: <FaDiscord className="text-black" />, level: "Advanced", years: "3+" },
-        { name: "Canva", icon: <SiCanva className="text-black" />, level: "Advanced", years: "2+" },
+        { name: "Git/GitHub", icon: <FaGithub />, level: "Advanced", years: "3+" },
+        { name: "Linux", icon: <FaLinux />, level: "Intermediate", years: "2+" },
+        { name: "Discord", icon: <FaDiscord />, level: "Advanced", years: "3+" },
+        { name: "Canva", icon: <SiCanva />, level: "Advanced", years: "2+" },
       ],
     },
   ]
@@ -185,8 +186,8 @@ export default function MetaPortfolio() {
       title: "PassGentoo - Secure Password Generator",
       description:
         "Built a secure, customizable password generator using React, TypeScript, and Tailwind CSS, with cryptographic randomness powered by the Web Crypto API. Designed to generate high-entropy passwords resistant to brute-force attacks.",
-      liveUrl: "https://passgentoo.cloudkinshuk.in",
-      repoUrl: "https://github.com/kinshukjainn/encrypted-password-project",
+      liveUrl: "#",
+      repoUrl: "#",
       technologies: [
         "React",
         "TypeScript",
@@ -255,14 +256,6 @@ export default function MetaPortfolio() {
       period: "2022 - 2026",
       status: "Ongoing",
     },
-    {
-      degree: "Higher Secondary Education (XII)",
-      field: "Science (PCM)",
-      institution: "Sri Chaitnya Junior College",
-      location: "Pune, Maharashtra",
-      period: "2020 - 2022",
-      status: "Completed",
-    },
   ]
 
   const handleWhatsAppClick = () => {
@@ -270,491 +263,685 @@ export default function MetaPortfolio() {
     window.open(`https://wa.me/${personalInfo.whatsappNumber}?text=${message}`, "_blank")
   }
 
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  }
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemFade = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4 },
+    },
+  }
+
+  const scaleIn = {
+    hidden: { scale: 0.9, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: { duration: 0.5 },
+    },
+  }
+
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-poppins antialiased">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+    <div className="min-h-screen bg-[#121212] text-gray-300">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
         {/* Header */}
-        <header className="text-center mb-16 sm:mb-20 lg:mb-24">
-          <div className="mb-8">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none mb-6">
-              {personalInfo.name}
-            </h1>
+        <motion.header initial="hidden" animate="visible" variants={fadeIn} className="mb-12 sm:mb-16 md:mb-20">
+          <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] p-4 sm:p-6 md:p-8 shadow-2xl">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 via-red-500 to-red-700"></div>
 
-            <div className="space-y-3 mb-8">
-              <p className="text-xl sm:text-2xl lg:text-3xl font-semibold font-black">{personalInfo.title}</p>
-              <p className="text-lg sm:text-xl text-gray-900 font-medium">{personalInfo.subtitle}</p>
-              <p className="text-base sm:text-lg text-green-900 font-semibold">{personalInfo.availability}</p>
-            </div>
+            <motion.div variants={fadeIn} className="text-center mb-6 sm:mb-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400 tracking-tight leading-tight mb-4 sm:mb-6">
+                {personalInfo.name}
+              </h1>
 
-            <div className="flex items-center justify-center gap-2 text-gray-500 mb-8">
-              <FaMapMarkerAlt className="text-black" />
-              <span className="text-sm sm:text-base">{personalInfo.location}</span>
-            </div>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-gray-300 mb-3 sm:mb-4 px-2">
+                {personalInfo.title}
+              </p>
 
-            <div className="mb-8">
-              <code className="text-base sm:text-lg font-mono bg-gray-100 px-4 py-2 rounded text-black font-bold">
-                {personalInfo.currentlyExploring}
-              </code>
-            </div>
-          </div>
+              <div className="inline-block px-3 sm:px-4 py-2 bg-[#1e1e1e] rounded-xl sm:rounded-2xl font-semibold text-gray-100 mb-4 sm:mb-6">
+                <code className="font-mono text-xs sm:text-sm break-all">{personalInfo.currentlyExploring}</code>
+              </div>
 
-          {/* Social Links */}
-          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-black hover:text-blue-600 transition-colors duration-200 text-sm sm:text-base font-medium underline decoration-gray-300 hover:decoration-blue-500 p-3  underline-offset-4"
-              >
-                <span className="text-lg">{social.icon}</span>
-                <span className="hidden sm:inline">{social.username}</span>
-                <span className="sm:hidden">{social.label}</span>
-              </a>
-            ))}
-            <button
-              onClick={handleWhatsAppClick}
-              className="inline-flex items-center gap-2 text-black hover:text-green-600 transition-colors duration-200 text-sm sm:text-base font-medium underline decoration-gray-300 hover:decoration-green-500 underline-offset-4"
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-gray-400 mb-4 sm:mb-6 px-2">
+                <span className="flex items-center gap-2 bg-[#1e1e1e] px-3 py-2 rounded-lg">
+                  <FaMapMarkerAlt className="text-white text-sm" />
+                </span>
+                <span className="text-sm sm:text-base text-center">{personalInfo.location}</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4"
             >
-              <FaWhatsapp className="text-lg" />
-              <span>WhatsApp</span>
-            </button>
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  variants={itemFade}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#1e1e1e] hover:rounded-full rounded-xl hover:border-red-500 hover:bg-[#252525] transition-all duration-300 min-h-[44px] touch-manipulation"
+                >
+                  <span className="text-red-500 text-sm sm:text-base">{social.icon}</span>
+                  <span className="hidden sm:inline text-xs sm:text-sm">{social.username}</span>
+                  <span className="sm:hidden text-xs">{social.label}</span>
+                </motion.a>
+              ))}
+              <motion.button
+                variants={itemFade}
+                onClick={handleWhatsAppClick}
+                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#1e1e1e] rounded-xl hover:rounded-full hover:border-green-500 hover:bg-[#252525] transition-all duration-300 min-h-[44px] touch-manipulation"
+              >
+                <FaWhatsapp className="text-green-500 text-sm sm:text-base" />
+                <span className="text-xs sm:text-sm">WhatsApp</span>
+              </motion.button>
+            </motion.div>
           </div>
-        </header>
+        </motion.header>
 
         {/* Open Source Section */}
-        <section className="mb-16 sm:mb-20">
-          <div className="pl-6 mb-8">
-            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
-              <FaLockOpen className="text-black" />
-              Open Source Contributions
-            </h2>
-            <p className="text-lg text-black font-medium">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeIn}
+          className="mb-12 sm:mb-16 md:mb-20"
+        >
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
+              <div className="p-2 bg-[#252525] rounded-lg">
+                <FaLockOpen className="text-red-500 text-lg sm:text-xl" />
+              </div>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Open Source Contributions</h2>
+            </div>
+
+            <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8">
               Fork it. Star it. Make it your own — if it serves your purpose.
             </p>
-          </div>
 
-          <div className="prose prose-lg max-w-none mb-8">
-            <p className="text-black leading-relaxed">
-              This portfolio project is open-source and available to fork. If the design or structure helped accelerate
-              your workflow or served as a useful starting point, feel free to build on it. Giving the repo a star is
-              appreciated, but entirely optional. Feedback, contributions, and practical enhancements are always
-              welcome.
-            </p>
-          </div>
+            <div className="mb-6 sm:mb-8">
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+                This portfolio project is open-source and available to fork. If the design or structure helped
+                accelerate your workflow or served as a useful starting point, feel free to build on it. Giving the repo
+                a star is appreciated, but entirely optional. Feedback, contributions, and practical enhancements are
+                always welcome.
+              </p>
+            </div>
 
-          <div className="flex flex-wrap gap-4 mb-8">
-            <a
-              href="https://github.com/kinshukjainn/kinshukkportfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-900 hover:text-blue-600 transition-colors duration-200 font-semibold underline decoration-gray-400 hover:decoration-blue-500 underline-offset-4"
-            >
-              <FaGithub className="text-xl" />
-              Portfolio Repository
-            </a>
-            <a
-              href="https://github.com/kinshukjainn/encrypted-password-project"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-gray-900 hover:text-blue-600 transition-colors duration-200 font-semibold underline decoration-gray-400 hover:decoration-blue-500 underline-offset-4"
-            >
-              <FaGithub className="text-xl" />
-              PassGentoo Repository
-            </a>
-          </div>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8">
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                href="https://github.com/kinshukjainn/kinshukkportfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-3 bg-[#252525] rounded-xl sm:rounded-2xl hover:rounded-full  hover:border-red-500 transition-all duration-300 min-h-[44px] touch-manipulation"
+              >
+                <FaGithub className="text-white text-sm sm:text-base" />
+                <span className="text-sm sm:text-base">Portfolio Repository</span>
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                href="https://github.com/kinshukjainn/encrypted-password-project"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-3 bg-[#252525] rounded-xl sm:rounded-2xl hover:rounded-full  hover:border-red-500 transition-all duration-300 min-h-[44px] touch-manipulation"
+              >
+                <FaGithub className="text-white text-sm sm:text-base" />
+                <span className="text-sm sm:text-base">PassGentoo Repository</span>
+              </motion.a>
+            </div>
 
-          <div className="border-t border-gray-200 pt-6">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-black">
-              <div className="flex items-center gap-2">
-                <FaStar className="text-yellow-500 text-xl" />
-                <span className="font-medium">Star to show appreciation</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaCodeBranch className="text-black text-xl" />
-                <span className="font-medium">Fork and customize</span>
+            <div className="border-t border-gray-800 pt-4 sm:pt-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-gray-400">
+                <div className="flex items-center gap-2">
+                  <FaStar className="text-yellow-500" />
+                  <span className="text-sm sm:text-base">Star to show appreciation</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaCodeBranch className="text-blue-400" />
+                  <span className="text-sm sm:text-base">Fork and customize</span>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Contact Section */}
-        <section className="mb-16 sm:mb-20">
-          <div className="border-l-4 border-blue-500 pl-6 mb-8">
-            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
-              <FaEnvelope className="text-black" />
-              Get In Touch
-            </h2>
-            <p className="text-lg text-black font-medium">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeIn}
+          className="mb-12 sm:mb-16 md:mb-20"
+        >
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
+              <div className="p-2 bg-[#252525] rounded-lg">
+                <FaEnvelope className="text-red-500 text-lg sm:text-xl" />
+              </div>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Get In Touch</h2>
+            </div>
+
+            <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8">
               Always open to connecting with peers, engineers, developers, or anyone curious about tech and cloud
               computing.
             </p>
-          </div>
 
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <FaEnvelope className="text-black text-xl flex-shrink-0" />
-              <div>
-                <p className="font-semibold text-gray-900">Primary Email</p>
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  className="text-blue-600 hover:text-black font-mono text-sm sm:text-base underline decoration-blue-300 hover:decoration-blue-500 underline-offset-2"
-                >
-                  {personalInfo.email}
-                </a>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <FaEnvelope className="text-purple-500 text-xl flex-shrink-0" />
-              <div>
-                <p className="font-semibold text-gray-900">Alternate Email</p>
-                <a
-                  href={`mailto:${personalInfo.alternateEmail}`}
-                  className="text-purple-600 hover:text-purple-700 font-mono text-sm sm:text-base underline decoration-purple-300 hover:decoration-purple-500 underline-offset-2"
-                >
-                  {personalInfo.alternateEmail}
-                </a>
-              </div>
-            </div>
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="space-y-4 sm:space-y-6"
+            >
+              <motion.div
+                variants={itemFade}
+                className="flex flex-col sm:flex-row items-start gap-4 p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl transition-all duration-300"
+              >
+                <div className="p-3 bg-[#252525] rounded-xl">
+                  <FaEnvelope className="text-red-500" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-white mb-1 text-sm sm:text-base">Primary Email</p>
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="text-gray-400 hover:text-red-400 font-mono text-xs sm:text-sm transition-colors duration-300 break-all"
+                  >
+                    {personalInfo.email}
+                  </a>
+                </div>
+              </motion.div>
+
+              <motion.div
+                variants={itemFade}
+                className="flex flex-col sm:flex-row items-start gap-4 p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl"
+              >
+                <div className="p-3 bg-[#252525] rounded-xl">
+                  <FaEnvelope className="text-purple-500" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-white mb-1 text-sm sm:text-base">Alternate Email</p>
+                  <a
+                    href={`mailto:${personalInfo.alternateEmail}`}
+                    className="text-gray-400 hover:text-purple-400 font-mono text-xs sm:text-sm transition-colors duration-300 break-all"
+                  >
+                    {personalInfo.alternateEmail}
+                  </a>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Tech Stack Section */}
-        <section className="mb-16 sm:mb-20">
-          <div className=" pl-6 mb-8">
-            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
-              <FaCode className="text-black" />
-              Technical Skills
-            </h2>
-            <p className="text-lg text-black font-medium">Technologies and tools I work with </p>
-          </div>
-
-          <div className="space-y-12">
-            {techStack.map((category, categoryIndex) => (
-              <div key={categoryIndex}>
-                <h3 className="text-xl sm:text-2xl font-bold text-black mb-6  pb-2">
-                  {category.category}
-                </h3>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {category.items.map((tech, techIndex) => (
-                    <div key={techIndex} className="flex items-center gap-3 group">
-                      <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
-                        {tech.icon}
-                      </span>
-                      <span className="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-200">
-                        {tech.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeIn}
+          className="mb-12 sm:mb-16 md:mb-20"
+        >
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
+              <div className="p-2 bg-[#252525] rounded-lg">
+                <FaCode className="text-red-500 text-lg sm:text-xl" />
               </div>
-            ))}
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Technical Skills</h2>
+            </div>
+
+            <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8">Technologies and tools I work with</p>
+
+            <div className="space-y-8 sm:space-y-12">
+              {techStack.map((category, categoryIndex) => (
+                <motion.div
+                  key={categoryIndex}
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 pb-2 border-b border-gray-800">
+                    {category.category}
+                  </h3>
+                  <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                    {category.items.map((tech, techIndex) => (
+                      <motion.div
+                        key={techIndex}
+                        whileHover={{ x: 5 }}
+                        className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl hover:border-red-500 transition-all duration-300"
+                      >
+                        <div className="p-2 bg-[#252525] rounded-xl text-red-500 text-lg sm:text-xl flex-shrink-0">
+                          {tech.icon}
+                        </div>
+                        <span className="font-medium text-gray-200 text-sm sm:text-base">{tech.name}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Projects Section */}
-        <section className="mb-16 sm:mb-20">
-          <div className="pl-6 mb-8">
-            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
-              <FaRocket className="text-black" />
-              Featured Projects
-            </h2>
-            <p className="text-lg text-black font-medium">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeIn}
+          className="mb-12 sm:mb-16 md:mb-20"
+        >
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
+              <div className="p-2 bg-[#252525] rounded-lg">
+                <FaRocket className="text-red-500 text-lg sm:text-xl" />
+              </div>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Featured Projects</h2>
+            </div>
+
+            <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8">
               Recent work and contributions showcasing my technical expertise
             </p>
-          </div>
 
-          <div className="space-y-16">
-            {projects.map((project, index) => (
-              <article key={index} className="border-b border-gray-200 pb-12 last:border-b-0">
-                <header className="mb-6">
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <h3 className="text-xl sm:text-2xl font-black text-gray-900">{project.title}</h3>
-                    {project.featured && (
-                      <span className="text-xs font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-full">
-                        FEATURED
+            <div className="space-y-12 sm:space-y-16">
+              {projects.map((project, index) => (
+                <motion.article
+                  key={index}
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="border-b border-gray-800 pb-8 sm:pb-12 last:border-b-0"
+                >
+                  <header className="mb-4 sm:mb-6">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">{project.title}</h3>
+                      {project.featured && (
+                        <span className="text-xs font-bold bg-gradient-to-r from-red-600 to-red-700 text-white px-2 sm:px-3 py-1 rounded-full">
+                          FEATURED
+                        </span>
+                      )}
+                      <span className="text-xs font-bold bg-[#252525] text-gray-300 px-2 sm:px-3 py-1 rounded-full">
+                        {project.status}
                       </span>
-                    )}
-                    <span className="text-xs font-bold bg-yellow-400 text-black px-3 py-1 rounded-full">
-                      {project.status}
-                    </span>
-                  </div>
+                    </div>
 
-                  <p className="text-black text-lg leading-relaxed mb-4">{project.description}</p>
+                    <p className="text-gray-100 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
+                      {project.description}
+                    </p>
 
-                  <div className="flex flex-wrap gap-4">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-blue-600 hover:text-black font-semibold underline decoration-blue-300 hover:decoration-blue-500 underline-offset-4 transition-colors duration-200"
-                    >
-                      <FaLink />
-                      {project.isPerformanceProject ? "Check Score" : "Live Demo"}
-                    </a>
-                    {project.repoUrl && (
-                      <a
-                        href={project.repoUrl}
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+                      <motion.a
+                        whileHover={{ scale: 1.02 }}
+                        href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-black hover:text-gray-900 font-semibold underline decoration-gray-400 hover:decoration-gray-600 underline-offset-4 transition-colors duration-200"
+                        className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl sm:rounded-2xl transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base"
                       >
-                        <FaGithub />
-                        Source Code
-                      </a>
-                    )}
-                  </div>
-                </header>
-
-                {project.isPerformanceProject ? (
-                  <div className="space-y-8">
-                    <h4 className="text-lg font-bold text-gray-800 border-b border-gray-200 pb-2">
-                      Performance Metrics
-                    </h4>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                      {project.performanceScores?.map((score, idx) => (
-                        <div key={idx} className="text-center">
-                          <div className={`text-4xl font-black mb-2 ${score.color}`}>{score.score}</div>
-                          <p className="font-semibold text-gray-800 mb-1">{score.label}</p>
-                          <p className="text-sm text-black">{score.description}</p>
-                        </div>
-                      ))}
+                        <FaLink />
+                        {project.isPerformanceProject ? "Check Score" : "Live Demo"}
+                      </motion.a>
+                      {project.repoUrl && (
+                        <motion.a
+                          whileHover={{ scale: 1.02 }}
+                          href={project.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#252525] hover:bg-[#303030] text-white rounded-xl sm:rounded-2xl transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base"
+                        >
+                          <FaGithub />
+                          Source Code
+                        </motion.a>
+                      )}
                     </div>
-                    <div className="text-sm text-gray-500 space-y-2">
-                      <p>
-                        Performance scores are calculated using Google Lighthouse and may vary based on network
-                        conditions.
-                      </p>
-                      <div className="flex flex-wrap gap-4">
-                        {project.scoreRanges?.map((range, idx) => (
-                          <div key={idx} className="flex items-center gap-2">
-                            <div className={`w-3 h-3 ${range.color} rounded`}></div>
-                            <span>
-                              {range.range} - {range.label}
-                            </span>
-                          </div>
+                  </header>
+
+                  {project.isPerformanceProject ? (
+                    <div className="space-y-6 sm:space-y-8">
+                      <h4 className="text-base sm:text-lg font-bold text-white border-b border-gray-800 pb-2">
+                        Performance Metrics
+                      </h4>
+                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+                        {project.performanceScores?.map((score, idx) => (
+                          <motion.div
+                            key={idx}
+                            whileHover={{ y: -5 }}
+                            className="text-center p-3 sm:p-4 bg-[#1e1e1e] rounded-xl"
+                          >
+                            <div className="text-2xl sm:text-3xl md:text-4xl font-black mb-2 text-red-500">
+                              {score.score}
+                            </div>
+                            <p className="font-semibold text-white mb-1 text-xs sm:text-sm">{score.label}</p>
+                            <p className="text-xs text-gray-400">{score.description}</p>
+                          </motion.div>
+                        ))}
+                      </div>
+                      <div className="text-xs sm:text-sm text-gray-100 space-y-2 p-3 sm:p-4 bg-[#1e1e1e] rounded-xl">
+                        <p>
+                          Performance scores are calculated using Google Lighthouse and may vary based on network
+                          conditions.
+                        </p>
+                        <div className="flex flex-wrap gap-3 sm:gap-4">
+                          {project.scoreRanges?.map((range, idx) => (
+                            <div key={idx} className="flex items-center gap-2">
+                              <div className={`w-3 h-3 ${range.color} rounded`}></div>
+                              <span className="text-xs sm:text-sm">
+                                {range.range} - {range.label}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-6 sm:space-y-8">
+                      {project.challenges && project.challenges.length > 0 && (
+                        <div>
+                          <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 border-b border-red-900/30 pb-2">
+                            Challenges Faced
+                          </h4>
+                          <ul className="space-y-3">
+                            {project.challenges.map((challenge, idx) => (
+                              <li
+                                key={idx}
+                                className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl text-gray-100"
+                              >
+                                <span className="text-red-500 font-bold mt-1 flex-shrink-0">•</span>
+                                <span className="text-gray-100 text-sm sm:text-base">{challenge}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {project.learnings && project.learnings.length > 0 && (
+                        <div>
+                          <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 border-b border-green-900/30 pb-2">
+                            Key Learnings
+                          </h4>
+                          <ul className="space-y-3">
+                            {project.learnings.map((learning, idx) => (
+                              <li key={idx} className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl">
+                                <span className="text-green-500 font-bold mt-1 flex-shrink-0">•</span>
+                                <span className="text-gray-100 text-sm sm:text-base">{learning}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {(project.keyFeatures || project.technicalDetails) && (
+                        <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
+                          {project.keyFeatures && project.keyFeatures.length > 0 && (
+                            <div>
+                              <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 border-b border-blue-900/30 pb-2">
+                                Key Features
+                              </h4>
+                              <ul className="space-y-3">
+                                {project.keyFeatures.map((feature, idx) => (
+                                  <li
+                                    key={idx}
+                                    className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl"
+                                  >
+                                    <span className="text-blue-400 font-bold mt-1 flex-shrink-0">•</span>
+                                    <span className="text-gray-100 text-sm sm:text-base">{feature}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          {project.technicalDetails && project.technicalDetails.length > 0 && (
+                            <div>
+                              <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 border-b border-purple-900/30 pb-2">
+                                Technical Implementation
+                              </h4>
+                              <ul className="space-y-3">
+                                {project.technicalDetails.map((detail, idx) => (
+                                  <li
+                                    key={idx}
+                                    className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl"
+                                  >
+                                    <span className="text-purple-400 font-bold mt-1 flex-shrink-0">•</span>
+                                    <span className="text-gray-100 text-sm sm:text-base">{detail}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {project.technologies && project.technologies.length > 0 && (
+                    <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-800">
+                      <h4 className="font-bold mb-3 sm:mb-4 text-white text-sm sm:text-base">Technology Stack:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="text-xs font-semibold bg-[#252525] text-gray-300 px-2 sm:px-3 py-1 rounded-full"
+                          >
+                            {tech}
+                          </span>
                         ))}
                       </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="space-y-8">
-                    {project.challenges && project.challenges.length > 0 && (
-                      <div>
-                        <h4 className="text-lg font-bold text-gray-800 mb-4 border-b border-red-200 pb-2">
-                          Challenges Faced
-                        </h4>
-                        <ul className="space-y-3">
-                          {project.challenges.map((challenge, idx) => (
-                            <li key={idx} className="flex gap-3">
-                              <span className="text-red-500 font-bold mt-1 flex-shrink-0">•</span>
-                              <span className="text-black leading-relaxed">{challenge}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {project.learnings && project.learnings.length > 0 && (
-                      <div>
-                        <h4 className="text-lg font-bold text-gray-800 mb-4 border-b border-green-200 pb-2">
-                          Key Learnings
-                        </h4>
-                        <ul className="space-y-3">
-                          {project.learnings.map((learning, idx) => (
-                            <li key={idx} className="flex gap-3">
-                              <span className="text-green-500 font-bold mt-1 flex-shrink-0">•</span>
-                              <span className="text-black leading-relaxed">{learning}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {(project.keyFeatures || project.technicalDetails) && (
-                      <div className="grid gap-8 lg:grid-cols-2">
-                        {project.keyFeatures && project.keyFeatures.length > 0 && (
-                          <div>
-                            <h4 className="text-lg font-bold text-gray-800 mb-4 border-b border-blue-200 pb-2">
-                              Key Features
-                            </h4>
-                            <ul className="space-y-3">
-                              {project.keyFeatures.map((feature, idx) => (
-                                <li key={idx} className="flex gap-3">
-                                  <span className="text-black font-bold mt-1 flex-shrink-0">•</span>
-                                  <span className="text-black leading-relaxed">{feature}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                        {project.technicalDetails && project.technicalDetails.length > 0 && (
-                          <div>
-                            <h4 className="text-lg font-bold text-gray-800 mb-4 border-b border-purple-200 pb-2">
-                              Technical Implementation
-                            </h4>
-                            <ul className="space-y-3">
-                              {project.technicalDetails.map((detail, idx) => (
-                                <li key={idx} className="flex gap-3">
-                                  <span className="text-purple-500 font-bold mt-1 flex-shrink-0">•</span>
-                                  <span className="text-black leading-relaxed">{detail}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {project.technologies && project.technologies.length > 0 && (
-                  <div className="mt-8 pt-6 border-t border-gray-200">
-                    <h4 className="font-bold mb-3 text-gray-800">Technology Stack:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="text-xs font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </article>
-            ))}
+                  )}
+                </motion.article>
+              ))}
+            </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Certifications Section */}
-        <section className="mb-16 sm:mb-20">
-          <div className="border-l-4 border-yellow-500 pl-6 mb-8">
-            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
-              <FaCertificate className="text-black" />
-              Certifications & Learning Journey
-            </h2>
-            <p className="text-lg text-black font-medium">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeIn}
+          className="mb-12 sm:mb-16 md:mb-20"
+        >
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
+              <div className="p-2 bg-[#252525] rounded-lg">
+                <FaCertificate className="text-red-500 text-lg sm:text-xl" />
+              </div>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+                Certifications & Learning Journey
+              </h2>
+            </div>
+
+            <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8">
               AWS certifications and continuous professional development
             </p>
-          </div>
 
-          <div className="mb-8 p-6 ">
-            <h3 className="font-bold text-black mb-3 text-lg">🎯 AWS Certification Journey</h3>
-            <p className="text-gray-800 leading-relaxed">
-              Recently scored 679/1000 on AWS Cloud Practitioner (CLF-C02) On January 24 2025. While just shy of
-              passing, this experience has strengthened my resolve to master cloud fundamentals and accelerated my
-              preparation for Solutions Architect Associate by Q3 2025.
-            </p>
-          </div>
+            <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl">
+              <h3 className="font-bold text-white mb-3 text-base sm:text-lg">🎯 AWS Certification Journey</h3>
+              <p className="text-gray-100 leading-relaxed text-sm sm:text-base">
+                Recently scored 679/1000 on AWS Cloud Practitioner (CLF-C02) On January 24 2025. While just shy of
+                passing, this experience has strengthened my resolve to master cloud fundamentals and accelerated my
+                preparation for Solutions Architect Associate by Q3 2025.
+              </p>
+            </div>
 
-          <div className="space-y-6">
-            {certifications.map((cert, index) => (
-              <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <h3 className="font-bold text-gray-800 text-lg">{cert.title}</h3>
-                      <span
-                        className={`text-xs font-bold px-3 py-1 rounded-full ${
-                          cert.status === "Completed" ? "bg-green-100 text-green-800" : "bg-blue-100 text-blue-800"
-                        }`}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="space-y-4 sm:space-y-6"
+            >
+              {certifications.map((cert, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemFade}
+                  className="border-b border-gray-800 pb-4 sm:pb-6 last:border-b-0"
+                >
+                  <div className="flex flex-col gap-4 p-4 sm:p-6 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl">
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+                        <h3 className="font-bold text-white text-base sm:text-lg">{cert.title}</h3>
+                        <span
+                          className={`text-xs font-bold px-2 sm:px-3 py-1 rounded-full ${
+                            cert.status === "Completed"
+                              ? "bg-green-900/50 text-green-400"
+                              : "bg-blue-900/50 text-blue-400"
+                          }`}
+                        >
+                          {cert.status}
+                        </span>
+                      </div>
+                      <p className="text-gray-300 mb-2 text-sm sm:text-base">{cert.description}</p>
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400">
+                        <span>Issued by: {cert.issuer}</span>
+                        <span className="hidden sm:inline">•</span>
+                        <span>
+                          {cert.status === "Completed"
+                            ? `Completed: ${cert.completedDate}`
+                            : `Expected: ${cert.expectedDate}`}
+                        </span>
+                      </div>
+                    </div>
+                    {cert.status === "Completed" && (
+                      <motion.a
+                        whileHover={{ scale: 1.02 }}
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex w-max sm:w-auto items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl sm:rounded-2xl transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base"
                       >
-                        {cert.status}
-                      </span>
-                    </div>
-                    <p className="text-black mb-2">{cert.description}</p>
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
-                      <span>Issued by: {cert.issuer}</span>
-                      <span className="hidden sm:inline">•</span>
-                      <span>
-                        {cert.status === "Completed"
-                          ? `Completed: ${cert.completedDate}`
-                          : `Expected: ${cert.expectedDate}`}
-                      </span>
-                    </div>
+                        <FaExternalLinkAlt />
+                        View Certificate
+                      </motion.a>
+                    )}
                   </div>
-                  {cert.status === "Completed" && (
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-blue-600 hover:text-black font-semibold underline decoration-blue-300 hover:decoration-blue-500 underline-offset-4 transition-colors duration-200"
-                    >
-                      <FaExternalLinkAlt />
-                      View Certificate
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Education Section */}
-        <section className="mb-16 sm:mb-20">
-          <div className=" pl-6 mb-8">
-            <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 flex items-center gap-3">
-              <FaGraduationCap className="text-black" />
-              Education
-            </h2>
-            <p className="text-lg text-black font-medium">Academic background and qualifications</p>
-          </div>
-
-          <div className="space-y-8">
-            {education.map((edu, index) => (
-              <div key={index} className=" pl-6 relative">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{edu.degree}</h3>
-                    <p className="text-black font-semibold text-lg">{edu.field}</p>
-                  </div>
-                  <span
-                    className={`text-xs font-bold px-3 py-1 rounded-full self-start ${
-                      edu.status === "Completed" ? "bg-green-100 text-green-800" : "bg-blue-100 text-blue-800"
-                    }`}
-                  >
-                    {edu.status}
-                  </span>
-                </div>
-                <p className="text-gray-800 font-medium mb-2">{edu.institution}</p>
-                <div className="flex flex-wrap items-center gap-4 text-gray-500 text-sm">
-                  <div className="flex items-center gap-2">
-                    <FaMapMarkerAlt className="text-black" />
-                    <span>{edu.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FaCalendarAlt className="text-black" />
-                    <span>{edu.period}</span>
-                  </div>
-                </div>
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeIn}
+          className="mb-12 sm:mb-16 md:mb-20"
+        >
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
+              <div className="p-2 bg-[#252525] rounded-lg">
+                <FaGraduationCap className="text-red-500 text-lg sm:text-xl" />
               </div>
-            ))}
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Education</h2>
+            </div>
+
+            <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8">Academic background and qualifications</p>
+
+            <div className="space-y-6 sm:space-y-8">
+              {education.map((edu, index) => (
+                <motion.div
+                  key={index}
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="p-4 sm:p-6 bg-[#1e1e1e] rounded-xl"
+                >
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3 sm:mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{edu.degree}</h3>
+                      <p className="text-gray-300 font-semibold text-base sm:text-lg">{edu.field}</p>
+                    </div>
+                    <span
+                      className={`text-xs font-bold px-2 sm:px-3 py-1 rounded-full self-start ${
+                        edu.status === "Completed" ? "bg-green-900/50 text-green-400" : "bg-blue-900/50 text-blue-400"
+                      }`}
+                    >
+                      {edu.status}
+                    </span>
+                  </div>
+                  <p className="text-gray-300 font-medium mb-3 sm:mb-4 text-sm sm:text-base">{edu.institution}</p>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-gray-400 text-xs sm:text-sm">
+                    <div className="flex items-center gap-2">
+                      <FaMapMarkerAlt className="text-red-500" />
+                      <span>{edu.location}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaCalendarAlt className="text-red-500" />
+                      <span>{edu.period}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Footer */}
-        <footer className="text-center py-12 border-t border-gray-200">
-          <div className="max-w-2xl mx-auto">
-            <p className="text-black leading-relaxed mb-6">
+        <motion.footer
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="text-center py-8 sm:py-12 border-t border-gray-800"
+        >
+          <div className="max-w-2xl mx-auto px-4">
+            <p className="text-gray-300 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
               Want to explore my thinking process and learning journey? Check out my comprehensive{" "}
-              <Link
-                to="/blog"
-                className="text-blue-600 hover:text-black font-semibold underline decoration-blue-300 hover:decoration-blue-500 underline-offset-4 transition-colors duration-200"
-              >
+              <Link to="/blog" className="text-red-500 hover:text-red-400 font-semibold transition-colors duration-300">
                 Blogs
               </Link>{" "}
               page where I document insights, challenges, and solutions.
             </p>
-            <div className="flex items-center justify-center gap-2 text-gray-500">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className="flex items-center justify-center gap-2 text-gray-400 text-sm sm:text-base"
+            >
               <span>Built with</span>
-              <FaHeart className="text-red-500" />
+              <motion.div
+                animate={{
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "reverse",
+                  duration: 1.5,
+                }}
+              >
+                <FaHeart className="text-red-500" />
+              </motion.div>
               <span>and lots of chai</span>
-            </div>
+            </motion.div>
           </div>
-        </footer>
+        </motion.footer>
       </div>
     </div>
   )

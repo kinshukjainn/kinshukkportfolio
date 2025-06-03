@@ -1,9 +1,9 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
-import { FaBlog, FaHashtag, FaPodcast } from "react-icons/fa"
+import { motion } from "framer-motion"
+import { FaBlog, FaHashtag, FaPodcast, FaUser, FaHeart } from "react-icons/fa"
 
 interface Interest {
   id: number
@@ -18,123 +18,221 @@ export default function AboutMe() {
   const interests: Interest[] = [
     {
       id: 1,
-      icon: <FaPodcast className="text-white " />,
-      title: "Listining to People understanding their vision and mentality , thought process , and ya processing knowledge",
+      icon: <FaPodcast className="text-red-500" />,
+      title: "Listening to People understanding their vision and mentality, thought process, and processing knowledge",
       description:
-        "I really like to listen to people and understand their vision and mentality, thought process, and ya processing knowledge. I am a big fan of podcasts and I really like to listen to podcasts on various topics like technology, personal development, and other things.",
+        "I really like to listen to people and understand their vision and mentality, thought process, and processing knowledge. I am a big fan of podcasts and I really like to listen to podcasts on various topics like technology, personal development, and other things.",
     },
     {
       id: 2,
-      icon: <FaBlog className="text-white " />,
+      icon: <FaBlog className="text-red-500" />,
       title: "Writing Blogs and Keep scrolling through the developers portfolio",
       description:
-        "Alright so whenever I get time I just keep scrolling through the developers portfolio and try to understand how they are building thier portfolio and what are the things they are doing to make it look good and also I try to write blogs on various topics mostly related to cloud computing and DevOps , web development and other things non-technical in nature too.",
+        "Alright so whenever I get time I just keep scrolling through the developers portfolio and try to understand how they are building their portfolio and what are the things they are doing to make it look good and also I try to write blogs on various topics mostly related to cloud computing and DevOps, web development and other things non-technical in nature too.",
     },
   ]
 
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  }
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemFade = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4 },
+    },
+  }
+
   return (
-    <div className="bg-gradient-to-tr from-black to-[#171717]  text-white min-h-screen p-4 md:p-8 mx-auto">
-      {/* Header */}
-      <header className="py-8 border-b border-gray-800">
-        <h1 className="text-5xl md:text-5xl mb-4 text-white">
-          <span className="text-white font-bold">Kinshuk Jain</span>
-        </h1>
-        <p className="text-lg text-green-300">Aspiring Cloud Engineer & DevOps Enthusiast</p>
-      </header>
+    <div className="min-h-screen bg-[#121212] text-gray-300">
+      <div className="max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
+        {/* Header */}
+        <motion.header
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className="py-6 sm:py-8 border-b border-gray-800 mb-6 sm:mb-8"
+        >
+          <h1 className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 text-white font-bold">Kinshuk Jain</h1>
+          <p className="text-base sm:text-lg text-red-500 font-medium">Aspiring Cloud Engineer & DevOps Enthusiast</p>
+        </motion.header>
 
-      {/* Navigation */}
-      <nav className="py-6 border-b-3 border-gray-400 mb-8">
-        <ul className="flex space-x-8">
-          <li>
-            <button
-              onClick={() => setActiveSection("about")}
-              className={`${
-                activeSection === "about" ? "text-blue-200 font-bold" : "text-gray-200 hover:text-gray-200"
-              }`}
+        {/* Navigation */}
+        <motion.nav
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className="py-4 sm:py-6 border-b border-gray-800 mb-6 sm:mb-8"
+        >
+          <ul className="flex space-x-4 sm:space-x-8">
+            <li>
+              <button
+                onClick={() => setActiveSection("about")}
+                className={`px-3 py-2 rounded-2xl cursor-pointer transition-all duration-300 text-sm sm:text-base ${
+                  activeSection === "about" ? "bg-red-600 text-white font-medium" : "text-gray-300 hover:bg-[#1e1e1e]"
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  <FaUser />
+                  About Me
+                </span>
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => setActiveSection("interests")}
+                className={`px-3 py-2 rounded-2xl cursor-pointer transition-all duration-300 text-sm sm:text-base ${
+                  activeSection === "interests"
+                    ? "bg-red-600 text-white font-medium"
+                    : "text-gray-300 hover:bg-[#1e1e1e]"
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  <FaHeart />
+                  My Interests
+                </span>
+              </button>
+            </li>
+          </ul>
+        </motion.nav>
+
+        {/* Content Area */}
+        <main>
+          {activeSection === "about" && (
+            <motion.section initial="hidden" animate="visible" variants={fadeIn} className="py-4">
+              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl mb-4 sm:mb-6 flex items-center text-white font-bold">
+                  <span className="mr-2 p-2 bg-[#252525] rounded-lg text-red-500">
+                    <FaHashtag />
+                  </span>
+                  About Me
+                </h2>
+
+                <motion.div
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate="visible"
+                  className="space-y-4 sm:space-y-6"
+                >
+                  <motion.div variants={itemFade} className="pl-0 sm:pl-4">
+                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                      I'm Kinshuk, a third-year Electrical Engineering student from a tier-3 college in India, but my
+                      passion lies in solving real-world problems through modern cloud and automation technologies. I'm
+                      an INTJ — someone who thrives on strategic thinking, deep focus, and building systems that work in
+                      the background to make things faster, smarter, and more scalable.
+                    </p>
+                  </motion.div>
+
+                  <motion.div variants={itemFade} className="pl-0 sm:pl-4">
+                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                      Coming from a non-CS background, I've self-learned DevOps, AWS, and cloud-native tools through
+                      hands-on projects and consistent upskilling. I believe skills are built through action, not
+                      credentials.
+                    </p>
+                  </motion.div>
+
+                  <motion.div variants={itemFade} className="pl-0 sm:pl-4">
+                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                      Outside tech, I'm a tactical FPS gamer (CODM/Warzone) — a hobby that sharpened my decision-making,
+                      patience, and adaptability. I value team building, collaboration, learning by doing, and staying
+                      consistent all time. I'm currently looking to apply my skills in cloud and DevOps-focused
+                      environments where ownership, creativity, and real-world impact matter more than titles.
+                    </p>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </motion.section>
+          )}
+
+          {activeSection === "interests" && (
+            <motion.section initial="hidden" animate="visible" variants={fadeIn} className="py-4">
+              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl mb-4 sm:mb-6 flex items-center text-white font-bold">
+                  <span className="mr-2 p-2 bg-[#252525] rounded-lg text-red-500">
+                    <FaHashtag />
+                  </span>
+                  What I Love & How I Spend My Free Time
+                </h2>
+
+                <motion.div
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate="visible"
+                  className="space-y-6 sm:space-y-8"
+                >
+                  {interests.map((interest) => (
+                    <motion.div
+                      key={interest.id}
+                      variants={itemFade}
+                      className="p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl"
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
+                        <span className="p-3 bg-[#252525] rounded-xl text-xl w-fit">{interest.icon}</span>
+                        <h3 className="text-base sm:text-lg font-medium text-white">{interest.title}</h3>
+                      </div>
+                      <p className="text-gray-300 text-sm sm:text-base leading-relaxed pl-0 sm:pl-4">
+                        {interest.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            </motion.section>
+          )}
+        </main>
+
+        {/* Footer */}
+        <motion.footer
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-gray-800 text-gray-400 text-xs sm:text-sm"
+        >
+          <p>Created with React, TypeScript & Tailwind CSS</p>
+          <p className="mt-2">© {new Date().getFullYear()} - Feel free to connect!</p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="flex items-center gap-2 text-gray-400 mt-4 text-xs sm:text-sm"
+          >
+            <span>Built with</span>
+            <motion.div
+              animate={{
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+                duration: 1.5,
+              }}
             >
-              About Me
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => setActiveSection("interests")}
-              className={`${
-                activeSection === "interests" ? "text-blue-200 font-bold" : "text-gray-200 hover:text-gray-200"
-              }`}
-            >
-              My Interests
-            </button>
-          </li>
-        </ul>
-      </nav>
-
-      {/* Content Area */}
-      <main>
-        {activeSection === "about" && (
-          <section className="py-4">
-            <h2 className="text-2xl mb-6 flex items-center text-white">
-              <span className="mr-2 text-blue-500">
-                <FaHashtag />
-              </span>
-              About Me
-            </h2>
-
-            <div className=" pl-4 mb-6">
-              <p className="text-gray-100 mb-4">
-                I'm Kinshuk, a third-year Electrical Engineering student from a tier-3 college in India, but my passion
-                lies in solving real-world problems through modern cloud and automation technologies. I'm an INTJ —
-                someone who thrives on strategic thinking, deep focus, and building systems that work in the background
-                to make things faster, smarter, and more scalable.
-              </p>
-            </div>
-
-            <div className=" pl-4 mb-6">
-              <p className="text-gray-100 mb-4">
-                Coming from a non-CS background, I've self-learned DevOps, AWS, and cloud-native tools through hands-on
-                projects and consistent upskilling. I believe skills are built through action, not credentials.
-              </p>
-            </div>
-
-            <div className=" pl-4">
-              <p className="text-gray-100">
-                Outside tech, I'm a tactical FPS gamer (CODM/Warzone) — a hobby that sharpened my decision-making,
-                patience, and adaptability. I value team building, collaboration, learning by doing, and staying
-                consistent all time. I'm currently looking to apply my skills in cloud and DevOps-focused environments
-                where ownership, creativity, and real-world impact matter more than titles.
-              </p>
-            </div>
-          </section>
-        )}
-
-        {activeSection === "interests" && (
-          <section className="py-4">
-            <h2 className="text-2xl mb-6 flex items-center text-white">
-              <span className="mr-2 text-blue-500">
-                <FaHashtag />
-              </span>
-              What I Love & How I Spend My Free Time
-            </h2>
-
-            <div className="space-y-8">
-              {interests.map((interest) => (
-                <div key={interest.id} className=" pl-4">
-                  <div className="flex items-center mb-2">
-                    <span className="mr-2 bg-blue-900 p-2 rounded-lg text-xl">{interest.icon}</span>
-                    <h3 className="text-lg font-medium text-blue-300">{interest.title}</h3>
-                  </div>
-                  <p className="text-gray-100">{interest.description}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-      </main>
-
-      {/* Footer */}
-      <footer className="mt-12 pt-6 border-t border-gray-800 text-gray-400 text-sm">
-        <p>Created with React, TypeScript & Tailwind CSS</p>
-        <p className="mt-2">© {new Date().getFullYear()} - Feel free to connect!</p>
-      </footer>
+              <FaHeart className="text-red-500" />
+            </motion.div>
+            <span>and lots of chai</span>
+          </motion.div>
+        </motion.footer>
+      </div>
     </div>
   )
 }

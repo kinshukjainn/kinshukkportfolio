@@ -1,20 +1,20 @@
 export default function Blog() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#121212] text-white">
       {/* Hero Section */}
       <section className="relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
           <div className="max-w-4xl mx-auto">
             {/* Header */}
             <div className="mb-8 lg:mb-12">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-white mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-red-500 mb-4">
                 Blogs
               </h1>
-              <div className="w-12 h-0.5 bg-blue-500"></div>
+              <div className="w-25 h-2 rounded-full bg-red-500"></div>
             </div>
 
             {/* Main Content Card */}
-            <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-lg p-6 sm:p-8 lg:p-10 mb-8">
+            <div className="bg-[#171717] backdrop-blur-lg border border-gray-800/50 rounded-3xl p-6 sm:p-8 lg:p-10 mb-8">
               {/* Meta Information */}
               <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-gray-400 mb-6 sm:mb-8">
                 <div className="flex items-center gap-2">
@@ -56,7 +56,7 @@ export default function Blog() {
               <div className="mt-8 pt-6 border-t border-gray-800/50">
                 <a
                   href="https://blog.cloudkinshuk.in"
-                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-sm text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25"
+                  className="inline-flex items-center gap-2 bg-blue-600/80 hover:bg-blue-700/80 text-white px-6 py-3 rounded-xl text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25 backdrop-blur-sm"
                 >
                   Visit My Blog
                   <svg
@@ -85,14 +85,14 @@ export default function Blog() {
           <div className="max-w-4xl mx-auto">
             {/* Section Header */}
             <div className="mb-8 lg:mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light text-white mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-red-500 mb-4">
                 Reasons for Starting Blogging
               </h2>
-              <div className="w-12 h-0.5 bg-blue-500"></div>
+              <div className="w-25 h-2 bg-red-500 rounded-full"></div>
             </div>
 
             {/* Content Card */}
-            <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-lg p-6 sm:p-8 lg:p-10 mb-8">
+            <div className="bg-[#171717] backdrop-blur-lg border border-gray-800/50 rounded-3xl p-6 sm:p-8 lg:p-10 mb-8">
               {/* Meta Information */}
               <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-gray-400 mb-6 sm:mb-8">
                 <div className="flex items-center gap-2">
@@ -134,7 +134,7 @@ export default function Blog() {
               <div className="mt-8 pt-6 border-t border-gray-800/50">
                 <a
                   href="https://blog.cloudkinshuk.in/reasons-why-you-should-start-blogging-to-build-you-career"
-                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-sm text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25"
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25"
                 >
                   Read Full Article
                   <svg
@@ -166,14 +166,14 @@ export default function Blog() {
           <div className="max-w-4xl mx-auto">
             {/* Section Header */}
             <div className="mb-8 lg:mb-12">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light text-white mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-red-500 mb-4">
                 How i deployed my website on aws ??
               </h2>
-              <div className="w-12 h-0.5 bg-blue-500"></div>
+              <div className="w-25 rounded-full h-2 bg-red-500"></div>
             </div>
 
             {/* Content Card */}
-            <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800/50 rounded-lg p-6 sm:p-8 lg:p-10 mb-8">
+            <div className="bg-[#171717] backdrop-blur-lg border border-gray-800/50 rounded-3xl p-6 sm:p-8 lg:p-10 mb-8">
               {/* Meta Information */}
               <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-gray-400 mb-6 sm:mb-8">
                 <div className="flex items-center gap-2">
@@ -227,7 +227,7 @@ export default function Blog() {
               <div className="mt-8 pt-6 border-t border-gray-800/50">
                 <a
                   href="https://blog.cloudkinshuk.in/reasons-why-you-should-start-blogging-to-build-you-career"
-                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-sm text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25"
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25"
                 >
                   Read Full Article
                   <svg
