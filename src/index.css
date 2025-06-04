@@ -2,12 +2,236 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import "tailwindcss";
 
 
 body {
-  font-family: "Rubik", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   min-height: 100vh;
   background-color: #121212;
+}
+
+.kinshuk  { 
+  font-family: "Permanent Marker", cursive;
+}
+
+.personal-name {
+          font-size: clamp(2.5rem, 8vw, 4rem);
+          font-weight: 600;
+          font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          background: linear-gradient(
+            135deg,
+            #667eea 0%,
+            #764ba2 25%,
+            #f093fb 50%,
+            #f5576c 75%,
+            #4facfe 100%
+          );
+          background-size: 300% 300%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          cursor: pointer;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          animation: gentleFlow 8s ease-in-out infinite;
+          position: relative;
+          display: inline-block;
+          letter-spacing: -0.02em;
+        }
+
+        .personal-name::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(102, 126, 234, 0.1),
+            rgba(118, 75, 162, 0.1),
+            rgba(240, 147, 251, 0.1),
+            rgba(245, 87, 108, 0.1),
+            rgba(79, 172, 254, 0.1)
+          );
+          background-size: 300% 300%;
+          border-radius: 12px;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          animation: gentleFlow 8s ease-in-out infinite;
+          z-index: -1;
+          transform: scale(1.1);
+          filter: blur(20px);
+        }
+
+        .personal-name:hover {
+          transform: translateY(-2px);
+          animation: activeFlow 3s ease-in-out infinite;
+        }
+
+        .personal-name:hover::before {
+          opacity: 0.6;
+          animation: activeFlow 3s ease-in-out infinite;
+        }
+
+        .personal-name:active {
+          transform: translateY(0px) scale(0.98);
+        }
+
+        @keyframes gentleFlow {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        @keyframes activeFlow {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          33% {
+            background-position: 100% 0%;
+          }
+          66% {
+            background-position: 0% 100%;
+          }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+          .personal-name {
+            font-size: clamp(2rem, 12vw, 3rem);
+            letter-spacing: -0.01em;
+          }
+          
+          .personal-name:hover {
+            transform: none;
+          }
+          
+          .personal-name:active {
+            transform: scale(0.95);
+          }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+          .personal-name {
+            animation: none;
+          }
+          
+          .personal-name::before {
+            animation: none;
+          }
+          
+          .personal-name:hover {
+            animation: none;
+          }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+          .personal-name {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+          }
+        }
+
+.portfolio-website-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.8rem 2.2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background: #111;
+  border-radius: 16px;
+  text-decoration: none;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1;
+}
+
+/* --- Glowing Rainbow Border --- */
+.portfolio-website-link::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -2;
+  background: conic-gradient(
+    from 0deg,
+    #ff005e,
+    #ff6ec4,
+    #4ade80,
+    #00f0ff,
+    #7873f5,
+    #ff6ec4,
+    #ff005e
+  );
+  background-size: 300% 300%;
+  border-radius: 20px;
+  filter: blur(12px) brightness(1.4);
+  animation: rainbowGlow 5s linear infinite;
+  opacity: 0.9;
+}
+
+/* --- Inner shadow border base --- */
+.portfolio-website-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #111;
+  border-radius: 16px;
+  z-index: -1;
+}
+
+/* --- Glowing Gradient Text --- */
+.portfolio-website-link span {
+  background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80, #ff6ec4);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmerText 3s ease-in-out infinite;
+}
+
+/* --- Hover Effects --- */
+.portfolio-website-link:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes rainbowGlow {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: rotate(180deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmerText {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }

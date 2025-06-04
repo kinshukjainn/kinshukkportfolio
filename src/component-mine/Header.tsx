@@ -26,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-[#181818] mt-2 mr-4 ml-4 mb-4 rounded-3xl  p-3  flex flex-col  sm:flex-row justify-between items-center overflow-hidden">
+    <header className="bg-[#181818]  mt-2 mr-4 ml-4 mb-4 rounded-3xl  p-3  flex flex-col  sm:flex-row justify-between items-center overflow-hidden">
       <div className="flex items-center w-full sm:w-auto justify-between mb-3 sm:mb-0 relative z-10">
         {/* Avatar Section */}
         <div className="relative mr-3 flex-shrink-0">
@@ -56,7 +56,7 @@ const Header = () => {
             <Link
               to="/"
               onClick={closeMenu}
-              className="hover:text-gray-100 transition-colors duration-300"
+              className=" kinshuk hover:text-gray-100 transition-colors duration-300"
             >
               Kinshuk Jain |{" "}
               <span className="ml-2 text-white">{getPathText()}</span>

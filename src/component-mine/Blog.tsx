@@ -1,3 +1,5 @@
+import { FaExternalLinkAlt } from "react-icons/fa";
+
 export default function Blog() {
   return (
     <div className="min-h-screen bg-[#121212] text-white">
@@ -56,22 +58,11 @@ export default function Blog() {
               <div className="mt-8 pt-6 border-t border-gray-800/50">
                 <a
                   href="https://blog.cloudkinshuk.in"
-                  className="inline-flex items-center gap-2 bg-blue-600/80 hover:bg-blue-700/80 text-white px-6 py-3 rounded-xl text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25 backdrop-blur-sm"
+                  className="inline-flex portfolio-website-link items-center gap-2 bg-blue-600/80 hover:bg-blue-700/80 text-white px-6 py-3 rounded-xl text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25 backdrop-blur-sm"
                 >
+                  <FaExternalLinkAlt className="inline-block mr-2 text-blue-500" />
                   Visit My Blog
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
+                  
                 </a>
               </div>
             </div>
@@ -134,22 +125,10 @@ export default function Blog() {
               <div className="mt-8 pt-6 border-t border-gray-800/50">
                 <a
                   href="https://blog.cloudkinshuk.in/reasons-why-you-should-start-blogging-to-build-you-career"
-                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25"
+                  className="inline-flex portfolio-website-link items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25"
                 >
+              <FaExternalLinkAlt className="inline-block mr-2 text-blue-500" />
                   Read Full Article
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
                 </a>
               </div>
             </div>
@@ -227,22 +206,10 @@ export default function Blog() {
               <div className="mt-8 pt-6 border-t border-gray-800/50">
                 <a
                   href="https://blog.cloudkinshuk.in/reasons-why-you-should-start-blogging-to-build-you-career"
-                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25"
+                  className="inline-flex portfolio-website-link items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm font-medium transition-colors duration-200 hover:shadow-lg hover:shadow-blue-600/25"
                 >
+                  <FaExternalLinkAlt className="inline-block mr-2 text-blue-500" />
                   Read Full Article
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
                 </a>
               </div>
             </div>
