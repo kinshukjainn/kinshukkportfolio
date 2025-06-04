@@ -192,27 +192,25 @@ export default function MetaPortfolio() {
     ]
   },
   {
-    title: "PassGentoo - Secure Password Generator",
+    title: "PassGentool ( Comming Soon )",
     description:
-      "A customizable, high-entropy password generator built using React, TypeScript, and Web Crypto API, deployed with HTTPS on a custom domain.",
-    liveUrl: "https://passgentoo.cloudkinshuk.in",
+      "This Project is in pre-building stage.",
+    liveUrl: "#",
     repoUrl: "#",
     technologies: [
-      "Tailwind CSS",
-      "Vite",
-      "Amazon Route 53",
+      "Would be using React",
+      "Would be using TypeScript",
+      "Would be using Tailwind CSS",
+      "Would be using Vite",
+      "Would be using Amazon Route 53",
     ],
-    status: "Live",
-    featured: true,
+    status: "Building stage",
+    featured: false,
     learnings: [
-      "Implemented cryptographic randomness using Web Crypto API",
-      "Used Shannon entropy for password strength and crack time estimation",
-      "Built and deployed fully client-side secure app with DNS and HTTPS"
+      "None / Comming soon Please check back later",
     ],
     keyFeatures: [
-      "High-entropy password generation with customizable rules",
-      "Real-time strength feedback using entropy and crack time",
-      "Fully client-side, deployed on custom HTTPS domain"
+      "None / Comming soon Please check back later",
     ]
   }
 ]
@@ -408,7 +406,7 @@ export default function MetaPortfolio() {
                 className="flex portfolio-website-link items-center gap-2 px-4 py-3 bg-[#252525] rounded-xl sm:rounded-2xl hover:rounded-full  hover:border-red-500 transition-all duration-300 min-h-[44px] touch-manipulation"
               >
                 <FaGithub className="text-white text-sm sm:text-base" />
-                <span className="text-sm sm:text-base">PassGentoo Repository</span>
+                <span className="text-sm sm:text-base">PassGentool Repository</span>
               </motion.a>
             </div>
 
