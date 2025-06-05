@@ -8,8 +8,6 @@ import {
   FaGithub,
   FaLinux,
   FaReact,
-  FaStar,
-  FaCodeBranch,
   FaCode,
   FaInstagram,
   FaWhatsapp,
@@ -25,7 +23,6 @@ import {
   FaMapMarkerAlt,
   FaCalendarAlt,
   FaLink,
-  FaLockOpen,
 } from "react-icons/fa"
 import { SiKubernetes, SiCanva, SiTerraform } from "react-icons/si"
 
@@ -302,11 +299,10 @@ export default function MetaPortfolio() {
       <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
         {/* Header */}
         <motion.header initial="hidden" animate="visible" variants={fadeIn} className="mb-12 sm:mb-16 md:mb-20">
-          <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] p-4 sm:p-6 md:p-8 shadow-2xl">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 via-red-500 to-red-700"></div>
+          <div className="relative overflow-hidden rounded-md sm:rounded-md bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] p-4 sm:p-6 md:p-8 shadow-2xl">
 
             <motion.div variants={fadeIn} className="text-center mb-6 sm:mb-8">
-              <h1 className="personal-name text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400 tracking-tight leading-tight mb-4 sm:mb-6">
+              <h1 className="personal-name text-7xl sm:text-7xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400 tracking-tight leading-tight mb-4 sm:mb-6">
                 {personalInfo.name}
               </h1>
 
@@ -314,12 +310,10 @@ export default function MetaPortfolio() {
                 {personalInfo.title}
               </p>
 
-              <div className="inline-block px-3 sm:px-4 py-2 bg-[#1e1e1e] rounded-xl sm:rounded-2xl font-semibold text-white mb-4 sm:mb-6">
-                <code className="font-mono text-xs sm:text-sm break-all">{personalInfo.currentlyExploring}</code>
-              </div>
+              
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-white mb-4 sm:mb-6 px-2">
-                <span className="flex items-center gap-2 bg-[#1e1e1e] px-3 py-2 rounded-lg">
+                <span className="flex items-center gap-2 bg-[#1e1e1e] px-3 py-2 rounded-md">
                   <FaMapMarkerAlt className="text-white text-sm" />
                 </span>
                 <span className="text-sm sm:text-base text-center">{personalInfo.location}</span>
@@ -339,7 +333,7 @@ export default function MetaPortfolio() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#1e1e1e] hover:rounded-full rounded-xl hover:border-red-500 hover:bg-[#252525] transition-all duration-300 min-h-[44px] touch-manipulation"
+                  className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#1e1e1e] hover:rounded-full rounded-md hover:border-red-500 hover:bg-[#252525] transition-all duration-300 min-h-[44px] touch-manipulation"
                 >
                   <span className="text-red-500 text-sm sm:text-base">{social.icon}</span>
                   <span className="hidden sm:inline text-xs sm:text-sm">{social.username}</span>
@@ -349,7 +343,7 @@ export default function MetaPortfolio() {
               <motion.button
                 variants={itemFade}
                 onClick={handleWhatsAppClick}
-                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#1e1e1e] rounded-xl hover:rounded-full hover:border-green-500 hover:bg-[#252525] transition-all duration-300 min-h-[44px] touch-manipulation"
+                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#1e1e1e] rounded-md hover:rounded-full hover:border-green-500 hover:bg-[#252525] transition-all duration-300 min-h-[44px] touch-manipulation"
               >
                 <FaWhatsapp className="text-green-500 text-sm sm:text-base" />
                 <span className="text-xs sm:text-sm">WhatsApp</span>
@@ -359,71 +353,7 @@ export default function MetaPortfolio() {
         </motion.header>
 
         {/* Open Source Section */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeIn}
-          className="mb-12 sm:mb-16 md:mb-20"
-        >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
-              <div className="p-2 bg-[#252525] rounded-lg">
-                <FaLockOpen className="text-red-500 text-lg sm:text-xl" />
-              </div>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Open Source Contributions</h2>
-            </div>
-
-            <p className="text-base sm:text-lg text-white mb-6 sm:mb-8">
-              Fork it. Star it. Make it your own — if it serves your purpose.
-            </p>
-
-            <div className="mb-6 sm:mb-8">
-              <p className="text-sm sm:text-base text-white leading-relaxed">
-                This portfolio project is open-source and available to fork. If the design or structure helped
-                accelerate your workflow or served as a useful starting point, feel free to build on it. Giving the repo
-                a star is appreciated, but entirely optional. Feedback, contributions, and practical enhancements are
-                always welcome.
-              </p>
-            </div>
-
-            <div className=" flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                href="https://github.com/kinshukjainn/kinshukkportfolio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 portfolio-website-link px-4 py-3 bg-[#252525] rounded-xl sm:rounded-2xl hover:rounded-full  hover:border-red-500 transition-all duration-300 min-h-[44px] touch-manipulation"
-              >
-                <FaGithub className="text-white text-sm sm:text-base" />
-                <span className="text-sm sm:text-base">Portfolio Repository</span>
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                href="https://github.com/kinshukjainn/encrypted-password-project"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex portfolio-website-link items-center gap-2 px-4 py-3 bg-[#252525] rounded-xl sm:rounded-2xl hover:rounded-full  hover:border-red-500 transition-all duration-300 min-h-[44px] touch-manipulation"
-              >
-                <FaGithub className="text-white text-sm sm:text-base" />
-                <span className="text-sm sm:text-base">PassGentool Repository</span>
-              </motion.a>
-            </div>
-
-            <div className="border-t border-gray-800 pt-4 sm:pt-6">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-white">
-                <div className="flex items-center gap-2">
-                  <FaStar className="text-yellow-500" />
-                  <span className="text-sm sm:text-base">Star to show appreciation</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaCodeBranch className="text-blue-400" />
-                  <span className="text-sm sm:text-base">Fork and customize</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.section>
+        
 
         {/* Contact Section */}
         <motion.section
@@ -433,9 +363,9 @@ export default function MetaPortfolio() {
           variants={fadeIn}
           className="mb-12 sm:mb-16 md:mb-20"
         >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
-              <div className="p-2 bg-[#252525] rounded-lg">
+              <div className="p-2 bg-[#252525] rounded-md">
                 <FaEnvelope className="text-red-500 text-lg sm:text-xl" />
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Get In Touch</h2>
@@ -455,9 +385,9 @@ export default function MetaPortfolio() {
             >
               <motion.div
                 variants={itemFade}
-                className="flex flex-col sm:flex-row items-start gap-4 p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl transition-all duration-300"
+                className="flex flex-col sm:flex-row items-start gap-4 p-4 bg-[#1e1e1e] rounded-md sm:rounded-md transition-all duration-300"
               >
-                <div className="p-3 bg-[#252525] rounded-xl">
+                <div className="p-3 bg-[#252525] rounded-md">
                   <FaEnvelope className="text-red-500" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -473,9 +403,9 @@ export default function MetaPortfolio() {
 
               <motion.div
                 variants={itemFade}
-                className="flex flex-col sm:flex-row items-start gap-4 p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl"
+                className="flex flex-col sm:flex-row items-start gap-4 p-4 bg-[#1e1e1e] rounded-md sm:rounded-md"
               >
-                <div className="p-3 bg-[#252525] rounded-xl">
+                <div className="p-3 bg-[#252525] rounded-md">
                   <FaEnvelope className="text-purple-500" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -500,9 +430,9 @@ export default function MetaPortfolio() {
           variants={fadeIn}
           className="mb-12 sm:mb-16 md:mb-20"
         >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
-              <div className="p-2 bg-[#252525] rounded-lg">
+              <div className="p-2 bg-[#252525] rounded-md">
                 <FaCode className="text-red-500 text-lg sm:text-xl" />
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Technical Skills</h2>
@@ -527,9 +457,9 @@ export default function MetaPortfolio() {
                       <motion.div
                         key={techIndex}
                         whileHover={{ x: 5 }}
-                        className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl hover:border-red-500 transition-all duration-300"
+                        className="flex items-center gap-3 sm:gap-3 p-2 sm:p-3 bg-[#1e1e1e] rounded-md sm:rounded-md hover:border-red-500 transition-all duration-300"
                       >
-                        <div className="p-2 bg-[#252525] rounded-xl text-red-500 text-lg sm:text-xl flex-shrink-0">
+                        <div className="p-2 bg-[#252525] rounded-md text-red-500 text-lg sm:text-xl flex-shrink-0">
                           {tech.icon}
                         </div>
                         <span className="font-medium text-white text-sm sm:text-base">{tech.name}</span>
@@ -550,9 +480,9 @@ export default function MetaPortfolio() {
           variants={fadeIn}
           className="mb-12 sm:mb-16 md:mb-20"
         >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 shadow-xl">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md md:rounded-md p-4 sm:p-6 md:p-8 shadow-xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
-              <div className="p-2 bg-[#252525] rounded-lg">
+              <div className="p-2 bg-[#252525] rounded-md">
                 <FaRocket className="text-red-500 text-lg sm:text-xl" />
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Featured Projects</h2>
@@ -595,7 +525,7 @@ export default function MetaPortfolio() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl sm:rounded-2xl transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base"
+                        className="inline-flex items-center justify-center gap-2  px-2 py-2 bg-white hover:bg-red-100 text-black rounded-md sm:rounded-md transition-all duration-300 min-h-[44px] touch-manipulation text-xs sm:text-base"
                       >
                         <FaLink />
                         {project.isPerformanceProject ? "Check Score" : "Live Demo"}
@@ -606,12 +536,22 @@ export default function MetaPortfolio() {
                           href={project.repoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#252525] hover:bg-[#303030] text-white rounded-xl sm:rounded-2xl transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base"
+                          className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#252525] hover:bg-[#303030] text-white rounded-md sm:rounded-md transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base"
                         >
                           <FaGithub />
                           Source Code
                         </motion.a>
                       )}
+                      <motion.a
+                        whileHover={{ scale: 1.02 }}
+                        href="https://blog.cloudkinshuk.in"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-2 py-2 bg-[#252525] hover:bg-[#303030] text-white rounded-md sm:rounded-md transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base"
+                      >
+                        <FaGithub />
+                        Read Blog  
+                      </motion.a>
                     </div>
                   </header>
 
@@ -625,7 +565,7 @@ export default function MetaPortfolio() {
                           <motion.div
                             key={idx}
                             whileHover={{ y: -5 }}
-                            className="text-center p-3 sm:p-4 bg-[#1e1e1e] rounded-xl"
+                            className="text-center p-3 sm:p-4 bg-[#1e1e1e] rounded-md"
                           >
                             <div className="text-2xl sm:text-3xl md:text-4xl font-black mb-2 text-red-500">
                               {score.score}
@@ -635,7 +575,7 @@ export default function MetaPortfolio() {
                           </motion.div>
                         ))}
                       </div>
-                      <div className="text-xs sm:text-sm text-white space-y-2 p-3 sm:p-4 bg-[#1e1e1e] rounded-xl">
+                      <div className="text-xs sm:text-sm text-white space-y-2 p-3 sm:p-4 bg-[#1e1e1e] rounded-md">
                         <p>
                           Performance scores are calculated using Google Lighthouse and may vary based on network
                           conditions.
@@ -663,7 +603,7 @@ export default function MetaPortfolio() {
                             {project.challenges.map((challenge, idx) => (
                               <li
                                 key={idx}
-                                className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl text-white"
+                                className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-md sm:rounded-md text-white"
                               >
                                 <span className="text-red-500 font-bold mt-1 flex-shrink-0">•</span>
                                 <span className="text-white text-sm sm:text-base">{challenge}</span>
@@ -680,7 +620,7 @@ export default function MetaPortfolio() {
                           </h4>
                           <ul className="space-y-3">
                             {project.learnings.map((learning, idx) => (
-                              <li key={idx} className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl">
+                              <li key={idx} className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-md sm:rounded-md">
                                 <span className="text-green-500 font-bold mt-1 flex-shrink-0">•</span>
                                 <span className="text-white text-sm sm:text-base">{learning}</span>
                               </li>
@@ -700,7 +640,7 @@ export default function MetaPortfolio() {
                                 {project.keyFeatures.map((feature, idx) => (
                                   <li
                                     key={idx}
-                                    className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl"
+                                    className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-md sm:rounded-md"
                                   >
                                     <span className="text-blue-400 font-bold mt-1 flex-shrink-0">•</span>
                                     <span className="text-white text-sm sm:text-base">{feature}</span>
@@ -718,7 +658,7 @@ export default function MetaPortfolio() {
                                 {project.technicalDetails.map((detail, idx) => (
                                   <li
                                     key={idx}
-                                    className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl"
+                                    className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-md sm:rounded-md"
                                   >
                                     <span className="text-purple-400 font-bold mt-1 flex-shrink-0">•</span>
                                     <span className="text-white text-sm sm:text-base">{detail}</span>
@@ -761,9 +701,9 @@ export default function MetaPortfolio() {
           variants={fadeIn}
           className="mb-12 sm:mb-16 md:mb-20"
         >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
-              <div className="p-2 bg-[#252525] rounded-lg">
+              <div className="p-2 bg-[#252525] rounded-md">
                 <FaCertificate className="text-red-500 text-lg sm:text-xl" />
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
@@ -775,7 +715,7 @@ export default function MetaPortfolio() {
               AWS certifications and continuous professional development
             </p>
 
-            <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl">
+            <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-[#1e1e1e] rounded-md sm:rounded-md">
               <h3 className="font-bold text-white mb-3 text-base sm:text-lg">🎯 AWS Certification :</h3>
               <p className="text-white leading-relaxed text-sm sm:text-base">
                 Recently scored 679/1000 on AWS Cloud Practitioner (CLF-C02) On January 24 2025
@@ -795,7 +735,7 @@ export default function MetaPortfolio() {
                   variants={itemFade}
                   className="border-b border-gray-800 pb-4 sm:pb-6 last:border-b-0"
                 >
-                  <div className="flex flex-col gap-4 p-4 sm:p-6 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl">
+                  <div className="flex flex-col gap-4 p-4 sm:p-6 bg-[#1e1e1e] rounded-md sm:rounded-md">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
                         <h3 className="font-bold text-white text-base sm:text-lg">{cert.title}</h3>
@@ -826,7 +766,7 @@ export default function MetaPortfolio() {
                         href={cert.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex w-max sm:w-auto items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl sm:rounded-2xl transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base"
+                        className="inline-flex w-max sm:w-max items-center justify-center gap-2 px-2 py-2 bg-white hover:bg-red-100 text-black rounded-md sm:rounded-md transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base"
                       >
                         <FaExternalLinkAlt />
                         View Certificate
@@ -847,9 +787,9 @@ export default function MetaPortfolio() {
           variants={fadeIn}
           className="mb-12 sm:mb-16 md:mb-20"
         >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
-              <div className="p-2 bg-[#252525] rounded-lg">
+              <div className="p-2 bg-[#252525] rounded-md">
                 <FaGraduationCap className="text-red-500 text-lg sm:text-xl" />
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Education</h2>
@@ -865,7 +805,7 @@ export default function MetaPortfolio() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="p-4 sm:p-6 bg-[#1e1e1e] rounded-xl"
+                  className="p-4 sm:p-6 bg-[#1e1e1e] rounded-md"
                 >
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3 sm:mb-4">
                     <div className="flex-1">

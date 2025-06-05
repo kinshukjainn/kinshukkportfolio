@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { FaBlog, FaHashtag, FaPodcast, FaUser, FaHeart } from "react-icons/fa"
+import { FaBlog, FaPodcast, FaUser, FaHeart } from "react-icons/fa"
 
 interface Interest {
   id: number
@@ -64,16 +64,6 @@ export default function AboutMe() {
   return (
     <div className="min-h-screen bg-[#121212] text-gray-300">
       <div className="max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
-        {/* Header */}
-        <motion.header
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          className="py-6 sm:py-8 border-b border-gray-800 mb-6 sm:mb-8"
-        >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 text-white font-bold">Kinshuk Jain</h1>
-          <p className="text-base sm:text-lg text-red-500 font-medium">Aspiring Cloud Engineer & DevOps Enthusiast</p>
-        </motion.header>
 
         {/* Navigation */}
         <motion.nav
@@ -86,7 +76,7 @@ export default function AboutMe() {
             <li>
               <button
                 onClick={() => setActiveSection("about")}
-                className={`px-3 py-2 rounded-2xl cursor-pointer transition-all duration-300 text-sm sm:text-base ${
+                className={`px-3 py-2 rounded-md  cursor-pointer transition-all duration-300 text-sm sm:text-base ${
                   activeSection === "about" ? "bg-red-600 text-white font-medium" : "text-gray-300 hover:bg-[#1e1e1e]"
                 }`}
               >
@@ -99,7 +89,7 @@ export default function AboutMe() {
             <li>
               <button
                 onClick={() => setActiveSection("interests")}
-                className={`px-3 py-2 rounded-2xl cursor-pointer transition-all duration-300 text-sm sm:text-base ${
+                className={`px-3 py-2 rounded-md cursor-pointer transition-all duration-300 text-sm sm:text-base ${
                   activeSection === "interests"
                     ? "bg-red-600 text-white font-medium"
                     : "text-gray-300 hover:bg-[#1e1e1e]"
@@ -118,13 +108,7 @@ export default function AboutMe() {
         <main>
           {activeSection === "about" && (
             <motion.section initial="hidden" animate="visible" variants={fadeIn} className="py-4">
-              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl mb-6 sm:mb-8">
-                <h2 className="text-xl sm:text-2xl mb-4 sm:mb-6 flex items-center text-white font-bold">
-                  <span className="mr-2 p-2 bg-[#252525] rounded-lg text-red-500">
-                    <FaHashtag />
-                  </span>
-                  About Me
-                </h2>
+              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl mb-6 sm:mb-8">
 
                 <motion.div
                   variants={staggerContainer}
@@ -164,13 +148,7 @@ export default function AboutMe() {
 
           {activeSection === "interests" && (
             <motion.section initial="hidden" animate="visible" variants={fadeIn} className="py-4">
-              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl mb-6 sm:mb-8">
-                <h2 className="text-xl sm:text-2xl mb-4 sm:mb-6 flex items-center text-white font-bold">
-                  <span className="mr-2 p-2 bg-[#252525] rounded-lg text-red-500">
-                    <FaHashtag />
-                  </span>
-                  What I Love & How I Spend My Free Time
-                </h2>
+              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl mb-6 sm:mb-8">
 
                 <motion.div
                   variants={staggerContainer}
@@ -182,10 +160,10 @@ export default function AboutMe() {
                     <motion.div
                       key={interest.id}
                       variants={itemFade}
-                      className="p-4 bg-[#1e1e1e] rounded-2xl sm:rounded-3xl"
+                      className="p-4 bg-[#1e1e1e] rounded-md sm:rounded-md"
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
-                        <span className="p-3 bg-[#252525] rounded-xl text-xl w-fit">{interest.icon}</span>
+                        <span className="p-3 bg-[#252525] rounded-md text-xl w-fit">{interest.icon}</span>
                         <h3 className="text-base sm:text-lg font-medium text-white">{interest.title}</h3>
                       </div>
                       <p className="text-gray-300 text-sm sm:text-base leading-relaxed pl-0 sm:pl-4">

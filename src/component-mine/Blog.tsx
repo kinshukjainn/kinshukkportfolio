@@ -1,10 +1,20 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useMemo, Component, type ErrorInfo, type ReactNode } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { useQuery, QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import type React from "react";
+import {
+  useState,
+  useMemo,
+  Component,
+  type ErrorInfo,
+  type ReactNode,
+} from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  useQuery,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
   FaSearch,
   FaFilter,
@@ -20,63 +30,63 @@ import {
   FaClock,
   FaTimes,
   FaRedo,
-} from "react-icons/fa"
+} from "react-icons/fa";
 
 // Types and Interfaces
 export interface BlogPost {
-  id: string
-  title: string
-  brief: string
-  slug: string
-  publishedAt: string
-  updatedAt: string
-  readTimeInMinutes?: number
-  views?: number
-  reactionCount?: number
+  id: string;
+  title: string;
+  brief: string;
+  slug: string;
+  publishedAt: string;
+  updatedAt: string;
+  readTimeInMinutes?: number;
+  views?: number;
+  reactionCount?: number;
   coverImage?: {
-    url: string
-  }
+    url: string;
+  };
   tags: Array<{
-    id: string
-    name: string
-    slug: string
-  }>
+    id: string;
+    name: string;
+    slug: string;
+  }>;
   author: {
-    name: string
-    profilePicture?: string
-  }
+    name: string;
+    profilePicture?: string;
+  };
 }
 
 export interface FilterOptions {
-  searchTerm: string
-  sortBy: "publishedAt" | "views" | "reactions"
-  sortOrder: "asc" | "desc"
-  tags: string[]
+  searchTerm: string;
+  sortBy: "publishedAt" | "views" | "reactions";
+  sortOrder: "asc" | "desc";
+  tags: string[];
   dateRange: {
-    start: string
-    end: string
-  }
+    start: string;
+    end: string;
+  };
 }
 
 interface HashnodeResponse {
   data?: {
     publication?: {
-      id: string
-      title: string
+      id: string;
+      title: string;
       posts?: {
         edges: Array<{
-          node: BlogPost
-        }>
-      }
-    }
-  }
+          node: BlogPost;
+        }>;
+      };
+    };
+  };
   errors?: Array<{
-    message: string
-  }>
+    message: string;
+  }>;
 }
 
 // API Service
-const HASHNODE_API_URL = "https://gql.hashnode.com/"
+const HASHNODE_API_URL = "https://gql.hashnode.com/";
 
 const BLOG_POSTS_QUERY = `
   query GetUserPosts($host: String!) {
@@ -112,7 +122,7 @@ const BLOG_POSTS_QUERY = `
       }
     }
   }
-`
+`;
 
 const fetchBlogPosts = async (): Promise<BlogPost[]> => {
   try {
@@ -127,55 +137,57 @@ const fetchBlogPosts = async (): Promise<BlogPost[]> => {
           host: "blog.cloudkinshuk.in",
         },
       }),
-    })
+    });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data: HashnodeResponse = await response.json()
+    const data: HashnodeResponse = await response.json();
 
     if (data.errors) {
-      throw new Error(data.errors[0]?.message || "GraphQL error occurred")
+      throw new Error(data.errors[0]?.message || "GraphQL error occurred");
     }
 
     if (!data.data?.publication?.posts?.edges) {
-      throw new Error("No blog posts found or invalid response structure")
+      throw new Error("No blog posts found or invalid response structure");
     }
 
-    return data.data.publication.posts.edges.map((edge) => edge.node)
+    return data.data.publication.posts.edges.map((edge) => edge.node);
   } catch (error) {
-    console.error("Error fetching blog posts:", error)
-    throw error instanceof Error ? error : new Error("Failed to fetch blog posts")
+    console.error("Error fetching blog posts:", error);
+    throw error instanceof Error
+      ? error
+      : new Error("Failed to fetch blog posts");
   }
-}
+};
 
 // Error Boundary Component
 interface ErrorBoundaryProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 interface ErrorBoundaryState {
-  hasError: boolean
-  error?: Error
+  hasError: boolean;
+  error?: Error;
 }
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   public state: ErrorBoundaryState = {
     hasError: false,
-  }
+  };
 
   public static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-    return { hasError: true, error }
+    return { hasError: true, error };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("Uncaught error:", error, errorInfo)
+    console.error("Uncaught error:", error, errorInfo);
   }
 
   private handleRetry = (): void => {
-    this.setState({ hasError: false, error: undefined })
-  }
+    this.setState({ hasError: false, error: undefined });
+  };
 
   public render(): ReactNode {
     if (this.state.hasError) {
@@ -183,28 +195,32 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         <div className="min-h-screen bg-[#121212] flex items-center justify-center p-4">
           <div className="text-center max-w-md">
             <FaExclamationTriangle className="text-red-500 text-6xl mx-auto mb-6" />
-            <h2 className="text-2xl font-bold text-white mb-4">Something went wrong</h2>
-            <p className="text-gray-400 mb-6">{this.state.error?.message || "An unexpected error occurred"}</p>
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Something went wrong
+            </h2>
+            <p className="text-gray-400 mb-6">
+              {this.state.error?.message || "An unexpected error occurred"}
+            </p>
             <button
               onClick={this.handleRetry}
-              className="inline-flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-md transition-colors"
             >
               <FaRedo />
               Try Again
             </button>
           </div>
         </div>
-      )
+      );
     }
 
-    return this.props.children
+    return this.props.children;
   }
 }
 
 // Blog Card Component
 interface BlogCardProps {
-  post: BlogPost
-  index: number
+  post: BlogPost;
+  index: number;
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
@@ -213,12 +229,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
       year: "numeric",
       month: "long",
       day: "numeric",
-    })
-  }
+    });
+  };
 
   const formatReadTime = (readTime: number): string => {
-    return `${readTime} min read`
-  }
+    return `${readTime} min read`;
+  };
 
   return (
     <motion.article
@@ -234,12 +250,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
       whileHover={{ y: -5 }}
       className="group"
     >
-      <div className="bg-[#171717] backdrop-blur-lg border border-gray-800/50 rounded-3xl p-6 sm:p-8 lg:p-10 hover:border-red-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/10">
+      <div className=" rounded-md p-6 sm:p-8 lg:p-10">
         {/* Header with meta info */}
         <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-gray-400 mb-6">
           <div className="flex items-center gap-2">
             <div className="w-1 h-1 bg-red-500 rounded-full" />
-            <FaCalendarAlt className="text-xs" />
+            <FaCalendarAlt className="text-xs text-white" />
             <span>{formatDate(post.publishedAt)}</span>
           </div>
 
@@ -271,12 +287,14 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
         {/* Cover Image */}
         {post.coverImage && (
           <motion.div
-            className="mb-6 overflow-hidden rounded-2xl"
+            className="mb-6 overflow-hidden rounded-md"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           >
             <img
-              src={post.coverImage.url || "/placeholder.svg?height=256&width=512"}
+              src={
+                post.coverImage.url || "/placeholder.svg?height=256&width=512"
+              }
               alt={post.title}
               className="w-full h-48 sm:h-64 object-cover"
               loading="lazy"
@@ -293,7 +311,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
         </motion.h2>
 
         {/* Brief/Excerpt */}
-        <motion.p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6" layoutId={`brief-${post.id}`}>
+        <motion.p
+          className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6"
+          layoutId={`brief-${post.id}`}
+        >
           {post.brief}
         </motion.p>
 
@@ -326,38 +347,44 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, index }) => {
         )}
 
         {/* CTA Button */}
-        <div className="pt-6 border-t border-gray-800/50">
+        <div className="pt-6">
           <motion.a
             href={`https://blog.cloudkinshuk.in/${post.slug}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-red-500/25 group"
+            className="inline-flex items-center gap-3 bg-white text-black px-3 py-3 rounded-md text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-red-500/25 group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span>Read Full Article</span>
+            <span>Read Article</span>
             <FaExternalLinkAlt className="group-hover:translate-x-1 transition-transform duration-300" />
           </motion.a>
         </div>
       </div>
     </motion.article>
-  )
-}
+  );
+};
 
 // Search Filters Component
 interface SearchFiltersProps {
-  filters: FilterOptions
-  setFilters: React.Dispatch<React.SetStateAction<FilterOptions>>
-  availableTags: string[]
+  filters: FilterOptions;
+  setFilters: React.Dispatch<React.SetStateAction<FilterOptions>>;
+  availableTags: string[];
 }
 
-const SearchFilters: React.FC<SearchFiltersProps> = ({ filters, setFilters, availableTags }) => {
+const SearchFilters: React.FC<SearchFiltersProps> = ({
+  filters,
+  setFilters,
+  availableTags,
+}) => {
   const handleTagToggle = (tag: string): void => {
     setFilters((prev) => ({
       ...prev,
-      tags: prev.tags.includes(tag) ? prev.tags.filter((t) => t !== tag) : [...prev.tags, tag],
-    }))
-  }
+      tags: prev.tags.includes(tag)
+        ? prev.tags.filter((t) => t !== tag)
+        : [...prev.tags, tag],
+    }));
+  };
 
   const clearFilters = (): void => {
     setFilters({
@@ -366,11 +393,15 @@ const SearchFilters: React.FC<SearchFiltersProps> = ({ filters, setFilters, avai
       sortOrder: "desc",
       tags: [],
       dateRange: { start: "", end: "" },
-    })
-  }
+    });
+  };
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="pt-6 border-t border-gray-700">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="pt-6 border-t border-gray-700"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Sort Options */}
         <div>
@@ -387,7 +418,7 @@ const SearchFilters: React.FC<SearchFiltersProps> = ({ filters, setFilters, avai
                 sortBy: e.target.value as FilterOptions["sortBy"],
               }))
             }
-            className="w-full p-2 bg-[#171717] border border-gray-700 rounded-lg text-white focus:outline-none focus:border-red-500"
+            className="w-full p-2 bg-[#171717] border border-gray-700 rounded-md text-white focus:outline-none focus:border-red-500"
           >
             <option value="publishedAt">Date Published</option>
             <option value="views">Views</option>
@@ -398,10 +429,10 @@ const SearchFilters: React.FC<SearchFiltersProps> = ({ filters, setFilters, avai
         {/* Date Range */}
         <div>
           <label className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-3">
-            <FaCalendarAlt />
+            <FaCalendarAlt className="text-white" />
             Date Range
           </label>
-          <div className="space-y-2">
+          <div className="space-y-2 text-white">
             <input
               type="date"
               title="Start Date"
@@ -412,7 +443,7 @@ const SearchFilters: React.FC<SearchFiltersProps> = ({ filters, setFilters, avai
                   dateRange: { ...prev.dateRange, start: e.target.value },
                 }))
               }
-              className="w-full p-2 bg-[#171717] border border-gray-700 rounded-lg text-white focus:outline-none focus:border-red-500"
+              className="w-full p-2 bg-[#171717] border border-gray-700 rounded-md text-white focus:outline-none focus:border-red-500"
             />
             <input
               type="date"
@@ -424,7 +455,7 @@ const SearchFilters: React.FC<SearchFiltersProps> = ({ filters, setFilters, avai
                   dateRange: { ...prev.dateRange, end: e.target.value },
                 }))
               }
-              className="w-full p-2 bg-[#171717] border border-gray-700 rounded-lg text-white focus:outline-none focus:border-red-500"
+              className="w-full p-2 bg-[#171717] border border-gray-700 rounded-md text-white focus:outline-none focus:border-red-500"
             />
           </div>
         </div>
@@ -440,8 +471,10 @@ const SearchFilters: React.FC<SearchFiltersProps> = ({ filters, setFilters, avai
               <button
                 key={tag}
                 onClick={() => handleTagToggle(tag)}
-                className={`px-3 py-1 text-sm rounded-full transition-colors ${
-                  filters.tags.includes(tag) ? "bg-red-500 text-white" : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                className={`px-3 py-1 text-sm rounded-md  transition-colors ${
+                  filters.tags.includes(tag)
+                    ? "bg-red-500 text-white"
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
                 }`}
               >
                 {tag}
@@ -455,15 +488,15 @@ const SearchFilters: React.FC<SearchFiltersProps> = ({ filters, setFilters, avai
       <div className="flex justify-end mt-4">
         <button
           onClick={clearFilters}
-          className="flex items-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors"
+          className="flex items-center gap-2  px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors"
         >
           <FaTimes />
           Clear Filters
         </button>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 // Main Blog Page Component
 const BlogPageContent: React.FC = () => {
@@ -473,8 +506,8 @@ const BlogPageContent: React.FC = () => {
     sortOrder: "desc",
     tags: [],
     dateRange: { start: "", end: "" },
-  })
-  const [showFilters, setShowFilters] = useState<boolean>(false)
+  });
+  const [showFilters, setShowFilters] = useState<boolean>(false);
 
   const {
     data: posts,
@@ -485,89 +518,107 @@ const BlogPageContent: React.FC = () => {
     queryKey: ["blogPosts"],
     queryFn: fetchBlogPosts,
     staleTime: 5 * 60 * 1000,
-  })
+  });
 
   const filteredAndSortedPosts = useMemo(() => {
-    if (!posts) return []
+    if (!posts) return [];
 
     const filtered = posts.filter((post: BlogPost) => {
       const matchesSearch =
         post.title.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
-        post.brief.toLowerCase().includes(filters.searchTerm.toLowerCase())
+        post.brief.toLowerCase().includes(filters.searchTerm.toLowerCase());
 
       const matchesTags =
         filters.tags.length === 0 ||
-        filters.tags.some((tag) => post.tags.some((postTag) => postTag.name.toLowerCase().includes(tag.toLowerCase())))
+        filters.tags.some((tag) =>
+          post.tags.some((postTag) =>
+            postTag.name.toLowerCase().includes(tag.toLowerCase())
+          )
+        );
 
       const matchesDateRange =
-        (!filters.dateRange.start || new Date(post.publishedAt) >= new Date(filters.dateRange.start)) &&
-        (!filters.dateRange.end || new Date(post.publishedAt) <= new Date(filters.dateRange.end))
+        (!filters.dateRange.start ||
+          new Date(post.publishedAt) >= new Date(filters.dateRange.start)) &&
+        (!filters.dateRange.end ||
+          new Date(post.publishedAt) <= new Date(filters.dateRange.end));
 
-      return matchesSearch && matchesTags && matchesDateRange
-    })
+      return matchesSearch && matchesTags && matchesDateRange;
+    });
 
     // Sort posts
     filtered.sort((a: BlogPost, b: BlogPost) => {
-      let aValue: number, bValue: number
+      let aValue: number, bValue: number;
 
       switch (filters.sortBy) {
         case "publishedAt":
-          aValue = new Date(a.publishedAt).getTime()
-          bValue = new Date(b.publishedAt).getTime()
-          break
+          aValue = new Date(a.publishedAt).getTime();
+          bValue = new Date(b.publishedAt).getTime();
+          break;
         case "views":
-          aValue = a.views || 0
-          bValue = b.views || 0
-          break
+          aValue = a.views || 0;
+          bValue = b.views || 0;
+          break;
         case "reactions":
-          aValue = a.reactionCount || 0
-          bValue = b.reactionCount || 0
-          break
+          aValue = a.reactionCount || 0;
+          bValue = b.reactionCount || 0;
+          break;
         default:
-          aValue = new Date(a.publishedAt).getTime()
-          bValue = new Date(b.publishedAt).getTime()
+          aValue = new Date(a.publishedAt).getTime();
+          bValue = new Date(b.publishedAt).getTime();
       }
 
-      return filters.sortOrder === "asc" ? aValue - bValue : bValue - aValue
-    })
+      return filters.sortOrder === "asc" ? aValue - bValue : bValue - aValue;
+    });
 
-    return filtered
-  }, [posts, filters])
+    return filtered;
+  }, [posts, filters]);
 
   const allTags = useMemo(() => {
-    if (!posts) return []
-    const tagSet = new Set<string>()
+    if (!posts) return [];
+    const tagSet = new Set<string>();
     posts.forEach((post: BlogPost) => {
-      post.tags.forEach((tag) => tagSet.add(tag.name))
-    })
-    return Array.from(tagSet)
-  }, [posts])
+      post.tags.forEach((tag) => tagSet.add(tag.name));
+    });
+    return Array.from(tagSet);
+  }, [posts]);
 
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center p-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center p-8"
+        >
           <FaExclamationTriangle className="text-red-500 text-6xl mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-white mb-4">Failed to Load Blog Posts</h2>
+          <h2 className="text-2xl font-bold text-white mb-4">
+            Failed to Load Blog Posts
+          </h2>
           <p className="text-gray-400 mb-6">
-            {error instanceof Error ? error.message : "An unexpected error occurred"}
+            {error instanceof Error
+              ? error.message
+              : "An unexpected error occurred"}
           </p>
           <button
             onClick={() => refetch()}
-            className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg transition-colors"
+            className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-md transition-colors"
           >
             Try Again
           </button>
         </motion.div>
       </div>
-    )
+    );
   }
 
   return (
     <ErrorBoundary>
       <div className="min-h-screen bg-[#121212] text-white">
         {/* Hero Section */}
-        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative overflow-hidden">
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="relative overflow-hidden"
+        >
           <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-transparent to-blue-900/20" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 relative">
             <motion.div
@@ -576,10 +627,14 @@ const BlogPageContent: React.FC = () => {
               transition={{ delay: 0.2 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="text-5xl personal-name p-4 sm:text-5xl lg:text-7xl font-bold text-red-500 mb-6">Kinshuk's Blog</h1>
+              <h1 className="text-5xl personal-name p-4 sm:text-5xl lg:text-7xl font-bold text-red-500 mb-6">
+                My thinking , opinion, and some other stuff 
+              </h1>
               <div className="w-32 h-2 bg-red-500 rounded-full mx-auto mb-8" />
               <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                My thoughts, opinion, take, and some guides on cloud, building scalable infrastructure, deploying apps, web development, and many other technical and non-technical fields.
+                My thoughts, opinion, take, and some guides on cloud, building
+                scalable infrastructure, deploying apps, web development, and
+                many other technical and non-technical fields.
               </p>
             </motion.div>
           </div>
@@ -590,14 +645,21 @@ const BlogPageContent: React.FC = () => {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
               {/* Search Bar */}
-              <div className="relative flex-1 max-w-md">
-                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <div className="relative flex-1 max-w-xl">
+                <FaSearch className="absolute left-3  top-1/2 transform -translate-y-1/2 text-white" />
                 <input
                   type="text"
                   placeholder="Search blog posts..."
                   value={filters.searchTerm}
-                  onChange={(e) => setFilters((prev) => ({ ...prev, searchTerm: e.target.value }))}
-                  className="w-full pl-10 pr-4 py-3 bg-[#171717] border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors"
+                  onChange={(e) =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      searchTerm: e.target.value,
+                    }))
+                  }
+                  className="w-full pl-10 pr-4 py-3 bg-[#171717] border border-red-700 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-transparent transition-all duration-300
+    hover:shadow-lg shadow-red-500
+    focus:shadow-[0_0_12px_4px_rgba(255,0,150,0.6),0_0_20px_8px_rgba(0,229,255,0.3)]"
                 />
               </div>
 
@@ -605,7 +667,7 @@ const BlogPageContent: React.FC = () => {
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => setShowFilters(!showFilters)}
-                  className="flex items-center gap-2 px-4 py-2 bg-[#171717] border border-gray-700 rounded-lg hover:border-red-500 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-[#171717] border border-gray-700 rounded-md hover:border-red-500 transition-colors"
                 >
                   <FaFilter />
                   Filters
@@ -619,9 +681,13 @@ const BlogPageContent: React.FC = () => {
                         sortOrder: prev.sortOrder === "asc" ? "desc" : "asc",
                       }))
                     }
-                    className="p-2 bg-[#171717] border border-gray-700 rounded-lg hover:border-red-500 transition-colors"
+                    className="p-2 bg-[#171717] border border-gray-700 rounded-md hover:border-red-500 transition-colors"
                   >
-                    {filters.sortOrder === "asc" ? <FaSortAmountUp /> : <FaSortAmountDown />}
+                    {filters.sortOrder === "asc" ? (
+                      <FaSortAmountUp />
+                    ) : (
+                      <FaSortAmountDown />
+                    )}
                   </button>
                 </div>
 
@@ -641,7 +707,11 @@ const BlogPageContent: React.FC = () => {
                   exit={{ height: 0, opacity: 0 }}
                   className="overflow-hidden"
                 >
-                  <SearchFilters filters={filters} setFilters={setFilters} availableTags={allTags} />
+                  <SearchFilters
+                    filters={filters}
+                    setFilters={setFilters}
+                    availableTags={allTags}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -655,24 +725,40 @@ const BlogPageContent: React.FC = () => {
               <div className="flex items-center justify-center py-20">
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                  transition={{
+                    duration: 1,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "linear",
+                  }}
                 >
                   <FaSpinner className="text-red-500 text-4xl" />
                 </motion.div>
-                <span className="ml-4 text-xl text-gray-300">Loading blog posts...</span>
+                <span className="ml-4 text-xl text-gray-300">
+                  Loading blog posts...
+                </span>
               </div>
             ) : filteredAndSortedPosts.length === 0 ? (
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center py-20">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center py-20"
+              >
                 <FaSearch className="text-gray-500 text-6xl mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-2">No posts found</h3>
-                <p className="text-gray-400">Try adjusting your search terms or filters</p>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  No posts found
+                </h3>
+                <p className="text-gray-400">
+                  Try adjusting your search terms or filters
+                </p>
               </motion.div>
             ) : (
               <motion.div layout className="grid gap-8 md:gap-12">
                 <AnimatePresence mode="popLayout">
-                  {filteredAndSortedPosts.map((post: BlogPost, index: number) => (
-                    <BlogCard key={post.id} post={post} index={index} />
-                  ))}
+                  {filteredAndSortedPosts.map(
+                    (post: BlogPost, index: number) => (
+                      <BlogCard key={post.id} post={post} index={index} />
+                    )
+                  )}
                 </AnimatePresence>
               </motion.div>
             )}
@@ -683,7 +769,9 @@ const BlogPageContent: React.FC = () => {
         <footer className="border-t border-gray-800 py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <p className="text-gray-400">© 2025 Cloud Kinshuk. All rights reserved.</p>
+              <p className="text-gray-400">
+                © 2025 Cloud Kinshuk. All rights reserved.
+              </p>
               <a
                 href="https://blog.cloudkinshuk.in"
                 target="_blank"
@@ -698,8 +786,8 @@ const BlogPageContent: React.FC = () => {
         </footer>
       </div>
     </ErrorBoundary>
-  )
-}
+  );
+};
 
 // Query Client Setup
 const queryClient = new QueryClient({
@@ -707,10 +795,11 @@ const queryClient = new QueryClient({
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
       retry: 3,
-      retryDelay: (attemptIndex: number) => Math.min(1000 * 2 ** attemptIndex, 30000),
+      retryDelay: (attemptIndex: number) =>
+        Math.min(1000 * 2 ** attemptIndex, 30000),
     },
   },
-})
+});
 
 // Main App Component
 const BlogPage: React.FC = () => {
@@ -721,7 +810,7 @@ const BlogPage: React.FC = () => {
       </div>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  )
-}
+  );
+};
 
-export default BlogPage
+export default BlogPage;

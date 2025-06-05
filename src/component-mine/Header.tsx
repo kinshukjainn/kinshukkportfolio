@@ -26,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-[#181818]  mt-2 mr-4 ml-4 mb-4 rounded-3xl  p-3  flex flex-col  sm:flex-row justify-between items-center overflow-hidden">
+    <header className="bg-[#181818]  mt-2 mr-4 ml-4 mb-4 rounded-md  p-3  flex flex-col  sm:flex-row justify-between items-center overflow-hidden">
       <div className="flex items-center w-full sm:w-auto justify-between mb-3 sm:mb-0 relative z-10">
         {/* Avatar Section */}
         <div className="relative mr-3 flex-shrink-0">
@@ -66,7 +66,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="sm:hidden text-2xl bg-[#212121] rounded-xl text-white focus:outline-none   p-2"
+          className="sm:hidden text-2xl bg-[#212121] rounded-md text-white focus:outline-none   p-2"
           onClick={toggleMenu}
         >
           {menuOpen ? <FaTimes className="text-red-500" /> : <FaBars className="text-red-500" />}
@@ -81,7 +81,7 @@ const Header = () => {
       {/* Mobile Menu with improved animation */}
       <AnimatePresence>
         {menuOpen && (
-          <div className="w-full overflow-hidden sm:hidden font-semibold rounded-4xl mt-2">
+          <div className="w-full overflow-hidden sm:hidden font-semibold rounded-md mt-2">
             <div className="pt-3 pb-2 flex flex-col items-center gap-4">
               <NavLinks closeMenu={closeMenu} />
             </div>

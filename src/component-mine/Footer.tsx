@@ -1,30 +1,99 @@
-"use client";
+import type React from "react"
+import { FaCloud, FaGithub, FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaBlog } from "react-icons/fa"
 
-import { FaCloud } from "react-icons/fa";
+interface SocialLink {
+  icon: React.ElementType
+  href: string
+  label: string
+}
 
 const Footer = () => {
+  const socialLinks: SocialLink[] = [
+    { icon: FaGithub, href: "https://github.com/kinshukjain", label: "GitHub" },
+    { icon: FaTwitter, href: "https://twitter.com/cloudkinshuk", label: "Twitter" },
+    { icon: FaLinkedin, href: "https://linkedin.com/in/kinshukjain", label: "LinkedIn" },
+    { icon: FaInstagram, href: "https://instagram.com/cloudkinshuk", label: "Instagram" },
+    { icon: FaEnvelope, href: "mailto:contact@kinshukjain.com", label: "Email" },
+  ]
+
   return (
-    <footer className="bg-[#0d1117] text-gray-300 py-6 border-t border-gray-800 mt-4">
-      <div className="container mx-auto px-4 flex flex-col items-center text-center">
-        {/* Name & Tagline */}
-        <div className="flex items-center gap-2">
-          <span className="text-blue-400 text-2xl">
-            <FaCloud />
-          </span>
-          <h2 className="text-xl  text-gray-100">
-            CloudKinshuk / Portfolio 
-          </h2>
+    <footer className="bg-black text-gray-300 py-8 mb-3 mr-3 ml-3 rounded-md shadow-lg shadow-red-800 mt-6">
+      <div className="container mx-auto px-4">
+        {/* Top section with logo and name */}
+        <div className="flex flex-col items-center mb-8">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-red-500 animate-pulse">
+              <FaCloud size={36} />
+            </span>
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-100 to-red-400 bg-clip-text text-transparent">
+              CloudKinshuk
+            </h2>
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-6">
+            {/* Hashnode Blog Button */}
+            <a
+              href="https://hashnode.com/@cloudkinshuk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 rounded-md font-semibold text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative flex items-center gap-2">
+                <FaBlog size={20} />
+                <span>Hashnode Blogs</span>
+              </div>
+              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+            </a>
+
+            {/* GitHub Repo Button */}
+            <a
+              href="https://github.com/kinshukjain/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative px-6 py-3 bg-gradient-to-r from-gray-800 via-gray-700 to-red-600 rounded-md font-semibold text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative flex items-center gap-2">
+                <FaGithub size={20} />
+                <span>GitHub Repo</span>
+              </div>
+              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+            </a>
+          </div>
         </div>
 
-        {/* Copyright */}
-        <p className="text-xs font-medium text-gray-500 mt-4 flex items-center gap-1">
-          © {new Date().getFullYear()} Kinshuk Jain.{" "}
-          <span className="inline-block">☁️</span>
-          {" "}All rights reserved.
-        </p>
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-red-800 to-transparent my-6"></div>
+
+        {/* Social media links */}
+        <div className="flex flex-col items-center">
+          <div className="flex justify-center space-x-6 mb-6">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-gray-400 hover:text-red-500 transform hover:scale-110 transition-all duration-300"
+                aria-label={link.label}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <link.icon size={24} />
+                <span className="sr-only">{link.label}</span>
+              </a>
+            ))}
+          </div>
+
+          {/* Copyright */}
+          <div className="text-xs text-gray-600 flex items-center gap-2">
+            <span className="inline-block">☁️</span>© {new Date().getFullYear()} Kinshuk Jain. All rights reserved.
+            <span className="inline-block">☁️</span>
+          </div>
+        </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
