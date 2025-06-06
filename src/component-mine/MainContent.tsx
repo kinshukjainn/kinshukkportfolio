@@ -85,40 +85,6 @@ export default function MetaPortfolio() {
 
   const projects = [
   {
-    title: "Portfolio Website",
-    description:
-      "Responsive personal portfolio built using React 19, TypeScript, and Tailwind CSS. Integrated live blog, custom domain, and deployed on AWS Amplify for scalability.",
-    liveUrl: "https://cloudkinshuk.in",
-    repoUrl: "https://github.com/kinshukjainn/kinshukkportfolio",
-    technologies: [
-      "React",
-      "Tailwind CSS",
-      "AWS Amplify",
-      "Route 53",
-      "Hostinger"
-    ],
-    status: "Live",
-    featured: true,
-    challenges: [
-      "Overcame initial complexity of AWS deployment and free-tier usage concerns.",
-      "Struggled with SEO optimization and learned best practices gradually.",
-      "Faced difficulties linking custom domain from Hostinger to AWS-hosted site."
-    ],
-    learnings: [
-      "Deployed full-stack sites on AWS using cost-efficient practices.",
-      "Improved SEO via meta tags, load optimization, and semantic HTML.",
-      "Learned domain linking, DNS records, and SSL via Route 53."
-    ],
-    keyFeatures: [
-      "Responsive UI using React 19 and Tailwind CSS",
-      "Migrated from Netlify to AWS Amplify for better scalability"
-    ],
-    technicalDetails: [
-      "Configured Route 53 for SSL and DNS",
-      "Used AI tools like ChatGPT and Claude for accelerated development"
-    ]
-  },
-  {
     title: "Website Performance Optimization",
     description:
       "Optimized portfolio for SEO and speed using Lighthouse and Core Web Vitals, achieving top scores across all metrics.",
@@ -385,7 +351,7 @@ export default function MetaPortfolio() {
             >
               <motion.div
                 variants={itemFade}
-                className="flex flex-col sm:flex-row items-start gap-4 p-4 bg-[#1e1e1e] rounded-md sm:rounded-md transition-all duration-300"
+                className="flex flex-col sm:flex-row items-start gap-4 p-4 rounded-md sm:rounded-md transition-all duration-300"
               >
                 <div className="p-3 bg-[#252525] rounded-md">
                   <FaEnvelope className="text-red-500" />
@@ -403,7 +369,7 @@ export default function MetaPortfolio() {
 
               <motion.div
                 variants={itemFade}
-                className="flex flex-col sm:flex-row items-start gap-4 p-4 bg-[#1e1e1e] rounded-md sm:rounded-md"
+                className="flex flex-col sm:flex-row items-start gap-4 p-4  rounded-md sm:rounded-md"
               >
                 <div className="p-3 bg-[#252525] rounded-md">
                   <FaEnvelope className="text-purple-500" />
@@ -594,24 +560,6 @@ export default function MetaPortfolio() {
                     </div>
                   ) : (
                     <div className="space-y-6 sm:space-y-8">
-                      {project.challenges && project.challenges.length > 0 && (
-                        <div>
-                          <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 border-b border-red-900/30 pb-2">
-                            Challenges Faced
-                          </h4>
-                          <ul className="space-y-3">
-                            {project.challenges.map((challenge, idx) => (
-                              <li
-                                key={idx}
-                                className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-md sm:rounded-md text-white"
-                              >
-                                <span className="text-red-500 font-bold mt-1 flex-shrink-0">•</span>
-                                <span className="text-white text-sm sm:text-base">{challenge}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
 
                       {project.learnings && project.learnings.length > 0 && (
                         <div>
@@ -620,7 +568,7 @@ export default function MetaPortfolio() {
                           </h4>
                           <ul className="space-y-3">
                             {project.learnings.map((learning, idx) => (
-                              <li key={idx} className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-md sm:rounded-md">
+                              <li key={idx} className="flex gap-2 p-2 sm:p-2 rounded-md sm:rounded-md">
                                 <span className="text-green-500 font-bold mt-1 flex-shrink-0">•</span>
                                 <span className="text-white text-sm sm:text-base">{learning}</span>
                               </li>
@@ -629,7 +577,7 @@ export default function MetaPortfolio() {
                         </div>
                       )}
 
-                      {(project.keyFeatures || project.technicalDetails) && (
+                      {(project.keyFeatures) && (
                         <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
                           {project.keyFeatures && project.keyFeatures.length > 0 && (
                             <div>
@@ -640,7 +588,7 @@ export default function MetaPortfolio() {
                                 {project.keyFeatures.map((feature, idx) => (
                                   <li
                                     key={idx}
-                                    className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-md sm:rounded-md"
+                                    className="flex gap-2 p-2 sm:p-2  rounded-md sm:rounded-md"
                                   >
                                     <span className="text-blue-400 font-bold mt-1 flex-shrink-0">•</span>
                                     <span className="text-white text-sm sm:text-base">{feature}</span>
@@ -649,24 +597,7 @@ export default function MetaPortfolio() {
                               </ul>
                             </div>
                           )}
-                          {project.technicalDetails && project.technicalDetails.length > 0 && (
-                            <div>
-                              <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 border-b border-purple-900/30 pb-2">
-                                Technical Implementation
-                              </h4>
-                              <ul className="space-y-3">
-                                {project.technicalDetails.map((detail, idx) => (
-                                  <li
-                                    key={idx}
-                                    className="flex gap-3 p-3 sm:p-4 bg-[#1e1e1e] rounded-md sm:rounded-md"
-                                  >
-                                    <span className="text-purple-400 font-bold mt-1 flex-shrink-0">•</span>
-                                    <span className="text-white text-sm sm:text-base">{detail}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
+
                         </div>
                       )}
                     </div>
@@ -679,7 +610,7 @@ export default function MetaPortfolio() {
                         {project.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="text-xs font-semibold bg-[#252525] text-white px-2 sm:px-3 py-1 rounded-full"
+                            className="text-xs font-semibold bg-[#252525] text-white px-2 sm:px-3 py-1 rounded-md"
                           >
                             {tech}
                           </span>
@@ -715,7 +646,7 @@ export default function MetaPortfolio() {
               AWS certifications and continuous professional development
             </p>
 
-            <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-[#1e1e1e] rounded-md sm:rounded-md">
+            <div className="mb-6 sm:mb-8 p-4 sm:p-6 rounded-md sm:rounded-md">
               <h3 className="font-bold text-white mb-3 text-base sm:text-lg">🎯 AWS Certification :</h3>
               <p className="text-white leading-relaxed text-sm sm:text-base">
                 Recently scored 679/1000 on AWS Cloud Practitioner (CLF-C02) On January 24 2025
@@ -735,7 +666,7 @@ export default function MetaPortfolio() {
                   variants={itemFade}
                   className="border-b border-gray-800 pb-4 sm:pb-6 last:border-b-0"
                 >
-                  <div className="flex flex-col gap-4 p-4 sm:p-6 bg-[#1e1e1e] rounded-md sm:rounded-md">
+                  <div className="flex flex-col gap-4 p-4 sm:p-6 rounded-md sm:rounded-md">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
                         <h3 className="font-bold text-white text-base sm:text-lg">{cert.title}</h3>
@@ -805,7 +736,7 @@ export default function MetaPortfolio() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="p-4 sm:p-6 bg-[#1e1e1e] rounded-md"
+                  className="p-4 sm:p-6  rounded-md"
                 >
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3 sm:mb-4">
                     <div className="flex-1">
@@ -813,7 +744,7 @@ export default function MetaPortfolio() {
                       <p className="text-white font-semibold text-base sm:text-lg">{edu.field}</p>
                     </div>
                     <span
-                      className={`text-xs font-bold px-2 sm:px-3 py-1 rounded-full self-start ${
+                      className={`text-sm font-bold px-2 sm:px-3 py-1 rounded-full self-start ${
                         edu.status === "Completed" ? "bg-green-900/50 text-green-400" : "bg-blue-900/50 text-blue-400"
                       }`}
                     >
