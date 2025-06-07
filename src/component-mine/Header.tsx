@@ -78,6 +78,7 @@ const Header = () => {
 interface NavLinkProps {
   to: string
   isActive: boolean
+  
   label: string
 }
 

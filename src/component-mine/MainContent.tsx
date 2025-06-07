@@ -25,6 +25,7 @@ import {
   FaLink,
 } from "react-icons/fa"
 import { SiKubernetes, SiCanva, SiTerraform } from "react-icons/si"
+import profilelogo from "../assets/mainweb.jpg"
 
 export default function MetaPortfolio() {
   const personalInfo = {
@@ -54,15 +55,11 @@ export default function MetaPortfolio() {
   const techStack = [
     {
       category: "Cloud & Infrastructure",
-      items: [
-        { name: "AWS", icon: <FaAws />, level: "Intermediate", years: "2+" },
-      ],
+      items: [{ name: "AWS", icon: <FaAws />, level: "Intermediate", years: "2+" }],
     },
     {
       category: "Frontend Development",
-      items: [
-        { name: "React", icon: <FaReact />, level: "Intermediate", years: "2+" },
-      ],
+      items: [{ name: "React", icon: <FaReact />, level: "Intermediate", years: "2+" }],
     },
     {
       category: "Backend & DevOps",
@@ -84,100 +81,70 @@ export default function MetaPortfolio() {
   ]
 
   const projects = [
-  {
-    title: "Website Performance Optimization",
-    description:
-      "Optimized portfolio for SEO and speed using Lighthouse and Core Web Vitals, achieving top scores across all metrics.",
-    liveUrl: "https://pagespeed.web.dev/",
-    technologies: [
-      "Lighthouse",
-      "Core Web Vitals",
-      "SEO Optimization",
-      "Performance Monitoring"
-    ],
-    status: "Optimized",
-    isPerformanceProject: true,
-    performanceScores: [
-      {
-        score: 97,
-        label: "Desktop Performance",
-        color: "text-green-600",
-        description: "Excellent loading speed and optimization"
-      },
-      {
-        score: 71,
-        label: "Mobile Performance",
-        color: "text-orange-600",
-        description: "Good mobile experience with room for improvement"
-      },
-      {
-        score: 89,
-        label: "Accessibility",
-        color: "text-orange-600",
-        description: "Strong accessibility compliance"
-      },
-      {
-        score: 100,
-        label: "SEO Score",
-        color: "text-green-600",
-        description: "Perfect search engine optimization"
-      }
-    ],
-    scoreRanges: [
-      { color: "bg-red-500", range: "0-49", label: "Poor" },
-      { color: "bg-orange-500", range: "50-89", label: "Needs Improvement" },
-      { color: "bg-green-500", range: "90-100", label: "Good" }
-    ]
-  },
-  {
-    title: "Tech Blog Platform",
-    description:
-      "Built a custom-domain tech blog using Hashnode to share cloud, DevOps, and React insights, optimized for SEO and brand visibility.",
-    liveUrl: "https://blog.cloudkinshuk.in",
-    technologies: [
-      "Hashnode",
-      "Amazon Route 53",
-      "Hostinger",
-      "DNS Management",
-      "Custom Domain",
-      "CDN"
-    ],
-    status: "Active",
-    learnings: [
-      "Set up developer blog with custom domain and HTTPS",
-      "Documented real-world learnings in cloud and DevOps",
-      "Used Hashnode's SEO and CDN features effectively"
-    ],
-    keyFeatures: [
-      "Developer blog at blog.cloudkinshuk.in",
-      "Custom DNS setup using Route 53",
-      "Published blogs on AWS, React, and architecture"
-    ]
-  },
-  {
-    title: "PassGentool ( Comming Soon )",
-    description:
-      "This Project is in pre-building stage.",
-    liveUrl: "#",
-    repoUrl: "#",
-    technologies: [
-      "Would be using React",
-      "Would be using TypeScript",
-      "Would be using Tailwind CSS",
-      "Would be using Vite",
-      "Would be using Amazon Route 53",
-    ],
-    status: "Building stage",
-    featured: false,
-    learnings: [
-      "None / Comming soon Please check back later",
-    ],
-    keyFeatures: [
-      "None / Comming soon Please check back later",
-    ]
-  }
-]
-
+    {
+      title: "Website Performance Optimization",
+      description:
+        "Optimized portfolio for SEO and speed using Lighthouse and Core Web Vitals, achieving top scores across all metrics.",
+      liveUrl: "https://pagespeed.web.dev/",
+      technologies: ["Lighthouse", "Core Web Vitals", "SEO Optimization", "Performance Monitoring"],
+      status: "Optimized",
+      isPerformanceProject: true,
+      performanceScores: [
+        {
+          score: 97,
+          label: "Desktop Performance",
+          color: "text-green-600",
+          description: "Excellent loading speed and optimization",
+        },
+        {
+          score: 71,
+          label: "Mobile Performance",
+          color: "text-orange-600",
+          description: "Good mobile experience with room for improvement",
+        },
+        {
+          score: 89,
+          label: "Accessibility",
+          color: "text-orange-600",
+          description: "Strong accessibility compliance",
+        },
+        {
+          score: 100,
+          label: "SEO Score",
+          color: "text-green-600",
+          description: "Perfect search engine optimization",
+        },
+      ],
+      scoreRanges: [
+        { color: "bg-red-500", range: "0-49", label: "Poor" },
+        { color: "bg-orange-500", range: "50-89", label: "Needs Improvement" },
+        { color: "bg-green-500", range: "90-100", label: "Good" },
+      ],
+    },
+    {
+      title: "Tech Blog Platform",
+      description:
+        "Built a custom-domain tech blog using Hashnode to share cloud, DevOps, and React insights, optimized for SEO and brand visibility.",
+      liveUrl: "https://blog.cloudkinshuk.in",
+      technologies: ["Hashnode", "Amazon Route 53", "Hostinger", "DNS Management", "Custom Domain", "CDN"],
+      status: "Active",
+    },
+    {
+      title: "PassGentool ( Comming Soon )",
+      description: "This Project is in pre-building stage.",
+      liveUrl: "#",
+      repoUrl: "#",
+      technologies: [
+        "Would be using React",
+        "Would be using TypeScript",
+        "Would be using Tailwind CSS",
+        "Would be using Vite",
+        "Would be using Amazon Route 53",
+      ],
+      status: "Building stage",
+      featured: false,
+    },
+  ]
 
   const certifications = [
     {
@@ -262,64 +229,62 @@ export default function MetaPortfolio() {
 
   return (
     <div className="min-h-screen  bg-[#121212] text-white">
-      <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
+      <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
         {/* Header */}
-        <motion.header initial="hidden" animate="visible" variants={fadeIn} className="mb-12 sm:mb-16 md:mb-20">
-          <div className="relative overflow-hidden rounded-md sm:rounded-md bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] p-4 sm:p-6 md:p-8 shadow-2xl">
+        <motion.header initial="hidden" animate="visible" variants={fadeIn} className="mb-8 sm:mb-10 md:mb-12">
+      <div className="relative overflow-hidden rounded-md sm:rounded-md bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] p-3 sm:p-4 md:p-6 shadow-2xl">
+        <div className="flex justify-center mb-4">
+          <img src={profilelogo || "/placeholder.svg"} alt="kinshukjain" className="w-30 h-29 rounded-full shadow-white shadow-md" />
+        </div>
+        <motion.div variants={fadeIn} className="text-center mb-3 sm:mb-4">
+          <h1 className="personal-name text-7xl sm:text-7xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400 tracking-tight leading-tight mb-3 sm:mb-4">
+            {personalInfo.name}
+          </h1>
 
-            <motion.div variants={fadeIn} className="text-center mb-6 sm:mb-8">
-              <h1 className="personal-name text-7xl sm:text-7xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400 tracking-tight leading-tight mb-4 sm:mb-6">
-                {personalInfo.name}
-              </h1>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-white mb-2 sm:mb-3 px-2">
+            {personalInfo.title}
+          </p>
 
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-white mb-3 sm:mb-4 px-2">
-                {personalInfo.title}
-              </p>
-
-              
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-white mb-4 sm:mb-6 px-2">
-                <span className="flex items-center gap-2 bg-[#1e1e1e] px-3 py-2 rounded-md">
-                  <FaMapMarkerAlt className="text-white text-sm" />
-                </span>
-                <span className="text-sm sm:text-base text-center">{personalInfo.location}</span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4"
-            >
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  variants={itemFade}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#1e1e1e] hover:rounded-full rounded-md hover:border-red-500 hover:bg-[#252525] transition-all duration-300 min-h-[44px] touch-manipulation"
-                >
-                  <span className="text-red-500 text-sm sm:text-base">{social.icon}</span>
-                  <span className="hidden sm:inline text-xs sm:text-sm">{social.username}</span>
-                  <span className="sm:hidden text-xs">{social.label}</span>
-                </motion.a>
-              ))}
-              <motion.button
-                variants={itemFade}
-                onClick={handleWhatsAppClick}
-                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#1e1e1e] rounded-md hover:rounded-full hover:border-green-500 hover:bg-[#252525] transition-all duration-300 min-h-[44px] touch-manipulation"
-              >
-                <FaWhatsapp className="text-green-500 text-sm sm:text-base" />
-                <span className="text-xs sm:text-sm">WhatsApp</span>
-              </motion.button>
-            </motion.div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-white mb-3 sm:mb-4 px-2">
+            <span className="flex items-center gap-2 bg-[#1e1e1e] px-3 py-2 rounded-md">
+              <FaMapMarkerAlt className="text-white text-sm" />
+            </span>
+            <span className="text-sm sm:text-base text-center">{personalInfo.location}</span>
           </div>
-        </motion.header>
+        </motion.div>
 
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4"
+        >
+          {socialLinks.map((social, index) => (
+            <motion.a
+              key={index}
+              variants={itemFade}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#1e1e1e] hover:rounded-full rounded-md hover:border-red-500 hover:bg-[#252525] transition-all duration-300 min-h-[44px] touch-manipulation"
+            >
+              <span className="text-red-500 text-sm sm:text-base">{social.icon}</span>
+              <span className="hidden sm:inline text-xs sm:text-sm">{social.username}</span>
+              <span className="sm:hidden text-xs">{social.label}</span>
+            </motion.a>
+          ))}
+          <motion.button
+            variants={itemFade}
+            onClick={handleWhatsAppClick}
+            className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#1e1e1e] rounded-md hover:rounded-full hover:border-green-500 hover:bg-[#252525] transition-all duration-300 min-h-[44px] touch-manipulation"
+          >
+            <FaWhatsapp className="text-green-500 text-sm sm:text-base" />
+            <span className="text-xs sm:text-sm">WhatsApp</span>
+          </motion.button>
+        </motion.div>
+      </div>
+    </motion.header>
         {/* Open Source Section */}
-        
 
         {/* Contact Section */}
         <motion.section
@@ -327,17 +292,17 @@ export default function MetaPortfolio() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
-          className="mb-12 sm:mb-16 md:mb-20"
+          className="mb-8 sm:mb-10 md:mb-12"
         >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-3 sm:p-4 md:p-6 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3 sm:mb-4">
               <div className="p-2 bg-[#252525] rounded-md">
                 <FaEnvelope className="text-red-500 text-lg sm:text-xl" />
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Get In Touch</h2>
             </div>
 
-            <p className="text-base sm:text-lg text-white mb-6 sm:mb-8">
+            <p className="text-base sm:text-lg text-white mb-4 sm:mb-6">
               Always open to connecting with peers, engineers, developers, or anyone curious about tech and cloud
               computing.
             </p>
@@ -389,24 +354,24 @@ export default function MetaPortfolio() {
         </motion.section>
 
         {/* Tech Stack Section */}
-        <motion.section
+       <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
-          className="mb-12 sm:mb-16 md:mb-20"
+          className="mb-6 sm:mb-8 md:mb-10"
         >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
-              <div className="p-2 bg-[#252525] rounded-md">
-                <FaCode className="text-red-500 text-lg sm:text-xl" />
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md p-3 sm:p-4 md:p-5 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mb-3">
+              <div className="p-1.5 bg-[#252525] rounded-md">
+                <FaCode className="text-red-500 text-base sm:text-lg" />
               </div>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Technical Skills</h2>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white">Technical Skills</h2>
             </div>
 
-            <p className="text-base sm:text-lg text-white mb-6 sm:mb-8">Technologies and tools I work with</p>
+            <p className="text-sm sm:text-base text-white mb-3 sm:mb-4">Technologies and tools I work with</p>
 
-            <div className="space-y-8 sm:space-y-12">
+            <div className="space-y-4 sm:space-y-5">
               {techStack.map((category, categoryIndex) => (
                 <motion.div
                   key={categoryIndex}
@@ -415,20 +380,18 @@ export default function MetaPortfolio() {
                   whileInView="visible"
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 pb-2 border-b border-gray-800">
+                  <h3 className="text-sm sm:text-base font-bold text-white mb-2 pb-1 border-b border-gray-800">
                     {category.category}
                   </h3>
-                  <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
                     {category.items.map((tech, techIndex) => (
                       <motion.div
                         key={techIndex}
-                        whileHover={{ x: 5 }}
-                        className="flex items-center gap-3 sm:gap-3 p-2 sm:p-3 bg-[#1e1e1e] rounded-md sm:rounded-md hover:border-red-500 transition-all duration-300"
+                        whileHover={{ x: 3 }}
+                        className="flex items-center gap-2 p-2 bg-[#1e1e1e] rounded-md hover:border-red-500 transition-all duration-300"
                       >
-                        <div className="p-2 bg-[#252525] rounded-md text-red-500 text-lg sm:text-xl flex-shrink-0">
-                          {tech.icon}
-                        </div>
-                        <span className="font-medium text-white text-sm sm:text-base">{tech.name}</span>
+                        <div className="p-1 bg-[#252525] rounded text-red-500 text-sm flex-shrink-0">{tech.icon}</div>
+                        <span className="font-medium text-white text-xs sm:text-sm truncate">{tech.name}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -444,21 +407,21 @@ export default function MetaPortfolio() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
-          className="mb-12 sm:mb-16 md:mb-20"
+          className="mb-8 sm:mb-10 md:mb-12"
         >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md md:rounded-md p-4 sm:p-6 md:p-8 shadow-xl">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md md:rounded-md p-3 sm:p-4 md:p-6 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3 sm:mb-4">
               <div className="p-2 bg-[#252525] rounded-md">
                 <FaRocket className="text-red-500 text-lg sm:text-xl" />
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Featured Projects</h2>
             </div>
 
-            <p className="text-base sm:text-lg text-white mb-6 sm:mb-8">
+            <p className="text-base sm:text-lg text-white mb-4 sm:mb-6">
               Recent work and contributions showcasing my technical expertise
             </p>
 
-            <div className="space-y-12 sm:space-y-16">
+            <div className="space-y-8 sm:space-y-10">
               {projects.map((project, index) => (
                 <motion.article
                   key={index}
@@ -466,9 +429,9 @@ export default function MetaPortfolio() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="border-b border-gray-800 pb-8 sm:pb-12 last:border-b-0"
+                  className="border-b border-gray-800 pb-6 sm:pb-8 last:border-b-0"
                 >
-                  <header className="mb-4 sm:mb-6">
+                  <header className="mb-3 sm:mb-4">
                     <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                       <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">{project.title}</h3>
                       {project.featured && (
@@ -481,7 +444,7 @@ export default function MetaPortfolio() {
                       </span>
                     </div>
 
-                    <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6">
+                    <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4">
                       {project.description}
                     </p>
 
@@ -516,13 +479,13 @@ export default function MetaPortfolio() {
                         className="inline-flex items-center justify-center gap-2 px-2 py-2 bg-[#252525] hover:bg-[#303030] text-white rounded-md sm:rounded-md transition-all duration-300 min-h-[44px] touch-manipulation text-sm sm:text-base"
                       >
                         <FaGithub />
-                        Read Blog  
+                        Read Blog
                       </motion.a>
                     </div>
                   </header>
 
                   {project.isPerformanceProject ? (
-                    <div className="space-y-6 sm:space-y-8">
+                    <div className="space-y-4 sm:space-y-6">
                       <h4 className="text-base sm:text-lg font-bold text-white border-b border-gray-800 pb-2">
                         Performance Metrics
                       </h4>
@@ -559,48 +522,7 @@ export default function MetaPortfolio() {
                       </div>
                     </div>
                   ) : (
-                    <div className="space-y-6 sm:space-y-8">
-
-                      {project.learnings && project.learnings.length > 0 && (
-                        <div>
-                          <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 border-b border-green-900/30 pb-2">
-                            Key Learnings
-                          </h4>
-                          <ul className="space-y-3">
-                            {project.learnings.map((learning, idx) => (
-                              <li key={idx} className="flex gap-2 p-2 sm:p-2 rounded-md sm:rounded-md">
-                                <span className="text-green-500 font-bold mt-1 flex-shrink-0">•</span>
-                                <span className="text-white text-sm sm:text-base">{learning}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {(project.keyFeatures) && (
-                        <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
-                          {project.keyFeatures && project.keyFeatures.length > 0 && (
-                            <div>
-                              <h4 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4 border-b border-blue-900/30 pb-2">
-                                Key Features
-                              </h4>
-                              <ul className="space-y-3">
-                                {project.keyFeatures.map((feature, idx) => (
-                                  <li
-                                    key={idx}
-                                    className="flex gap-2 p-2 sm:p-2  rounded-md sm:rounded-md"
-                                  >
-                                    <span className="text-blue-400 font-bold mt-1 flex-shrink-0">•</span>
-                                    <span className="text-white text-sm sm:text-base">{feature}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          )}
-
-                        </div>
-                      )}
-                    </div>
+                    <div className="space-y-6 sm:space-y-8"></div>
                   )}
 
                   {project.technologies && project.technologies.length > 0 && (
@@ -630,10 +552,10 @@ export default function MetaPortfolio() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
-          className="mb-12 sm:mb-16 md:mb-20"
+          className="mb-8 sm:mb-10 md:mb-12"
         >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-3 sm:p-4 md:p-6 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3 sm:mb-4">
               <div className="p-2 bg-[#252525] rounded-md">
                 <FaCertificate className="text-red-500 text-lg sm:text-xl" />
               </div>
@@ -642,7 +564,7 @@ export default function MetaPortfolio() {
               </h2>
             </div>
 
-            <p className="text-base sm:text-lg text-white mb-6 sm:mb-8">
+            <p className="text-base sm:text-lg text-white mb-4 sm:mb-6">
               AWS certifications and continuous professional development
             </p>
 
@@ -658,13 +580,13 @@ export default function MetaPortfolio() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="space-y-4 sm:space-y-6"
+              className="space-y-3 sm:space-y-4"
             >
               {certifications.map((cert, index) => (
                 <motion.div
                   key={index}
                   variants={itemFade}
-                  className="border-b border-gray-800 pb-4 sm:pb-6 last:border-b-0"
+                  className="border-b border-gray-800 pb-3 sm:pb-4 last:border-b-0"
                 >
                   <div className="flex flex-col gap-4 p-4 sm:p-6 rounded-md sm:rounded-md">
                     <div className="flex-1">
@@ -716,19 +638,19 @@ export default function MetaPortfolio() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
-          className="mb-12 sm:mb-16 md:mb-20"
+          className="mb-8 sm:mb-10 md:mb-12"
         >
-          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4 sm:mb-6">
+          <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-3 sm:p-4 md:p-6 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3 sm:mb-4">
               <div className="p-2 bg-[#252525] rounded-md">
                 <FaGraduationCap className="text-red-500 text-lg sm:text-xl" />
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Education</h2>
             </div>
 
-            <p className="text-base sm:text-lg text-white mb-6 sm:mb-8">Academic background and qualifications</p>
+            <p className="text-base sm:text-lg text-white mb-4 sm:mb-6">Academic background and qualifications</p>
 
-            <div className="space-y-6 sm:space-y-8">
+            <div className="space-y-4 sm:space-y-6">
               {education.map((edu, index) => (
                 <motion.div
                   key={index}
@@ -738,7 +660,7 @@ export default function MetaPortfolio() {
                   viewport={{ once: true }}
                   className="p-4 sm:p-6  rounded-md"
                 >
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3 sm:mb-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2 sm:mb-3">
                     <div className="flex-1">
                       <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{edu.degree}</h3>
                       <p className="text-white font-semibold text-base sm:text-lg">{edu.field}</p>
@@ -774,10 +696,10 @@ export default function MetaPortfolio() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="text-center py-8 sm:py-12 border-t border-gray-800"
+          className="text-center py-6 sm:py-8 border-t border-gray-800"
         >
           <div className="max-w-2xl mx-auto px-4">
-            <p className="text-white leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
+            <p className="text-white leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
               Want to explore my thinking process and learning journey? Check out my comprehensive{" "}
               <Link to="/blog" className="text-red-500 hover:text-red-400 font-semibold transition-colors duration-300">
                 Blogs
