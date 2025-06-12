@@ -11,10 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
-      },
-      colors: {
-        // This is optional if you use CSS variables only
+        sans: ["Ubuntu", ...defaultTheme.fontFamily.sans],
       },
     },
   },
