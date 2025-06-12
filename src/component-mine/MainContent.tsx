@@ -130,7 +130,7 @@ const MainContent = () => {
               </div>
               <div className="flex items-center space-x-2 text-gray-100 font-semibold  text-lg">
                 <FaTerminal />
-                <span>kinshuk@portfolio:~</span>
+                <span>kinshuk/profile:~</span>
                 <span className="text-green-400">{typedText}</span>
                 <span className="animate-pulse">|</span>
               </div>
