@@ -119,7 +119,7 @@ const MainContent = () => {
   return (
     <div className="min-h-screen bg-[#101010] text-gray-100 ">
       {/* Terminal Header */}
-      <div className=" mr-2 mb-2 mt-2 ml-2 rounded-2xl bg-black">
+      <div>
         <div className="max-w-4xl mx-auto px-4 py-3">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <div className="flex items-center space-x-3">

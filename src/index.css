@@ -10,16 +10,12 @@
 
 
 body {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Ubuntu", monospace;
   margin: 0;
-  font-weight: semi-bold;
   min-height: 100vh;
   background-color: #121212;
 }
 
-.kinshuk  { 
-  font-family: "Permanent Marker", cursive;
-}
 
 .personal-name {
           font-size: clamp(2.5rem, 8vw, 4rem);
