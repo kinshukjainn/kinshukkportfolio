@@ -21,7 +21,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-[#181818] mx-4 mt-2 mb-4 rounded-lg p-4 shadow-lg border border-gray-800/50">
+    <header className="bg-[#181818] select-none mx-4 mt-2 mb-4 rounded-lg p-4 shadow-lg border border-gray-800/50">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         {/* Brand Section */}
         <div className="flex items-center gap-3">

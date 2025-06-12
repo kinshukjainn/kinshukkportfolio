@@ -117,7 +117,7 @@ const MainContent = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-[#101010] text-gray-100 ">
+    <div className="min-h-screen bg-[#101010] select-none text-gray-100 ">
       {/* Terminal Header */}
       <div>
         <div className="max-w-4xl mx-auto px-4 py-3">
@@ -128,7 +128,7 @@ const MainContent = () => {
                 <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
               </div>
-              <div className="flex items-center space-x-2 text-gray-100 font-semibold  text-lg">
+              <div className="flex items-center space-x-2 text-gray-100 font-meduim  text-lg">
                 <FaTerminal />
                 <span>kinshuk/profile:~</span>
                 <span className="text-green-400">{typedText}</span>
@@ -143,11 +143,11 @@ const MainContent = () => {
         {/* Profile Header */}
         <div className="bg-gray-[#121212]  rounded-lg p-6 mb-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-xl font-bold shrink-0">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-xl font-meduim shrink-0">
               KJ
             </div>
             <div className="flex-1 min-w-0">
-              <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1">{personalInfo.name}</h1>
+              <h1 className="text-2xl sm:text-3xl font-meduim text-white mb-1">{personalInfo.name}</h1>
               <p className="text-gray-200 mb-2">{personalInfo.title}</p>
               <div className="flex items-center space-x-1 text-sm text-gray-100 mb-3">
                 <FaMapMarkerAlt />
@@ -156,7 +156,7 @@ const MainContent = () => {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={handleWhatsAppClick}
-                  className="px-3 py-2 bg-green-700 hover:bg-green-800 text-white rounded-xl text-sm transition-colors"
+                  className="px-3 py-2 bg-green-700 cursor-pointer hover:bg-green-800 text-white rounded-xl text-sm transition-colors"
                 >
                   <FaWhatsapp className="inline mr-1" />
                   WhatsApp
@@ -219,7 +219,7 @@ const MainContent = () => {
           <div className="p-4 sm:p-6">
             {activeSection === "about" && (
               <div className="space-y-4">
-                <h2 className="text-3xl p-3 font-bold text-white mb-4">About Me</h2>
+                <h2 className="text-3xl p-3 font-meduim text-white mb-4">About Me</h2>
                 <p className="text-gray-100 leading-relaxed">
                   I'm a passionate Cloud-Native Solutions Engineer with a strong focus on AWS technologies, 
                   React development, and DevOps practices. Currently pursuing my Bachelor's in Electrical Engineering 
@@ -231,7 +231,7 @@ const MainContent = () => {
                 </p>
                 
                 <div className="bg-[#212121] rounded-3xl p-4  mt-4">
-                  <h3 className="text-green-400 font-semibold mb-2">Current Status</h3>
+                  <h3 className="text-green-400 font-meduim mb-2">Current Status</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-lg">
                     <div><span className="text-yellow-200">Location:</span> <span className="text-white ml-1">{personalInfo.location}</span></div>
                     <div><span className="text-yellow-200">Status:</span> <span className="text-green-100 ml-1">Available</span></div>
@@ -244,11 +244,11 @@ const MainContent = () => {
 
             {activeSection === "projects" && (
               <div className="space-y-6">
-                <h2 className="text-3xl p-4 font-bold text-white mb-4">Featured Projects</h2>
+                <h2 className="text-3xl p-4 font-meduim text-white mb-4">Featured Projects</h2>
                 {projects.map((project, index) => (
                   <div key={index} className="bg-[#212121]  rounded-3xl p-4">
                     <div className="flex flex-wrap items-center gap-2 mb-3">
-                      <h3 className="text-lg font-semibold text-white">{project.title}</h3>
+                      <h3 className="text-lg font-meduim text-white">{project.title}</h3>
                       <span className={`px-2 py-1 text-xs font-medium rounded-full ${
                         project.status === 'LIVE' 
                           ? 'bg-yellow-200 text-black' 
@@ -272,7 +272,7 @@ const MainContent = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-yellow-200 hover:bg-yellow-700 text-black font-semibold rounded-full text-sm transition-colors"
+                      className="inline-flex items-center px-3 py-1 bg-yellow-200 hover:bg-yellow-100 text-black font-meduim rounded-full text-sm transition-colors"
                     >
                       <FaExternalLinkAlt className="mr-2" />
                       View Project
@@ -282,13 +282,13 @@ const MainContent = () => {
 
                 {/* Certifications */}
                 <div className="mt-8">
-                  <h3 className="text-3xl p-4 font-bold text-white mb-4 flex items-center">
+                  <h3 className="text-3xl p-4 font-meduim text-white mb-4 flex items-center">
                     <FaCertificate className="mr-2 text-yellow-400" />
                     Certifications
                   </h3>
                   
                   <div className="bg-black rounded-2xl p-4 mb-4">
-                    <h4 className="text-yellow-200 font-semibold mb-2">Current Focus</h4>
+                    <h4 className="text-yellow-200 font-meduim mb-2">Current Focus</h4>
                     <p className="text-gray-100 text-sm">
                       AWS Cloud Practitioner - Recent score: 679/1000 (Jan 24, 2025)
                     </p>
@@ -334,7 +334,7 @@ const MainContent = () => {
 
             {activeSection === "skills" && (
               <div className="space-y-6">
-                <h2 className="text-3xl p-4 font-bold text-white mb-4">Technical Stack</h2>
+                <h2 className="text-3xl p-4 font-meduim text-white mb-4">Technical Stack</h2>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {techStack.map((tech, index) => (
@@ -342,7 +342,7 @@ const MainContent = () => {
                       <div className="flex items-center space-x-3 mb-2">
                         <div className="text-2xl text-white p-2 ">{tech.icon}</div>
                         <div>
-                          <h3 className="font-semibold text-white text-xl">{tech.name}</h3>
+                          <h3 className="font-meduim text-white text-xl">{tech.name}</h3>
                         </div>
                       </div>
                     </div>
@@ -350,7 +350,7 @@ const MainContent = () => {
                 </div>
 
                 <div className="bg-black  rounded-3xl p-4">
-                  <h3 className="text-lg font-semibold text-white mb-3">Learning:</h3>
+                  <h3 className="text-lg font-meduim text-white mb-3">Learning:</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     I believe in continuous learning and hands-on experience. Currently focusing on deepening 
                     my AWS expertise while exploring modern DevOps practices and cloud-native architectures.
@@ -361,12 +361,12 @@ const MainContent = () => {
 
             {activeSection === "education" && (
               <div className="space-y-6">
-                <h2 className="text-xl font-bold text-white mb-4">Education & Background</h2>
+                <h2 className="text-xl font-meduim text-white mb-4">Education & Background</h2>
                 
                 <div className="bg-[#121212] rounded-3xl p-4">
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-1">Bachelor of Technology</h3>
+                      <h3 className="text-xl font-meduim text-white mb-1">Bachelor of Technology</h3>
                       <p className="text-yellow-200 font-medium mb-1">Electrical Engineering</p>
                       <p className="text-gray-100 mb-2">JSS Academy of Technical Education</p>
                       <div className="flex flex-col sm:flex-row gap-2 text-sm text-gray-200">
@@ -377,13 +377,13 @@ const MainContent = () => {
                         <div>2022 - 2026</div>
                       </div>
                     </div>
-                    <span className="px-3 py-1 bg-yellow-200 text-black text-sm rounded font-medium self-start">
-                      ONGOING
+                    <span className="px-3 py-1 bg-yellow-200 text-black text-sm rounded-xl font-medium self-start">
+                      Active
                     </span>
                   </div>
                   
                   <div className="bg-[#161616]  rounded-3xl p-4">
-                    <h4 className="text-green-400 font-semibold text-xl mb-2">Self-Directed Learning</h4>
+                    <h4 className="text-green-400 font-meduim text-xl mb-2">Self-Directed Learning</h4>
                     <p className="text-gray-300 text-lg leading-relaxed">
                       While pursuing my degree in Electrical Engineering, I've been actively self-learning 
                       cloud technologies, web development, and DevOps practices through hands-on projects 

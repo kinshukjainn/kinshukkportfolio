@@ -134,7 +134,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   }
 
   return (
-    <article className=" pb-4 hover:bg-[#212121] bg-[#181818] p-4  transition-colors duration-200 p-3 rounded-2xl">
+    <article className=" pb-4 select-none hover:bg-[#212121] bg-[#181818] p-4  transition-colors duration-200 p-3 rounded-2xl">
       <div className="flex flex-col sm:flex-row gap-3">
         {/* Cover Image - Mobile: full width, Desktop: fixed width */}
         {post.coverImage && (
@@ -248,7 +248,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
   if (!isOpen) return null
 
   return (
-    <div className="bg-[#121212] p-4 rounded-2xl-b border-t border-gray-700">
+    <div className="bg-[#121212] select-none p-4 rounded-2xl-b border-t border-gray-700">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Sort */}
         <div>
