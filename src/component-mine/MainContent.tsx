@@ -50,10 +50,10 @@ const MainContent = () => {
   }
 
   const socialLinks = [
-    { icon: <FaGithub />, label: "GitHub", url: "https://github.com/kinshukjainn" },
-    { icon: <FaLinkedin />, label: "LinkedIn", url: "https://linkedin.com/in/kinshukjainn/" },
-    { icon: <FaTwitter />, label: "Twitter", url: "https://x.com/realkinshuk04" },
-    { icon: <FaInstagram />, label: "Instagram", url: "https://instagram.com/kinshukjain._/" },
+    { icon: <FaGithub />, label: "@kinshukjainn", url: "https://github.com/kinshukjainn" },
+    { icon: <FaLinkedin />, label: "@kinshukjainn", url: "https://linkedin.com/in/kinshukjainn/" },
+    { icon: <FaTwitter />, label: "@realkinshuk004", url: "https://x.com/realkinshuk04" },
+    { icon: <FaInstagram />, label: "@kinshukjain._", url: "https://instagram.com/kinshukjain._/" },
   ]
 
   const techStack = [
@@ -183,7 +183,7 @@ const MainContent = () => {
                 className="flex items-center space-x-1 px-2 py-1 rounded-md text-gray-100 hover:underline transition-colors text-lg"
               >
                 {social.icon}
-                <span className="hidden sm:inline">@{social.label}</span>
+                <span className="hidden sm:inline">{social.label}</span>
               </a>
             ))}
           </div>
