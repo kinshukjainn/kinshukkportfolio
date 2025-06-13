@@ -124,9 +124,9 @@ const MainContent = () => {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <div className="flex items-center space-x-3">
               <div className="flex space-x-1">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <div className="w-3 h-3 rounded-md bg-red-500"></div>
+                <div className="w-3 h-3 rounded-md bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-md bg-green-500"></div>
               </div>
               <div className="flex items-center space-x-2 text-gray-100 font-meduim  text-lg">
                 <FaTerminal />
@@ -141,9 +141,9 @@ const MainContent = () => {
 
       <div className="max-w-4xl mx-auto px-4 py-6">
         {/* Profile Header */}
-        <div className="bg-gray-[#121212]  rounded-lg p-6 mb-6">
+        <div className="bg-gray-[#121212]  rounded-md p-6 mb-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-xl font-meduim shrink-0">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-md flex items-center justify-center text-xl font-meduim shrink-0">
               KJ
             </div>
             <div className="flex-1 min-w-0">
@@ -156,14 +156,14 @@ const MainContent = () => {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={handleWhatsAppClick}
-                  className="px-3 py-2 bg-green-700 cursor-pointer hover:bg-green-800 text-white rounded-xl text-sm transition-colors"
+                  className="px-3 py-2 bg-green-700 cursor-pointer hover:bg-green-800 text-white rounded-md text-sm transition-colors"
                 >
                   <FaWhatsapp className="inline mr-1" />
                   WhatsApp
                 </button>
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm transition-colors"
+                  className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm transition-colors"
                 >
                   <FaGoogle className="inline mr-1" />
                   Gmail
@@ -180,7 +180,7 @@ const MainContent = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-1 px-2 py-1 rounded-lg text-gray-100 hover:underline transition-colors text-lg"
+                className="flex items-center space-x-1 px-2 py-1 rounded-md text-gray-100 hover:underline transition-colors text-lg"
               >
                 {social.icon}
                 <span className="hidden sm:inline">@{social.label}</span>
@@ -190,15 +190,15 @@ const MainContent = () => {
         </div>
 
         {/* Navigation */}
-        <div className="flex flex-wrap gap-1 mb-6 bg-[#171717] shadow-lg shadow-black rounded-2xl p-2">
+        <div className="flex flex-wrap gap-1 mb-6 bg-[#171717] shadow-lg shadow-black rounded-md p-2">
           {menuItems.map((item) => (
             <button
               key={item.id}
               onClick={() => setActiveSection(item.id)}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-2xl text-lg transition-colors ${
+              className={`flex items-center space-x-2 px-3 py-2 rounded-md text-lg transition-colors ${
                 activeSection === item.id
-                  ? 'bg-blue-800 text-white'
-                  : 'text-gray-400 cursor-pointer hover:text-white'
+                  ? 'border-2 border-yellow-200 text-yellow-200'
+                  : 'text-gray-100 cursor-pointer hover:text-white'
               }`}
             >
               {item.icon}
@@ -208,7 +208,7 @@ const MainContent = () => {
         </div>
 
         {/* Content */}
-        <div className=" bg-[#171717] rounded-3xl shadow-lg shadow-black">
+        <div className=" bg-[#171717] rounded-md shadow-lg shadow-black">
           <div className="border-b border-gray-800 px-4 py-3">
             <div className="flex items-center space-x-2 text-gray-400 text-sm">
               <span className="text-green-400">$</span>
@@ -230,7 +230,7 @@ const MainContent = () => {
                   and cloud computing. Let's build something amazing together!
                 </p>
                 
-                <div className="bg-[#212121] rounded-3xl p-4  mt-4">
+                <div className="bg-[#212121] rounded-md p-4  mt-4">
                   <h3 className="text-green-400 font-meduim mb-2">Current Status</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-lg">
                     <div><span className="text-yellow-200">Location:</span> <span className="text-white ml-1">{personalInfo.location}</span></div>
@@ -246,10 +246,10 @@ const MainContent = () => {
               <div className="space-y-6">
                 <h2 className="text-3xl p-4 font-meduim text-white mb-4">Featured Projects</h2>
                 {projects.map((project, index) => (
-                  <div key={index} className="bg-[#212121]  rounded-3xl p-4">
+                  <div key={index} className="bg-[#212121]  rounded-md p-4">
                     <div className="flex flex-wrap items-center gap-2 mb-3">
                       <h3 className="text-lg font-meduim text-white">{project.title}</h3>
-                      <span className={`px-2 py-1 text-xs font-medium rounded-full ${
+                      <span className={`px-2 py-1 text-xs font-medium rounded-md ${
                         project.status === 'LIVE' 
                           ? 'bg-yellow-200 text-black' 
                           : 'bg-yellow-500 text-black'
@@ -262,7 +262,7 @@ const MainContent = () => {
                     
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tech.map((tech, techIndex) => (
-                        <span key={techIndex} className="px-2 py-1 bg-gray-700 text-white text-xs rounded-lg">
+                        <span key={techIndex} className="px-2 py-1 bg-gray-700 text-white text-xs rounded-md">
                           {tech}
                         </span>
                       ))}
@@ -272,7 +272,7 @@ const MainContent = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-3 py-1 bg-yellow-200 hover:bg-yellow-100 text-black font-meduim rounded-full text-sm transition-colors"
+                      className="inline-flex items-center px-3 py-1 bg-yellow-200 hover:bg-yellow-100 text-black font-meduim rounded-md text-sm transition-colors"
                     >
                       <FaExternalLinkAlt className="mr-2" />
                       View Project
@@ -287,7 +287,7 @@ const MainContent = () => {
                     Certifications
                   </h3>
                   
-                  <div className="bg-black rounded-2xl p-4 mb-4">
+                  <div className="bg-black rounded-md p-4 mb-4">
                     <h4 className="text-yellow-200 font-meduim mb-2">Current Focus</h4>
                     <p className="text-gray-100 text-sm">
                       AWS Cloud Practitioner - Recent score: 679/1000 (Jan 24, 2025)
@@ -296,7 +296,7 @@ const MainContent = () => {
 
                   <div className="space-y-3">
                     {certifications.map((cert, index) => (
-                      <div key={index} className="bg-[#212121] border border-gray-700 rounded-3xl p-6">
+                      <div key={index} className="bg-[#212121] border border-gray-700 rounded-md p-6">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                           <div>
                             <h4 className="text-white font-medium">{cert.title}</h4>
@@ -338,7 +338,7 @@ const MainContent = () => {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {techStack.map((tech, index) => (
-                    <div key={index} className="bg-[#222222] rounded-4xl p-4">
+                    <div key={index} className="bg-[#222222] rounded-md p-4">
                       <div className="flex items-center space-x-3 mb-2">
                         <div className="text-2xl text-white p-2 ">{tech.icon}</div>
                         <div>
@@ -349,7 +349,7 @@ const MainContent = () => {
                   ))}
                 </div>
 
-                <div className="bg-black  rounded-3xl p-4">
+                <div className="bg-black  rounded-md p-4">
                   <h3 className="text-lg font-meduim text-white mb-3">Learning:</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">
                     I believe in continuous learning and hands-on experience. Currently focusing on deepening 
@@ -363,7 +363,7 @@ const MainContent = () => {
               <div className="space-y-6">
                 <h2 className="text-xl font-meduim text-white mb-4">Education & Background</h2>
                 
-                <div className="bg-[#121212] rounded-3xl p-4">
+                <div className="bg-[#121212] rounded-md p-4">
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
                     <div>
                       <h3 className="text-xl font-meduim text-white mb-1">Bachelor of Technology</h3>
@@ -377,12 +377,12 @@ const MainContent = () => {
                         <div>2022 - 2026</div>
                       </div>
                     </div>
-                    <span className="px-3 py-1 bg-yellow-200 text-black text-sm rounded-xl font-medium self-start">
+                    <span className="px-3 py-1 bg-yellow-200 text-black text-sm rounded-md font-medium self-start">
                       Active
                     </span>
                   </div>
                   
-                  <div className="bg-[#161616]  rounded-3xl p-4">
+                  <div className="bg-[#161616]  rounded-md p-4">
                     <h4 className="text-green-400 font-meduim text-xl mb-2">Self-Directed Learning</h4>
                     <p className="text-gray-300 text-lg leading-relaxed">
                       While pursuing my degree in Electrical Engineering, I've been actively self-learning 

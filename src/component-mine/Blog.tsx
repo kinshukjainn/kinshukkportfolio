@@ -134,7 +134,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   }
 
   return (
-    <article className=" pb-4 select-none hover:bg-[#212121] bg-[#181818] p-4  transition-colors duration-200 p-3 rounded-2xl">
+    <article className=" pb-4 select-none hover:bg-[#212121] bg-[#181818] p-4  transition-colors duration-200 p-3 rounded-md">
       <div className="flex flex-col sm:flex-row gap-3">
         {/* Cover Image - Mobile: full width, Desktop: fixed width */}
         {post.coverImage && (
@@ -142,7 +142,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
             <img
               src={post.coverImage.url || "/placeholder.svg"}
               alt={post.title}
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-full h-full object-cover rounded-md"
               loading="lazy"
             />
           </div>
@@ -189,7 +189,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
             {/* Tags */}
             <div className="flex flex-wrap gap-1">
               {post.tags.slice(0, 3).map((tag) => (
-                <span key={tag.id} className="text-xs bg-[#181818] text-gray-300 px-2 py-0.5 rounded-2xl">
+                <span key={tag.id} className="text-xs bg-[#181818] text-gray-300 px-2 py-0.5 rounded-md">
                   {tag.name}
                 </span>
               ))}
@@ -201,7 +201,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
               href={`https://blog.cloudkinshuk.in/${post.slug}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-lg bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-3xl transition-colors self-start sm:self-auto"
+              className="inline-flex items-center gap-1 text-lg bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors self-start sm:self-auto"
             >
               Read
               <FaExternalLinkAlt />
@@ -248,7 +248,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
   if (!isOpen) return null
 
   return (
-    <div className="bg-[#121212] select-none p-4 rounded-2xl-b border-t border-gray-700">
+    <div className="bg-[#121212] select-none p-4 rounded-md-b border-t border-gray-700">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Sort */}
         <div>
@@ -256,7 +256,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
           <select
             value={filters.sortBy}
             onChange={(e) => setFilters((prev) => ({ ...prev, sortBy: e.target.value as "publishedAt" | "views" | "reactions" | "title" }))}
-            className="w-full p-2 text-sm bg-black border border-gray-600 rounded-2xl text-white focus:border-blue-500 focus:outline-none"
+            className="w-full p-2 text-sm bg-black border border-gray-600 rounded-md text-white focus:border-blue-500 focus:outline-none"
             aria-label="Sort posts by"
           >
             <option value="publishedAt">Date</option>
@@ -276,7 +276,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
               onChange={(e) =>
                 setFilters((prev) => ({ ...prev, dateRange: { ...prev.dateRange, start: e.target.value } }))
               }
-              className="w-full p-1 text-xs bg-black border border-gray-600 rounded-2xl text-white focus:border-blue-500 focus:outline-none"
+              className="w-full p-1 text-xs bg-black border border-gray-600 rounded-md text-white focus:border-blue-500 focus:outline-none"
               placeholder="Start date"
               title="Start date"
               aria-label="Start date"
@@ -287,7 +287,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
               onChange={(e) =>
                 setFilters((prev) => ({ ...prev, dateRange: { ...prev.dateRange, end: e.target.value } }))
               }
-              className="w-full p-1 text-xs bg-black border border-gray-600 rounded-2xl text-white focus:border-blue-500 focus:outline-none"
+              className="w-full p-1 text-xs bg-black border border-gray-600 rounded-md text-white focus:border-blue-500 focus:outline-none"
               placeholder="End date"
               title="End date"
               aria-label="End date"
@@ -335,7 +335,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
                 <button
                   key={tag}
                   onClick={() => handleTagToggle(tag)}
-                  className={`text-xs px-2 py-0.5 rounded-2xl transition-colors ${
+                  className={`text-xs px-2 py-0.5 rounded-md transition-colors ${
                     filters.tags.includes(tag)
                       ? "bg-gray-900 text-white"
                       : "bg-black text-gray-300 hover:bg-gray-600"
@@ -500,14 +500,14 @@ const BlogPageContent: React.FC = () => {
                 placeholder="Search thoughts, opinions, views , insights"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 bg-[#181818] border border-gray-600 rounded-2xl text-white placeholder-gray-300 text-lg"
+                className="w-full pl-9 pr-4 py-2 bg-[#181818] border border-gray-600 rounded-md text-white placeholder-gray-300 text-lg"
               />
             </div>
 
             {/* Filter Toggle */}
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-1 px-3 py-2 bg-[#181818]  border border-gray-600 rounded-2xl hover:border-blue-500 transition-colors text-sm"
+              className="flex items-center gap-1 px-3 py-2 bg-[#181818]  border border-gray-600 rounded-md hover:border-blue-500 transition-colors text-sm"
             >
               <FaFilter />
               {showFilters ? <FaChevronUp /> : <FaChevronDown />}
@@ -516,7 +516,7 @@ const BlogPageContent: React.FC = () => {
             {/* Sort Toggle */}
             <button
               onClick={() => setFilters((prev) => ({ ...prev, sortOrder: prev.sortOrder === "asc" ? "desc" : "asc" }))}
-              className="flex items-center gap-1 px-3 py-2 bg-[#181818]  border border-gray-600 rounded-2xl hover:border-blue-500 transition-colors text-sm"
+              className="flex items-center gap-1 px-3 py-2 bg-[#181818]  border border-gray-600 rounded-md hover:border-blue-500 transition-colors text-sm"
             >
               <FaSort />
               {filters.sortOrder === "asc" ? "↑" : "↓"}

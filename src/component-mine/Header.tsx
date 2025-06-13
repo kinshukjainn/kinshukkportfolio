@@ -64,8 +64,8 @@ const Header = () => {
 
         {/* Navigation */}
         <nav className="flex items-center justify-center sm:justify-end">
-          <div className="flex items-center gap-1 sm:gap-2  p-1">
-            <NavLink to="/blog" isActive={isActiveRoute("/blog")} label="blogs" />
+          <div className="flex  items-center gap-1 sm:gap-2  p-1">
+            <NavLink  to="/blog" isActive={isActiveRoute("/blog")} label="Blogs" />
             <NavLink to="/aboutme" isActive={isActiveRoute("/aboutme")} label="About Me" />
           </div>
         </nav>
@@ -88,17 +88,16 @@ const NavLink = ({ to, isActive, label }: NavLinkProps) => {
       to={to}
       className={`
         relative px-4 py-2 rounded-md text-xl font-medium transition-all duration-300 ease-out
-        focus:outline-none focus:ring-2 focus:ring-red-500/50 focus:ring-offset-2 focus:ring-offset-gray-900
         ${
           isActive
-            ? "bg-red-600 text-white shadow-lg shadow-red-600/25 transform scale-105"
+            ? " text-yellow-200 font-bold transform scale-105"
             : "text-gray-300 hover:text-white  hover:scale-105"
         }
       `}
       aria-current={isActive ? "page" : undefined}
     >
       <span className="relative z-10">{label}</span>
-      {isActive && <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-500 rounded-md opacity-90" />}
+      {isActive && <div className="absolute inset-0 opacity-90" />}
     </Link>
   )
 }
