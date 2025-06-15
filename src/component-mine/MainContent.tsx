@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Github, Mail, MessageCircle, ExternalLink, MapPin, Linkedin } from "lucide-react"
 import { useState, useEffect } from "react"
 
-export default function Portfolio() {
+export default function MainContent() {
   const [typedText, setTypedText] = useState("")
   const fullText = "$ whoami"
 

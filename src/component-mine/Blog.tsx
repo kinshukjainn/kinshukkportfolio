@@ -58,10 +58,6 @@ interface FilterOptions {
   maxReadTime: number
 }
 
-interface BlogPageProps {
-  onBack: () => void
-}
-
 // API
 const HASHNODE_API_URL = "https://gql.hashnode.com/"
 
@@ -166,9 +162,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           </h3>
 
           {/* Brief */}
-          <p className="text-sm sm:text-base lg:text-lg text-gray-300 leading-relaxed line-clamp-3">
-            {post.brief}
-          </p>
+          <p className="text-sm sm:text-base lg:text-lg text-gray-300 leading-relaxed line-clamp-3">{post.brief}</p>
 
           {/* Meta Info */}
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400">
@@ -278,7 +272,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-300">Sort By</label>
           <select
-          title="sorting"
+            title="sorting"
             value={filters.sortBy}
             onChange={(e) =>
               setFilters((prev) => ({
@@ -300,7 +294,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
           <label className="block text-sm font-medium text-gray-300">Date Range</label>
           <div className="space-y-2">
             <input
-            title="labels"
+              title="start-date"
               type="date"
               value={filters.dateRange.start}
               onChange={(e) =>
@@ -309,7 +303,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
               className="w-full p-3 text-sm bg-[#121212] border-2 border-gray-700 rounded-xl text-white focus:border-[#ff9100] focus:outline-none transition-colors duration-300"
             />
             <input
-            title="dates"
+              title="end-date"
               type="date"
               value={filters.dateRange.end}
               onChange={(e) =>
@@ -327,7 +321,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
           </label>
           <div className="space-y-3">
             <input
-            title="range"
+              title="min-read-time"
               type="range"
               min="0"
               max="60"
@@ -336,7 +330,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
               className="w-full accent-[#ff9100]"
             />
             <input
-            title="time"
+              title="max-read-time"
               type="range"
               min="0"
               max="60"
@@ -349,9 +343,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
 
         {/* Tags */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-300">
-            Tags ({filters.tags.length} selected)
-          </label>
+          <label className="block text-sm font-medium text-gray-300">Tags ({filters.tags.length} selected)</label>
           <div className="max-h-32 overflow-y-auto">
             <div className="flex flex-wrap gap-2">
               {availableTags.slice(0, 12).map((tag) => (
@@ -392,7 +384,7 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
 }
 
 // Main Blog Component
-const BlogPageContent: React.FC<BlogPageProps> = () => {
+const BlogPageContent: React.FC = () => {
   const [filters, setFilters] = useState<FilterOptions>({
     searchTerm: "",
     sortBy: "publishedAt",
@@ -476,7 +468,9 @@ const BlogPageContent: React.FC<BlogPageProps> = () => {
         }
 
         if (typeof aValue === "string") {
-          return filters.sortOrder === "asc" ? aValue.localeCompare(String(bValue)) : String(bValue).localeCompare(aValue)
+          return filters.sortOrder === "asc"
+            ? aValue.localeCompare(String(bValue))
+            : String(bValue).localeCompare(aValue)
         }
         return filters.sortOrder === "asc" ? Number(aValue) - Number(bValue) : Number(bValue) - Number(aValue)
       })
@@ -495,7 +489,9 @@ const BlogPageContent: React.FC<BlogPageProps> = () => {
         <div className="text-center">
           <FaExclamationTriangle className="text-red-500 text-6xl mx-auto mb-6" />
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Failed to Load Blog Posts</h2>
-          <p className="text-gray-400 text-lg mb-6">{error instanceof Error ? error.message : "Unknown error occurred"}</p>
+          <p className="text-gray-400 text-lg mb-6">
+            {error instanceof Error ? error.message : "Unknown error occurred"}
+          </p>
         </div>
       </div>
     )
@@ -510,12 +506,11 @@ const BlogPageContent: React.FC<BlogPageProps> = () => {
         transition={{ duration: 0.6 }}
         className="bg-[#0d0d0d] border-b border-gray-800"
       >
-        <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          
-          <h1 className="personal-name p-4 mb-6">Blog</h1>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">Blog</h1>
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-4xl">
-            My thoughts on cloud computing, DevOps practices, React development, and technical insights. 
-            Also includes some non-technical perspectives and experiences from my journey.
+            My thoughts on cloud computing, DevOps practices, React development, and technical insights. Also includes
+            some non-technical perspectives and experiences from my journey.
           </p>
         </div>
       </motion.header>
@@ -544,11 +539,17 @@ const BlogPageContent: React.FC<BlogPageProps> = () => {
               >
                 <FaFilter className="text-[#ff9100]" />
                 Filters
-                {showFilters ? <FaChevronUp className="text-[#ff9100]" /> : <FaChevronDown className="text-[#ff9100]" />}
+                {showFilters ? (
+                  <FaChevronUp className="text-[#ff9100]" />
+                ) : (
+                  <FaChevronDown className="text-[#ff9100]" />
+                )}
               </button>
 
               <button
-                onClick={() => setFilters((prev) => ({ ...prev, sortOrder: prev.sortOrder === "asc" ? "desc" : "asc" }))}
+                onClick={() =>
+                  setFilters((prev) => ({ ...prev, sortOrder: prev.sortOrder === "asc" ? "desc" : "asc" }))
+                }
                 className="flex items-center gap-2 px-6 py-4 bg-[#171717] border-2 border-gray-700 rounded-2xl hover:border-[#ff9100] transition-all duration-300 text-lg"
               >
                 <FaSort className="text-[#ff9100]" />
@@ -640,12 +641,12 @@ const queryClient = new QueryClient({
   },
 })
 
-const BlogPage: React.FC<BlogPageProps> = ({ onBack }) => {
+const Blog: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <BlogPageContent onBack={onBack} />
+      <BlogPageContent />
     </QueryClientProvider>
   )
 }
 
-export default BlogPage
+export default Blog
