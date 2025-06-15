@@ -3,6 +3,7 @@
 import type React from "react"
 import { useState, useMemo, useCallback, useEffect } from "react"
 import { useQuery, QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { motion } from "framer-motion"
 import {
   FaSearch,
   FaFilter,
@@ -55,6 +56,10 @@ interface FilterOptions {
   }
   minReadTime: number
   maxReadTime: number
+}
+
+interface BlogPageProps {
+  onBack: () => void
 }
 
 // API
@@ -119,7 +124,7 @@ const fetchBlogPosts = async (): Promise<BlogPost[]> => {
   return data.data.publication.posts.edges.map((edge: Edge) => edge.node)
 }
 
-// Compact Blog Card
+// Professional Blog Card matching landing page design
 interface BlogCardProps {
   post: BlogPost
 }
@@ -134,66 +139,80 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   }
 
   return (
-    <article className=" pb-4 select-none hover:bg-[#212121] bg-[#181818] p-4  transition-colors duration-200 p-3 rounded-md">
-      <div className="flex flex-col sm:flex-row gap-3">
-        {/* Cover Image - Mobile: full width, Desktop: fixed width */}
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="bg-[#171717] rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:shadow-lg hover:shadow-black/20"
+    >
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Cover Image */}
         {post.coverImage && (
-          <div className="w-full sm:w-24 h-16 sm:h-16 flex-shrink-0">
+          <div className="w-full lg:w-48 h-32 lg:h-32 flex-shrink-0">
             <img
               src={post.coverImage.url || "/placeholder.svg"}
               alt={post.title}
-              className="w-full h-full object-cover rounded-md"
+              className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
               loading="lazy"
             />
           </div>
         )}
 
         {/* Content */}
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 space-y-4">
           {/* Title */}
-          <h3 className="text-base sm:text-lg font-semibold text-white mb-1 line-clamp-2 hover:text-blue-400 transition-colors">
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-tight hover:text-[#ff9100] transition-colors duration-300 cursor-pointer">
             {post.title}
           </h3>
 
           {/* Brief */}
-          <p className="text-sm text-gray-400 mb-2 line-clamp-2">{post.brief}</p>
+          <p className="text-sm sm:text-base lg:text-lg text-gray-300 leading-relaxed line-clamp-3">
+            {post.brief}
+          </p>
 
           {/* Meta Info */}
-          <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mb-2">
-            <span className="flex items-center gap-1">
-              <FaCalendarAlt />
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400">
+            <span className="flex items-center gap-2">
+              <FaCalendarAlt className="text-[#ff9100]" />
               {formatDate(post.publishedAt)}
             </span>
             {post.readTimeInMinutes && (
-              <span className="flex items-center gap-1">
-                <FaClock />
-                {post.readTimeInMinutes}m
+              <span className="flex items-center gap-2">
+                <FaClock className="text-[#ff9100]" />
+                {post.readTimeInMinutes}m read
               </span>
             )}
             {post.views && (
-              <span className="flex items-center gap-1">
-                <FaEye />
-                {post.views.toLocaleString()}
+              <span className="flex items-center gap-2">
+                <FaEye className="text-[#ff9100]" />
+                {post.views.toLocaleString()} views
               </span>
             )}
             {post.reactionCount && post.reactionCount > 0 && (
-              <span className="flex items-center gap-1">
-                <FaHeart />
-                {post.reactionCount}
+              <span className="flex items-center gap-2">
+                <FaHeart className="text-[#ff9100]" />
+                {post.reactionCount} reactions
               </span>
             )}
           </div>
 
           {/* Tags and Action */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             {/* Tags */}
-            <div className="flex flex-wrap gap-1">
-              {post.tags.slice(0, 3).map((tag) => (
-                <span key={tag.id} className="text-xs bg-[#181818] text-gray-300 px-2 py-0.5 rounded-md">
+            <div className="flex flex-wrap gap-2">
+              {post.tags.slice(0, 4).map((tag) => (
+                <span
+                  key={tag.id}
+                  className="px-3 py-1 text-xs sm:text-sm bg-[#ff9100] text-black font-semibold rounded-xl"
+                >
                   {tag.name}
                 </span>
               ))}
-              {post.tags.length > 3 && <span className="text-xs text-gray-500">+{post.tags.length - 3}</span>}
+              {post.tags.length > 4 && (
+                <span className="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-xl">
+                  +{post.tags.length - 4} more
+                </span>
+              )}
             </div>
 
             {/* Read Button */}
@@ -201,19 +220,19 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
               href={`https://blog.cloudkinshuk.in/${post.slug}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-lg bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors self-start sm:self-auto"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-[#ff9100] text-black font-semibold rounded-full hover:bg-[#ff9100]/90 hover:scale-105 active:scale-95 transition-all duration-300 text-sm sm:text-base w-fit"
             >
-              Read
-              <FaExternalLinkAlt />
+              Read Article
+              <FaExternalLinkAlt className="w-4 h-4" />
             </a>
           </div>
         </div>
       </div>
-    </article>
+    </motion.article>
   )
 }
 
-// Advanced Filters
+// Advanced Filters matching landing page design
 interface FiltersProps {
   filters: FilterOptions
   setFilters: React.Dispatch<React.SetStateAction<FilterOptions>>
@@ -248,18 +267,28 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
   if (!isOpen) return null
 
   return (
-    <div className="bg-[#121212] select-none p-4 rounded-md-b border-t border-gray-700">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      className="bg-[#171717] border border-gray-800 rounded-2xl p-6 sm:p-8 mt-4"
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Sort */}
-        <div>
-          <label className="block text-xs font-medium text-gray-300 mb-1">Sort By</label>
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-300">Sort By</label>
           <select
+          title="sorting"
             value={filters.sortBy}
-            onChange={(e) => setFilters((prev) => ({ ...prev, sortBy: e.target.value as "publishedAt" | "views" | "reactions" | "title" }))}
-            className="w-full p-2 text-sm bg-black border border-gray-600 rounded-md text-white focus:border-blue-500 focus:outline-none"
-            aria-label="Sort posts by"
+            onChange={(e) =>
+              setFilters((prev) => ({
+                ...prev,
+                sortBy: e.target.value as "publishedAt" | "views" | "reactions" | "title",
+              }))
+            }
+            className="w-full p-3 text-sm bg-[#121212] border-2 border-gray-700 rounded-xl text-white focus:border-[#ff9100] focus:outline-none transition-colors duration-300"
           >
-            <option value="publishedAt">Date</option>
+            <option value="publishedAt">Date Published</option>
             <option value="title">Title</option>
             <option value="views">Views</option>
             <option value="reactions">Reactions</option>
@@ -267,78 +296,72 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
         </div>
 
         {/* Date Range */}
-        <div>
-          <label className="block text-xs font-medium text-gray-300 mb-1">Date Range</label>
-          <div className="space-y-1">
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-300">Date Range</label>
+          <div className="space-y-2">
             <input
+            title="labels"
               type="date"
               value={filters.dateRange.start}
               onChange={(e) =>
                 setFilters((prev) => ({ ...prev, dateRange: { ...prev.dateRange, start: e.target.value } }))
               }
-              className="w-full p-1 text-xs bg-black border border-gray-600 rounded-md text-white focus:border-blue-500 focus:outline-none"
-              placeholder="Start date"
-              title="Start date"
-              aria-label="Start date"
+              className="w-full p-3 text-sm bg-[#121212] border-2 border-gray-700 rounded-xl text-white focus:border-[#ff9100] focus:outline-none transition-colors duration-300"
             />
             <input
+            title="dates"
               type="date"
               value={filters.dateRange.end}
               onChange={(e) =>
                 setFilters((prev) => ({ ...prev, dateRange: { ...prev.dateRange, end: e.target.value } }))
               }
-              className="w-full p-1 text-xs bg-black border border-gray-600 rounded-md text-white focus:border-blue-500 focus:outline-none"
-              placeholder="End date"
-              title="End date"
-              aria-label="End date"
+              className="w-full p-3 text-sm bg-[#121212] border-2 border-gray-700 rounded-xl text-white focus:border-[#ff9100] focus:outline-none transition-colors duration-300"
             />
           </div>
         </div>
 
         {/* Read Time */}
-        <div>
-          <label className="block text-xs font-medium text-gray-300 mb-1">
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-300">
             Read Time: {filters.minReadTime}-{filters.maxReadTime}m
           </label>
-          <div className="space-y-1">
+          <div className="space-y-3">
             <input
+            title="range"
               type="range"
               min="0"
               max="60"
               value={filters.minReadTime}
               onChange={(e) => setFilters((prev) => ({ ...prev, minReadTime: Number(e.target.value) }))}
-              className="w-full"
-              title="Minimum read time in minutes"
-              placeholder="Select minimum read time"
-              aria-label="Minimum read time in minutes"
+              className="w-full accent-[#ff9100]"
             />
             <input
+            title="time"
               type="range"
               min="0"
               max="60"
               value={filters.maxReadTime}
               onChange={(e) => setFilters((prev) => ({ ...prev, maxReadTime: Number(e.target.value) }))}
-              className="w-full"
-              title="Maximum read time in minutes"
-              placeholder="Select maximum read time"
-              aria-label="Maximum read time in minutes"
+              className="w-full accent-[#ff9100]"
             />
           </div>
         </div>
 
         {/* Tags */}
-        <div>
-          <label className="block text-xs font-medium text-gray-300 mb-1">Tags ({filters.tags.length})</label>
-          <div className="max-h-20 overflow-y-auto">
-            <div className="flex flex-wrap gap-1">
-              {availableTags.slice(0, 10).map((tag) => (
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-300">
+            Tags ({filters.tags.length} selected)
+          </label>
+          <div className="max-h-32 overflow-y-auto">
+            <div className="flex flex-wrap gap-2">
+              {availableTags.slice(0, 12).map((tag) => (
                 <button
                   key={tag}
                   onClick={() => handleTagToggle(tag)}
-                  className={`text-xs px-2 py-0.5 rounded-md transition-colors ${
+                  className={`px-3 py-1 text-xs rounded-xl transition-all duration-300 ${
                     filters.tags.includes(tag)
-                      ? "bg-gray-900 text-white"
-                      : "bg-black text-gray-300 hover:bg-gray-600"
+                      ? "bg-[#ff9100] text-black font-semibold"
+                      : "bg-[#121212] text-gray-300 hover:bg-gray-700 border border-gray-600"
                   }`}
                 >
                   {tag}
@@ -349,27 +372,27 @@ const AdvancedFilters: React.FC<FiltersProps> = ({ filters, setFilters, availabl
         </div>
       </div>
 
-      <div className="flex justify-between items-center mt-4 pt-3 border-t border-gray-700">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mt-6 pt-6 border-t border-gray-700">
         <button
           onClick={clearFilters}
-          className="flex items-center gap-1 text-xs text-gray-400 hover:text-white transition-colors"
+          className="flex items-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-white border border-gray-600 rounded-xl hover:border-gray-500 transition-all duration-300"
         >
           <FaTimes />
-          Clear
+          Clear Filters
         </button>
         <button
           onClick={() => setIsOpen(false)}
-          className="text-xs text-blue-400 hover:text-blue-300 transition-colors"
+          className="px-4 py-2 text-sm bg-[#ff9100] text-black font-semibold rounded-xl hover:bg-[#ff9100]/90 transition-all duration-300"
         >
           Close Filters
         </button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
-// Main Component
-const BlogPageContent: React.FC = () => {
+// Main Blog Component
+const BlogPageContent: React.FC<BlogPageProps> = () => {
   const [filters, setFilters] = useState<FilterOptions>({
     searchTerm: "",
     sortBy: "publishedAt",
@@ -386,7 +409,7 @@ const BlogPageContent: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setFilters((prev) => ({ ...prev, searchTerm: searchInput }))
-    }, 150)
+    }, 300)
     return () => clearTimeout(timer)
   }, [searchInput])
 
@@ -468,94 +491,119 @@ const BlogPageContent: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#121212] flex items-center justify-center p-4">
         <div className="text-center">
-          <FaExclamationTriangle className="text-red-500 text-4xl mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-white mb-2">Failed to Load</h2>
-          <p className="text-gray-400 text-sm">{error instanceof Error ? error.message : "Unknown error"}</p>
+          <FaExclamationTriangle className="text-red-500 text-6xl mx-auto mb-6" />
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Failed to Load Blog Posts</h2>
+          <p className="text-gray-400 text-lg mb-6">{error instanceof Error ? error.message : "Unknown error occurred"}</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white pt-6">
+    <div className="min-h-screen pt-12 bg-[#121212] text-white">
       {/* Header */}
-      <header className="bg-[#121212]">
-        <div className="max-w-4xl mx-auto px-3 py-4">
-          <h1 className="text-3xl md:text-4xl personal-name p-4 font-bold text-white mb-2">Blogs </h1>
-          <p className="text-xl text-gray-100">My thoughts on cloud, DevOps, React, and technical insights , and also some non-technical stuff included in this blog.</p>
+      <motion.header
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="bg-[#0d0d0d] border-b border-gray-800"
+      >
+        <div className="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          
+          <h1 className="personal-name p-4 mb-6">Blog</h1>
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-4xl">
+            My thoughts on cloud computing, DevOps practices, React development, and technical insights. 
+            Also includes some non-technical perspectives and experiences from my journey.
+          </p>
         </div>
-      </header>
+      </motion.header>
 
       {/* Search & Filters */}
-      <div className="sticky top-0 z-10 bg-[#121212] ">
-        <div className="max-w-4xl mx-auto px-3 py-3">
-          <div className="flex gap-2">
+      <div className="sticky top-0 z-10 bg-[#121212]/95 backdrop-blur-md border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-col sm:flex-row gap-4">
             {/* Search */}
             <div className="relative flex-1">
-              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
+              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#ff9100] text-lg" />
               <input
                 type="text"
-                placeholder="Search thoughts, opinions, views , insights"
+                placeholder="Search articles, insights, and thoughts..."
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 bg-[#181818] border border-gray-600 rounded-md text-white placeholder-gray-300 text-lg"
+                className="w-full pl-12 pr-6 py-4 bg-[#171717] border-2 border-gray-700 rounded-2xl text-white placeholder-gray-400 text-lg focus:border-[#ff9100] focus:outline-none transition-all duration-300"
               />
             </div>
 
-            {/* Filter Toggle */}
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center gap-1 px-3 py-2 bg-[#181818]  border border-gray-600 rounded-md hover:border-blue-500 transition-colors text-sm"
-            >
-              <FaFilter />
-              {showFilters ? <FaChevronUp /> : <FaChevronDown />}
-            </button>
+            {/* Filter Controls */}
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className="flex items-center gap-2 px-6 py-4 bg-[#171717] border-2 border-gray-700 rounded-2xl hover:border-[#ff9100] transition-all duration-300 text-lg"
+              >
+                <FaFilter className="text-[#ff9100]" />
+                Filters
+                {showFilters ? <FaChevronUp className="text-[#ff9100]" /> : <FaChevronDown className="text-[#ff9100]" />}
+              </button>
 
-            {/* Sort Toggle */}
-            <button
-              onClick={() => setFilters((prev) => ({ ...prev, sortOrder: prev.sortOrder === "asc" ? "desc" : "asc" }))}
-              className="flex items-center gap-1 px-3 py-2 bg-[#181818]  border border-gray-600 rounded-md hover:border-blue-500 transition-colors text-sm"
-            >
-              <FaSort />
-              {filters.sortOrder === "asc" ? "↑" : "↓"}
-            </button>
+              <button
+                onClick={() => setFilters((prev) => ({ ...prev, sortOrder: prev.sortOrder === "asc" ? "desc" : "asc" }))}
+                className="flex items-center gap-2 px-6 py-4 bg-[#171717] border-2 border-gray-700 rounded-2xl hover:border-[#ff9100] transition-all duration-300 text-lg"
+              >
+                <FaSort className="text-[#ff9100]" />
+                {filters.sortOrder === "desc" ? "Newest" : "Oldest"}
+              </button>
+            </div>
           </div>
 
           {/* Results Count */}
           {posts && (
-            <div className="mt-2 text-xs text-gray-400">
-              {filteredPosts.length} of {posts.length} posts
+            <div className="mt-4 text-sm text-gray-400">
+              Showing {filteredPosts.length} of {posts.length} articles
               {filters.tags.length > 0 && ` • ${filters.tags.length} tag${filters.tags.length > 1 ? "s" : ""} selected`}
             </div>
           )}
-        </div>
 
-        <AdvancedFilters
-          filters={filters}
-          setFilters={setFilters}
-          availableTags={allTags}
-          isOpen={showFilters}
-          setIsOpen={setShowFilters}
-        />
+          <AdvancedFilters
+            filters={filters}
+            setFilters={setFilters}
+            availableTags={allTags}
+            isOpen={showFilters}
+            setIsOpen={setShowFilters}
+          />
+        </div>
       </div>
 
       {/* Content */}
-      <main className="max-w-4xl mx-auto px-3 py-4">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {isLoading ? (
-          <div className="flex items-center justify-center py-12">
-            <FaSpinner className="animate-spin text-blue-500 text-2xl mr-3" />
-            <span className="text-gray-400">Loading posts...</span>
+          <div className="flex items-center justify-center py-20">
+            <FaSpinner className="animate-spin text-[#ff9100] text-4xl mr-4" />
+            <span className="text-xl text-gray-300">Loading articles...</span>
           </div>
         ) : filteredPosts.length === 0 ? (
-          <div className="text-center py-12">
-            <FaSearch className="text-gray-600 text-4xl mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-white mb-2">No posts found</h3>
-            <p className="text-gray-400 text-sm">Try adjusting your search or filters</p>
+          <div className="text-center py-20">
+            <FaSearch className="text-[#ff9100] text-6xl mx-auto mb-6" />
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">No articles found</h3>
+            <p className="text-lg text-gray-300 mb-8">Try adjusting your search terms or filters</p>
+            <button
+              onClick={() => {
+                setSearchInput("")
+                setFilters((prev) => ({
+                  ...prev,
+                  searchTerm: "",
+                  tags: [],
+                  dateRange: { start: "", end: "" },
+                }))
+              }}
+              className="px-6 py-3 bg-[#ff9100] text-black font-semibold rounded-full hover:bg-[#ff9100]/90 transition-all duration-300"
+            >
+              Clear All Filters
+            </button>
           </div>
         ) : (
-          <div className="space-y-1">
+          <div className="space-y-8 sm:space-y-12">
             {filteredPosts.map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
@@ -564,14 +612,14 @@ const BlogPageContent: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-800 py-6 mt-8">
-        <div className="max-w-4xl mx-auto px-3 text-center">
-          <p className="text-gray-400 text-sm mb-2">© 2025 Cloud Kinshuk. All rights reserved.</p>
+      <footer className="border-t border-gray-800 py-12 mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-400 text-lg mb-4">© 2025 Kinshuk Jain. Available for opportunities.</p>
           <a
             href="https://blog.cloudkinshuk.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 text-sm transition-colors"
+            className="inline-flex items-center gap-2 text-[#ff9100] hover:text-[#ff9100]/80 text-lg transition-colors duration-300"
           >
             <FaExternalLinkAlt />
             Visit Original Blog
@@ -592,10 +640,10 @@ const queryClient = new QueryClient({
   },
 })
 
-const BlogPage: React.FC = () => {
+const BlogPage: React.FC<BlogPageProps> = ({ onBack }) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <BlogPageContent />
+      <BlogPageContent onBack={onBack} />
     </QueryClientProvider>
   )
 }

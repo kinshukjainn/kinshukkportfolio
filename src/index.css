@@ -2,152 +2,183 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import "tailwindcss";
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; 
+  padding: 0;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   min-height: 100vh;
   background-color: #121212;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Selection color */
+::selection {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Focus styles */
+button:focus,
+a:focus {
+  outline: 0.125rem solid #3b82f6;
+  outline-offset: 0.125rem;
+}
+
+/* Backdrop blur fallback */
+@supports not (backdrop-filter: blur(0.75rem)) {
+  .backdrop-blur-sm {
+    background-color: rgba(31, 41, 55, 0.8);
+  }
+  .backdrop-blur-md {
+    background-color: rgba(17, 24, 39, 0.9);
+  }
+}
+
+/* Personal name styling with professional gradient */
 .personal-name {
-          font-size: clamp(2.5rem, 8vw, 4rem);
-          font-weight: 600;
-          background: linear-gradient(
-            135deg,
-            #667eea 0%,
-            #764ba2 25%,
-            #f093fb 50%,
-            #f5576c 75%,
-            #4facfe 100%
-          );
-          background-size: 300% 300%;
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          cursor: pointer;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          animation: gentleFlow 8s ease-in-out infinite;
-          position: relative;
-          display: inline-block;
-          letter-spacing: -0.02em;
-        }
-
-        .personal-name::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(
-            135deg,
-            rgba(102, 126, 234, 0.1),
-            rgba(118, 75, 162, 0.1),
-            rgba(240, 147, 251, 0.1),
-            rgba(245, 87, 108, 0.1),
-            rgba(79, 172, 254, 0.1)
-          );
-          background-size: 300% 300%;
-          border-radius: 12px;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          animation: gentleFlow 8s ease-in-out infinite;
-          z-index: -1;
-          transform: scale(1.1);
-          filter: blur(20px);
-        }
-
-        .personal-name:hover {
-          transform: translateY(-2px);
-          animation: activeFlow 3s ease-in-out infinite;
-        }
-
-        .personal-name:hover::before {
-          opacity: 0.6;
-          animation: activeFlow 3s ease-in-out infinite;
-        }
-
-        .personal-name:active {
-          transform: translateY(0px) scale(0.98);
-        }
-
-        @keyframes gentleFlow {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-
-        @keyframes activeFlow {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          33% {
-            background-position: 100% 0%;
-          }
-          66% {
-            background-position: 0% 100%;
-          }
-        }
-
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-          .personal-name {
-            font-size: clamp(2rem, 12vw, 3rem);
-            letter-spacing: -0.01em;
-          }
-          
-          .personal-name:hover {
-            transform: none;
-          }
-          
-          .personal-name:active {
-            transform: scale(0.95);
-          }
-        }
-
-        /* Reduced motion support */
-        @media (prefers-reduced-motion: reduce) {
-          .personal-name {
-            animation: none;
-          }
-          
-          .personal-name::before {
-            animation: none;
-          }
-          
-          .personal-name:hover {
-            animation: none;
-          }
-        }
-
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-          .personal-name {
-            background: linear-gradient(135deg, #000 0%, #333 100%);
-          }
-        }
-
-.portfolio-website-link {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: gentleFlow 8s ease-in-out infinite;
   position: relative;
   display: inline-block;
-  padding: 0.8rem 2.2rem;
-  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.personal-name::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.1),
+    rgba(118, 75, 162, 0.1),
+    rgba(240, 147, 251, 0.1),
+    rgba(245, 87, 108, 0.1),
+    rgba(79, 172, 254, 0.1)
+  );
+  background-size: 300% 300%;
+  border-radius: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: gentleFlow 8s ease-in-out infinite;
+  z-index: -1;
+  transform: scale(1.1);
+  filter: blur(1.25rem);
+}
+
+.personal-name:hover {
+  transform: translateY(-0.125rem);
+  animation: activeFlow 3s ease-in-out infinite;
+}
+
+.personal-name:hover::before {
+  opacity: 0.6;
+  animation: activeFlow 3s ease-in-out infinite;
+}
+
+.personal-name:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@keyframes gentleFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes activeFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  33% {
+    background-position: 100% 0%;
+  }
+  66% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Portfolio website link with professional styling */
+.portfolio-website-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #fff;
   background: #111;
-  border-radius: 16px;
+  border-radius: 1rem;
   text-decoration: none;
   overflow: hidden;
   border: none;
@@ -156,33 +187,24 @@ body {
   z-index: 1;
 }
 
-/* --- Glowing Rainbow Border --- */
+/* Glowing rainbow border */
 .portfolio-website-link::before {
   content: "";
   position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
+  top: -0.3125rem;
+  left: -0.3125rem;
+  right: -0.3125rem;
+  bottom: -0.3125rem;
   z-index: -2;
-  background: conic-gradient(
-    from 0deg,
-    #ff005e,
-    #ff6ec4,
-    #4ade80,
-    #00f0ff,
-    #7873f5,
-    #ff6ec4,
-    #ff005e
-  );
+  background: conic-gradient(from 0deg, #ff005e, #ff6ec4, #4ade80, #00f0ff, #7873f5, #ff6ec4, #ff005e);
   background-size: 300% 300%;
-  border-radius: 20px;
-  filter: blur(12px) brightness(1.4);
+  border-radius: 1.25rem;
+  filter: blur(0.75rem) brightness(1.4);
   animation: rainbowGlow 5s linear infinite;
   opacity: 0.9;
 }
 
-/* --- Inner shadow border base --- */
+/* Inner shadow border base */
 .portfolio-website-link::after {
   content: "";
   position: absolute;
@@ -191,11 +213,11 @@ body {
   right: 0;
   bottom: 0;
   background: #111;
-  border-radius: 16px;
+  border-radius: 1rem;
   z-index: -1;
 }
 
-/* --- Glowing Gradient Text --- */
+/* Glowing gradient text */
 .portfolio-website-link span {
   background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80, #ff6ec4);
   background-size: 400% 400%;
@@ -205,10 +227,10 @@ body {
   animation: shimmerText 3s ease-in-out infinite;
 }
 
-/* --- Hover Effects --- */
+/* Hover effects */
 .portfolio-website-link:hover {
   transform: scale(1.06);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 1.875rem rgba(255, 255, 255, 0.2);
 }
 
 @keyframes rainbowGlow {
@@ -233,4 +255,161 @@ body {
   100% {
     background-position: 200% center;
   }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .personal-name {
+    font-size: clamp(2rem, 12vw, 3rem);
+    letter-spacing: -0.01em;
+  }
+
+  .personal-name:hover {
+    transform: none;
+  }
+
+  .personal-name:active {
+    transform: scale(0.95);
+  }
+
+  .portfolio-website-link {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .personal-name {
+    font-size: clamp(2.75rem, 10vw, 3.5rem);
+  }
+
+  .portfolio-website-link {
+    padding: 0.875rem 1.75rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+  .personal-name {
+    font-size: clamp(3rem, 6vw, 4rem);
+  }
+
+  .portfolio-website-link {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* Large desktop optimizations */
+@media (min-width: 1440px) {
+  .personal-name {
+    font-size: clamp(3.5rem, 5vw, 4.5rem);
+  }
+}
+
+/* Ultra-wide optimizations */
+@media (min-width: 1920px) {
+  .personal-name {
+    font-size: clamp(4rem, 4vw, 5rem);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .personal-name {
+    animation: none;
+  }
+
+  .personal-name::before {
+    animation: none;
+  }
+
+  .personal-name:hover {
+    animation: none;
+  }
+
+  .portfolio-website-link::before {
+    animation: none;
+  }
+
+  .portfolio-website-link span {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .personal-name {
+    background: linear-gradient(135deg, #000 0%, #333 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+/* Print styles */
+@media print {
+  .personal-name {
+    color: #000 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+  }
+
+  .portfolio-website-link {
+    color: #000 !important;
+    background: #fff !important;
+    border: 0.125rem solid #000 !important;
+  }
+
+  .portfolio-website-link::before,
+  .portfolio-website-link::after {
+    display: none !important;
+  }
+
+  .portfolio-website-link span {
+    color: #000 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+  }
+}
+
+/* Ensure consistent rendering across browsers */
+@supports (-webkit-appearance: none) {
+  .personal-name,
+  .portfolio-website-link span {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@supports not (-webkit-background-clip: text) {
+  .personal-name {
+    color: #667eea;
+  }
+
+  .portfolio-website-link span {
+    color: #ff6ec4;
+  }
+}
+
+/* Force hardware acceleration for smooth animations */
+.personal-name,
+.portfolio-website-link {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Ensure proper stacking context */
+.personal-name {
+  isolation: isolate;
+}
+
+.portfolio-website-link {
+  isolation: isolate;
 }

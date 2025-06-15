@@ -18,14 +18,14 @@ export default function AboutMe() {
   const interests: Interest[] = [
     {
       id: 1,
-      icon: <FaPodcast className="text-red-500" />,
+      icon: <FaPodcast className="text-yellow-200" />,
       title: "Listening to People understanding their vision and mentality, thought process, and processing knowledge",
       description:
         "I really like to listen to people and understand their vision and mentality, thought process, and processing knowledge. I am a big fan of podcasts and I really like to listen to podcasts on various topics like technology, personal development, and other things.",
     },
     {
       id: 2,
-      icon: <FaBlog className="text-red-500" />,
+      icon: <FaBlog className="text-yellow-200" />,
       title: "Writing Blogs and Keep scrolling through the developers portfolio",
       description:
         "Alright so whenever I get time I just keep scrolling through the developers portfolio and try to understand how they are building their portfolio and what are the things they are doing to make it look good and also I try to write blogs on various topics mostly related to cloud computing and DevOps, web development and other things non-technical in nature too.",
@@ -61,6 +61,7 @@ export default function AboutMe() {
     },
   }
 
+
   return (
     <div className="min-h-screen select-none bg-[#121212] text-gray-300 pt-28">
       <div className="max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
@@ -77,7 +78,7 @@ export default function AboutMe() {
               <button
                 onClick={() => setActiveSection("about")}
                 className={`px-3 py-2 rounded-md  cursor-pointer transition-all duration-300 text-sm sm:text-base ${
-                  activeSection === "about" ? "bg-red-600 text-white font-medium" : "text-gray-300 hover:bg-[#1e1e1e]"
+                  activeSection === "about" ? "border-2 border-yellow-200 text-yellow-200 font-medium" : "text-gray-300 hover:bg-[#1e1e1e]"
                 }`}
               >
                 <span className="flex items-center gap-2">
@@ -91,7 +92,7 @@ export default function AboutMe() {
                 onClick={() => setActiveSection("interests")}
                 className={`px-3 py-2 rounded-md cursor-pointer transition-all duration-300 text-sm sm:text-base ${
                   activeSection === "interests"
-                    ? "bg-red-600 text-white font-medium"
+                    ? "border-2 border-yellow-200 text-yellow-200 font-medium"
                     : "text-gray-300 hover:bg-[#1e1e1e]"
                 }`}
               >

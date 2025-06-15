@@ -1,6 +1,6 @@
 import type React from "react"
-import { FaCloud, FaGithub, FaTwitter, FaLinkedin, FaInstagram, FaEnvelope, FaBlog } from "react-icons/fa"
-
+import { FaCloud, FaGithub, FaTwitter, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa"
+import { MdDiamond } from "react-icons/md";
 interface SocialLink {
   icon: React.ElementType
   href: string
@@ -40,10 +40,10 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 rounded-md font-semibold text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-900 via-blue-800 to-cyan-900 transition-opacity duration-300"></div>
               <div className="relative flex items-center gap-2">
-                <FaBlog size={20} />
-                <span>Hashnode Blogs</span>
+                < MdDiamond size={20} />
+                <span>Subscribe to my Newsletter </span>
               </div>
               <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
             </a>
@@ -59,7 +59,7 @@ const Footer = () => {
               <div className="absolute inset-0 bg-grey-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative flex items-center gap-2">
                 <FaGithub size={20} />
-                <span>GitHub Repo</span>
+                <span>GitHub Repository</span>
               </div>
               <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
             </a>
