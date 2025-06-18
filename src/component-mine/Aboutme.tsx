@@ -63,7 +63,7 @@ export default function AboutMe() {
 
 
   return (
-    <div className="min-h-screen select-none bg-[#121212] text-gray-300 pt-28">
+    <div className="min-h-screen select-none bg-black text-gray-300 pt-28">
       <div className="max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
 
         {/* Navigation */}
@@ -109,7 +109,7 @@ export default function AboutMe() {
         <main>
           {activeSection === "about" && (
             <motion.section initial="hidden" animate="visible" variants={fadeIn} className="py-4">
-              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl mb-6 sm:mb-8">
+              <div className="bg-black rounded-md sm:rounded-md p-4 sm:p-6 md:p-8 shadow-xl mb-6 sm:mb-8">
 
                 <motion.div
                   variants={staggerContainer}

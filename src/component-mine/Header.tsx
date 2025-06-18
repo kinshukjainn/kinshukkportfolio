@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-[#0d0d0de6] border-b border-neutral-800">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-[#0d0d0de6] rounded-3xl mt-2 mb-2 ml-2 mr-2  ">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-20">
             {/* Brand & Avatar */}
@@ -53,9 +53,9 @@ const Header = () => {
                 />
               </div>
               <Link to="/" onClick={closeMenu}>
-                <div className="text-white text-xl sm:text-2xl font-semibold tracking-wide">
+                <div className="text-white text-xl sm:text-2xl font-mono font-semibold tracking-wide">
                   Kinshuk Jain{" "}
-                  <span className="ml-2 text-xs sm:text-sm font-normal text-gray-400">| {getPathText()}</span>
+                  <span className="ml-2 text-xl sm:text-lg font-normal text-gray-200">| {getPathText()}</span>
                 </div>
               </Link>
             </div>
