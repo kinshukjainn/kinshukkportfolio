@@ -13,7 +13,7 @@ const Header = () => {
     const pathname = location.pathname
     if (pathname === "/") return "Home"
     if (pathname === "/aboutme" || pathname.startsWith("/aboutme/")) return "Me"
-    return "Blogs"
+    return "Minimal Mind"
   }
 
   const isActiveRoute = (path: string) => {
