@@ -1,11 +1,11 @@
 "use client"
 
 import type React from "react"
+import { SiTerraform , SiKubernetes, SiPostgresql, SiPostman, SiVite, SiTypescript, SiAwslambda, SiAmazonec2, SiAwsamplify, SiAmazoniam, SiAmazonroute53, SiAmazons3, SiTailwindcss, SiGmail } from "react-icons/si"
 
 import { useState, useEffect } from "react"
 import {
   FaGithub,
-  FaEnvelope,
   FaWhatsapp,
   FaMapMarkerAlt,
   FaLinkedin,
@@ -15,15 +15,11 @@ import {
   FaAward,
   FaGraduationCap,
   FaCode,
-  FaCloud,
-  FaDatabase,
-  FaServer,
-  FaTerminal,
-  FaBolt,
-  FaShieldAlt,
-  FaMicrochip,
-  FaDesktop,
+  FaGit,
+  FaDocker,
+  FaAws,
 } from "react-icons/fa"
+import {  VscVscodeInsiders } from "react-icons/vsc";
 
 import profileimage from "../assets/mainweb.jpg"
 
@@ -55,12 +51,12 @@ const CONFIG = {
       platform: "LinkedIn",
       url: "https://linkedin.com/in/kinshukjainn/",
       icon: FaLinkedin,
-      handle: "kinshukjainn",
+      handle: "@kinshukjainn",
     },
     {
-      platform: "Email",
+      platform: "Gmail",
       url: "mailto:kinshuk25jan04@gmail.com",
-      icon: FaEnvelope,
+      icon: SiGmail,
       handle: "kinshuk25jan04@gmail.com",
     },
     {
@@ -95,7 +91,7 @@ const CONFIG = {
       title: "AWS Machine Learning Badge",
       organization: "AWS",
       status: "Completed",
-      year: "2024",
+      year: "2025",
       url: "https://www.credly.com/badges/a0042ec2-cc6e-4a99-84de-a1516ee5775a/public_url",
       description: "Digital badge covering machine learning concepts and AWS ML services",
       skills: ["SageMaker", "ML Algorithms", "Data Processing", "Model Deployment"],
@@ -103,34 +99,31 @@ const CONFIG = {
   ],
 
   skills: {
-    "Cloud & Infrastructure": [
-      { name: "AWS", icon: FaCloud },
-      { name: "Amplify", icon: FaBolt },
-      { name: "EC2", icon: FaServer },
-      { name: "IAM", icon: FaShieldAlt },
-      { name: "Lambda", icon: FaBolt },
-      { name: "Docker", icon: FaCode },
-      { name: "Kubernetes", icon: FaMicrochip },
-      { name: "Terraform", icon: FaCode },
-      { name: "Linux", icon: FaTerminal },
+    "Deployement": [
+      { name: "AWS", icon: FaAws },
+      { name: "Amplify", icon: SiAwsamplify },
+      { name: "Amazon EC2", icon: SiAmazonec2 },
+      { name: "Amazon IAM", icon: SiAmazoniam },
+      { name: "Amazon S3", icon: SiAmazons3 },
+      { name: "Amazon Route 53", icon: SiAmazonroute53 },
+      { name: "Amazon Lambda", icon: SiAwslambda },
+      { name: "Docker", icon: FaDocker },
+      { name: "Kubernetes", icon: SiKubernetes },
+      { name: "Terraform", icon: SiTerraform },
     ],
-    "Frontend Development": [
-      { name: "React", icon: FaCode },
-      { name: "TypeScript", icon: FaCode },
-      { name: "Tailwind CSS", icon: FaDesktop },
-      { name: "Vite", icon: FaBolt },
+    "Stack": [
+      { name: "Vite", icon: SiVite },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
     ],
-    "Backend & DevOps": [
+    "CI/CD": [
       { name: "Github Actions", icon: FaGithub },
-      { name: "Git", icon: FaCode },
-      { name: "CI/CD", icon: FaBolt },
-      { name: "Serverless", icon: FaCloud },
-      { name: "Microservices", icon: FaServer },
+      { name: "Git", icon: FaGit },
     ],
-    "Databases & Tools": [
-      { name: "PostgreSQL", icon: FaDatabase },
-      { name: "Postman", icon: FaCode },
-      { name: "VS Code", icon: FaDesktop },
+    "Tools": [
+      { name: "PostgreSQL", icon:  SiPostgresql },
+      { name: "Postman", icon: SiPostman },
+      { name: "VS Code", icon: VscVscodeInsiders },
     ],
   },
 
@@ -241,7 +234,7 @@ export default function CloudPortfolio() {
           {/* Hero Section */}
 
           <section className="pt-8">
-            <div className="relative overflow-hidden rounded-3xl backdrop-blur-sm p-8 lg:p-12">
+            <div className="relative overflow-hidden rounded-md backdrop-blur-sm p-8 lg:p-12">
               <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-stone-900 to-neutral-800"></div>
               <div className="relative">
                 <div className="mb-8">
@@ -254,7 +247,7 @@ export default function CloudPortfolio() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                   <div className="lg:col-span-2 space-y-6">
                     <div>
-                      <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 text-white ">
+                      <h1 className="text-5xl sm:text-5xl font-mono lg:text-7xl font-bold mb-4 text-white ">
                         {CONFIG.personal.name}
                       </h1>
                       <h2 className="text-xl lg:text-2xl text-neutral-100 mb-6 font-light">{CONFIG.personal.title}</h2>
@@ -266,10 +259,10 @@ export default function CloudPortfolio() {
                     </div>
 
                     <div className="flex flex-wrap gap-3">
-                      <span className="px-4 py-2 bg-blue-900 rounded-full text-sm font-medium">
+                      <span className="px-4 py-2 bg-red-400 rounded-md text-sm font-medium">
                         ● {CONFIG.personal.availability}
                       </span>
-                      <span className="px-4 py-2 bg-white rounded-full text-sm text-black  font-bold">
+                      <span className="px-4 py-2 bg-[#212121] rounded-md text-sm text-gray-300 font-bold">
                         ● {CONFIG.personal.status}
                       </span>
                     </div>
@@ -291,7 +284,7 @@ export default function CloudPortfolio() {
 
                 <div className="mt-8 space-y-4 text-neutral-300 leading-relaxed">
                   {CONFIG.personal.bio.map((paragraph, index) => (
-                    <p key={index} className="text-sm lg:text-base">
+                    <p key={index} className="text-lg lg:text-base">
                       {paragraph}
                     </p>
                   ))}
@@ -315,18 +308,18 @@ export default function CloudPortfolio() {
                   <button
                     key={index}
                     onClick={() => handleSocialClick(social)}
-                    className="group relative overflow-hidden rounded-4xl bg-neutral-800/50 backdrop-blur-sm p-6 hover:bg-neutral-700/50 transition-all duration-300 hover:scale-105"
+                    className="group relative overflow-hidden rounded-md bg-neutral-800/50 backdrop-blur-sm p-3 hover:bg-neutral-900/50"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-teal-600/10 to-emerald-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="relative">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="p-4 rounded-full bg-neutral-900 group-hover:rounded-xl group-hover:animate-bounce transition-colors">
-                          <Icon className="w-5 h-5 text-[#ff9100]  transition-colors" />
+                        <div className="p-4 group-hover:rounded-xl">
+                          <Icon className="w-5 h-5 text-white transition-colors" />
                         </div>
                         <span className="font-semibold text-teal-400 font-mono">{social.platform}</span>
                       </div>
-                      <div className="text-lg text-neutral-100 text-left">{social.handle}</div>
-                      <FaExternalLinkAlt className="w-4 h-4 mt-3 text-teal-400 transition-colors" />
+                      <div className="text-lg text-neutral-100  text-left">{social.handle}</div>
+                      <FaExternalLinkAlt className="w-4 h-4 mt-3 text-white   transition-colors" />
                     </div>
                   </button>
                 )
@@ -346,18 +339,18 @@ export default function CloudPortfolio() {
               {CONFIG.certifications.map((cert, index) => (
                 <div
                   key={index}
-                  className="group relative overflow-hidden rounded-4xl bg-neutral-800/30 backdrop-blur-sm p-6 hover:bg-neutral-700/30 transition-all duration-300"
+                  className="group relative overflow-hidden rounded-md bg-neutral-800/30  p-4 transition-all duration-300"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-amber-600/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                     <div className="flex-1 space-y-4">
                       <div className="flex flex-wrap items-center gap-3">
                         <h4 className="text-lg font-semibold text-neutral-100">{cert.title}</h4>
                         <span
-                          className={`px-3 py-1 text-xs rounded-full font-medium ${
+                          className={`px-3 py-1 text-xs rounded-sm font-medium ${
                             cert.status === "Completed"
-                              ? "bg-yellow-500 text-black font-semibold"
-                              : "bg-blue-900 text-white font-semibold"
+                              ? "bg-yellow-200 text-black font-semibold"
+                              : "bg-blue-300 text-black font-semibold"
                           }`}
                         >
                           {cert.status}
@@ -372,7 +365,7 @@ export default function CloudPortfolio() {
                         {cert.skills.map((skill, skillIndex) => (
                           <span
                             key={skillIndex}
-                            className="px-3 py-1 bg-blue-300 text-neutral-900 text-sm font-semibold rounded-full"
+                            className="px-3 py-1 bg-blue-300 text-neutral-900 text-sm font-semibold rounded"
                           >
                             {skill}
                           </span>
@@ -384,9 +377,9 @@ export default function CloudPortfolio() {
                         href={cert.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex w-max items-center gap-2 px-6 py-3 bg-[#ff9100] text-neutral-900 rounded-4xl transition-all duration-300 text-sm font-semibold hover:scale-105 "
+                        className="inline-flex w-max items-center gap-2 px-2 py-1  text-neutral-100 bg-[#242424] hover:text-neutral-100 rounded transition-all duration-300 text-sm font-semibold hover:scale-105 "
                       >
-                        View Certificate
+                        View
                         <FaExternalLinkAlt className="w-4 h-4" />
                       </a>
                     )}
@@ -407,19 +400,19 @@ export default function CloudPortfolio() {
             <div className="space-y-8">
               {Object.entries(CONFIG.skills).map(([category, skills]) => (
                 <div key={category} className="space-y-4">
-                  <h4 className="text-lg font-semibold text-neutral-300">{category}</h4>
+                  <h4 className="text-xl font-semibold text-neutral-100">{category}</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
                     {skills.map((skill, skillIndex) => {
                       const Icon = skill.icon
                       return (
                         <div
                           key={skillIndex}
-                          className="group flex items-center gap-3 p-4 bg-neutral-800/30 backdrop-blur-sm rounded-full hover:bg-neutral-700/40 transition-all duration-300 hover:scale-105"
+                          className="group flex items-center gap-3 p-2 bg-neutral-800/30 rounded-md"
                         >
-                          <div className="p-3 rounded-xl bg-neutral-900 group-hover:rounded-full group-hover:animate-bounce transition-colors">
-                            <Icon className="w-5 h-5 text-[#ff9100] transition-colors" />
+                          <div className="p-3 ">
+                            <Icon className="w-5 h-5 text-white transition-colors" />
                           </div>
-                          <span className="text-sm text-neutral-300 group-hover:text-neutral-100 transition-colors">
+                          <span className="text-lg text-neutral-300 group-hover:text-neutral-100 transition-colors">
                             {skill.name}
                           </span>
                         </div>
@@ -443,7 +436,7 @@ export default function CloudPortfolio() {
               {CONFIG.projects.map((project, index) => (
                 <div
                   key={index}
-                  className="group relative overflow-hidden rounded-4xl bg-neutral-800/30 backdrop-blur-sm p-8 hover:bg-neutral-700/30 transition-all duration-300"
+                  className="group relative overflow-hidden rounded-md bg-neutral-800/30  p-6"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/5 to-teal-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="relative space-y-6">
@@ -452,7 +445,7 @@ export default function CloudPortfolio() {
                         <div className="flex flex-wrap items-center gap-3">
                           <h4 className="text-xl font-semibold text-neutral-100">{project.title}</h4>
                           <span
-                            className={`px-3 py-1 text-xs rounded-full font-medium ${
+                            className={`px-4 py-1 text-sm rounded font-medium ${
                               project.status === "Live"
                                 ? "bg-emerald-500 text-neutral-900 font-semibold"
                                 : "bg-teal-500/20 text-teal-400"
@@ -469,7 +462,7 @@ export default function CloudPortfolio() {
 
                     <div className="space-y-4">
                       {project.description.map((paragraph, pIndex) => (
-                        <p key={pIndex} className="text-neutral-300 text-sm leading-relaxed">
+                        <p key={pIndex} className="text-neutral-300 text-lg  leading-relaxed">
                           {paragraph}
                         </p>
                       ))}
@@ -481,7 +474,7 @@ export default function CloudPortfolio() {
                         {project.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-3 py-1 bg-[#ff9100] text-neutral-900 text-sm font-semibold rounded-full transition-colors"
+                            className="px-3 py-1 bg-yellow-200 text-neutral-900 text-sm font-semibold rounded-md transition-colors"
                           >
                             {tech}
                           </span>
@@ -495,7 +488,7 @@ export default function CloudPortfolio() {
                           href={project.links.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-6 py-3 bg-[#ff9100] font-semibold text-neutral-900 rounded-full transition-all duration-300 text-md font-medium hover:scale-105"
+                          className="inline-flex items-center gap-2 px-4 py-1 bg-[#242424] font-semibold text-neutral-100  rounded text-md font-medium"
                         >
                           <FaGlobe className="w-4 h-4" />
                           Live Demo
@@ -506,7 +499,7 @@ export default function CloudPortfolio() {
                           href={project.links.repo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-700/50 hover:bg-neutral-600/50 text-neutral-100 rounded-xl transition-all duration-300 text-sm font-medium hover:scale-105"
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-700/50 hover:bg-neutral-600/50 text-neutral-100 rounded transition-all duration-300 text-sm font-medium hover:scale-105"
                         >
                           <FaGithub className="w-4 h-4" />
                           Source Code
@@ -522,27 +515,27 @@ export default function CloudPortfolio() {
           {/* Education */}
           <section>
             <div className="mb-8">
-              <h3 className="text-2xl font-bold flex items-center gap-3 text-neutral-100">
+              <h3 className="text-3xl font-mono font-bold flex items-center gap-3 text-neutral-100">
                 <FaGraduationCap className="w-6 h-6 text-emerald-400" />
                 Education
               </h3>
             </div>
-            <div className="relative overflow-hidden rounded-4xl bg-neutral-800/50 p-8">
+            <div className="relative overflow-hidden rounded-md bg-neutral-800/50 p-5 ">
               <div className="absolute inset-0"></div>
               <div className="relative">
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
                   <div className="space-y-3">
                     <h4 className="text-xl font-semibold text-neutral-100">{CONFIG.education.degree}</h4>
-                    <p className="text-neutral-300">{CONFIG.education.field}</p>
-                    <p className="text-neutral-400 text-sm">{CONFIG.education.institution}</p>
-                    <p className="text-neutral-500 text-sm">{CONFIG.education.location}</p>
+                    <p className="text-white font-semibold text-lg">{CONFIG.education.field}</p>
+                    <p className="text-neutral-100 text-sm">{CONFIG.education.institution}</p>
+                    <p className="text-neutral-300 text-sm">{CONFIG.education.location}</p>
                   </div>
                   <div className="text-right space-y-3">
                     <div className="flex items-center gap-2 lg:justify-end">
                       <FaCalendarAlt className="w-4 h-4 text-neutral-400" />
                       <span className="text-sm text-neutral-400">{CONFIG.education.period}</span>
                     </div>
-                    <span className="inline-block px-3 py-1 bg-[#ff9100] text-black text-sm rounded-full font-semibold">
+                    <span className="inline-block px-3 py-1 bg-[#242424] text-white text-lg rounded font-semibold">
                       {CONFIG.education.status}
                     </span>
                   </div>
@@ -550,7 +543,7 @@ export default function CloudPortfolio() {
 
                 <div className="space-y-3">
                   {CONFIG.education.description.map((paragraph, index) => (
-                    <p key={index} className="text-neutral-300 text-sm leading-relaxed">
+                    <p key={index} className="text-neutral-300 text-lg leading-relaxed">
                       {paragraph}
                     </p>
                   ))}
@@ -558,14 +551,6 @@ export default function CloudPortfolio() {
               </div>
             </div>
           </section>
-
-          {/* Footer */}
-          <footer className="text-center py-12 space-y-4">
-            <p className="text-neutral-400 text-sm">
-              © 2025 {CONFIG.personal.name} • Built with passion for clean code and great experiences
-            </p>
-            <p className="text-neutral-600 text-xs font-mono">$ exit 0</p>
-          </footer>
         </div>
       </div>
     </div>

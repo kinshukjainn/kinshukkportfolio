@@ -55,7 +55,7 @@ const Header = () => {
               <Link to="/" onClick={closeMenu}>
                 <div className="text-white text-xl sm:text-2xl font-mono font-semibold tracking-wide">
                   Kinshuk Jain{" "}
-                  <span className="ml-2 text-xl sm:text-lg font-normal text-gray-200">| {getPathText()}</span>
+                  <span className="ml-2 text-xl sm:text-lg font-normal bg-[#212121] p-2 rounded-md text-gray-200">| {getPathText()}</span>
                 </div>
               </Link>
             </div>

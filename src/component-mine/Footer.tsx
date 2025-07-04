@@ -38,14 +38,14 @@ const Footer = () => {
               target="_blank"
               aria-label="Hashnode Blogs"
               rel="noopener noreferrer"
-              className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 rounded-md font-semibold text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden"
+              className="group relative px-6 py-3 bg-gradient-to-r from-black via-red-800 to-black rounded-md font-semibold text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-900 via-blue-800 to-cyan-900 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-black via-blue-700 to-red-900 transition-opacity duration-300"></div>
               <div className="relative flex items-center gap-2">
                 < MdDiamond size={20} />
                 <span>Subscribe to my Newsletter </span>
               </div>
-              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
             </a>
 
             {/* GitHub Repo Button */}
