@@ -50,7 +50,7 @@ const Footer = () => {
 
             {/* GitHub Repo Button */}
             <a
-              href="https://github.com/kinshukjain/kinshukkportfolio"
+              href="https://github.com/kinshukjainn/kinshukkportfolio"
               aria-label="GitHub Repository"
               target="_blank"
               rel="noopener noreferrer"

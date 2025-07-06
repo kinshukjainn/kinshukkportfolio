@@ -11,9 +11,9 @@ const Header = () => {
 
   const getPathText = () => {
     const pathname = location.pathname
-    if (pathname === "/") return "Home"
-    if (pathname === "/aboutme" || pathname.startsWith("/aboutme/")) return "Me"
-    return "Minimal Mind"
+    if (pathname === "/") return "Cloudkinshuk"
+    if (pathname === "/aboutme" || pathname.startsWith("/aboutme/")) return "About Me"
+    return "Minimal Minds"
   }
 
   const isActiveRoute = (path: string) => {
@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-[#0d0d0de6] rounded-3xl mt-2 mb-2 ml-2 mr-2  ">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-[#0d0d0de6] rounded-md mt-2 mb-2 ml-2 mr-2  ">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-20">
             {/* Brand & Avatar */}
@@ -53,9 +53,8 @@ const Header = () => {
                 />
               </div>
               <Link to="/" onClick={closeMenu}>
-                <div className="text-white text-xl sm:text-2xl font-mono font-semibold tracking-wide">
-                  Kinshuk Jain{" "}
-                  <span className="ml-2 text-xl sm:text-lg font-normal bg-[#212121] p-2 rounded-md text-gray-200">| {getPathText()}</span>
+                <div className="text-white text-3xl sm:text-2xl font-sans font-semibold tracking-wide">
+                  {getPathText()}
                 </div>
               </Link>
             </div>
@@ -110,7 +109,7 @@ interface NavLinkProps {
 const NavLink = ({ to, isActive, label }: NavLinkProps) => (
   <Link
     to={to}
-    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+    className={`px-4 py-2 rounded-full text-xl font-medium transition-all duration-200 ${
       isActive
         ? "bg-white text-black shadow-inner"
         : "text-white hover:text-[#ff9100] hover:bg-[#1a1a1a]"
