@@ -1,6 +1,5 @@
 import type React from "react"
 import { FaCloud, FaGithub, FaTwitter, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa"
-import { MdDiamond } from "react-icons/md";
 interface SocialLink {
   icon: React.ElementType
   href: string
@@ -33,36 +32,6 @@ const Footer = () => {
           {/* Action buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
             {/* Hashnode Blog Button */}
-            <a
-              href="https://blog.cloudkinshuk.in"
-              target="_blank"
-              aria-label="Hashnode Blogs"
-              rel="noopener noreferrer"
-              className="group relative px-6 py-3 bg-gradient-to-r from-black via-red-800 to-black rounded-md font-semibold text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-tr from-black via-blue-700 to-red-900 transition-opacity duration-300"></div>
-              <div className="relative flex items-center gap-2">
-                < MdDiamond size={20} />
-                <span>Subscribe to my Newsletter </span>
-              </div>
-              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-            </a>
-
-            {/* GitHub Repo Button */}
-            <a
-              href="https://github.com/kinshukjainn/kinshukkportfolio"
-              aria-label="GitHub Repository"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative px-3 py-3 bg-white rounded-md font-semibold text-black  transform hover:scale-105 transition-all duration-300 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-grey-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative flex items-center gap-2">
-                <FaGithub size={20} />
-                <span>GitHub Repository</span>
-              </div>
-              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-            </a>
           </div>
         </div>
 
