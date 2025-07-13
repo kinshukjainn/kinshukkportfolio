@@ -12,14 +12,14 @@ const Header = () => {
   const getPathText = () => {
     const pathname = location.pathname
     if (pathname === "/") return "Cloudkinshuk"
-    if (pathname === "/aboutme" || pathname.startsWith("/aboutme/")) return "About Me"
+    if (pathname === "/gears" || pathname.startsWith("/gears/")) return "Gears I Use"
     return "Minimal Minds"
   }
 
   const isActiveRoute = (path: string) => {
     if (path === "/" && location.pathname === "/") return true
     if (path === "/blog" && (location.pathname === "/blog" || location.pathname.startsWith("/blog/"))) return true
-    if (path === "/aboutme" && (location.pathname === "/aboutme" || location.pathname.startsWith("/aboutme/"))) return true
+    if (path === "/gears" && (location.pathname === "/gears" || location.pathname.startsWith("/gears/"))) return true
     return false
   }
 
@@ -62,7 +62,7 @@ const Header = () => {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-3">
               <NavLink to="/blog" isActive={isActiveRoute("/blog")} label="Blogs" />
-              <NavLink to="/aboutme" isActive={isActiveRoute("/aboutme")} label="About" />
+              <NavLink to="/gears" isActive={isActiveRoute("/gears")} label="Gear i use" />
             </nav>
 
             {/* Mobile Menu Toggle */}
@@ -81,7 +81,7 @@ const Header = () => {
           <div className="md:hidden bg-[#111] mt-2 mx-4 rounded-2xl border border-neutral-800">
             <div className="px-4 py-4 flex flex-col gap-2">
               <MobileNavLink to="/blog" isActive={isActiveRoute("/blog")} label="Blogs" onClick={closeMenu} />
-              <MobileNavLink to="/aboutme" isActive={isActiveRoute("/aboutme")} label="About" onClick={closeMenu} />
+              <MobileNavLink to="/gears" isActive={isActiveRoute("/gears")} label="Gear i use" onClick={closeMenu} />
             </div>
           </div>
         )}

@@ -236,12 +236,12 @@ export default function CloudPortfolio() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-900 via-neutral-950 to-stone-900 text-neutral-100">
+    <div className="min-h-screen bg-black text-neutral-100">
       <div className="pt-20 px-2 sm:px-4 lg:px-6">
         <div className="max-w-7xl mx-auto space-y-8">
           {/* Hero Section */}
           <section className="pt-4">
-            <div className="bg-neutral-800/50 backdrop-blur-sm border border-neutral-700 rounded-md p-4 sm:p-6 lg:p-8">
+            <div className=" backdrop-blur-sm p-4 sm:p-6 lg:p-8">
               <div className="mb-6">
                 <div className="text-yellow-400 text-lg sm:text-lg mb-3 font-mono  p-1">
                   {typedText}
@@ -252,7 +252,7 @@ export default function CloudPortfolio() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
                 <div className="lg:col-span-2 space-y-4">
                   <div>
-                    <h1 className="text-3xl sm:text-4xl lg:text-6xl font-mono font-bold mb-3 text-white">
+                    <h1 className="heading-kinshuk text-6xl sm:text-4xl lg:text-6xl font-mono font-semibold mb-3 text-green-400 animate-pulse">
                       {CONFIG.personal.name}
                     </h1>
                     <h2 className="text-lg lg:text-xl text-neutral-100 mb-4 font-light">{CONFIG.personal.title}</h2>
@@ -284,9 +284,9 @@ export default function CloudPortfolio() {
                 </div>
               </div>
 
-              <div className="mt-6 space-y-3 text-white leading-relaxed">
+              <div className="mt-6 space-y-3 text-white leading-relaxed bg-[#212121] p-3 rounded-md">
                 {CONFIG.personal.bio.map((paragraph, index) => (
-                  <p key={index} className="text-sm sm:text-base">
+                  <p key={index} className="text-md sm:text-base">
                     {paragraph}
                   </p>
                 ))}
@@ -315,10 +315,10 @@ export default function CloudPortfolio() {
                       <div className="p-2 bg-neutral-900 rounded-md border border-neutral-600">
                         <Icon className="w-4 h-4 text-white" />
                       </div>
-                      <span className="font-bold text-teal-400 font-mono text-sm">{social.platform}</span>
+                      <span className="font-bold text-teal-400 font-mono text-lg">{social.platform}</span>
                     </div>
-                    <div className="text-sm text-neutral-100 text-left mb-2">{social.handle}</div>
-                    <FaExternalLinkAlt className="w-3 h-3 text-white" />
+                    <div className="text-md text-neutral-100 text-left mb-2">{social.handle}</div>
+                    <FaExternalLinkAlt className="w-4 h-4 text-white" />
                   </button>
                 )
               })}
@@ -346,8 +346,8 @@ export default function CloudPortfolio() {
                         <span
                           className={`px-2 py-1 text-xs rounded-md font-bold border ${
                             cert.status === "Completed"
-                              ? "bg-yellow-200 text-black border-yellow-300"
-                              : "bg-blue-300 text-black border-blue-200"
+                              ? "bg-[#252525] text-white border-neutral-600"
+                              : "bg-blue-100 text-black border-blue-200"
                           }`}
                         >
                           {cert.status}
@@ -356,7 +356,7 @@ export default function CloudPortfolio() {
                       <p className="text-neutral-100 text-sm font-semibold">
                         {cert.organization} || {cert.year}
                       </p>
-                      <p className="text-neutral-300 text-sm leading-relaxed">{cert.description}</p>
+                      <p className="text-neutral-300 text-md leading-relaxed">{cert.description}</p>
                       {cert.progress && (
                         <p className="text-neutral-500 text-xs bg-neutral-900 p-1 border  rounded-md w-max border-neutral-600">
                           Progress: {cert.progress}
@@ -366,7 +366,7 @@ export default function CloudPortfolio() {
                         {cert.skills.map((skill, skillIndex) => (
                           <span
                             key={skillIndex}
-                            className="px-3 py-1 bg-white text-neutral-900 text-xs font-bold rounded-md"
+                            className="px-3 py-1 bg-[#222222] border border-neutral-600 text-neutral-100 text-sm font-bold rounded-md"
                           >
                             {skill}
                           </span>
@@ -415,7 +415,7 @@ export default function CloudPortfolio() {
                           <div className="p-2 bg-black rounded">
                             <Icon className="w-4 h-4 text-white" />
                           </div>
-                          <span className="text-sm sm:text-sm text-white font-bold truncate">{skill.name}</span>
+                          <span className="text-md sm:text-sm text-white font-bold truncate">{skill.name}</span>
                         </div>
                       )
                     })}
@@ -462,7 +462,7 @@ export default function CloudPortfolio() {
 
                     <div className="space-y-3">
                       {project.description.map((paragraph, pIndex) => (
-                        <p key={pIndex} className="text-neutral-300 text-sm leading-relaxed">
+                        <p key={pIndex} className="text-neutral-300 text-md leading-relaxed">
                           {paragraph}
                         </p>
                       ))}
@@ -476,7 +476,7 @@ export default function CloudPortfolio() {
                         {project.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-2 py-1 bg-white text-neutral-900 text-xs font-bold border rounded-md border-yellow-100"
+                            className="px-2 py-1 bg-[#1e1e1e] text-neutral-100 text-xs font-bold border rounded-md border-neutral-600"
                           >
                             {tech}
                           </span>
@@ -526,9 +526,9 @@ export default function CloudPortfolio() {
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
                 <div className="space-y-2">
                   <h4 className="text-lg font-bold text-neutral-100">{CONFIG.education.degree}</h4>
-                  <p className="text-white font-bold text-sm">{CONFIG.education.field}</p>
-                  <p className="text-neutral-100 text-xs">{CONFIG.education.institution}</p>
-                  <p className="text-neutral-300 text-xs">{CONFIG.education.location}</p>
+                  <p className="text-white font-bold text-lg">{CONFIG.education.field}</p>
+                  <p className="text-neutral-100 text-md">{CONFIG.education.institution}</p>
+                  <p className="text-neutral-300 text-md">{CONFIG.education.location}</p>
                 </div>
                 <div className="text-left lg:text-right space-y-2">
                   <div className="flex items-center gap-1 lg:justify-end">
@@ -542,7 +542,7 @@ export default function CloudPortfolio() {
               </div>
               <div className="space-y-2">
                 {CONFIG.education.description.map((paragraph, index) => (
-                  <p key={index} className="text-neutral-300 text-sm leading-relaxed">
+                  <p key={index} className="text-neutral-300 text-md leading-relaxed">
                     {paragraph}
                   </p>
                 ))}

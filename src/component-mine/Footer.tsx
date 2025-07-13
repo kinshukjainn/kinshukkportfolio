@@ -1,5 +1,5 @@
 import type React from "react"
-import { FaCloud, FaGithub, FaTwitter, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa"
+import { FaCloud, FaGithub, FaTwitter, FaLinkedin, FaInstagram, FaEnvelope} from "react-icons/fa"
 interface SocialLink {
   icon: React.ElementType
   href: string
@@ -21,11 +21,11 @@ const Footer = () => {
         {/* Top section with logo and name */}
         <div className="flex flex-col items-center mb-8">
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-red-500 animate-pulse">
-              <FaCloud size={36} />
+            <span className="text-blue-400 animate-pulse">
+              <FaCloud size={46} />
             </span>
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-100 to-red-400 bg-clip-text text-transparent">
-              CloudKinshuk
+            <h2 className="text-5xl heading-kinshuk font-semibold bg-gradient-to-r from-blue-400 to-white bg-clip-text text-transparent">
+            CloudKinshuk
             </h2>
           </div>
 

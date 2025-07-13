@@ -1,220 +1,204 @@
-"use client"
 import type React from "react"
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { FaBlog, FaPodcast, FaUser, FaHeart } from "react-icons/fa"
+import { Laptop, Type, Monitor, Code, Palette } from "lucide-react"
 
-interface Interest {
-  id: number
-  icon: React.ReactNode
-  title: string
+interface SetupItem {
+  name: string
   description: string
+  category?: string
+}
+interface SetupSection {
+  title: string
+  icon: React.ComponentType<{ className?: string }>
+  items: SetupItem[]
+  color: string
 }
 
-export default function AboutMe() {
-  const [activeSection, setActiveSection] = useState<string>("about")
-
-  const interests: Interest[] = [
-    {
-      id: 1,
-      icon: <FaPodcast className="text-yellow-200" />,
-      title: "Listening to People understanding their vision and mentality, thought process, and processing knowledge",
-      description:
-        "I really like to listen to people and understand their vision and mentality, thought process, and processing knowledge. I am a big fan of podcasts and I really like to listen to podcasts on various topics like technology, personal development, and other things.",
-    },
-    {
-      id: 2,
-      icon: <FaBlog className="text-yellow-200" />,
-      title: "Writing Blogs and Keep scrolling through the developers portfolio",
-      description:
-        "Alright so whenever I get time I just keep scrolling through the developers portfolio and try to understand how they are building their portfolio and what are the things they are doing to make it look good and also I try to write blogs on various topics mostly related to cloud computing and DevOps, web development and other things non-technical in nature too.",
-    },
-  ]
-
-  // Animation variants
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  }
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
+const setupData: SetupSection[] = [
+  {
+    title: "Hardware",
+    icon: Laptop,
+    color: "bg-[#121212]",
+    items: [
+      {
+        name: "Acer Swift 3",
+        description: "Intel i5 EVO • 8GB RAM • 512GB SSD • Windows 11 Home",
+        category: "Primary Machine",
       },
-    },
-  }
+      {
+        name: "Back-Lit Keyboard",
+        description: "Standard laptop keyboard for comfortable typing sessions",
+        category: "Input Device",
+      },
+      {
+        name: "RedGear Mouse Turbo Fire",
+        description: "Ergonomic gaming mouse for precise navigation",
+        category: "Input Device",
+      },
+    ],
+  },
+  {
+    title: "Development Stack",
+    icon: Code,
+    color: "bg-[#121212]",
+    items: [
+      {
+        name: "Visual Studio Code",
+        description: "Primary code editor with extensive extension ecosystem",
+        category: "Editor",
+      },
+      {
+        name: "Git & GitHub",
+        description: "Version control system with web interface and CLI tools",
+        category: "VCS",
+      },
+      {
+        name: "WSL2 Ubuntu",
+        description: "Windows Subsystem for Linux with Ubuntu distribution",
+        category: "Terminal",
+      },
+    ],
+  },
+  {
+    title: "Design Tools",
+    icon: Palette,
+    color: "bg-[#121212]",
+    items: [
+      {
+        name: "Figma",
+        description: "Collaborative interface design and prototyping platform",
+        category: "UI/UX",
+      },
+      {
+        name: "Canva",
+        description: "Graphic design platform for quick visual content creation",
+        category: "Graphics",
+      },
+    ],
+  },
+  {
+    title: "Typography",
+    icon: Type,
+    color: " bg-[#121212]",
+    items: [
+      {
+        name: "Menlo & Monaco",
+        description: "Monospace fonts with programming ligatures support",
+        category: "Code Font",
+      },
+      {
+        name: "Courier New",
+        description: "Classic monospace typeface for terminal and code",
+        category: "Code Font",
+      },
+            {
+        name: "Rubik | IBM Plex Sans | Roboto | Ubuntu",
+        description: "Modern sans-serif fonts optimized for UI readability",
+        category: "UI Font",
+      },
+    ],
+  },
+  {
+    title: "Other Stuff....I use",
+    icon: Type,
+    color: " bg-[#121212]",
+    items: [
+      {
+        name: "Dark Modern",
+        description: "A default vs code theme provided by microsoft available by default in vscode",
+        category: "VS Code Theme",
+      },
+      {
+        name: "Github Dark",
+        description: "A github based vs code theme provided by Github available in vscode extensions",
+        category: "VS Code Theme",
+      },
+      {
+        name: "Discord",
+        description: "A Chat and fun application for developers and gamers ",
+        category: "For Fun",
+      },
+    ],
+  },
+]
 
-  const itemFade = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4 },
-    },
-  }
-
+export default function DevSetup() {
   return (
-    <div className="min-h-screen select-none bg-black text-gray-300 pt-28">
-      <div className="max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
-        {/* Main Heading */}
-        <motion.div initial="hidden" animate="visible" variants={fadeIn} className="text-center mb-8 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">About Me</h1>
-          <div className="w-20 h-1 bg-yellow-200 mx-auto"></div>
-        </motion.div>
-
-        {/* Navigation */}
-        <motion.nav
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          className="py-4 sm:py-6 border border-gray-800 rounded-md mb-6 sm:mb-8 px-4"
-        >
-          <ul className="flex space-x-4 sm:space-x-8">
-            <li>
-              <button
-                onClick={() => setActiveSection("about")}
-                className={`px-3 py-2 rounded-md cursor-pointer transition-all duration-300 text-sm sm:text-base ${
-                  activeSection === "about"
-                    ? "border-2 border-yellow-200 text-yellow-200 font-medium"
-                    : "text-gray-300 hover:bg-[#1e1e1e]"
-                }`}
-              >
-                <span className="flex items-center gap-2">
-                  <FaUser />
-                  About Me
-                </span>
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => setActiveSection("interests")}
-                className={`px-3 py-2 rounded-md cursor-pointer transition-all duration-300 text-sm sm:text-base ${
-                  activeSection === "interests"
-                    ? "border-2 border-yellow-200 text-yellow-200 font-medium"
-                    : "text-gray-300 hover:bg-[#1e1e1e]"
-                }`}
-              >
-                <span className="flex items-center gap-2">
-                  <FaHeart />
-                  My Interests
-                </span>
-              </button>
-            </li>
-          </ul>
-        </motion.nav>
-
-        {/* Content Area */}
-        <main>
-          {activeSection === "about" && (
-            <motion.section initial="hidden" animate="visible" variants={fadeIn} className="py-4">
-              <div className="bg-black border border-gray-800 rounded-md p-4 sm:p-6 md:p-8 shadow-xl mb-6 sm:mb-8">
-                <motion.div
-                  variants={staggerContainer}
-                  initial="hidden"
-                  animate="visible"
-                  className="space-y-4 sm:space-y-6"
-                >
-                  <motion.div variants={itemFade} className="pl-0 sm:pl-4">
-                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                      I'm Kinshuk, a third-year Electrical Engineering student from a tier-3 college in India, but my
-                      passion lies in solving real-world problems through modern cloud and automation technologies. I'm
-                      an INTJ — someone who thrives on strategic thinking, deep focus, and building systems that work in
-                      the background to make things faster, smarter, and more scalable.
-                    </p>
-                  </motion.div>
-                  <motion.div variants={itemFade} className="pl-0 sm:pl-4">
-                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                      Coming from a non-CS background, I've self-learned DevOps, AWS, and cloud-native tools through
-                      hands-on projects and consistent upskilling. I believe skills are built through action, not
-                      credentials.
-                    </p>
-                  </motion.div>
-                  <motion.div variants={itemFade} className="pl-0 sm:pl-4">
-                    <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                      Outside tech, I'm a tactical FPS gamer (CODM/Warzone) — a hobby that sharpened my decision-making,
-                      patience, and adaptability. I value team building, collaboration, learning by doing, and staying
-                      consistent all time. I'm currently looking to apply my skills in cloud and DevOps-focused
-                      environments where ownership, creativity, and real-world impact matter more than titles.
-                    </p>
-                  </motion.div>
-                </motion.div>
-              </div>
-            </motion.section>
-          )}
-
-          {activeSection === "interests" && (
-            <motion.section initial="hidden" animate="visible" variants={fadeIn} className="py-4">
-              <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] border border-gray-800 rounded-md p-4 sm:p-6 md:p-8 shadow-xl mb-6 sm:mb-8">
-                <motion.div
-                  variants={staggerContainer}
-                  initial="hidden"
-                  animate="visible"
-                  className="space-y-6 sm:space-y-8"
-                >
-                  {interests.map((interest) => (
-                    <motion.div
-                      key={interest.id}
-                      variants={itemFade}
-                      className="p-4 bg-[#1e1e1e] border border-gray-700 rounded-md"
-                    >
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
-                        <span className="p-3 bg-[#252525] border border-gray-600 rounded-md text-xl w-fit">
-                          {interest.icon}
-                        </span>
-                        <h3 className="text-base sm:text-lg font-medium text-white">{interest.title}</h3>
-                      </div>
-                      <p className="text-gray-300 text-sm sm:text-base leading-relaxed pl-0 sm:pl-4">
-                        {interest.description}
-                      </p>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </div>
-            </motion.section>
-          )}
-        </main>
-
-        {/* Footer */}
-        <motion.footer
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeIn}
-          className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-gray-800 rounded-md text-gray-400 text-xs sm:text-sm"
-        >
-          <div className="border border-gray-800 rounded-md p-4">
-            <p>Created with React, TypeScript & Tailwind CSS</p>
-            <p className="mt-2">© {new Date().getFullYear()} - Feel free to connect!</p>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="flex items-center gap-2 text-gray-400 mt-4 text-xs sm:text-sm"
-            >
-              <span>Built with</span>
-              <motion.div
-                animate={{
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatType: "reverse",
-                  duration: 1.5,
-                }}
-              >
-                <FaHeart className="text-red-500" />
-              </motion.div>
-              <span>and lots of chai</span>
-            </motion.div>
+    <div className="min-h-screen bg-black text-gray-100">
+      {/* Main Content Container */}
+      <div className="max-w-7xl pt-28 mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {/* Header Section */}
+        <div className="text-center mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 mb-4">
+            <Monitor className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" />
+            <span className="text-xs sm:text-sm font-mono text-gray-500 uppercase tracking-wider">
+              Development Environment
+            </span>
           </div>
-        </motion.footer>
+
+          
+        </div>
+
+        {/* Setup Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
+          {setupData.map((section, sectionIndex) => (
+            <div
+              key={sectionIndex}
+              className={`${section.color} rounded-md p-4 sm:p-6 hover:border-opacity-40 transition-all duration-300 group`}
+            >
+              {/* Section Header */}
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                <div className="p-2 bg-black/50 rounded-lg border border-gray-800">
+                  <section.icon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-100" />
+                </div>
+                <div>
+                  <h2 className="text-base sm:text-lg text-xl font-semibold text-white">{section.title}</h2>
+                  <div className="text-sm text-gray-200 font-mono">
+                    {section.items.length} item{section.items.length !== 1 ? "s" : ""}
+                  </div>
+                </div>
+              </div>
+
+              {/* Items List */}
+              <div className="space-y-3 sm:space-y-4">
+                {section.items.map((item, itemIndex) => (
+                  <div
+                    key={itemIndex}
+                    className=" p-2 sm:p-4 hover:border-gray-700/50 hover:bg-black/50 transition-all duration-200"
+                  >
+                    {item.category && (
+                      <div className="text-sm  rounded font-mono text-yellow-400 uppercase tracking-wider mb-1">
+                        {item.category}
+                      </div>
+                    )}
+
+                    <h3 className="text-lg sm:text-base font-medium text-white mb-1 sm:mb-2 leading-tight">
+                      {item.name}
+                    </h3>
+
+                    <p className="text-md sm:text-sm  text-gray-300 leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer Stats */}
+        <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-800">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+            <div className="bg-[#131313] border border-gray-800 rounded-lg p-3 sm:p-4">
+              <div className="text-lg sm:text-xl font-bold text-white font-mono">
+                {setupData.reduce((acc, section) => acc + section.items.length, 0)}
+              </div>
+              <div className="text-xs sm:text-sm text-gray-500 font-mono uppercase tracking-wider">Total Items</div>
+            </div>
+
+            <div className="bg-[#131313] border border-gray-800 rounded-lg p-3 sm:p-4">
+              <div className="text-lg sm:text-xl font-bold text-white font-mono">{setupData.length}</div>
+              <div className="text-xs sm:text-sm text-gray-500 font-mono uppercase tracking-wider">Categories</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

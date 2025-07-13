@@ -1173,10 +1173,10 @@ const BlogPageContent: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl font-mono sm:text-6xl lg:text-7xl font-bold text-neutral-100 mb-6 leading-tight"
+              className="text-6xl font-mono sm:text-6xl lg:text-7xl heading-kinshuk font-bold text-neutral-100 mb-6 leading-tight"
             >
               Minimal{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-400">Minds</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r animate-pulse from-green-500 via-blue-400 to-red-500">Minds</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
