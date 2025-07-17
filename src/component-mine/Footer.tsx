@@ -11,12 +11,12 @@ const Footer = () => {
     { icon: FaGithub, href: "https://github.com/kinshukjainn", label: "GitHub" },
     { icon: FaTwitter, href: "https://twitter.com/realkinshuk004", label: "Twitter" },
     { icon: FaLinkedin, href: "https://linkedin.com/in/kinshukjainn", label: "LinkedIn" },
-    { icon: FaInstagram, href: "https://instagram.com/kinshukjain._", label: "Instagram" },
+    { icon: FaInstagram, href: "https://instagram.com/kinshukjainn", label: "Instagram" },
     { icon: FaEnvelope, href: "mailto:kinshuk25jan04@gmail.com", label: "Email" },
   ]
 
   return (
-    <footer className=" text-gray-300 py-8 mb-3 mr-3 ml-3 rounded-md  mt-6">
+    <footer className=" text-gray-300 py-8 mb-3 mr-3 ml-3 border-t border-white shadow-md shadow-black rounded-md  mt-6">
       <div className="container mx-auto px-4">
         {/* Top section with logo and name */}
         <div className="flex flex-col items-center mb-8">
@@ -35,8 +35,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-white text-black to-transparent my-6"></div>
+     
 
         {/* Social media links */}
         <div className="flex flex-col items-center">
@@ -45,7 +44,7 @@ const Footer = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-gray-400 hover:text-red-500 transform hover:scale-110 transition-all duration-300"
+                className="text-gray-100 hover:text-red-500 transform hover:scale-110 transition-all duration-300"
                 aria-label={link.label}
                 target="_blank"
                 rel="noopener noreferrer"

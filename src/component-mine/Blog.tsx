@@ -545,9 +545,9 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(({ post, index, searchQuery
             href={post.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500 text-black font-semibold border rounded-md border-yellow-400 hover:bg-yellow-400 hover:scale-105 active:scale-95 transition-all duration-200 text-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#1e1e1e] border-2 border-neutral-700 text-white font-semibold rounded-md hover:scale-105 active:scale-95 transition-all duration-200 text-sm"
           >
-            Read
+            Read blog
             <FaExternalLinkAlt className="w-3 h-3" />
           </a>
         </div>
@@ -667,7 +667,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className="relative">
       <div className="relative">
-        <FaSearch className="absolute  left-4 top-1/2 transform -translate-y-1/2 text-yellow-500 text-lg" />
+        <FaSearch className="absolute  left-4 top-1/2 transform -translate-y-1/2 text-gray-300 text-lg" />
         <input
           ref={inputRef}
           type="text"
@@ -676,7 +676,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="w-full pl-12 pr-12 py-4 bg-neutral-800 border-2 rounded-md border-neutral-700 text-neutral-100 placeholder-neutral-400 text-md focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/20 transition-all duration-300"
+          className="w-full pl-12 pr-12 py-2 bg-neutral-800 border-2 rounded border-neutral-700 text-neutral-100 placeholder-neutral-400 text-md transition-all duration-300"
         />
         <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {searchInput && (
@@ -720,12 +720,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 <div
                   className={`p-2 border ${
                     suggestion.type === "post"
-                      ? "bg-yellow-500/20 text-yellow-500 border-yellow-500/30"
+                      ? "bg-[#1e1e1e]  text-white "
                       : suggestion.type === "tag"
-                        ? "bg-blue-500/20 text-blue-400 border-blue-500/30"
+                        ? "bg-[#1e1e1e]  text-white "
                         : suggestion.type === "author"
-                          ? "bg-green-500/20 text-green-400 border-green-500/30"
-                          : "bg-neutral-600/20 text-neutral-400 border-neutral-600/30"
+                          ? "bg-[#1e1e1e]  text-white "
+                          : "bg-[#1e1e1e]  text-white "
                   }`}
                 >
                   {getSuggestionIcon(suggestion.type)}
@@ -1210,27 +1210,27 @@ const BlogPageContent: React.FC = () => {
             <div className="flex gap-3 lg:flex-shrink-0">
               <button
                 onClick={() => setShowFilters(!showFilters)}
-                className={`flex items-center gap-2 px-4 py-3 rounded-md font-medium transition-all duration-300 ${
+                className={`flex items-center gap-2 px-2 py-2 rounded border-2 border-neutral-700 font-medium transition-all duration-300 ${
                   showFilters
-                    ? "bg-yellow-500 text-black border border-yellow-400"
-                    : "bg-neutral-800 text-neutral-100 border border-neutral-700 hover:border-yellow-500"
+                    ? "bg-[#1e1e1e] text-white border-2 border-neutral-700"
+                    : "bg-neutral-800 text-neutral-100 border border-neutral-700"
                 }`}
               >
-                <FaFilter className={showFilters ? "text-black" : "text-yellow-500"} />
+                <FaFilter className={showFilters ? "text-white" : "text-yellow-100"} />
                 Filters
                 {showFilters ? (
-                  <FaChevronUp className={showFilters ? "text-black" : "text-yellow-500"} />
+                  <FaChevronUp className={showFilters ? "text-white" : "text-yellow-100"} />
                 ) : (
-                  <FaChevronDown className={showFilters ? "text-black" : "text-yellow-500"} />
+                  <FaChevronDown className={showFilters ? "text-white" : "text-yellow-100"} />
                 )}
               </button>
               <button
                 onClick={() =>
                   setFilters((prev) => ({ ...prev, sortOrder: prev.sortOrder === "asc" ? "desc" : "asc" }))
                 }
-                className="flex items-center gap-2 px-4 py-3 rounded-md bg-neutral-800 border border-neutral-700 text-neutral-100 hover:border-yellow-500 transition-all duration-300 font-medium"
+                className="flex items-center gap-2 px-1 py-1 rounded bg-neutral-800 border-2 border-neutral-700 text-neutral-100 transition-all duration-300 font-medium"
               >
-                <FaSort className="text-yellow-500" />
+                <FaSort className="text-white" />
                 {filters.sortOrder === "desc" ? "Newest" : "Oldest"}
               </button>
             </div>
