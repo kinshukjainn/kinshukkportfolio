@@ -354,7 +354,7 @@ export default function CloudPortfolio() {
                       </p>
                       <p className="text-neutral-300 text-base leading-relaxed">{cert.description}</p>
                       {cert.progress && (
-                        <p className="text-white text-sm bg-[#0a0a0a] p-3 rounded-md w-max">
+                        <p className="text-white text-sm ">
                           Progress: {cert.progress}
                         </p>
                       )}
