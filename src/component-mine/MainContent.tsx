@@ -1,4 +1,5 @@
 "use client"
+
 import type React from "react"
 import {
   SiTerraform,
@@ -33,8 +34,7 @@ import {
   FaAws,
 } from "react-icons/fa"
 import { VscVscodeInsiders } from "react-icons/vsc"
-import profileimg from "../assets/mainweb.jpg";
-
+import profilimage from "../assets/mainweb.jpg";
 // Configuration Data
 const CONFIG = {
   personal: {
@@ -108,7 +108,7 @@ const CONFIG = {
     },
   ],
   skills: {
-    Deployement: [
+    Deployment: [
       { name: "AWS", icon: FaAws },
       { name: "Amplify", icon: SiAwsamplify },
       { name: "Amazon EC2", icon: SiAmazonec2 },
@@ -210,7 +210,6 @@ export default function CloudPortfolio() {
         clearInterval(typingTimer)
       }
     }, 150)
-
     return () => clearInterval(typingTimer)
   }, [])
 
@@ -236,47 +235,49 @@ export default function CloudPortfolio() {
   }
 
   return (
-    <div className="min-h-screen bg-[#101010] text-neutral-100">
-      <div className="pt-20 px-2 sm:px-4 lg:px-6">
-        <div className="max-w-7xl mx-auto space-y-8">
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      <div className="pt-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto space-y-12">
           {/* Hero Section */}
-          <section className="pt-4">
-            <div className=" backdrop-blur-sm p-4 sm:p-6 lg:p-8">
-              <div className="mb-6">
-                <div className="text-yellow-400 text-lg sm:text-lg mb-3 font-mono  p-1">
+          <section className="pt-8">
+            <div className="backdrop-blur-sm p-6 sm:p-8 lg:p-10">
+              <div className="mb-8">
+                <div className="text-yellow-400 text-xl sm:text-2xl mb-6 font-mono p-2">
                   {typedText}
                   <span className="animate-pulse">|</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-                <div className="lg:col-span-2 space-y-4">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div className="lg:col-span-2 space-y-6">
                   <div>
-                    <h1 className="heading-kinshuk text-6xl sm:text-4xl lg:text-6xl font-mono font-semibold mb-3 text-green-400 animate-pulse">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-mono font-bold mb-4 text-green-400 animate-pulse">
                       {CONFIG.personal.name}
                     </h1>
-                    <h2 className="text-lg lg:text-xl text-neutral-100 mb-4 font-light">{CONFIG.personal.title}</h2>
+                    <h2 className="text-xl lg:text-2xl text-white mb-6 font-medium leading-relaxed">
+                      {CONFIG.personal.title}
+                    </h2>
                   </div>
 
-                  <div className="flex items-center gap-2 text-yellow-500 text-sm">
-                    <FaMapMarkerAlt className="w-3 h-3" />
-                    <span>{CONFIG.personal.location}</span>
+                  <div className="flex items-center gap-3 text-yellow-400 text-base">
+                    <FaMapMarkerAlt className="w-4 h-4" />
+                    <span className="font-medium">{CONFIG.personal.location}</span>
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-blue-800 text-white text-sm font-semibold   rounded">
+                  <div className="flex flex-wrap gap-3">
+                    <span className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-md">
                       ● {CONFIG.personal.availability}
                     </span>
-                    <span className="px-3 py-1 bg-neutral-800 text-gray-300 text-sm font-bold   rounded">
+                    <span className="px-4 py-2 bg-[#1a1a1a] text-white text-sm font-semibold rounded-md">
                       ● {CONFIG.personal.status}
                     </span>
                   </div>
                 </div>
 
                 <div className="flex justify-center lg:justify-end">
-                  <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded -2  bg-neutral-800">
+                  <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-md bg-[#1a1a1a] overflow-hidden">
                     <img
-                      src={profileimg}
+                      src={profilimage}
                       alt={CONFIG.personal.name}
                       className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
                     />
@@ -284,9 +285,9 @@ export default function CloudPortfolio() {
                 </div>
               </div>
 
-              <div className="mt-6 space-y-3 text-white leading-relaxed bg-[#212121] shadow-md shadow-black p-3 rounded">
+              <div className="mt-8 space-y-4 text-white leading-relaxed bg-[#1a1a1a] p-6 rounded-md">
                 {CONFIG.personal.bio.map((paragraph, index) => (
-                  <p key={index} className="text-md sm:text-base">
+                  <p key={index} className="text-base sm:text-lg leading-relaxed">
                     {paragraph}
                   </p>
                 ))}
@@ -296,29 +297,29 @@ export default function CloudPortfolio() {
 
           {/* Social Links */}
           <section>
-            <div className="mb-4">
-              <h3 className="text-2xl sm:text-3xl font-mono font-bold flex items-center gap-2 text-neutral-100  p-3 ">
-                <FaWhatsapp className="w-5 h-5 text-emerald-400" />
+            <div className="mb-6">
+              <h3 className="text-3xl sm:text-4xl font-mono font-bold flex items-center gap-3 text-white p-4">
+                <FaWhatsapp className="w-6 h-6 text-emerald-400" />
                 Connect with Me
               </h3>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {CONFIG.social.map((social, index) => {
                 const Icon = social.icon
                 return (
                   <button
                     key={index}
                     onClick={() => handleSocialClick(social)}
-                    className="group bg-[#212121] shadow-md shadow-black rounded  p-3 cursor-pointer"
+                    className="group bg-[#1a1a1a] rounded-md p-4 cursor-pointer transform transition-all duration-200 hover:scale-105 hover:bg-[#252525]"
                   >
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="p-2 bg-neutral-900 rounded  ">
-                        <Icon className="w-4 h-4 text-white" />
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="p-3 bg-[#0a0a0a] rounded-md">
+                        <Icon className="w-5 h-5 text-white" />
                       </div>
                       <span className="font-bold text-teal-400 font-mono text-lg">{social.platform}</span>
                     </div>
-                    <div className="text-md text-neutral-100 text-left mb-2">{social.handle}</div>
-                    <FaExternalLinkAlt className="w-4 h-4 text-white" />
+                    <div className="text-base text-white text-left mb-3 font-medium">{social.handle}</div>
+                    <FaExternalLinkAlt className="w-4 h-4 text-white group-hover:text-teal-400 transition-colors duration-200" />
                   </button>
                 )
               })}
@@ -327,46 +328,41 @@ export default function CloudPortfolio() {
 
           {/* Certifications */}
           <section>
-            <div className="mb-4">
-              <h3 className="text-2xl sm:text-3xl font-mono font-bold flex items-center gap-2 text-neutral-100  p-3">
-                <FaAward className="w-5 h-5 text-amber-400" />
+            <div className="mb-6">
+              <h3 className="text-3xl sm:text-4xl font-mono font-bold flex items-center gap-3 text-white p-4">
+                <FaAward className="w-6 h-6 text-amber-400" />
                 Certifications
               </h3>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {CONFIG.certifications.map((cert, index) => (
-                <div
-                  key={index}
-                  className="bg-[#212121]   rounded p-4 shadow-md shadow-black transition-colors duration-200"
-                >
-                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-                    <div className="flex-1 space-y-3">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h4 className="text-lg font-bold text-neutral-100">{cert.title}</h4>
+                <div key={index} className="bg-[#1a1a1a] rounded-md p-6 transition-colors duration-200">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                    <div className="flex-1 space-y-4">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <h4 className="text-xl font-bold text-white">{cert.title}</h4>
                         <span
-                          className={`px-2 py-1 text-xs rounded font-bold  ${
-                            cert.status === "Completed"
-                              ? "bg-[#252525] text-white "
-                              : "bg-blue-100 text-black "
+                          className={`px-3 py-1 text-sm rounded-md font-bold ${
+                            cert.status === "Completed" ? "bg-[#0a0a0a] text-white" : "bg-blue-100 text-black"
                           }`}
                         >
                           {cert.status}
                         </span>
                       </div>
-                      <p className="text-neutral-100 text-sm font-semibold">
-                        {cert.organization} || {cert.year}
+                      <p className="text-white text-base font-semibold">
+                        {cert.organization} • {cert.year}
                       </p>
-                      <p className="text-neutral-300 text-md leading-relaxed">{cert.description}</p>
+                      <p className="text-neutral-300 text-base leading-relaxed">{cert.description}</p>
                       {cert.progress && (
-                        <p className="text-neutral-100  text-sm bg-neutral-900 p-1 shadow-md shadow-black   rounded w-max ">
+                        <p className="text-white text-sm bg-[#0a0a0a] p-3 rounded-md w-max">
                           Progress: {cert.progress}
                         </p>
                       )}
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-2">
                         {cert.skills.map((skill, skillIndex) => (
                           <span
                             key={skillIndex}
-                            className="px-3 py-1    text-whites bg-[#101010] text-sm font-bold rounded"
+                            className="px-3 py-2 text-white bg-[#0a0a0a] text-sm font-bold rounded-md"
                           >
                             {skill}
                           </span>
@@ -378,7 +374,7 @@ export default function CloudPortfolio() {
                         href={cert.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-3 py-2 text-neutral-100 bg-[#101010]   rounded w-max cursor-pointer text-sm font-bold"
+                        className="inline-flex items-center gap-2 px-4 py-3 text-white bg-[#0a0a0a] rounded-md w-max cursor-pointer text-sm font-bold transform transition-all duration-200 hover:scale-105 hover:bg-black"
                       >
                         View
                         <FaExternalLinkAlt className="w-3 h-3" />
@@ -392,30 +388,30 @@ export default function CloudPortfolio() {
 
           {/* Skills */}
           <section>
-            <div className="mb-4">
-              <h3 className="text-2xl sm:text-3xl font-mono font-bold flex items-center gap-2 text-neutral-100  p-3 ">
-                <FaCode className="w-5 h-5 text-teal-400" />
+            <div className="mb-6">
+              <h3 className="text-3xl sm:text-4xl font-mono font-bold flex items-center gap-3 text-white p-4">
+                <FaCode className="w-6 h-6 text-teal-400" />
                 Skills
               </h3>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-8">
               {Object.entries(CONFIG.skills).map(([category, skills]) => (
-                <div key={category} className="space-y-3">
-                  <h4 className="text-lg font-bold underline text-neutral-100   ">
-                    {category} 
+                <div key={category} className="space-y-4">
+                  <h4 className="text-xl font-bold text-white underline decoration-teal-400 underline-offset-4">
+                    {category}
                   </h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
                     {skills.map((skill, skillIndex) => {
                       const Icon = skill.icon
                       return (
                         <div
                           key={skillIndex}
-                          className="flex items-center rounded gap-2 p-2 bg-[#212121] shadow shadow-black transition-colors duration-200"
+                          className="flex items-center rounded-md gap-3 p-3 bg-[#1a1a1a] transition-colors duration-200"
                         >
-                          <div className="p-2 rounded">
+                          <div className="p-2 rounded-md">
                             <Icon className="w-5 h-5 text-white" />
                           </div>
-                          <span className="text-md sm:text-sm text-white font-bold truncate">{skill.name}</span>
+                          <span className="text-sm sm:text-base text-white font-semibold truncate">{skill.name}</span>
                         </div>
                       )
                     })}
@@ -427,56 +423,51 @@ export default function CloudPortfolio() {
 
           {/* Projects */}
           <section>
-            <div className="mb-4">
-              <h3 className="text-2xl sm:text-3xl font-mono font-bold flex items-center gap-2 text-neutral-100 p-3 ">
-                <FaCode className="w-5 h-5 text-emerald-400" />
+            <div className="mb-6">
+              <h3 className="text-3xl sm:text-4xl font-mono font-bold flex items-center gap-3 text-white p-4">
+                <FaCode className="w-6 h-6 text-emerald-400" />
                 Projects
               </h3>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-8">
               {CONFIG.projects.map((project, index) => (
-                <div
-                  key={index}
-                  className="bg-[#212121]    p-4 shadow-md shadow-black  transition-colors duration-200 rounded"
-                >
-                  <div className="space-y-4">
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
-                      <div className="space-y-2">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h4 className="text-lg font-bold text-neutral-100">{project.title}</h4>
+                <div key={index} className="bg-[#1a1a1a] p-6 transition-colors duration-200 rounded-md">
+                  <div className="space-y-6">
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                      <div className="space-y-3">
+                        <div className="flex flex-wrap items-center gap-3">
+                          <h4 className="text-xl font-bold text-white">{project.title}</h4>
                           <span
-                            className={`px-2 py-1 text-xs rounded font-bold  ${
-                              project.status === "Live"
-                                ? "bg-black text-neutral-100 -emerald-400"
-                                : "bg-white text-black"
+                            className={`px-3 py-1 text-sm rounded-md font-bold ${
+                              project.status === "Live" ? "bg-black text-white" : "bg-white text-black"
                             }`}
                           >
                             {project.status}
                           </span>
                         </div>
-                        <p className="text-neutral-100 text-xs">
-                          {project.type} | {project.year}
+                        <p className="text-white text-sm font-medium">
+                          {project.type} • {project.year}
                         </p>
                       </div>
                     </div>
 
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {project.description.map((paragraph, pIndex) => (
-                        <p key={pIndex} className="text-neutral-300 text-md leading-relaxed">
+                        <p key={pIndex} className="text-neutral-300 text-base leading-relaxed">
                           {paragraph}
                         </p>
                       ))}
                     </div>
 
-                    <div className="space-y-2">
-                      <h5 className="text-xs font-bold text-neutral-300  p-1 rounded w-max ">
+                    <div className="space-y-3">
+                      <h5 className="text-sm font-bold text-neutral-300 bg-[#0a0a0a] p-2 rounded-md w-max">
                         TECHNOLOGIES
                       </h5>
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-3 py-2 bg-[#1a1a1a] text-neutral-100 text-xs font-bold  rounded "
+                            className="px-3 py-2 bg-[#0a0a0a] text-white text-sm font-bold rounded-md"
                           >
                             {tech}
                           </span>
@@ -484,15 +475,15 @@ export default function CloudPortfolio() {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 pt-2">
+                    <div className="flex flex-wrap gap-3 pt-4">
                       {project.links.live && (
                         <a
                           href={project.links.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 px-3 py-2 bg-[#101010] cursor pointer  rounded  text-neutral-100  text-sm font-bold"
+                          className="inline-flex items-center gap-2 px-4 py-3 bg-[#0a0a0a] cursor-pointer rounded-md text-white text-sm font-bold transform transition-all duration-200 hover:scale-105 hover:bg-black"
                         >
-                          <FaGlobe className="w-3 h-3" />
+                          <FaGlobe className="w-4 h-4" />
                           Live Demo
                         </a>
                       )}
@@ -501,9 +492,9 @@ export default function CloudPortfolio() {
                           href={project.links.repo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 px-3 py-1 bg-neutral-800   text-neutral-100 hover:bg-neutral-700 hover: transition-all duration-200 text-xs font-bold"
+                          className="inline-flex items-center gap-2 px-4 py-3 bg-[#0a0a0a] text-white rounded-md text-sm font-bold transform transition-all duration-200 hover:scale-105 hover:bg-black"
                         >
-                          <FaGithub className="w-3 h-3" />
+                          <FaGithub className="w-4 h-4" />
                           Source Code
                         </a>
                       )}
@@ -516,33 +507,33 @@ export default function CloudPortfolio() {
 
           {/* Education */}
           <section>
-            <div className="mb-4">
-              <h3 className="text-2xl sm:text-3xl font-mono font-bold flex items-center gap-2 text-neutral-100  p-3">
-                <FaGraduationCap className="w-5 h-5 text-emerald-400" />
+            <div className="mb-6">
+              <h3 className="text-3xl sm:text-4xl font-mono font-bold flex items-center gap-3 text-white p-4">
+                <FaGraduationCap className="w-6 h-6 text-emerald-400" />
                 Education
               </h3>
             </div>
-            <div className="bg-neutral-800/50  rounded  p-4">
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-                <div className="space-y-2">
-                  <h4 className="text-lg font-bold text-neutral-100">{CONFIG.education.degree}</h4>
+            <div className="bg-[#1a1a1a] rounded-md p-6">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
+                <div className="space-y-3">
+                  <h4 className="text-xl font-bold text-white">{CONFIG.education.degree}</h4>
                   <p className="text-white font-bold text-lg">{CONFIG.education.field}</p>
-                  <p className="text-neutral-100 text-md">{CONFIG.education.institution}</p>
-                  <p className="text-neutral-300 text-md">{CONFIG.education.location}</p>
+                  <p className="text-white text-base">{CONFIG.education.institution}</p>
+                  <p className="text-neutral-300 text-base">{CONFIG.education.location}</p>
                 </div>
-                <div className="text-left lg:text-right space-y-2">
-                  <div className="flex items-center gap-1 lg:justify-end">
-                    <FaCalendarAlt className="w-3 h-3 text-neutral-400" />
-                    <span className="text-xs text-neutral-400">{CONFIG.education.period}</span>
+                <div className="text-left lg:text-right space-y-3">
+                  <div className="flex items-center gap-2 lg:justify-end">
+                    <FaCalendarAlt className="w-4 h-4 text-neutral-400" />
+                    <span className="text-sm text-neutral-400 font-medium">{CONFIG.education.period}</span>
                   </div>
-                  <span className="inline-block px-2 py-1 bg-neutral-800   rounded text-white text-xs font-bold">
+                  <span className="inline-block px-3 py-2 bg-[#0a0a0a] rounded-md text-white text-sm font-bold">
                     {CONFIG.education.status}
                   </span>
                 </div>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {CONFIG.education.description.map((paragraph, index) => (
-                  <p key={index} className="text-neutral-300 text-md leading-relaxed">
+                  <p key={index} className="text-neutral-300 text-base leading-relaxed">
                     {paragraph}
                   </p>
                 ))}
