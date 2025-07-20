@@ -406,7 +406,7 @@ export default function CloudPortfolio() {
                       return (
                         <div
                           key={skillIndex}
-                          className="flex items-center rounded-md gap-3 p-3 bg-[#1a1a1a] transition-colors duration-200"
+                          className="flex items-center rounded-md gap-3 p-1 border-2 border-[#252525] bg-[#1a1a1a] transition-colors duration-200"
                         >
                           <div className="p-2 rounded-md">
                             <Icon className="w-5 h-5 text-white" />

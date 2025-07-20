@@ -617,7 +617,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   return (
     <div className="relative">
-      <div className="relative">
+      <div className="relative ">
         <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 text-sm" />
         <input
           ref={inputRef}
@@ -627,7 +627,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="w-full pl-10 pr-10 py-2 bg-[#242424]  text-white placeholder-neutral-500 border-2 border-[#121212] text-lg rounded  transition-colors duration-200"
+          className="w-full pl-10 pr-10 py-2 bg-[#242424]  text-white  placeholder-neutral-500 border-2 border-[#121212] text-lg rounded  transition-colors duration-200"
         />
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {searchInput && (

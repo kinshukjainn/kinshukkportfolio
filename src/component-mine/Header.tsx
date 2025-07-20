@@ -1,5 +1,4 @@
 "use client"
-
 import { Link, useLocation } from "react-router-dom"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
@@ -21,7 +20,8 @@ const Header = () => {
     if (path === "/" && location.pathname === "/") return true
     if (path === "/blog" && (location.pathname === "/blog" || location.pathname.startsWith("/blog/"))) return true
     if (path === "/gears" && (location.pathname === "/gears" || location.pathname.startsWith("/gears/"))) return true
-    if (path === "/sources" && (location.pathname === "/sources" || location.pathname.startsWith("/sources/"))) return true
+    if (path === "/sources" && (location.pathname === "/sources" || location.pathname.startsWith("/sources/")))
+      return true
     return false
   }
 
@@ -30,12 +30,13 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-[#0d0d0de6] rounded-md mt-2 mb-2 ml-2 mr-2  ">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-black/20 border border-white/10 rounded-md mt-2 mb-2 ml-2 mr-2 shadow-2xl shadow-black/50">
+        <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-white/5 rounded-md"></div>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-20">
             {/* Brand & Avatar */}
             <div className="flex items-center gap-3 sm:gap-4">
-              <div className="w-10 h-10 border border-gray-700 overflow-hidden rounded-full flex-shrink-0 bg-[#1f1f1f]">
+              <div className="w-10 h-10 border border-white/20 overflow-hidden rounded-full flex-shrink-0 bg-white/10 backdrop-blur-sm">
                 <img
                   src={Profile || "/placeholder.svg"}
                   alt="Kinshuk Jain"
@@ -55,7 +56,7 @@ const Header = () => {
                 />
               </div>
               <Link to="/" onClick={closeMenu}>
-                <div className="text-white text-3xl sm:text-2xl font-sans font-semibold tracking-wide">
+                <div className="text-white text-3xl sm:text-2xl font-sans font-semibold tracking-wide drop-shadow-lg">
                   {getPathText()}
                 </div>
               </Link>
@@ -71,7 +72,7 @@ const Header = () => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={toggleMenu}
-              className="md:hidden text-white p-3 rounded-xl hover:bg-[#222] transition duration-200"
+              className="md:hidden text-white p-3 rounded-xl hover:bg-white/10 backdrop-blur-sm transition duration-200 border border-white/10"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -81,11 +82,17 @@ const Header = () => {
 
         {/* Mobile Dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden bg-[#111] mt-2 mx-4 rounded-2xl border border-neutral-800">
-            <div className="px-4 py-4 flex flex-col gap-2">
+          <div className="md:hidden bg-black/30 backdrop-blur-xl mt-2 mx-4 rounded-2xl border border-white/20 shadow-2xl shadow-black/50">
+            <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl"></div>
+            <div className="relative px-4 py-4 flex flex-col gap-2">
               <MobileNavLink to="/blog" isActive={isActiveRoute("/blog")} label="Blogs" onClick={closeMenu} />
               <MobileNavLink to="/gears" isActive={isActiveRoute("/gears")} label="Gear i use" onClick={closeMenu} />
-              <MobileNavLink to="/sources" isActive={isActiveRoute("/sources")} label="Learning sources" onClick={closeMenu} />
+              <MobileNavLink
+                to="/sources"
+                isActive={isActiveRoute("/sources")}
+                label="Learning sources"
+                onClick={closeMenu}
+              />
             </div>
           </div>
         )}
@@ -94,7 +101,7 @@ const Header = () => {
       {/* Background Overlay */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
           onClick={closeMenu}
           aria-hidden="true"
         />
@@ -113,10 +120,10 @@ interface NavLinkProps {
 const NavLink = ({ to, isActive, label }: NavLinkProps) => (
   <Link
     to={to}
-    className={`px-4 py-2 rounded-full text-xl font-medium transition-all duration-200 ${
+    className={`px-4 py-2 rounded-full text-xl font-medium transition-all duration-200 backdrop-blur-sm border ${
       isActive
-        ? "bg-white text-black shadow-inner"
-        : "text-white hover:text-[#ff9100] hover:bg-[#1a1a1a]"
+        ? "bg-white/90 text-black shadow-inner border-white/30"
+        : "text-white hover:text-[#ff9100] hover:bg-white/10 border-white/10 hover:border-white/20"
     }`}
     aria-current={isActive ? "page" : undefined}
   >
@@ -136,10 +143,10 @@ const MobileNavLink = ({ to, isActive, label, onClick }: MobileNavLinkProps) => 
   <Link
     to={to}
     onClick={onClick}
-    className={`block w-full px-4 py-3 text-base rounded-xl font-semibold transition-all duration-200 ${
+    className={`block w-full px-4 py-3 text-base rounded-xl font-semibold transition-all duration-200 backdrop-blur-sm border ${
       isActive
-        ? "bg-white text-black shadow-inner"
-        : "text-white hover:text-[#ff9100] hover:bg-[#1c1c1c]"
+        ? "bg-white/90 text-black shadow-inner border-white/30"
+        : "text-white hover:text-[#ff9100] hover:bg-white/10 border-white/10 hover:border-white/20"
     }`}
     aria-current={isActive ? "page" : undefined}
   >
