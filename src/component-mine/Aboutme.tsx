@@ -1,23 +1,26 @@
 import type React from "react"
-import { Laptop, Type, Monitor, Code, Palette } from "lucide-react"
+import { Laptop, Code, Palette, Type, Monitor } from "lucide-react"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
 
+// --- TYPE DEFINITIONS ---
 interface SetupItem {
   name: string
   description: string
   category?: string
 }
+
 interface SetupSection {
   title: string
   icon: React.ComponentType<{ className?: string }>
   items: SetupItem[]
-  color: string
 }
 
+// --- DATA SOURCE ---
 const setupData: SetupSection[] = [
   {
     title: "Hardware",
     icon: Laptop,
-    color: "bg-[#121212]",
     items: [
       {
         name: "Acer Swift 3",
@@ -37,40 +40,38 @@ const setupData: SetupSection[] = [
     ],
   },
   {
-    title: "Development Stack",
+    title: "Development",
     icon: Code,
-    color: "bg-[#121212]",
     items: [
       {
         name: "Visual Studio Code",
-        description: "Primary code editor with extensive extension ecosystem",
+        description: "Primary code editor with an extensive extension ecosystem.",
         category: "Editor",
       },
       {
         name: "Git & GitHub",
-        description: "Version control system with web interface and CLI tools",
+        description: "Version control system with web interface and CLI tools.",
         category: "VCS",
       },
       {
         name: "WSL2 Ubuntu",
-        description: "Windows Subsystem for Linux with Ubuntu distribution",
+        description: "Windows Subsystem for Linux with Ubuntu distribution.",
         category: "Terminal",
       },
     ],
   },
   {
-    title: "Design Tools",
+    title: "Design",
     icon: Palette,
-    color: "bg-[#121212]",
     items: [
       {
         name: "Figma",
-        description: "Collaborative interface design and prototyping platform",
+        description: "Collaborative interface design and prototyping platform.",
         category: "UI/UX",
       },
       {
         name: "Canva",
-        description: "Graphic design platform for quick visual content creation",
+        description: "Graphic design platform for quick visual content creation.",
         category: "Graphics",
       },
     ],
@@ -78,128 +79,169 @@ const setupData: SetupSection[] = [
   {
     title: "Typography",
     icon: Type,
-    color: " bg-[#121212]",
     items: [
       {
         name: "Menlo & Monaco",
-        description: "Monospace fonts with programming ligatures support",
+        description: "Monospace fonts with programming ligature support.",
         category: "Code Font",
       },
-      {
-        name: "Courier New",
-        description: "Classic monospace typeface for terminal and code",
-        category: "Code Font",
-      },
-            {
-        name: "Rubik | IBM Plex Sans | Roboto | Ubuntu",
-        description: "Modern sans-serif fonts optimized for UI readability",
+       {
+        name: "Rubik | IBM Plex Sans",
+        description: "Modern sans-serif fonts optimized for UI readability.",
         category: "UI Font",
       },
-    ],
-  },
-  {
-    title: "Other Stuff....I use",
-    icon: Type,
-    color: " bg-[#121212]",
-    items: [
       {
         name: "Dark Modern",
-        description: "A default vs code theme provided by microsoft available by default in vscode",
+        description: "A clean, default theme for VS Code by Microsoft.",
         category: "VS Code Theme",
-      },
-      {
-        name: "Github Dark",
-        description: "A github based vs code theme provided by Github available in vscode extensions",
-        category: "VS Code Theme",
-      },
-      {
-        name: "Discord",
-        description: "A Chat and fun application for developers and gamers ",
-        category: "For Fun",
       },
     ],
   },
 ]
 
-export default function DevSetup() {
+// --- ANIMATION VARIANTS ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12,
+    },
+  },
+}
+
+// --- REUSABLE AnimatedCard COMPONENT ---
+// This component uses the `useInView` hook to trigger animations only when visible.
+const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
+
   return (
-    <div className="min-h-screen bg-black text-gray-100">
-      {/* Main Content Container */}
-      <div className="max-w-7xl pt-28 mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {/* Header Section */}
-        <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <Monitor className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" />
-            <span className="text-xs sm:text-sm font-mono text-gray-500 uppercase tracking-wider">
-              Development Environment
-            </span>
-          </div>
-
-          
+    <motion.div
+      ref={ref}
+      variants={itemVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      whileHover={{ scale: 1.03, y: -8 }}
+      className="bg-[#0A0A0A] border border-neutral-900 rounded-xl p-6 h-full flex flex-col cursor-pointer"
+    >
+      {/* Section Header */}
+      <div className="flex items-center gap-4 mb-6">
+        <div className="p-2 bg-black rounded-lg border border-neutral-800">
+          <section.icon className="w-5 h-5 text-neutral-300" />
         </div>
-
-        {/* Setup Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
-          {setupData.map((section, sectionIndex) => (
-            <div
-              key={sectionIndex}
-              className={`${section.color} rounded-md p-4 sm:p-6 hover:border-opacity-40 transition-all duration-300 group`}
-            >
-              {/* Section Header */}
-              <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                <div className="p-2 bg-black/50 rounded-lg border border-gray-800">
-                  <section.icon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-100" />
-                </div>
-                <div>
-                  <h2 className="text-base sm:text-lg text-xl font-semibold text-white">{section.title}</h2>
-                  <div className="text-sm text-gray-200 font-mono">
-                    {section.items.length} item{section.items.length !== 1 ? "s" : ""}
-                  </div>
-                </div>
-              </div>
-
-              {/* Items List */}
-              <div className="space-y-3 sm:space-y-4">
-                {section.items.map((item, itemIndex) => (
-                  <div
-                    key={itemIndex}
-                    className=" p-2 sm:p-4 hover:border-gray-700/50 hover:bg-black/50 transition-all duration-200"
-                  >
-                    {item.category && (
-                      <div className="text-sm  rounded font-mono text-yellow-400 uppercase tracking-wider mb-1">
-                        {item.category}
-                      </div>
-                    )}
-
-                    <h3 className="text-lg sm:text-base font-medium text-white mb-1 sm:mb-2 leading-tight">
-                      {item.name}
-                    </h3>
-
-                    <p className="text-md sm:text-sm  text-gray-300 leading-relaxed">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Footer Stats */}
-        <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-800">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-            <div className="bg-[#131313] border border-gray-800 rounded-lg p-3 sm:p-4">
-              <div className="text-lg sm:text-xl font-bold text-white font-mono">
-                {setupData.reduce((acc, section) => acc + section.items.length, 0)}
-              </div>
-              <div className="text-xs sm:text-sm text-gray-500 font-mono uppercase tracking-wider">Total Items</div>
-            </div>
-
-            <div className="bg-[#131313] border border-gray-800 rounded-lg p-3 sm:p-4">
-              <div className="text-lg sm:text-xl font-bold text-white font-mono">{setupData.length}</div>
-              <div className="text-xs sm:text-sm text-gray-500 font-mono uppercase tracking-wider">Categories</div>
-            </div>
-          </div>
+        <div>
+          <h2 className="text-xl font-bold text-neutral-100">{section.title}</h2>
+          <p className="text-sm text-neutral-500 font-mono">
+            {section.items.length} item{section.items.length !== 1 ? "s" : ""}
+          </p>
         </div>
       </div>
-    </div>
+
+      {/* Items List */}
+      <div className="space-y-5 flex-grow">
+        {section.items.map((item) => (
+          <div key={item.name}>
+            {item.category && (
+              <div className="text-xs font-mono text-yellow-400/80 uppercase tracking-wider mb-1.5">
+                {item.category}
+              </div>
+            )}
+            <h3 className="font-semibold text-neutral-200">{item.name}</h3>
+            <p className="text-sm text-neutral-400 leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  )
+}
+
+// --- MAIN COMPONENT ---
+export default function DevSetup() {
+  return (
+    <main className="min-h-screen bg-black text-neutral-300 font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 mb-4">
+            <Monitor className="w-6 h-6 text-neutral-500" />
+            <span className="text-sm font-mono text-neutral-500 uppercase tracking-wider">
+              My Digital Workspace
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 to-neutral-500 tracking-tight">
+            Development Setup
+          </h1>
+          <p className="mt-4 max-w-xl mx-auto text-lg text-neutral-400">
+            The tools, software, and hardware I use daily to code and design.
+          </p>
+        </motion.div>
+
+        {/* Setup Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6"
+        >
+          {setupData.map((section) => (
+            <AnimatedCard key={section.title} section={section} />
+          ))}
+        </motion.div>
+
+        {/* Footer Stats */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
+          className="mt-20 pt-10 border-t border-neutral-900"
+        >
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+            <div className="bg-[#0A0A0A] border border-neutral-900 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-white font-mono">
+                {setupData.reduce((acc, section) => acc + section.items.length, 0)}
+              </div>
+              <div className="text-sm text-neutral-500 font-mono uppercase tracking-wider mt-1">
+                Total Items
+              </div>
+            </div>
+
+            <div className="bg-[#0A0A0A] border border-neutral-900 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-white font-mono">{setupData.length}</div>
+              <div className="text-sm text-neutral-500 font-mono uppercase tracking-wider mt-1">
+                Categories
+              </div>
+            </div>
+            
+             <div className="bg-[#0A0A0A] border border-neutral-900 rounded-lg p-4 text-center col-span-2">
+              <div className="text-2xl font-bold text-white font-mono">
+                2025
+              </div>
+              <div className="text-sm text-neutral-500 font-mono uppercase tracking-wider mt-1">
+                Last Updated
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </main>
   )
 }
