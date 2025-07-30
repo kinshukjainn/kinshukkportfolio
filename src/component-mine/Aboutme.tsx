@@ -135,8 +135,8 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
       variants={itemVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      whileHover={{ scale: 1.03, y: -8 }}
-      className="bg-[#0A0A0A] border border-neutral-900 rounded-xl p-6 h-full flex flex-col cursor-pointer"
+      whileHover={{ scale: 1, y: -2 }}
+      className=" border-3 border-neutral-900 rounded-xl p-6 h-full flex flex-col cursor-pointer"
     >
       {/* Section Header */}
       <div className="flex items-center gap-4 mb-6">
@@ -187,7 +187,7 @@ export default function DevSetup() {
               My Digital Workspace
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 to-neutral-500 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-mono text-green-500 ">
             Development Setup
           </h1>
           <p className="mt-4 max-w-xl mx-auto text-lg text-neutral-400">

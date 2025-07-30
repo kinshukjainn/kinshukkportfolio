@@ -627,7 +627,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="w-full pl-10 pr-10 py-2 bg-[#242424]  text-white  placeholder-neutral-500 border-2 border-[#121212] text-lg rounded  transition-colors duration-200"
+          className="w-full pl-10 pr-10 py-2 bg-black  text-white  placeholder-neutral-500 border-b-2 border-yellow-400 text-lg"
         />
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {searchInput && (
@@ -642,7 +642,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               <FaTimes className="w-3 h-3" />
             </button>
           )}
-          <div className="hidden sm:flex items-center gap-1 text-xs text-neutral-500 bg-neutral-900 px-2 py-1 rounded-md border border-neutral-800">
+          <div className="hidden sm:flex items-center gap-1 text-xs text-neutral-500 bg-neutral-900 px-2 py-1 rounded-md ">
             <FaKeyboard className="w-2 h-2" />
             ⌘K
           </div>
@@ -1071,12 +1071,12 @@ const BlogPageContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#1e1e1e] text-white pt-20">
+    <div className="min-h-screen bg-black text-white pt-20">
       {/* Hero Section */}
-      <section className="bg-[#101010]">
+      <section className="bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-mono font-bold text-white mb-4 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-mono font-bold text-yellow-200 mb-4 leading-tight">
               Minimal{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-500">
                 Minds

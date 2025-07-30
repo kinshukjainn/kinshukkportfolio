@@ -62,7 +62,7 @@ const CONFIG = {
     {
       title: "AWS Getting started with storage services",
       organization: "AWS",
-      status: "Newly Completed",
+      status: "Completed",
       year: "2025 July",
       url: "https://www.credly.com/badges/a4406a81-77da-4003-b153-9e36582f7877/public_url",
       description: "Digital badge covering storage services concepts and AWS storage solutions",
@@ -121,13 +121,13 @@ const CONFIG = {
       links: { live: "https://blog.cloudkinshuk.in", repo: null },
     },
     {
-      title: "PassGentool",
+      title: "Zeroleaks",
       year: "2024",
-      status: "In Development",
+      status: "Running",
       type: "Security Tool",
       description: ["A modern, secure password generation tool built with React and TypeScript, focusing on creating cryptographically secure passwords with customizable parameters.", "Features include multiple generation algorithms, strength analysis, and secure clipboard integration."],
       technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Web Crypto API"],
-      links: { live: null, repo: null },
+      links: { live: "https://zeroleaks.cloudkinshuk.in", repo: "https://github.com/kinshukjainn/zeroleaks" },
     },
   ],
   education: {
@@ -224,7 +224,7 @@ export default function CloudPortfolio() {
   
   // A small reusable component for tech tags
   const TechTag: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <span className="inline-block px-3 py-1 bg-neutral-800  text-neutral-300 text-xs font-medium rounded-md">{children}</span>
+    <span className="inline-block px-3 py-1  rounded  text-white border-2 border-green-400  text-xs font-semibold ">{children}</span>
   );
 
   return (
@@ -240,42 +240,42 @@ export default function CloudPortfolio() {
                   {typedText}
                   <span className="animate-pulse">_</span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-400">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold heading-kinshuk tracking-tighter text-green-400 font-mono">
                   {CONFIG.personal.name}
                 </h1>
-                <h2 className="text-xl lg:text-2xl text-neutral-300 max-w-2xl">
+                <h2 className="text-xl lg:text-2xl text-white max-w-2xl">
                   {CONFIG.personal.title}
                 </h2>
-                <div className="flex items-center gap-3 text-neutral-400">
+                <div className="flex items-center gap-3 text-neutral-100">
                   <FaMapMarkerAlt />
                   <span>{CONFIG.personal.location}</span>
                 </div>
               </div>
               <div className="flex justify-center lg:justify-end">
-                <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-md overflow-hidden -2  bg-neutral-900 shadow-lg">
+                <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-lg overflow-hidden -2  bg-neutral-900 shadow-lg">
                   <img src={profilimage} alt={CONFIG.personal.name} className="w-full h-full object-cover grayscale transition-all duration-500 hover:grayscale-0 hover:scale-105" />
                 </div>
               </div>
             </div>
-            <div className="mt-12 space-y-4 text-base md:text-lg max-w-4xl -l-2  pl-6">
+            <div className="mt-12  text-white space-y-4 text-base md:text-lg max-w-4xl -l-2  pl-6">
               {CONFIG.personal.bio.map((p, i) => <p key={i}>{p}</p>)}
             </div>
           </AnimatedSection>
 
           {/* --- Social Links Section --- */}
           <AnimatedSection>
-            <SectionHeader icon={FaGlobe} title="Digital Presence" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <SectionHeader  icon={FaGlobe} title="Digital Presence" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
               {CONFIG.social.map((social) => {
                 const Icon = social.icon
                 return (
-                  <button key={social.platform} onClick={() => handleSocialClick(social)} className="group relative flex items-center gap-4 rounded-lg   bg-neutral-950 p-4 transition-all duration-300 hover:-neutral-700 hover:bg-neutral-900">
-                    <div className="p-3 bg-neutral-900 rounded-lg   group-hover:-neutral-700">
-                      <Icon className="w-6 h-6 text-neutral-400 group-hover:text-white transition-colors" />
+                  <button key={social.platform} onClick={() => handleSocialClick(social)} className="group relative flex items-center gap-2  p-4 cursor-pointer transition-all duration-300 ">
+                    <div className="p-3 bg-neutral-900  ">
+                      <Icon className="w-6 h-6 text-green-5s00 group-hover:text-white transition-colors" />
                     </div>
                     <div className="text-left">
-                      <p className="font-bold text-neutral-100">{social.platform}</p>
-                      <p className="text-sm text-neutral-400">{social.handle}</p>
+                      <p className="font-bold text-green-500 font-mono">{social.platform}</p>
+                      <p className="text-sm text-neutral-100">{social.handle}</p>
                     </div>
                   </button>
                 )
@@ -286,24 +286,24 @@ export default function CloudPortfolio() {
           {/* --- Certifications Section --- */}
           <AnimatedSection>
             <SectionHeader icon={FaAward} title="Certifications & Badges" />
-            <div className="space-y-6">
+            <div className="space-y-3">
               {CONFIG.certifications.map((cert) => (
-                <div key={cert.title} className="rounded-lg   bg-neutral-950 p-6 transition-all duration-300  hover:bg-neutral-900">
+                <div key={cert.title} className="rounded-lg  p-4 transition-all duration-300 ">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                     <div className="flex-1 space-y-3">
                       <div className="flex items-center gap-3 flex-wrap">
-                        <h4 className="text-lg font-bold text-white">{cert.title}</h4>
-                        <span className={`px-2 py-0.5 text-xs font-semibold rounded-md ${cert.status === "Completed" ? "bg-green-900/50 text-green-300 " : "bg-blue-900/50 text-blue-300  -blue-800"}`}>{cert.status}</span>
+                        <h4 className="text-lg font-bold font-mono text-green-500">{cert.title}</h4>
+                        <span className={`px-2 py-0.5 text-xs rounded font-semibold  ${cert.status === "Completed" ? "bg-green-900/50 text-green-300 " : "bg-blue-900/50 text-blue-300  -blue-800"}`}>{cert.status}</span>
                       </div>
-                      <p className="text-sm text-neutral-400">{cert.organization} • {cert.year}</p>
-                      <p className="text-neutral-300">{cert.description}</p>
+                      <p className="text-sm text-yellow-200 p-1 ">{cert.organization} • {cert.year}</p>
+                      <p className="text-neutral-100">{cert.description}</p>
                       {cert.progress && <p className="text-sm text-neutral-500">Progress: {cert.progress}</p>}
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        {cert.skills.map(skill => <TechTag key={skill}>{skill}</TechTag>)}
+                      <div className="flex flex-wrap   gap-3 pt-2">
+                        {cert.skills.map(skill  => <TechTag  key={skill}>{skill}</TechTag>)}
                       </div>
                     </div>
                     {cert.url && (
-                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-neutral-800/80 w-max text-neutral-200 rounded-md transition-colors hover:bg-neutral-700/80">
+                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center gap-2 px-2 py-2 text-sm font-semibold rounded bg-green-500 w-max text-neutral-900   transition-colors">
                         View Credential <FaExternalLinkAlt className="w-3 h-3" />
                       </a>
                     )}
@@ -319,13 +319,13 @@ export default function CloudPortfolio() {
             <div className="space-y-8">
               {Object.entries(CONFIG.skills).map(([category, skills]) => (
                 <div key={category}>
-                  <h4 className="text-lg font-semibold text-neutral-200 mb-4">{category}</h4>
+                  <h4 className="text-lg font-semibold underline font-mono  text-green-500 mb-4">{category}</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                     {skills.map((skill) => {
                       const Icon = skill.icon
                       return (
-                        <div key={skill.name} className="flex items-center gap-3 p-3 rounded-lg   bg-neutral-950">
-                          <Icon className="w-6 h-6 text-neutral-400 flex-shrink-0" />
+                        <div key={skill.name} className="flex items-center gap-3 p-1 ">
+                          <Icon className="w-6 h-6 text-green-400 flex-shrink-0" />
                           <span className="text-sm font-medium text-neutral-300 truncate">{skill.name}</span>
                         </div>
                       )
@@ -339,13 +339,13 @@ export default function CloudPortfolio() {
           {/* --- Projects Section --- */}
           <AnimatedSection>
             <SectionHeader icon={FaCode} title="Featured Projects" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
               {CONFIG.projects.map((project) => (
-                <div key={project.title} className="flex flex-col rounded-lg   bg-neutral-950 p-6 transition-all duration-300 hover:bg-neutral-900 hover:shadow-2xl hover:shadow-black">
+                <div key={project.title} className="flex flex-col p-6 transition-all duration-300">
                   <div className="flex-grow space-y-4">
                     <div className="flex justify-between items-start">
-                      <h4 className="text-lg font-bold text-white">{project.title}</h4>
-                      <span className={`px-2.5 py-1 text-xs font-bold rounded-md ${project.status === "Live" ? "bg-green-900/50 text-green-300 " : "bg-neutral-800 text-neutral-300  -neutral-700"}`}>{project.status}</span>
+                      <h4 className="text-lg font-bold underline font-mono text-green-500">{project.title}</h4>
+                      <span className={`px-2.5 py-1 text-xs font-bold rounded  ${project.status === "Live" ? "bg-green-900/50 text-green-300 " : "bg-neutral-800 text-neutral-300  -neutral-700"}`}>{project.status}</span>
                     </div>
                     <p className="text-sm text-neutral-400">{project.type} • {project.year}</p>
                     <div className="space-y-2 text-sm text-neutral-300">
@@ -357,12 +357,12 @@ export default function CloudPortfolio() {
                   </div>
                   <div className="flex items-center gap-4 mt-6 pt-4 -t ">
                     {project.links.live && (
-                      <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-200 hover:text-white transition-colors">
+                      <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-green-500 p-2  gap-2 text-sm rounded font-semibold text-neutral-900 hover:text-black transition-colors">
                         <FaGlobe /> Live Demo
                       </a>
                     )}
                     {project.links.repo && (
-                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-200 hover:text-white transition-colors">
+                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-neutral-200 underline hover:text-white transition-colors">
                         <FaGithub /> Source Code
                       </a>
                     )}
@@ -375,16 +375,16 @@ export default function CloudPortfolio() {
           {/* --- Education Section --- */}
           <AnimatedSection>
             <SectionHeader icon={FaGraduationCap} title="Education" />
-            <div className="rounded-lg   bg-neutral-950 p-6">
+            <div className=" p-2">
               <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                 <div className="space-y-1">
-                  <h4 className="text-lg font-bold text-white">{CONFIG.education.degree} in {CONFIG.education.field}</h4>
-                  <p className="text-neutral-300">{CONFIG.education.institution}</p>
-                  <p className="text-sm text-neutral-400">{CONFIG.education.location}</p>
+                  <h4 className="text-lg font-bold underline font-mono text-green-500">{CONFIG.education.degree} in {CONFIG.education.field}</h4>
+                  <p className="text-neutral-200">{CONFIG.education.institution}</p>
+                  <p className="text-md text-neutral-200">{CONFIG.education.location}</p>
                 </div>
                 <div className="text-left sm:text-right space-y-2 flex-shrink-0">
-                  <p className="text-sm font-medium text-neutral-400">{CONFIG.education.period}</p>
-                  <p className="inline-block px-2.5 py-1 text-xs font-bold rounded-md bg-neutral-800 text-neutral-300  ">{CONFIG.education.status}</p>
+                  <p className="text-sm font-medium font-mono text-yellow-200">{CONFIG.education.period}</p>
+                  <p className="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-neutral-800 text-neutral-100  ">{CONFIG.education.status}</p>
                 </div>
               </div>
               <p className="mt-4 pt-4 -t  text-neutral-300">{CONFIG.education.description}</p>

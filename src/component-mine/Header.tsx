@@ -72,7 +72,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out m-2 header-rounded ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-mono ease-in-out m-2 header-rounded ${
           scrolled
             ? "backdrop-blur-xs bg-black/50 border-white/20"
             : "backdrop-blur-sm bg-black/20 border-white/10"
@@ -101,7 +101,7 @@ const Header = () => {
                   </div>
                 )}
               </div>
-              <Link to="/" onClick={closeMenu} className="text-white text-xl sm:text-2xl font-semibold tracking-tight">
+              <Link to="/" onClick={closeMenu} className="text-white text-xl sm:text-2xl heading-kinshuk font-semibold tracking-tight">
                 {getPathText()}
               </Link>
             </motion.div>
@@ -128,7 +128,9 @@ const Header = () => {
             <div className="md:hidden">
               <motion.button
                 onClick={toggleMenu}
-                className="text-white p-2.5 rounded-full hover:bg-white/10 transition-colors duration-200 border border-transparent focus:border-white/20"
+                className="text-white p-2.5 rounded-full 
+               hover:bg-yellow-200
+               hover:text-black transition-colors duration-200 border border-transparent focus:border-white/20"
                 aria-label="Toggle menu"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -205,7 +207,7 @@ const NavLink = ({ to, isActive, label }: NavLinkProps) => (
       {isActive && (
         <motion.div
           layoutId="active-pill"
-          className="absolute inset-0 bg-white rounded-full z-0"
+          className="absolute inset-0 bg-green-500 rounded-full z-0"
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         />
       )}
