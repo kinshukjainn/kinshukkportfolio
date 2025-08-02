@@ -228,7 +228,7 @@ export default function CloudPortfolio() {
   );
 
   return (
-    <div className="min-h-screen bg-black text-neutral-300 ">
+    <div className="min-h-screen bg-black text-neutral-100 ">
       <main className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
         <div className="space-y-24 md:space-y-32">
           
@@ -303,8 +303,8 @@ export default function CloudPortfolio() {
                       </div>
                     </div>
                     {cert.url && (
-                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center gap-2 px-2 py-2 text-sm font-semibold rounded bg-green-500 w-max text-neutral-900   transition-colors">
-                        View Credential <FaExternalLinkAlt className="w-3 h-3" />
+                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center underline  text-white  gap-2 px-2 py-2 text-sm font-medium rounded w-max hover:text-blue-400   transition-colors">
+                        View Credential <FaExternalLinkAlt className="w-4 h-4" />
                       </a>
                     )}
                   </div>
@@ -357,7 +357,7 @@ export default function CloudPortfolio() {
                   </div>
                   <div className="flex items-center gap-4 mt-6 pt-4 -t ">
                     {project.links.live && (
-                      <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-green-500 p-2  gap-2 text-sm rounded font-semibold text-neutral-900 hover:text-black transition-colors">
+                      <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center underline p-2  gap-2 text-sm font-semibold text-neutral-100 hover:text-blue-400 transition-colors">
                         <FaGlobe /> Live Demo
                       </a>
                     )}

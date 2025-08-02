@@ -627,7 +627,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="w-full pl-10 pr-10 py-2 bg-black  text-white  placeholder-neutral-500 border-b-2 border-yellow-400 text-lg"
+          className="w-full pl-10 pr-10 py-2 bg-black  text-white outline-none  placeholder-neutral-500 border-b-2 border-yellow-400 text-lg"
         />
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {searchInput && (
