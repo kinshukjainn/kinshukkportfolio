@@ -361,7 +361,7 @@ export default function TerminalLearningHub() {
       <div className=" p-4">
         <div className="flex items-center space-x-2 text-yellow-400">
           <FaTerminal className="text-lg" />
-          <span className="text-xl">learning-hub:~$</span>
+          <span className="text-2xl font-mono">learning-hub:~$</span>
           <span className="animate-pulse">_</span>
         </div>
       </div>
@@ -540,13 +540,13 @@ export default function TerminalLearningHub() {
                       className="flex items-center justify-between p-2 underline   transition-colors group/link"
                     >
                       <div className="flex items-center space-x-2">
-                        <span className="text-yellow-400 text-sm">
+                        <span className="text-blue-300 hover:text-blue-400 text-sm">
                           {link.type === "documentation" && <FaCode />}
                           {link.type === "tutorial" && <FaTerminal />}
                           {link.type === "course" && <FaShare />}
                           {link.type === "practice" && <FaGitAlt />}
                         </span>
-                        <span className="text-white underline hover:text-blue-400 text-sm">{link.title}</span>
+                        <span className="text-blue-300 underline hover:text-blue-400 text-sm">{link.title}</span>
                       </div>
                       <FaExternalLinkAlt className="text-yellow-200 text-xs opacity-0 group-hover/link:opacity-100 transition-opacity" />
                     </motion.a>
@@ -564,11 +564,8 @@ export default function TerminalLearningHub() {
             animate={{ opacity: 1 }}
             className="text-center py-12"
           >
-            <FaTerminal className="text-4xl text-gray-600 mx-auto mb-4" />
-            <h3 className="text-xl text-gray-400 mb-2">No resources found</h3>
-            <p className="text-gray-500">
-              Try adjusting your search or filters
-            </p>
+            <FaTerminal className="text-4xl text-yellow-500 mx-auto mb-4" />
+            <h3 className="text-xl text-gray-100 font-mono mb-2">No resources found</h3>
           </motion.div>
         )}
       </div>
@@ -576,7 +573,7 @@ export default function TerminalLearningHub() {
       {/* Terminal Footer */}
       <div className="border-t border-gray-800 p-4 mt-12">
         <div className="text-center text-gray-500 text-sm">
-          <span className="text-yellow-400">learning-hub@terminal</span> - Your
+          <span className=" text-yellow-400">learning-hub@terminal</span> - Your
           gateway to tech mastery
         </div>
       </div>
