@@ -15,13 +15,15 @@ import {
   FaFilter,
   FaTerminal,
   FaShare,
+  FaJava,
+  FaRust,
 } from "react-icons/fa";
 import {
-  SiTypescript,
   SiTailwindcss,
   SiNextdotjs,
-  SiMongodb,
   SiDocker,
+  SiJavascript,
+  SiCplusplus,
 } from "react-icons/si";
 
 interface LearningResource {
@@ -42,7 +44,7 @@ interface LearningResource {
 const learningResources: LearningResource[] = [
   {
     id: "react",
-    title: "React",
+    title: "React (vite bundler is recommended to learn react for beginners)",
     category: "Frontend",
     difficulty: "Intermediate",
     description:
@@ -57,58 +59,48 @@ const learningResources: LearningResource[] = [
       },
       {
         title: "React Tutorial",
-        url: "https://react.dev/learn",
+        url: "https://youtu.be/CgkZ7MvWUAA?si=1B7NUnJM49J9xmqD",
         type: "tutorial",
       },
       {
-        title: "React Course - freeCodeCamp",
-        url: "https://www.freecodecamp.org/learn/front-end-development-libraries/",
+        title: "React Course - youtube",
+        url: "https://youtu.be/Xe8CkYZvCig?si=9Sai_PrMw33aJo87",
         type: "course",
-      },
-      {
-        title: "React Challenges",
-        url: "https://reactjs.org/community/examples.html",
-        type: "practice",
       },
     ],
   },
   {
-    id: "typescript",
-    title: "TypeScript",
-    category: "Language",
+    id: "Javascript",
+    title: "Javascript",
+   category: "Language",
     difficulty: "Intermediate",
     description:
       "Typed superset of JavaScript that compiles to plain JavaScript",
-    icon: <SiTypescript className="text-2xl" />,
+    icon: <SiJavascript className="text-2xl" />,
     tags: ["javascript", "types", "language", "microsoft"],
     links: [
       {
-        title: "TypeScript Handbook",
+        title: "Javascript Handbook",
         url: "https://www.typescriptlang.org/docs/",
         type: "documentation",
       },
       {
-        title: "TypeScript Tutorial",
-        url: "https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html",
+        title: "Javascript Tutorial",
+        url: "https://youtu.be/PkZNo7MFNFg?si=4otCi1WT9ZEMc6cO",
         type: "tutorial",
       },
       {
-        title: "TypeScript Course",
-        url: "https://www.udemy.com/course/understanding-typescript/",
+        title: "Javascript Course",
+        url: "https://youtu.be/lfmg-EJ8gm4?si=lV5dfCjaL22PqKOP",
         type: "course",
-      },
-      {
-        title: "Type Challenges",
-        url: "https://github.com/type-challenges/type-challenges",
-        type: "practice",
-      },
+      }
     ],
   },
   {
     id: "nextjs",
-    title: "Next.js",
+    title: "Next.js (Learn after react and backend dev course for better understanding)",
     category: "Framework",
-    difficulty: "Intermediate",
+    difficulty: "Advanced",
     description:
       "React framework with server-side rendering and static site generation",
     icon: <SiNextdotjs className="text-2xl" />,
@@ -121,18 +113,94 @@ const learningResources: LearningResource[] = [
       },
       {
         title: "Next.js Tutorial",
-        url: "https://nextjs.org/learn",
+        url: "https://youtu.be/Zq5fmkH0T78?si=IcYKtPor1wq1dUkl",
         type: "tutorial",
       },
       {
         title: "Next.js Course",
-        url: "https://www.udemy.com/course/nextjs-react-the-complete-guide/",
+        url: "https://youtu.be/zLJoVRleOuc?si=EmUxtg1n0D6lKrTL",
         type: "course",
       },
+    ],
+  },
+  {
+    id: "CPP",
+    title: "C++",
+   category: "Language",
+    difficulty: "Intermediate",
+    description:
+      "A high-performance programming language widely used for system/software development and game programming.",
+    icon: <SiCplusplus className="text-2xl" />,
+    tags: ["cpp", "programming", "language", "system", "software"],
+    links: [
       {
-        title: "Next.js Examples",
-        url: "https://github.com/vercel/next.js/tree/canary/examples",
-        type: "practice",
+        title: "C++ Documentation",
+        url: "https://en.cppreference.com/w/",
+        type: "documentation",
+      },
+      {
+        title: "C++ Tutorial",
+        url: "https://youtu.be/-TkoO8Z07hI?si=0gcZNSlAQFXkDlMs",
+        type: "tutorial",
+      },
+      {
+        title: "C++ Course",
+        url: "https://youtu.be/8jLOx1hD3_o?si=mmqSTqh8iJEK2KHf",
+        type: "course",
+      },
+    ],
+  },
+  {
+    id: "Java",
+    title: "Java",
+   category: "Language",
+    difficulty: "Intermediate",
+    description:
+      "A high-performance programming language widely used for system/software development and game programming.",
+    icon: <FaJava className="text-2xl" />,
+    tags: ["java", "programming", "language", "system", "software"],
+    links: [
+      {
+        title: "Java Documentation",
+        url: "https://docs.oracle.com/en/java/",
+        type: "documentation",
+      },
+      {
+        title: "Java Tutorial",
+        url: "https://youtu.be/xTtL8E4LzTQ?si=nlAvPTcjPFPKA1cz",
+        type: "tutorial",
+      },
+      {
+        title: "Java Course",
+        url: "",
+        type: "course",
+      },
+    ],
+  },
+  {
+    id: "Rust",
+    title: "Rust (Not for beginners or freshers in college)",
+   category: "Language",
+    difficulty: "Advanced",
+    description:
+      "A systems programming language focused on safety, speed, and concurrency.",
+    icon: <FaRust className="text-2xl" />,
+    tags: ["rust", "programming", "language", "system", "software"],
+    links: [
+      {
+        title: "Rust Documentation",
+        url: "https://doc.rust-lang.org/book/",
+        type: "documentation",
+      },
+      {
+        title: "Rust Tutorial",
+        url: "https://youtu.be/qP7LzZqGh30?si=MLEsIlci99iwZuc5",
+        type: "tutorial",
+      },
+      {
+        title: "Rust Course",
+        url: "https://youtube.com/playlist?list=PLinedj3B30sA_M0oxCRgFzPzEMX3CSfT5&si=TMmrL8OyJYkBQZ15",
+        type: "course",
       },
     ],
   },
@@ -156,47 +224,22 @@ const learningResources: LearningResource[] = [
         url: "https://tailwindcss.com/docs/installation",
         type: "tutorial",
       },
-      {
-        title: "Tailwind Course",
-        url: "https://www.youtube.com/watch?v=UBOj6rqRUME",
-        type: "course",
-      },
-      {
-        title: "Tailwind Components",
-        url: "https://tailwindui.com/components",
-        type: "practice",
-      },
     ],
   },
   {
-    id: "nodejs",
-    title: "Node.js",
+    id: "Backend",
+    title: "Backend Development (Node.js)",
     category: "Backend",
     difficulty: "Intermediate",
     description:
       "JavaScript runtime built on Chrome's V8 JavaScript engine for server-side development",
     icon: <FaNodeJs className="text-2xl" />,
-    tags: ["javascript", "backend", "server", "runtime"],
+    tags: ["javascript", "backend", "Mongodb" , "zod" , "React" ,  "Express" , "server", "runtime"],
     links: [
       {
-        title: "Node.js Documentation",
-        url: "https://nodejs.org/en/docs/",
-        type: "documentation",
-      },
-      {
-        title: "Node.js Tutorial",
-        url: "https://nodejs.org/en/docs/guides/getting-started-guide/",
+        title: "Backend Dev Tutorial",
+        url: "https://youtube.com/playlist?list=PLu71SKxNbfoBGh_8p_NS-ZAh6v7HhYqHW&si=6v8eY-Hua7gLHLoh",
         type: "tutorial",
-      },
-      {
-        title: "Node.js Course",
-        url: "https://www.freecodecamp.org/learn/back-end-development-and-apis/",
-        type: "course",
-      },
-      {
-        title: "Node.js Exercises",
-        url: "https://nodeschool.io/",
-        type: "practice",
       },
     ],
   },
@@ -216,51 +259,19 @@ const learningResources: LearningResource[] = [
         type: "documentation",
       },
       {
-        title: "Python Tutorial",
-        url: "https://docs.python.org/3/tutorial/",
+        title: "Python Tutorial -1",
+        url: "https://youtu.be/ix9cRaBkVe0?si=A07zDuUaLk0G3k8q",
         type: "tutorial",
       },
       {
-        title: "Python Course",
-        url: "https://www.freecodecamp.org/learn/scientific-computing-with-python/",
-        type: "course",
-      },
-      {
-        title: "Python Challenges",
-        url: "https://www.hackerrank.com/domains/python",
-        type: "practice",
-      },
-    ],
-  },
-  {
-    id: "mongodb",
-    title: "MongoDB",
-    category: "Database",
-    difficulty: "Intermediate",
-    description:
-      "NoSQL document database with flexible schema and horizontal scaling",
-    icon: <SiMongodb className="text-2xl" />,
-    tags: ["database", "nosql", "document", "scaling"],
-    links: [
-      {
-        title: "MongoDB Documentation",
-        url: "https://docs.mongodb.com/",
-        type: "documentation",
-      },
-      {
-        title: "MongoDB Tutorial",
-        url: "https://docs.mongodb.com/manual/tutorial/",
+        title: "Python Tutorial -2",
+        url: "https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg&si=2a5f5cn3MSMK2TNv",
         type: "tutorial",
       },
       {
-        title: "MongoDB Course",
-        url: "https://university.mongodb.com/",
-        type: "course",
-      },
-      {
-        title: "MongoDB Practice",
-        url: "https://www.mongodb.com/try",
-        type: "practice",
+        title: "Python Tutorial -3",
+        url: "https://youtube.com/playlist?list=PLu71SKxNbfoBsMugTFALhdLlZ5VOqCg2s&si=Pz8DQez6PgPdK4Ta",
+        type: "tutorial",
       },
     ],
   },
@@ -281,18 +292,13 @@ const learningResources: LearningResource[] = [
       },
       {
         title: "Docker Tutorial",
-        url: "https://docs.docker.com/get-started/",
+        url: "https://youtu.be/exmSJpJvIPs?si=bJVKo6RvzhfmiXhP",
         type: "tutorial",
       },
       {
         title: "Docker Course",
-        url: "https://www.docker.com/101-tutorial",
+        url: "https://youtu.be/31k6AtW-b3Y?si=SblqKJ6ZVBSVSwnq",
         type: "course",
-      },
-      {
-        title: "Docker Labs",
-        url: "https://labs.play-with-docker.com/",
-        type: "practice",
       },
     ],
   },
@@ -356,7 +362,7 @@ export default function TerminalLearningHub() {
   }, [searchTerm, selectedCategory, selectedDifficulty, sortBy]);
 
   return (
-    <div className="min-h-screen pt-28 bg-black text-white ">
+    <div className="min-h-screen pt-28 bg-[#101010] text-white ">
       {/* Terminal Header */}
       <div className=" p-4">
         <div className="flex items-center space-x-2 text-yellow-400">
@@ -480,7 +486,7 @@ export default function TerminalLearningHub() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-[#070707]  rounded-xl p-6  outline-none transition-colors group"
+                className="bg-[#212121]  rounded-3xl p-6  outline-none transition-colors group"
               >
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4">
