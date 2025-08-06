@@ -83,6 +83,13 @@ kinshukkportfolio/
 
 ## 🚀 Getting Started
 
+
+### Docker Commands for pulling the image of my website 
+
+```Bash
+docker pull kinshukdev/kinshukportfolio:latest
+```
+
 ### Prerequisites
 
 - **Node.js** and **npm** installed
