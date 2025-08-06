@@ -362,7 +362,7 @@ export default function TerminalLearningHub() {
   }, [searchTerm, selectedCategory, selectedDifficulty, sortBy]);
 
   return (
-    <div className="min-h-screen pt-28 bg-[#101010] text-white ">
+    <div className="min-h-screen pt-28 bg-[#212121] text-white ">
       {/* Terminal Header */}
       <div className=" p-4">
         <div className="flex items-center space-x-2 text-white font-bold">
@@ -485,7 +485,7 @@ export default function TerminalLearningHub() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-[#212121]  rounded-md p-6  outline-none transition-colors group"
+                className="bg-neutral-900  rounded-md p-6  outline-none transition-colors group"
               >
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4">

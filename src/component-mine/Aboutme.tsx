@@ -136,12 +136,12 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       whileHover={{ scale: 1, y: -2 }}
-      className=" border-2 bg-neutral-900 border-black rounded-md p-6 h-full flex flex-col cursor-pointer"
+      className=" border-2 bg-neutral-900 border-[#303030] rounded-md p-4 h-full flex flex-col cursor-pointer"
     >
       {/* Section Header */}
       <div className="flex items-center gap-4 mb-6">
-        <div className="p-2 bg-black rounded-lg border border-neutral-800">
-          <section.icon className="w-5 h-5 text-neutral-300" />
+        <div className="p-1">
+          <section.icon className="w-5 h-5 text-neutral-100" />
         </div>
         <div>
           <h2 className="text-2xl font-bold text-neutral-100">{section.title}</h2>
