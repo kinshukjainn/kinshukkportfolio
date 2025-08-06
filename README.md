@@ -44,9 +44,11 @@ In today's tech-driven world, having a standout portfolio website isn't just a b
 | React Icons        | 5.5.0     |
 | Lucide React       | 0.482.0   |
 
-### Fonts
+### Multiple fonts which i use : 
 
 - **Poppins** from Google Fonts
+- **Fira Sans** from Google Fonts
+- **Roboto** from Google Fonts 
 
 ### Deployment & Cloud Setup
 
@@ -54,6 +56,7 @@ In today's tech-driven world, having a standout portfolio website isn't just a b
 - **DNS & SSL:** AWS Route 53
 - **Domain Provider:** Hostinger (.in domain for ₹1000 / 2 years)
 - **Version Control:** Git & GitHub
+- **Containerization and Imaging :** Docker image and repository 
 
 ---
 
