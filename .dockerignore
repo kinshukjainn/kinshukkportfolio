@@ -1,0 +1,11 @@
+node_modules
+.git
+src
+public
+*.log
+Dockerfile
+docker-compose.yml
+.vscode
+*.md
+*.ts
+bun.lock

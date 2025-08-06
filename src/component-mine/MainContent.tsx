@@ -1,4 +1,3 @@
-
 import type React from "react"
 import { useState, useEffect, useRef } from "react"
 import {
@@ -30,9 +29,12 @@ import {
   FaGit,
   FaDocker,
   FaAws,
+  FaCopy,
+  FaCheck,
 } from "react-icons/fa"
 import { VscVscodeInsiders } from "react-icons/vsc"
-import profilimage from "../assets/mainweb.jpg"
+
+import profileimg from "../assets/mainweb.jpg"
 
 // --- CONFIGURATION DATA ---
 // This object holds all the personal data, making it easy to update.
@@ -51,7 +53,7 @@ const CONFIG = {
     availability: "Available for opportunities",
     status: "Currently Intern at UPPCL (Uttar Pradesh Power Corporation Limited)",
   },
-  social: [ 
+  social: [
     { platform: "GitHub", url: "https://github.com/kinshukjainn", icon: FaGithub, handle: "@kinshukjainn" },
     { platform: "LinkedIn", url: "https://linkedin.com/in/kinshukjainn/", icon: FaLinkedin, handle: "@kinshukjainn" },
     { platform: "Gmail", url: "mailto:kinshuk25jan04@gmail.com", icon: SiGmail, handle: "kinshuk25jan04@gmail.com" },
@@ -119,6 +121,7 @@ const CONFIG = {
       description: ["A content-focused blogging platform showcasing my technical writing and cloud engineering insights, built using Hashnode's CMS with custom domain configuration via AWS.", "The platform serves as a hub for sharing knowledge on cloud tech, DevOps, and software engineering with the developer community."],
       technologies: ["Hashnode CMS", "AWS Route 53", "DNS Management", "CDN", "SSL/TLS"],
       links: { live: "https://blog.cloudkinshuk.in", repo: null },
+      dockerCommand: "docker command doesnt exist for this project",
     },
     {
       title: "Zeroleaks",
@@ -128,6 +131,7 @@ const CONFIG = {
       description: ["A modern, secure password generation tool built with React and TypeScript, focusing on creating cryptographically secure passwords with customizable parameters.", "Features include multiple generation algorithms, strength analysis, and secure clipboard integration."],
       technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Web Crypto API"],
       links: { live: "https://zeroleaks.cloudkinshuk.in", repo: "https://github.com/kinshukjainn/zeroleaks" },
+      dockerCommand: "docker pull kinshukdev/zeroleaksproduct:latest",
     },
   ],
   education: {
@@ -183,6 +187,41 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; className?: string 
   )
 }
 
+// Copy Button Component
+const CopyButton: React.FC<{ text: string }> = ({ text }) => {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy text: ', err)
+    }
+  }
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-neutral-300 bg-neutral-800 hover:bg-neutral-700 border border-neutral-600 rounded transition-all duration-200"
+      title="Copy Docker command"
+    >
+      {copied ? (
+        <>
+          <FaCheck className="w-3 h-3 text-white" />
+          Copied!
+        </>
+      ) : (
+        <>
+          <FaCopy className="w-3 h-3" />
+          Copy
+        </>
+      )}
+    </button>
+  )
+}
+
 // --- MAIN PORTFOLIO COMPONENT ---
 export default function CloudPortfolio() {
   const [typedText, setTypedText] = useState("")
@@ -198,6 +237,7 @@ export default function CloudPortfolio() {
         clearInterval(typingTimer)
       }
     }, 120)
+
     return () => clearInterval(typingTimer)
   }, [])
 
@@ -213,34 +253,34 @@ export default function CloudPortfolio() {
       window.open(social.url, "_blank")
     }
   }
-  
+
   // A small reusable component for section headers
   const SectionHeader: React.FC<{ icon: React.ElementType, title: string }> = ({ icon: Icon, title }) => (
-    <h3 className="text-2xl sm:text-3xl font-bold flex items-center gap-3 text-neutral-100 mb-8">
+    <h3 className="text-2xl sm:text-3xl font-semibold flex items-center gap-3 text-white mb-8">
       <Icon className="w-7 h-7 text-neutral-400" />
       {title}
     </h3>
   );
-  
+
   // A small reusable component for tech tags
   const TechTag: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <span className="inline-block px-3 py-1  rounded  text-white border-2 border-green-400  text-xs font-semibold ">{children}</span>
+    <span className="inline-block py-1 px-1  rounded  text-white border bg-[#101010] border-black  text-xs font-semibold ">{children}</span>
   );
 
   return (
-    <div className="min-h-screen bg-black text-neutral-100 ">
+    <div className="min-h-screen bg-[#212121] text-neutral-100 ">
       <main className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
         <div className="space-y-24 md:space-y-32">
-          
+
           {/* --- Hero Section --- */}
           <AnimatedSection className="pt-16">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
               <div className="lg:col-span-2 space-y-6">
-                <div className="font-mono text-lg text-neutral-400">
+                <div className=" text-lg text-neutral-400">
                   {typedText}
                   <span className="animate-pulse">_</span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold heading-kinshuk tracking-tighter text-green-400 font-mono">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold heading-kinshuk tracking-tighter text-white ">
                   {CONFIG.personal.name}
                 </h1>
                 <h2 className="text-xl lg:text-2xl text-white max-w-2xl">
@@ -253,7 +293,7 @@ export default function CloudPortfolio() {
               </div>
               <div className="flex justify-center lg:justify-end">
                 <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-lg overflow-hidden -2  bg-neutral-900 shadow-lg">
-                  <img src={profilimage} alt={CONFIG.personal.name} className="w-full h-full object-cover grayscale transition-all duration-500 hover:grayscale-0 hover:scale-105" />
+                  <img src={profileimg} alt={CONFIG.personal.name} className="w-full h-full object-cover grayscale transition-all duration-500 hover:grayscale-0 hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -265,16 +305,16 @@ export default function CloudPortfolio() {
           {/* --- Social Links Section --- */}
           <AnimatedSection>
             <SectionHeader  icon={FaGlobe} title="Digital Presence" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
               {CONFIG.social.map((social) => {
                 const Icon = social.icon
                 return (
-                  <button key={social.platform} onClick={() => handleSocialClick(social)} className="group relative flex items-center gap-2  p-4 cursor-pointer transition-all duration-300 ">
+                  <button key={social.platform} onClick={() => handleSocialClick(social)} className="group relative flex bg-neutral-900 rounded-md border border-black  items-center gap-2  p-2 cursor-pointer transition-all duration-300 ">
                     <div className="p-3 bg-neutral-900  ">
-                      <Icon className="w-6 h-6 text-green-5s00 group-hover:text-white transition-colors" />
+                      <Icon className="w-6 h-6 text-white group-hover:text-white transition-colors" />
                     </div>
                     <div className="text-left">
-                      <p className="font-bold text-green-500 font-mono">{social.platform}</p>
+                      <p className="font-bold text-white ">{social.platform}</p>
                       <p className="text-sm text-neutral-100">{social.handle}</p>
                     </div>
                   </button>
@@ -282,18 +322,18 @@ export default function CloudPortfolio() {
               })}
             </div>
           </AnimatedSection>
-          
+
           {/* --- Certifications Section --- */}
           <AnimatedSection>
             <SectionHeader icon={FaAward} title="Certifications & Badges" />
             <div className="space-y-3">
               {CONFIG.certifications.map((cert) => (
-                <div key={cert.title} className="rounded-lg  p-4 transition-all duration-300 ">
+                <div key={cert.title} className="rounded-lg bg-neutral-900 border border-black  p-4 transition-all duration-300 ">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                     <div className="flex-1 space-y-3">
                       <div className="flex items-center gap-3 flex-wrap">
-                        <h4 className="text-lg font-bold font-mono text-green-500">{cert.title}</h4>
-                        <span className={`px-2 py-0.5 text-xs rounded font-semibold  ${cert.status === "Completed" ? "bg-green-900/50 text-green-300 " : "bg-blue-900/50 text-blue-300  -blue-800"}`}>{cert.status}</span>
+                        <h4 className="text-lg font-bold  text-white">{cert.title}</h4>
+                        <span className={`px-2 py-0.5 text-xs rounded font-semibold  ${cert.status === "Completed" ? "bg-green-900/50 text-white " : "bg-blue-900/50 text-blue-300  -blue-800"}`}>{cert.status}</span>
                       </div>
                       <p className="text-sm text-yellow-200 p-1 ">{cert.organization} • {cert.year}</p>
                       <p className="text-neutral-100">{cert.description}</p>
@@ -303,7 +343,7 @@ export default function CloudPortfolio() {
                       </div>
                     </div>
                     {cert.url && (
-                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center underline  text-white  gap-2 px-2 py-2 text-sm font-medium rounded w-max hover:text-blue-400   transition-colors">
+                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center bg-[#101010] border border-black  text-white  gap-2 px-2 py-2 text-sm font-medium rounded w-max hover:text-blue-400   transition-colors">
                         View Credential <FaExternalLinkAlt className="w-4 h-4" />
                       </a>
                     )}
@@ -319,13 +359,13 @@ export default function CloudPortfolio() {
             <div className="space-y-8">
               {Object.entries(CONFIG.skills).map(([category, skills]) => (
                 <div key={category}>
-                  <h4 className="text-lg font-semibold underline font-mono  text-green-500 mb-4">{category}</h4>
+                  <h4 className="text-xl font-semibold italic   text-white mb-4">{category}</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                     {skills.map((skill) => {
                       const Icon = skill.icon
                       return (
-                        <div key={skill.name} className="flex items-center gap-3 p-1 ">
-                          <Icon className="w-6 h-6 text-green-400 flex-shrink-0" />
+                        <div key={skill.name} className="flex items-center bg-neutral-900 gap-3 p-2 rounded-md border border-black">
+                          <Icon className="w-6 h-6 text-white flex-shrink-0" />
                           <span className="text-sm font-medium text-neutral-300 truncate">{skill.name}</span>
                         </div>
                       )
@@ -335,16 +375,16 @@ export default function CloudPortfolio() {
               ))}
             </div>
           </AnimatedSection>
-          
+
           {/* --- Projects Section --- */}
           <AnimatedSection>
             <SectionHeader icon={FaCode} title="Featured Projects" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {CONFIG.projects.map((project) => (
-                <div key={project.title} className="flex flex-col p-6 transition-all duration-300">
+                <div key={project.title} className="flex flex-col p-4 rounded-md bg-neutral-900 transition-all duration-300">
                   <div className="flex-grow space-y-4">
                     <div className="flex justify-between items-start">
-                      <h4 className="text-lg font-bold underline font-mono text-green-500">{project.title}</h4>
+                      <h4 className="text-xl font-bold  text-white">{project.title}</h4>
                       <span className={`px-2.5 py-1 text-xs font-bold rounded  ${project.status === "Live" ? "bg-green-900/50 text-green-300 " : "bg-neutral-800 text-neutral-300  -neutral-700"}`}>{project.status}</span>
                     </div>
                     <p className="text-sm text-neutral-400">{project.type} • {project.year}</p>
@@ -353,6 +393,20 @@ export default function CloudPortfolio() {
                     </div>
                     <div className="flex flex-wrap gap-2 pt-2">
                       {project.technologies.map(tech => <TechTag key={tech}>{tech}</TechTag>)}
+                    </div>
+                    
+                    {/* Docker Command Section */}
+                    <div className="mt-4 p-3 bg-neutral-900 rounded-md">
+                      <div className="flex items-center gap-2 mb-2">
+                        <FaDocker className="w-4 h-4 text-blue-400" />
+                        <span className="text-sm font-semibold text-neutral-200">Docker Command</span>
+                      </div>
+                      <div className="flex items-center justify-between gap-3">
+                        <code className="text-sm text-white font-semibold  bg-neutral-700 px-2 py-2 rounded flex-1 overflow-x-auto">
+                          {project.dockerCommand}
+                        </code>
+                        <CopyButton text={project.dockerCommand} />
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-4 mt-6 pt-4 -t ">
@@ -371,20 +425,20 @@ export default function CloudPortfolio() {
               ))}
             </div>
           </AnimatedSection>
-          
+
           {/* --- Education Section --- */}
           <AnimatedSection>
             <SectionHeader icon={FaGraduationCap} title="Education" />
-            <div className=" p-2">
+            <div className=" p-3 rounded-md border border-black bg-neutral-900 ">
               <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                 <div className="space-y-1">
-                  <h4 className="text-lg font-bold underline font-mono text-green-500">{CONFIG.education.degree} in {CONFIG.education.field}</h4>
+                  <h4 className="text-xl font-bold  text-white">{CONFIG.education.degree} in {CONFIG.education.field}</h4>
                   <p className="text-neutral-200">{CONFIG.education.institution}</p>
                   <p className="text-md text-neutral-200">{CONFIG.education.location}</p>
                 </div>
                 <div className="text-left sm:text-right space-y-2 flex-shrink-0">
-                  <p className="text-sm font-medium font-mono text-yellow-200">{CONFIG.education.period}</p>
-                  <p className="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-neutral-800 text-neutral-100  ">{CONFIG.education.status}</p>
+                  <p className="text-sm font-medium  text-yellow-200">{CONFIG.education.period}</p>
+                  <p className="inline-block px-2.5 py-1 text-xs font-semibold rounded  text-neutral-100  ">{CONFIG.education.status}</p>
                 </div>
               </div>
               <p className="mt-4 pt-4 -t  text-neutral-300">{CONFIG.education.description}</p>

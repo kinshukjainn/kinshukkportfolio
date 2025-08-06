@@ -72,7 +72,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-mono ease-in-out m-2 rounded-xl ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300  ease-in-out m-2 rounded-xl ${
           scrolled
             ? "backdrop-blur-xs bg-[#101010]/50 border-white/20"
             : "backdrop-blur-sm bg-[#101010]/50 border-white/10"

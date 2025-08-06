@@ -18,7 +18,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-black text-white relative overflow-hidden">
+    <footer className="bg-neutral-900 text-white relative overflow-hidden">
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
 

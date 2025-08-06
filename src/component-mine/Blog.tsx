@@ -1,5 +1,4 @@
 "use client";
-
 import React, {
   useState,
   useMemo,
@@ -14,7 +13,6 @@ import {
 } from "@tanstack/react-query";
 import {
   FaSearch,
-  FaFilter,
   FaExternalLinkAlt,
   FaSpinner,
   FaExclamationTriangle,
@@ -23,13 +21,8 @@ import {
   FaHeart,
   FaClock,
   FaTimes,
-  FaSort,
-  FaChevronDown,
-  FaChevronUp,
-  FaTag,
-  FaUser,
-  FaHistory,
   FaKeyboard,
+  FaHistory,
 } from "react-icons/fa";
 
 // Types
@@ -58,71 +51,21 @@ interface BlogPost {
   url?: string;
 }
 
-interface FilterOptions {
-  searchTerm: string;
-  sortBy:
-    | "publishedAt"
-    | "views"
-    | "reactions"
-    | "title"
-    | "readTime"
-    | "relevance";
-  sortOrder: "asc" | "desc";
-  tags: string[];
-  dateRange: {
-    start: string;
-    end: string;
-  };
-  minReadTime: number;
-  maxReadTime: number;
-  author: string;
-}
-
 interface SearchSuggestion {
-  type: "post" | "tag" | "author" | "recent";
+  type: "post" | "recent";
   value: string;
   label: string;
-  count?: number;
   post?: BlogPost;
 }
 
-// Search Engine
-class SearchEngine {
+// Simplified Search Engine
+class SimpleSearchEngine {
   private posts: BlogPost[] = [];
-  private searchIndex: Map<string, Set<string>> = new Map();
   private recentSearches: string[] = [];
 
   constructor(posts: BlogPost[]) {
     this.posts = posts;
-    this.buildSearchIndex();
     this.loadRecentSearches();
-  }
-
-  private buildSearchIndex() {
-    this.searchIndex.clear();
-    this.posts.forEach((post) => {
-      const searchableText = [
-        post.title,
-        post.brief,
-        post.author.name,
-        ...post.tags.map((tag) => tag.name),
-      ]
-        .join(" ")
-        .toLowerCase();
-
-      const words = searchableText.split(/\s+/);
-      words.forEach((word) => {
-        if (word.length > 2) {
-          for (let i = 0; i <= word.length - 2; i++) {
-            const ngram = word.substring(i, i + 3);
-            if (!this.searchIndex.has(ngram)) {
-              this.searchIndex.set(ngram, new Set());
-            }
-            this.searchIndex.get(ngram)!.add(post.id);
-          }
-        }
-      });
-    });
   }
 
   private loadRecentSearches() {
@@ -153,7 +96,7 @@ class SearchEngine {
     this.recentSearches = [
       trimmedQuery,
       ...this.recentSearches.filter((s) => s !== trimmedQuery),
-    ].slice(0, 10);
+    ].slice(0, 5);
     this.saveRecentSearches();
   }
 
@@ -161,66 +104,39 @@ class SearchEngine {
     return this.recentSearches;
   }
 
-  search(query: string, limit = 50): BlogPost[] {
+  search(query: string): BlogPost[] {
     if (!query.trim()) return this.posts;
+    
     const queryLower = query.toLowerCase();
     const queryWords = queryLower.split(/\s+/).filter((w) => w.length > 0);
-    const scores = new Map<string, number>();
-
-    this.posts.forEach((post) => scores.set(post.id, 0));
-
-    queryWords.forEach((word) => {
-      if (word.length >= 2) {
-        for (let i = 0; i <= word.length - 2; i++) {
-          const ngram = word.substring(i, i + 3);
-          const matchingPosts = this.searchIndex.get(ngram);
-          if (matchingPosts) {
-            matchingPosts.forEach((postId) => {
-              scores.set(postId, (scores.get(postId) || 0) + 1);
-            });
-          }
-        }
-      }
-    });
-
-    this.posts.forEach((post) => {
-      const titleLower = post.title.toLowerCase();
-      const briefLower = post.brief.toLowerCase();
-      const authorLower = post.author.name.toLowerCase();
-      const tagsLower = post.tags.map((t) => t.name.toLowerCase()).join(" ");
-      let currentScore = scores.get(post.id) || 0;
-
-      if (titleLower.includes(queryLower)) {
-        currentScore += 100;
-      }
-      if (briefLower.includes(queryLower)) {
-        currentScore += 50;
-      }
-      if (authorLower.includes(queryLower)) {
-        currentScore += 30;
-      }
-      if (tagsLower.includes(queryLower)) {
-        currentScore += 20;
-      }
-
-      queryWords.forEach((word) => {
-        const titleIndex = titleLower.indexOf(word);
-        const briefIndex = briefLower.indexOf(word);
-        if (titleIndex !== -1) {
-          currentScore += 10 + (titleIndex === 0 ? 5 : 0);
-        }
-        if (briefIndex !== -1) {
-          currentScore += 5;
-        }
-      });
-
-      scores.set(post.id, currentScore);
-    });
-
+    
     return this.posts
-      .filter((post) => (scores.get(post.id) || 0) > 0)
-      .sort((a, b) => (scores.get(b.id) || 0) - (scores.get(a.id) || 0))
-      .slice(0, limit);
+      .map((post) => {
+        let score = 0;
+        const titleLower = post.title.toLowerCase();
+        const briefLower = post.brief.toLowerCase();
+        const authorLower = post.author.name.toLowerCase();
+        const tagsLower = post.tags.map((t) => t.name.toLowerCase()).join(" ");
+
+        // Exact phrase matches get highest score
+        if (titleLower.includes(queryLower)) score += 100;
+        if (briefLower.includes(queryLower)) score += 50;
+        if (authorLower.includes(queryLower)) score += 30;
+        if (tagsLower.includes(queryLower)) score += 20;
+
+        // Individual word matches
+        queryWords.forEach((word) => {
+          if (titleLower.includes(word)) score += 10;
+          if (briefLower.includes(word)) score += 5;
+          if (authorLower.includes(word)) score += 3;
+          if (tagsLower.includes(word)) score += 2;
+        });
+
+        return { post, score };
+      })
+      .filter(({ score }) => score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map(({ post }) => post);
   }
 
   getSuggestions(query: string): SearchSuggestion[] {
@@ -234,60 +150,21 @@ class SearchEngine {
 
     const suggestions: SearchSuggestion[] = [];
     const queryLower = query.toLowerCase();
-    const seen = new Set<string>();
 
-    this.posts.forEach((post) => {
-      if (
-        post.title.toLowerCase().includes(queryLower) &&
-        !seen.has(post.title)
-      ) {
+    // Add matching post titles
+    this.posts
+      .filter((post) => post.title.toLowerCase().includes(queryLower))
+      .slice(0, 5)
+      .forEach((post) => {
         suggestions.push({
           type: "post",
           value: post.title,
           label: post.title,
           post,
         });
-        seen.add(post.title);
-      }
-    });
-
-    const tagCounts = new Map<string, number>();
-    this.posts.forEach((post) => {
-      post.tags.forEach((tag) => {
-        if (tag.name.toLowerCase().includes(queryLower)) {
-          tagCounts.set(tag.name, (tagCounts.get(tag.name) || 0) + 1);
-        }
-      });
-    });
-
-    Array.from(tagCounts.entries())
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 5)
-      .forEach(([tag, count]) => {
-        suggestions.push({
-          type: "tag",
-          value: tag,
-          label: tag,
-          count,
-        });
       });
 
-    const authors = new Set<string>();
-    this.posts.forEach((post) => {
-      if (
-        post.author.name.toLowerCase().includes(queryLower) &&
-        !authors.has(post.author.name)
-      ) {
-        suggestions.push({
-          type: "author",
-          value: post.author.name,
-          label: post.author.name,
-        });
-        authors.add(post.author.name);
-      }
-    });
-
-    return suggestions.slice(0, 8);
+    return suggestions;
   }
 }
 
@@ -416,7 +293,7 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
     }, []);
 
     return (
-      <article className="group bg-black border border-neutral-800 rounded-md hover:border-neutral-700 transition-all duration-200">
+      <article className="group bg-neutral-900 border-2 border-neutral-700 rounded-md hover:border-neutral-700 transition-all duration-200">
         {/* Cover Image */}
         <div className="relative h-32 sm:h-36 overflow-hidden bg-neutral-900 rounded-md">
           {post.coverImage && !imageError ? (
@@ -491,7 +368,7 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-2 py-2 bg-neutral-900 border border-neutral-800 text-white text-sm font-medium rounded hover:bg-neutral-800 transition-all duration-200"
+              className="inline-flex items-center gap-1 px-2 py-2 bg-black/90 border border-neutral-800 text-white text-sm font-medium rounded-md hover:text-gray-300 transition-all duration-200"
             >
               Read
               <FaExternalLinkAlt className="w-3 h-3" />
@@ -505,14 +382,13 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
 
 BlogCard.displayName = "BlogCard";
 
-// Search Bar Component
+// Simplified Search Bar Component
 interface SearchBarProps {
   searchInput: string;
   setSearchInput: (value: string) => void;
   resultsCount: number;
   totalCount: number;
-  searchEngine: SearchEngine | null;
-  onSuggestionSelect: (suggestion: SearchSuggestion) => void;
+  searchEngine: SimpleSearchEngine | null;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
@@ -521,7 +397,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
   resultsCount,
   totalCount,
   searchEngine,
-  onSuggestionSelect,
 }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestions, setSuggestions] = useState<SearchSuggestion[]>([]);
@@ -546,13 +421,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
   const handleSuggestionClick = useCallback(
     (suggestion: SearchSuggestion) => {
       setSearchInput(suggestion.value);
-      onSuggestionSelect(suggestion);
       setShowSuggestions(false);
       if (searchEngine) {
         searchEngine.addRecentSearch(suggestion.value);
       }
     },
-    [setSearchInput, onSuggestionSelect, searchEngine]
+    [setSearchInput, searchEngine]
   );
 
   useEffect(() => {
@@ -562,6 +436,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         inputRef.current?.focus();
         setShowSuggestions(true);
       }
+
       if (showSuggestions && suggestions.length > 0) {
         switch (e.key) {
           case "ArrowDown":
@@ -589,6 +464,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         }
       }
     };
+
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [
@@ -604,10 +480,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
     switch (type) {
       case "post":
         return <FaSearch className="w-3 h-3" />;
-      case "tag":
-        return <FaTag className="w-3 h-3" />;
-      case "author":
-        return <FaUser className="w-3 h-3" />;
       case "recent":
         return <FaHistory className="w-3 h-3" />;
       default:
@@ -617,7 +489,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   return (
     <div className="relative">
-      <div className="relative ">
+      <div className="relative">
         <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 text-sm" />
         <input
           ref={inputRef}
@@ -627,12 +499,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="w-full pl-10 pr-10 py-2 bg-black  text-white outline-none  placeholder-neutral-500 border-b-2 border-yellow-400 text-lg"
+          className="w-full pl-10 pr-10 py-3 rounded-md border-2 border-neutral-600 bg-neutral-900 text-white outline-none placeholder-neutral-500 text-sm"
         />
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {searchInput && (
             <button
-              title="none click"
+            title="newbtn"
               onClick={() => {
                 setSearchInput("");
                 setShowSuggestions(false);
@@ -642,7 +514,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               <FaTimes className="w-3 h-3" />
             </button>
           )}
-          <div className="hidden sm:flex items-center gap-1 text-xs text-neutral-500 bg-neutral-900 px-2 py-1 rounded-md ">
+          <div className="hidden sm:flex items-center gap-1 text-xs text-neutral-500 bg-neutral-900 px-2 py-1 rounded-md">
             <FaKeyboard className="w-2 h-2" />
             ⌘K
           </div>
@@ -668,10 +540,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
                   {suggestion.label}
                 </div>
                 <div className="text-xs text-neutral-500 capitalize">
-                  {suggestion.type === "recent"
-                    ? "Recent search"
-                    : suggestion.type}
-                  {suggestion.count && ` • ${suggestion.count} posts`}
+                  {suggestion.type === "recent" ? "Recent search" : "Article"}
                 </div>
               </div>
             </button>
@@ -689,237 +558,10 @@ const SearchBar: React.FC<SearchBarProps> = ({
   );
 };
 
-// Filters Component
-interface FiltersProps {
-  filters: FilterOptions;
-  setFilters: React.Dispatch<React.SetStateAction<FilterOptions>>;
-  availableTags: string[];
-  availableAuthors: string[];
-  isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
-}
-
-const AdvancedFilters: React.FC<FiltersProps> = ({
-  filters,
-  setFilters,
-  availableTags,
-  availableAuthors,
-  isOpen,
-  setIsOpen,
-}) => {
-  const handleTagToggle = useCallback(
-    (tag: string) => {
-      setFilters((prev) => ({
-        ...prev,
-        tags: prev.tags.includes(tag)
-          ? prev.tags.filter((t) => t !== tag)
-          : [...prev.tags, tag],
-      }));
-    },
-    [setFilters]
-  );
-
-  const clearFilters = useCallback(() => {
-    setFilters((prev) => ({
-      searchTerm: prev.searchTerm,
-      sortBy: "publishedAt",
-      sortOrder: "desc",
-      tags: [],
-      dateRange: { start: "", end: "" },
-      minReadTime: 0,
-      maxReadTime: 60,
-      author: "",
-    }));
-  }, [setFilters]);
-
-  if (!isOpen) return null;
-
-  return (
-    <div className="bg-black border border-neutral-800 rounded-md p-4 mt-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Sort Options */}
-        <div className="space-y-2">
-          <label className="block text-sm font-medium text-white">
-            Sort By
-          </label>
-          <select
-            title="your select"
-            value={filters.sortBy}
-            onChange={(e) =>
-              setFilters((prev) => ({
-                ...prev,
-                sortBy: e.target.value as FilterOptions["sortBy"],
-              }))
-            }
-            className="w-full p-2 text-sm bg-neutral-900 border border-neutral-800 text-white rounded-md focus:border-neutral-700 focus:outline-none"
-          >
-            <option value="publishedAt">Date Published</option>
-            <option value="relevance">Relevance</option>
-            <option value="title">Title</option>
-            <option value="views">Views</option>
-            <option value="reactions">Reactions</option>
-            <option value="readTime">Read Time</option>
-          </select>
-        </div>
-
-        {/* Author Filter */}
-        <div className="space-y-2">
-          <label className="block text-sm font-medium text-white">Author</label>
-          <select
-            title="my"
-            value={filters.author}
-            onChange={(e) =>
-              setFilters((prev) => ({ ...prev, author: e.target.value }))
-            }
-            className="w-full p-2 text-sm bg-neutral-900 border border-neutral-800 text-white rounded-md focus:border-neutral-700 focus:outline-none"
-          >
-            <option value="">All Authors</option>
-            {availableAuthors.map((author) => (
-              <option key={author} value={author}>
-                {author}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Date Range */}
-        <div className="space-y-2">
-          <label className="block text-sm font-medium text-white">
-            Date Range
-          </label>
-          <div className="space-y-1">
-            <input
-              title="formsdata"
-              type="date"
-              value={filters.dateRange.start}
-              onChange={(e) =>
-                setFilters((prev) => ({
-                  ...prev,
-                  dateRange: { ...prev.dateRange, start: e.target.value },
-                }))
-              }
-              className="w-full p-2 text-sm bg-neutral-900 border border-neutral-800 text-white rounded-md focus:border-neutral-700 focus:outline-none"
-            />
-            <input
-              title="new data"
-              type="date"
-              value={filters.dateRange.end}
-              onChange={(e) =>
-                setFilters((prev) => ({
-                  ...prev,
-                  dateRange: { ...prev.dateRange, end: e.target.value },
-                }))
-              }
-              className="w-full p-2 text-sm bg-neutral-900 border border-neutral-800 text-white rounded-md focus:border-neutral-700 focus:outline-none"
-            />
-          </div>
-        </div>
-
-        {/* Read Time Range */}
-        <div className="space-y-2">
-          <label className="block text-sm font-medium text-white">
-            Read Time: {filters.minReadTime}-{filters.maxReadTime}m
-          </label>
-          <div className="space-y-2">
-            <input
-              title="from"
-              type="range"
-              min="0"
-              max="60"
-              value={filters.minReadTime}
-              onChange={(e) =>
-                setFilters((prev) => ({
-                  ...prev,
-                  minReadTime: Number(e.target.value),
-                }))
-              }
-              className="w-full accent-white"
-            />
-            <input
-              title="new trick"
-              type="range"
-              min="0"
-              max="60"
-              value={filters.maxReadTime}
-              onChange={(e) =>
-                setFilters((prev) => ({
-                  ...prev,
-                  maxReadTime: Number(e.target.value),
-                }))
-              }
-              className="w-full accent-white"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Tags Section */}
-      <div className="mt-4 space-y-2">
-        <label className="block text-sm font-medium text-white">
-          Tags ({filters.tags.length} selected)
-        </label>
-        <div className="max-h-32 overflow-y-auto">
-          <div className="flex flex-wrap gap-1">
-            {availableTags.slice(0, 20).map((tag) => (
-              <button
-                key={tag}
-                onClick={() => handleTagToggle(tag)}
-                className={`inline-flex items-center gap-1 px-2 py-1 text-xs rounded-md font-medium transition-colors duration-200 ${
-                  filters.tags.includes(tag)
-                    ? "bg-white text-black"
-                    : "bg-neutral-900 text-neutral-300 hover:bg-neutral-800 border border-neutral-800"
-                }`}
-              >
-                <FaTag className="w-2 h-2" />
-                {tag}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Filter Actions */}
-      <div className="flex justify-between items-center gap-4 mt-4 pt-4 border-t border-neutral-800">
-        <button
-          onClick={clearFilters}
-          className="flex items-center gap-2 px-4 py-2 text-sm text-neutral-400 hover:text-white border border-neutral-800 rounded-md hover:border-neutral-700 transition-colors duration-200"
-        >
-          <FaTimes className="w-3 h-3" />
-          Clear Filters
-        </button>
-        <button
-          onClick={() => setIsOpen(false)}
-          className="px-4 py-2 text-sm bg-white text-black font-medium hover:bg-neutral-200 transition-colors duration-200 rounded-md"
-        >
-          Apply Filters
-        </button>
-      </div>
-    </div>
-  );
-};
-
 // Main Blog Component
 const BlogPageContent: React.FC = () => {
-  const [filters, setFilters] = useState<FilterOptions>({
-    searchTerm: "",
-    sortBy: "publishedAt",
-    sortOrder: "desc",
-    tags: [],
-    dateRange: { start: "", end: "" },
-    minReadTime: 0,
-    maxReadTime: 60,
-    author: "",
-  });
-  const [showFilters, setShowFilters] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [searchEngine, setSearchEngine] = useState<SearchEngine | null>(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setFilters((prev) => ({ ...prev, searchTerm: searchInput }));
-    }, 50);
-    return () => clearTimeout(timer);
-  }, [searchInput]);
+  const [searchEngine, setSearchEngine] = useState<SimpleSearchEngine | null>(null);
 
   const {
     data: posts,
@@ -937,116 +579,22 @@ const BlogPageContent: React.FC = () => {
 
   useEffect(() => {
     if (posts) {
-      setSearchEngine(new SearchEngine(posts));
+      setSearchEngine(new SimpleSearchEngine(posts));
     }
   }, [posts]);
 
   const filteredPosts = useMemo(() => {
     if (!posts || !searchEngine) return [];
-    let result = posts;
-
-    if (filters.searchTerm.trim()) {
-      if (filters.sortBy === "relevance") {
-        result = searchEngine.search(filters.searchTerm);
-      } else {
-        result = searchEngine.search(filters.searchTerm, posts.length);
-      }
-    }
-
-    result = result.filter((post) => {
-      const matchesTags =
-        filters.tags.length === 0 ||
-        filters.tags.some((tag) =>
-          post.tags.some((postTag) =>
-            postTag.name.toLowerCase().includes(tag.toLowerCase())
-          )
-        );
-      const matchesAuthor =
-        !filters.author ||
-        post.author.name.toLowerCase().includes(filters.author.toLowerCase());
-      const matchesDateRange =
-        (!filters.dateRange.start ||
-          new Date(post.publishedAt) >= new Date(filters.dateRange.start)) &&
-        (!filters.dateRange.end ||
-          new Date(post.publishedAt) <= new Date(filters.dateRange.end));
-      const matchesReadTime =
-        !post.readTimeInMinutes ||
-        (post.readTimeInMinutes >= filters.minReadTime &&
-          post.readTimeInMinutes <= filters.maxReadTime);
-
-      return (
-        matchesTags && matchesAuthor && matchesDateRange && matchesReadTime
+    
+    if (!searchInput.trim()) {
+      // Return all posts sorted by date when no search
+      return [...posts].sort((a, b) => 
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
       );
-    });
-
-    if (!filters.searchTerm.trim() || filters.sortBy !== "relevance") {
-      result = result.sort((a, b) => {
-        let aValue: string | number, bValue: string | number;
-        switch (filters.sortBy) {
-          case "publishedAt":
-            aValue = new Date(a.publishedAt).getTime();
-            bValue = new Date(b.publishedAt).getTime();
-            break;
-          case "title":
-            aValue = a.title.toLowerCase();
-            bValue = b.title.toLowerCase();
-            break;
-          case "views":
-            aValue = a.views || 0;
-            bValue = b.views || 0;
-            break;
-          case "reactions":
-            aValue = a.reactionCount || 0;
-            bValue = b.reactionCount || 0;
-            break;
-          case "readTime":
-            aValue = a.readTimeInMinutes || 0;
-            bValue = b.readTimeInMinutes || 0;
-            break;
-          default:
-            aValue = new Date(a.publishedAt).getTime();
-            bValue = new Date(b.publishedAt).getTime();
-        }
-        if (typeof aValue === "string") {
-          return filters.sortOrder === "asc"
-            ? aValue.localeCompare(String(bValue))
-            : String(bValue).localeCompare(aValue);
-        }
-        return filters.sortOrder === "asc"
-          ? Number(aValue) - Number(bValue)
-          : Number(bValue) - Number(aValue);
-      });
     }
-
-    return result;
-  }, [posts, filters, searchEngine]);
-
-  const { allTags, allAuthors } = useMemo(() => {
-    if (!posts) return { allTags: [], allAuthors: [] };
-    const tagSet = new Set<string>();
-    const authorSet = new Set<string>();
-    posts.forEach((post) => {
-      post.tags.forEach((tag) => tagSet.add(tag.name));
-      authorSet.add(post.author.name);
-    });
-    return {
-      allTags: Array.from(tagSet).sort(),
-      allAuthors: Array.from(authorSet).sort(),
-    };
-  }, [posts]);
-
-  const handleSuggestionSelect = useCallback((suggestion: SearchSuggestion) => {
-    if (suggestion.type === "tag") {
-      setFilters((prev) => ({
-        ...prev,
-        tags: prev.tags.includes(suggestion.value)
-          ? prev.tags
-          : [...prev.tags, suggestion.value],
-      }));
-    } else if (suggestion.type === "author") {
-      setFilters((prev) => ({ ...prev, author: suggestion.value }));
-    }
-  }, []);
+    
+    return searchEngine.search(searchInput);
+  }, [posts, searchInput, searchEngine]);
 
   if (error) {
     return (
@@ -1071,12 +619,12 @@ const BlogPageContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white pt-20">
+    <div className="min-h-screen bg-[#212121] text-white pt-20">
       {/* Hero Section */}
-      <section className="bg-black">
+      <section className="bg-[#212121]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-mono font-bold text-yellow-200 mb-4 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl heading-kinshuk font-bold text-yellow-200 mb-4 leading-tight">
               Minimal{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-500">
                 Minds
@@ -1090,58 +638,15 @@ const BlogPageContent: React.FC = () => {
         </div>
       </section>
 
-      {/* Search & Filters */}
-      <div className="sticky top-0 z-40 ">
+      {/* Search */}
+      <div className="sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-col lg:flex-row gap-3 lg:items-center">
-            <div className="flex-1">
-              <SearchBar
-                searchInput={searchInput}
-                setSearchInput={setSearchInput}
-                resultsCount={filteredPosts.length}
-                totalCount={posts?.length || 0}
-                searchEngine={searchEngine}
-                onSuggestionSelect={handleSuggestionSelect}
-              />
-            </div>
-            <div className="flex gap-2 lg:flex-shrink-0">
-              <button
-                onClick={() => setShowFilters(!showFilters)}
-                className={`flex items-center gap-2 px-2 py-1 rounded font-small transition-colors duration-200 ${
-                  showFilters
-                    ? "bg-[#121212] text-white border-2 border-[#090909]"
-                    : "bg-[#101010] text-neutral-100 border-2 border-[#090909]"
-                }`}
-              >
-                <FaFilter className="w-3 h-3" />
-                Filters
-                {showFilters ? (
-                  <FaChevronUp className="w-3 h-3" />
-                ) : (
-                  <FaChevronDown className="w-3 h-3" />
-                )}
-              </button>
-              <button
-                onClick={() =>
-                  setFilters((prev) => ({
-                    ...prev,
-                    sortOrder: prev.sortOrder === "asc" ? "desc" : "asc",
-                  }))
-                }
-                className="flex items-center gap-2 px-3 py-2 rounded bg-[#121212] border-2 border-[#090909] text-white transition-colors duration-200 font-medium"
-              >
-                <FaSort className="w-3 h-3" />
-                {filters.sortOrder === "desc" ? "Newest" : "Oldest"}
-              </button>
-            </div>
-          </div>
-          <AdvancedFilters
-            filters={filters}
-            setFilters={setFilters}
-            availableTags={allTags}
-            availableAuthors={allAuthors}
-            isOpen={showFilters}
-            setIsOpen={setShowFilters}
+          <SearchBar
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            resultsCount={filteredPosts.length}
+            totalCount={posts?.length || 0}
+            searchEngine={searchEngine}
           />
         </div>
       </div>
@@ -1163,23 +668,13 @@ const BlogPageContent: React.FC = () => {
               No articles found
             </h3>
             <p className="text-neutral-400 mb-6 max-w-md mx-auto">
-              Try adjusting your search terms or filters to discover more
-              content
+              Try different search terms to discover more content
             </p>
             <button
-              onClick={() => {
-                setSearchInput("");
-                setFilters((prev) => ({
-                  ...prev,
-                  searchTerm: "",
-                  tags: [],
-                  dateRange: { start: "", end: "" },
-                  author: "",
-                }));
-              }}
+              onClick={() => setSearchInput("")}
               className="px-4 py-2 bg-white text-black font-medium hover:bg-neutral-200 transition-colors duration-200 rounded-md"
             >
-              Clear All Filters
+              Clear Search
             </button>
           </div>
         ) : (
@@ -1188,7 +683,7 @@ const BlogPageContent: React.FC = () => {
               <BlogCard
                 key={post.id}
                 post={post}
-                searchQuery={filters.searchTerm}
+                searchQuery={searchInput}
               />
             ))}
           </div>

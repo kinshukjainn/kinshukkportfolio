@@ -136,7 +136,7 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       whileHover={{ scale: 1, y: -2 }}
-      className=" border-3 border-neutral-900 rounded-xl p-6 h-full flex flex-col cursor-pointer"
+      className=" border-2 bg-neutral-900 border-black rounded-md p-6 h-full flex flex-col cursor-pointer"
     >
       {/* Section Header */}
       <div className="flex items-center gap-4 mb-6">
@@ -144,8 +144,8 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
           <section.icon className="w-5 h-5 text-neutral-300" />
         </div>
         <div>
-          <h2 className="text-xl font-bold text-neutral-100">{section.title}</h2>
-          <p className="text-sm text-neutral-500 font-mono">
+          <h2 className="text-2xl font-bold text-neutral-100">{section.title}</h2>
+          <p className="text-sm text-neutral-500 ">
             {section.items.length} item{section.items.length !== 1 ? "s" : ""}
           </p>
         </div>
@@ -156,7 +156,7 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
         {section.items.map((item) => (
           <div key={item.name}>
             {item.category && (
-              <div className="text-xs font-mono text-yellow-400/80 uppercase tracking-wider mb-1.5">
+              <div className="text-lg  text-yellow-400/80 uppercase tracking-wider mb-1.5">
                 {item.category}
               </div>
             )}
@@ -172,7 +172,7 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
 // --- MAIN COMPONENT ---
 export default function DevSetup() {
   return (
-    <main className="min-h-screen bg-black text-neutral-300 ">
+    <main className="min-h-screen bg-[#212121] text-neutral-300 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
         {/* Header Section */}
         <motion.div
@@ -183,11 +183,11 @@ export default function DevSetup() {
         >
           <div className="inline-flex items-center gap-2 mb-4">
             <Monitor className="w-6 h-6 text-neutral-500" />
-            <span className="text-sm font-mono text-neutral-500 uppercase tracking-wider">
+            <span className="text-sm  text-neutral-500 uppercase tracking-wider">
               My Digital Workspace
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-mono text-green-500 ">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold  text-white heading-kinshuk ">
             Development Setup
           </h1>
           <p className="mt-4 max-w-xl mx-auto text-lg text-neutral-400">
@@ -215,27 +215,27 @@ export default function DevSetup() {
           className="mt-20 pt-10 border-t border-neutral-900"
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
-            <div className="bg-[#0A0A0A] border border-neutral-900 rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-white font-mono">
+            <div className="bg-neutral-900 border-2 border-neutral-700 rounded-lg p-4 text-center">
+              <div className="text-2xl font-bold text-white ">
                 {setupData.reduce((acc, section) => acc + section.items.length, 0)}
               </div>
-              <div className="text-sm text-neutral-500 font-mono uppercase tracking-wider mt-1">
+              <div className="text-sm text-white  uppercase tracking-wider mt-1">
                 Total Items
               </div>
             </div>
 
-            <div className="bg-[#0A0A0A] border border-neutral-900 rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-white font-mono">{setupData.length}</div>
-              <div className="text-sm text-neutral-500 font-mono uppercase tracking-wider mt-1">
+            <div className="bg-neutral-900 border-2 border-neutral-700 rounded-lg p-2 text-center">
+              <div className="text-2xl font-bold text-white ">{setupData.length}</div>
+              <div className="text-sm text-white  uppercase tracking-wider mt-1">
                 Categories
               </div>
             </div>
             
-             <div className="bg-[#0A0A0A] border border-neutral-900 rounded-lg p-4 text-center col-span-2">
-              <div className="text-2xl font-bold text-white font-mono">
+             <div className="bg-neutral-900 border-2 border-neutral-700 rounded-lg p-4 text-center col-span-2">
+              <div className="text-2xl font-bold text-white ">
                 2025
               </div>
-              <div className="text-sm text-neutral-500 font-mono uppercase tracking-wider mt-1">
+              <div className="text-sm text-white  uppercase tracking-wider mt-1">
                 Last Updated
               </div>
             </div>
