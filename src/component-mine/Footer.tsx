@@ -18,7 +18,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-[#252525] text-white relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-black via-zinc-900   to-gray-950 text-neutral-100 text-white relative overflow-hidden">
       {/* Animated background gradient */}
 
       {/* Floating particles animation */}

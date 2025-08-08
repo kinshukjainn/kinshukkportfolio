@@ -293,9 +293,9 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
     }, []);
 
     return (
-      <article className="group bg-neutral-900 border-2 border-neutral-700 rounded-md hover:border-neutral-700 transition-all duration-200">
+      <article className="group bg-gradient-to-br from-black via-zinc-900 to-black text-neutral-100 border-2 border-black shadow-xl shadow-black rounded-3xl hover:border-neutral-900 transition-all duration-200">
         {/* Cover Image */}
-        <div className="relative h-32 sm:h-36 overflow-hidden bg-neutral-900 rounded-md">
+        <div className="relative h-32 sm:h-36 overflow-hidden bg-neutral-900 rounded-3xl">
           {post.coverImage && !imageError ? (
             <>
               <img
@@ -368,7 +368,7 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-2 py-2 bg-black/90 border border-neutral-800 text-white text-sm font-medium rounded-md hover:text-gray-300 transition-all duration-200"
+              className="inline-flex items-center gap-1 px-3 py-2 bg-[#ff9100] border border-neutral-800 text-black text-sm font-semibold rounded-3xl hover:text-gray-900 transition-all duration-200"
             >
               Read
               <FaExternalLinkAlt className="w-3 h-3" />
@@ -490,7 +490,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className="relative">
       <div className="relative">
-        <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 text-sm" />
+        <FaSearch className="absolute  left-3 top-1/2 transform -translate-y-1/2 text-neutral-100 text-lg" />
         <input
           ref={inputRef}
           type="text"
@@ -499,7 +499,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="w-full pl-10 pr-10 py-3 rounded-md border-2 border-neutral-600 bg-neutral-900 text-white outline-none placeholder-neutral-500 text-sm"
+          className="w-full pl-10 pr-10 py-4 border-2 border-black  shadow-xl shadow-black  rounded-full bg-[#121212] text-white outline-none placeholder-neutral-200 text-lg"
         />
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {searchInput && (
@@ -514,8 +514,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
               <FaTimes className="w-3 h-3" />
             </button>
           )}
-          <div className="hidden sm:flex items-center gap-1 text-xs text-neutral-500 bg-neutral-900 px-2 py-1 rounded-md">
-            <FaKeyboard className="w-2 h-2" />
+          <div className="hidden sm:flex items-center gap-1 text-sm text-neutral-100 bg-[#181818] px-3 py-2 rounded-full shadow-lg shadow-black focus:animate-pulse border border-black">
+            <FaKeyboard className="w-3 h-3" />
             ⌘K
           </div>
         </div>
@@ -523,7 +523,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
       {/* Suggestions */}
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-[#121212] border border-neutral-800 rounded-md shadow-2xl z-50 max-h-60 overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-1 bg-[#121212] border border-neutral-800 rounded-3xl shadow-2xl shadow-black z-50 max-h-60 overflow-y-auto">
           {suggestions.map((suggestion, index) => (
             <button
               key={`${suggestion.type}-${suggestion.value}`}
@@ -598,7 +598,7 @@ const BlogPageContent: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-gray-950 text-neutral-100 flex items-center justify-center p-4">
         <div className="text-center max-w-md">
           <FaExclamationTriangle className="text-white text-4xl mx-auto mb-4" />
           <h2 className="text-xl font-bold text-white mb-2">
@@ -619,9 +619,9 @@ const BlogPageContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#212121] text-white pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-gray-950 text-neutral-100 text-white pt-20">
       {/* Hero Section */}
-      <section className="bg-[#212121]">
+      <section className="bg-gradient-to-br from-black via-zinc-900 to-gray-950 text-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl heading-kinshuk font-bold text-yellow-200 mb-4 leading-tight">

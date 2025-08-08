@@ -362,7 +362,7 @@ export default function TerminalLearningHub() {
   }, [searchTerm, selectedCategory, selectedDifficulty, sortBy]);
 
   return (
-    <div className="min-h-screen pt-28 bg-[#212121] text-white ">
+    <div className="min-h-screen pt-28 bg-gradient-to-br from-black via-zinc-900 to-gray-950 text-neutral-100 text-white ">
       {/* Terminal Header */}
       <div className=" p-4">
         <div className="flex items-center space-x-2 text-white font-bold">
@@ -385,7 +385,7 @@ export default function TerminalLearningHub() {
               placeholder="search your resources...technology...."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-neutral-900 border-2 border-neutral-700 pl-12 pr-4 rounded-md py-2 text-white placeholder-gray-400 outline-none"
+              className="w-full bg-[#121212] border-2 border-black shadow-black shadow-lg pl-12 pr-4 rounded-full py-3 text-white placeholder-gray-400 outline-none"
             />
           </div>
 
@@ -393,7 +393,7 @@ export default function TerminalLearningHub() {
           <div className="flex items-center justify-between mb-4">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center space-x-2 px-4 py-2 bg-[#141414] rounded-md  transition-colors outline-none"
+              className="flex items-center space-x-2 px-4 py-2 bg-[#141414] rounded-full border-2 border-black shadow-xl shadow-black  transition-colors outline-none"
             >
               <FaFilter className="text-yellow-400" />
               <span>Filters</span>
@@ -411,17 +411,17 @@ export default function TerminalLearningHub() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 p-4 bg-[#141414] rounded-md"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 p-4 bg-[#121212] shadow-xl shadow-black  rounded-3xl"
               >
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="block text-lg text-gray-100 mb-2">
                     Category
                   </label>
                   <select
                     title="Category"
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full bg-[#070707]  rounded-md  px-3 py-2 text-white focus:border-yellow-400 focus:outline-none"
+                    className="w-full bg-[#070707]  rounded-full  px-3 py-3 text-white focus:border-yellow-400 focus:outline-none"
                   >
                     {categories.map((category) => (
                       <option key={category} value={category}>
@@ -432,14 +432,14 @@ export default function TerminalLearningHub() {
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="block text-lg text-gray-100 mb-2">
                     Difficulty
                   </label>
                   <select
                     title="Difficulty"
                     value={selectedDifficulty}
                     onChange={(e) => setSelectedDifficulty(e.target.value)}
-                    className="w-full bg-[#070707] rounded-md px-3 py-2 text-white focus:border-yellow-400 focus:outline-none"
+                    className="w-full bg-[#070707] rounded-full px-3 py-3 text-white focus:border-yellow-400 focus:outline-none"
                   >
                     {difficulties.map((difficulty) => (
                       <option key={difficulty} value={difficulty}>
@@ -450,14 +450,14 @@ export default function TerminalLearningHub() {
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">
+                  <label className="block text-lg text-gray-100 mb-2">
                     Sort By
                   </label>
                   <select
                     title="Sort By"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="w-full bg-[#070707] rounded-md px-3 py-2 text-white focus:border-yellow-400 focus:outline-none"
+                    className="w-full bg-[#070707] rounded-full px-3 py-3 text-white focus:border-yellow-400 focus:outline-none"
                   >
                     {sortOptions.map((option) => (
                       <option key={option} value={option}>
@@ -485,7 +485,7 @@ export default function TerminalLearningHub() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-neutral-900  rounded-md p-6  outline-none transition-colors group"
+                className="bg-gradient-to-br from-black via-neutral-800 to-neutral-900 text-neutral-100  rounded-4xl border-2 border-black shadow-xl shadow-black p-6  outline-none transition-colors group"
               >
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4">

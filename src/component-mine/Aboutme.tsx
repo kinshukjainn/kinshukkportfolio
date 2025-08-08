@@ -136,7 +136,7 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       whileHover={{ scale: 1, y: -2 }}
-      className=" border-2 bg-neutral-900 border-[#303030] rounded-md p-4 h-full flex flex-col cursor-pointer"
+      className=" border-2 bg-gradient-to-br from-black via-black to-zinc-900 text-neutral-100 border-black shadow-xl shadow-black rounded-4xl p-4 h-full flex flex-col cursor-pointer"
     >
       {/* Section Header */}
       <div className="flex items-center gap-4 mb-6">
@@ -172,7 +172,7 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
 // --- MAIN COMPONENT ---
 export default function DevSetup() {
   return (
-    <main className="min-h-screen bg-[#212121] text-neutral-300 ">
+    <main className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-gray-950 text-neutral-100 text-neutral-300 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
         {/* Header Section */}
         <motion.div
