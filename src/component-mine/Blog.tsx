@@ -326,7 +326,7 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
         {/* Content */}
         <div className="p-3">
           {/* Title */}
-          <h2 className="text-sm sm:text-base font-bold text-white leading-tight mb-2 line-clamp-2 group-hover:text-yellow-400 transition-colors duration-200">
+          <h2 className="text-sm sm:text-base font-bold text-white leading-tight mb-2 line-clamp-2 group-hover:text-blue-300 transition-colors duration-200">
             {highlightText(post.title, searchQuery)}
           </h2>
 
@@ -368,7 +368,7 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-3 py-2 bg-[#ff9100] border border-neutral-800 text-black text-sm font-semibold rounded-3xl hover:text-gray-900 transition-all duration-200"
+              className="inline-flex items-center gap-1 px-3 py-2 bg-blue-500 border border-neutral-800 text-black text-sm font-semibold rounded-3xl hover:text-gray-900 transition-all duration-200"
             >
               Read
               <FaExternalLinkAlt className="w-3 h-3" />

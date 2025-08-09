@@ -40,8 +40,8 @@ import profileimg from "../assets/mainweb.jpg"
 // This object holds all the personal data, making it easy to update.
 const CONFIG = {
   personal: {
-    name: "KJ <kinshuk Jain>",
-    title: "Just Building and Learning ! ",
+    name: "KJ { KINSHUK JAIN }",
+    title: "Just Building and Learning adequate Infrastructures ! ",
     email: "kinshuk25jan04@gmail.com",
     whatsappNumber: "919172702501",
     location: "Ghaziabad, UP, India",
@@ -204,7 +204,7 @@ const CopyButton: React.FC<{ text: string }> = ({ text }) => {
   return (
     <button
       onClick={handleCopy}
-      className="inline-flex items-center gap-2 px-3 py-1.5 text-sm cursor-pointer font-semibold text-black bg-[#ff9100]   rounded-full transition-all duration-200"
+      className="inline-flex items-center gap-2 px-3 py-1.5 text-sm cursor-pointer font-semibold text-black bg-blue-500   rounded-full transition-all duration-200"
       title="Copy Docker command"
     >
       {copied ? (
@@ -257,18 +257,18 @@ export default function CloudPortfolio() {
   // A small reusable component for section headers
   const SectionHeader: React.FC<{ icon: React.ElementType, title: string }> = ({ icon: Icon, title }) => (
     <h3 className="text-2xl sm:text-3xl font-semibold flex items-center gap-3 text-white mb-8">
-      <Icon className="w-7 h-7 text-[#ff9100] " />
+      <Icon className="w-7 h-7 text-blue-500 " />
       {title}
     </h3>
   );
 
   // A small reusable component for tech tags
   const TechTag: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <span className="inline-block py-1 px-2  rounded-full  text-white font-mono border border-[#ff9100]   text-xs font-semibold ">{children}</span>
+    <span className="inline-block py-1 px-2  rounded-full  text-white font-mono    text-xs font-semibold ">{children}</span>
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-gray-950 text-neutral-100
+    <div className="min-h-screen bg-black text-neutral-100
 ">
       <main className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
         <div className="space-y-24 md:space-y-32">
@@ -277,17 +277,17 @@ export default function CloudPortfolio() {
           <AnimatedSection className="pt-16">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
               <div className="lg:col-span-2 space-y-6">
-                <div className=" text-lg text-neutral-400">
+                <div className=" text-lg text-red-500">
                   {typedText}
                   <span className="animate-pulse">_</span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold heading-kinshuk tracking-tighter text-green-500 ">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold heading-kinshuk tracking-tighter text-blue-500 ">
                   {CONFIG.personal.name}
                 </h1>
                 <h2 className="text-xl lg:text-2xl text-white max-w-2xl">
                   {CONFIG.personal.title}
                 </h2>
-                <div className="flex items-center gap-2 p-2 bg-[#121212] border-2 border-black shadow-lg shadow-black w-max rounded-full  text-white">
+                <div className="flex items-center gap-2 p-2 bg-[#121212] border-2 border-blue-500 shadow-lg shadow-black w-max rounded-full  text-white">
                   <FaMapMarkerAlt />
                   <span>{CONFIG.personal.location}</span>
                 </div>
@@ -306,12 +306,12 @@ export default function CloudPortfolio() {
           {/* --- Social Links Section --- */}
           <AnimatedSection>
             <SectionHeader  icon={FaGlobe} title="Digital Presence" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
               {CONFIG.social.map((social) => {
                 const Icon = social.icon
                 return (
-                  <button key={social.platform} onClick={() => handleSocialClick(social)} className="group relative flex  rounded-full bg-gradient-to-tr from-black via-zinc-900 to-black text-neutral-100 border-2 border-black shadow-black shadow-xl items-center gap-4  p-3 cursor-pointer transition-all duration-300 ">
-                    <div className="p-2 bg-[#ff9100] rounded-full  ">
+                  <button key={social.platform} onClick={() => handleSocialClick(social)} className="group relative flex   text-neutral-100 border-l-2 border-white shadow-xl items-center gap-4  p-2 cursor-pointer transition-all duration-300 ">
+                    <div className="p-2 bg-blue-500 rounded-full  ">
                       <Icon className="w-6 h-6 text-black transition-colors" />
                     </div>
                     <div className="text-left">
@@ -329,7 +329,7 @@ export default function CloudPortfolio() {
             <SectionHeader icon={FaAward} title="Certifications & Badges" />
             <div className="space-y-3">
               {CONFIG.certifications.map((cert) => (
-                <div key={cert.title} className="p-4 transition-all bg-[#121212] rounded-4xl shadow-md shadow-black border-2 border-black duration-300 ">
+                <div key={cert.title} className="p-4 transition-all  rounded-md  border-l-5 border-blue-500 duration-300 ">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                     <div className="flex-1 space-y-3">
                       <div className="flex items-center gap-3 flex-wrap">
@@ -344,7 +344,7 @@ export default function CloudPortfolio() {
                       </div>
                     </div>
                     {cert.url && (
-                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex items-center hover:bg-[#ff9100] hover:text-black  border-2 border-[#ff9100]  text-white  gap-2 px-2 py-2 text-sm font-semibold  rounded-full w-max   transition-colors">
+                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex bg-blue-500 items-center border border-neutral-700      text-black  gap-2 px-2 py-2 text-sm font-semibold rounded-full w-max   transition-colors">
                         View Credential <FaExternalLinkAlt className="w-4 h-4" />
                       </a>
                     )}
@@ -360,13 +360,13 @@ export default function CloudPortfolio() {
             <div className="space-y-8">
               {Object.entries(CONFIG.skills).map(([category, skills]) => (
                 <div key={category}>
-                  <h4 className="text-xl font-semibold italic   text-white mb-4">{category}</h4>
+                  <h4 className="text-xl font-semibold underline   text-white mb-4">{category}</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                     {skills.map((skill) => {
                       const Icon = skill.icon
                       return (
-                        <div key={skill.name} className="flex items-center bg-[#121212] shadow-sm shadow-black border-1 border-black  gap-3 p-3 rounded-full">
-                          <Icon className="w-6 h-6 text-[#ff9100] flex-shrink-0" />
+                        <div key={skill.name} className="flex items-center   rounded-md  border-l-3 border-blue-500  gap-3 p-3 ">
+                          <Icon className="w-6 h-6 text-white flex-shrink-0" />
                           <span className="text-sm font-medium text-white truncate">{skill.name}</span>
                         </div>
                       )
@@ -382,11 +382,11 @@ export default function CloudPortfolio() {
             <SectionHeader icon={FaCode} title="Featured Projects" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {CONFIG.projects.map((project) => (
-                <div key={project.title} className="flex flex-col p-4 border-2 border-black shadow-lg shadow-white rounded-4xl bg-[#121212] transition-all duration-300">
+                <div key={project.title} className="flex flex-col p-4  rounded-2xl border-l-3 border-blue-500 transition-all duration-300">
                   <div className="flex-grow space-y-4">
                     <div className="flex justify-between items-start">
                       <h4 className="text-2xl font-semibold  text-white">{project.title}</h4>
-                      <span className={`px-3 py-1 text-sm font-bold rounded  ${project.status === "Live" ? "bg-[#ff9100] text-black rounded-full  " : "bg-neutral-800 text-neutral-300  -neutral-700"}`}>{project.status}</span>
+                      <span className={`px-3 py-1 text-sm font-bold rounded  ${project.status === "Live" ? "bg-blue-500 text-black rounded-full  " : "bg-neutral-800 text-neutral-300  -neutral-700"}`}>{project.status}</span>
                     </div>
                     <p className="text-sm text-yellow-200">{project.type} • {project.year}</p>
                     <div className="space-y-2 text-sm text-neutral-100">
@@ -400,7 +400,7 @@ export default function CloudPortfolio() {
                     <div className="mt-4 p-3 bg-neutral-900 border-2 border-black rounded-3xl">
                       <div className="flex items-center gap-2 mb-2">
                         <FaDocker className="w-4 h-4 text-blue-400" />
-                        <span className="text-sm font-mono  font-semibold text-[#ff9100]">Docker Command</span>
+                        <span className="text-sm font-mono  font-semibold text-blue-500">Docker Command</span>
                       </div>
                       <div className="flex items-center justify-between gap-3">
                         <code className="text-sm text-white font-semibold  bg-[#212121] px-2 py-2 rounded-xl border border-black flex-1 overflow-x-auto">
@@ -412,12 +412,12 @@ export default function CloudPortfolio() {
                   </div>
                   <div className="flex items-center gap-4 mt-6 pt-4 -t ">
                     {project.links.live && (
-                      <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-full hover:bg-[#ff9100] hover:text-black border-2 border-[#ff9100] p-2  gap-2 text-sm font-semibold text-neutral-100  transition-colors">
+                      <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-full hover:bg-blue-500 border-2 border-blue-500 hover:text-black  p-2  gap-2 text-sm font-semibold text-neutral-100  transition-colors">
                         <FaGlobe /> Live Demo
                       </a>
                     )}
                     {project.links.repo && (
-                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2  p-2 rounded-full text-black text-sm font-semibold  bg-[#ff9100]  hover:text-black transition-colors">
+                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2  p-2 rounded-full text-black text-sm font-semibold  bg-blue-500  hover:text-black transition-colors">
                         <FaGithub /> Source Code
                       </a>
                     )}
@@ -430,7 +430,7 @@ export default function CloudPortfolio() {
           {/* --- Education Section --- */}
           <AnimatedSection>
             <SectionHeader icon={FaGraduationCap} title="Education" />
-            <div className=" p-3 rounded-3xl border-2 border-black shadow-md shadow-black bg-neutral-900 ">
+            <div className=" p-3 rounded-3xl border-l-3 border-blue-500 shadow-md shadow-black  ">
               <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                 <div className="space-y-1">
                   <h4 className="text-xl font-bold  text-white">{CONFIG.education.degree} in {CONFIG.education.field}</h4>

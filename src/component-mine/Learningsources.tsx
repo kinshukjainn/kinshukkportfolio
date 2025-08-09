@@ -366,7 +366,7 @@ export default function TerminalLearningHub() {
       {/* Terminal Header */}
       <div className=" p-4">
         <div className="flex items-center space-x-2 text-white font-bold">
-          <span className="text-4xl ">learning-hub</span>
+          <span className="text-4xl ">Learning-hub</span>
           <span className="animate-pulse">_</span>
         </div>
       </div>
@@ -385,7 +385,7 @@ export default function TerminalLearningHub() {
               placeholder="search your resources...technology...."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-[#121212] border-2 border-black shadow-black shadow-lg pl-12 pr-4 rounded-full py-3 text-white placeholder-gray-400 outline-none"
+              className="w-full bg-[#121212] border-2 border-black shadow-black shadow-xl pl-12 pr-4 rounded-full py-3 text-white placeholder-gray-400 outline-none"
             />
           </div>
 

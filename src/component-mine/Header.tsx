@@ -134,7 +134,7 @@ const Header = () => {
                 
                 <Link to="/" onClick={closeMenu}>
                   <motion.span
-                    className="text-white text-2xl sm:text-2xl  tracking-tight bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text"
+                    className="text-white text-2xl sm:text-2xl  tracking-tight heading-kinshuk bg-gradient-to-r from-green-500 via-gray-100 to-white bg-clip-text"
                     whileHover={{ 
                       backgroundImage: "linear-gradient(to right, #ffffff, #f0f0f0, #ffffff)",
                       scale: 1.02 
