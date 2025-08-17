@@ -281,20 +281,20 @@ export default function CloudPortfolio() {
                   {typedText}
                   <span className="animate-pulse">_</span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold heading-kinshuk tracking-tighter text-blue-500 ">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl  heading-kinshuk font-bold tracking-tighter text-blue-600 ">
                   {CONFIG.personal.name}
                 </h1>
                 <h2 className="text-xl lg:text-2xl text-white max-w-2xl">
                   {CONFIG.personal.title}
                 </h2>
-                <div className="flex items-center gap-2 p-2 bg-[#121212] border-2 border-blue-500 shadow-lg shadow-black w-max rounded-full  text-white">
+                <div className="flex items-center gap-2 p-2 bg-gradient-to-br from-black via-black via-zinc-900 to-zinc-900  hover:border hover:border-blue-500  shadow-lg shadow-black w-max rounded-full  text-white">
                   <FaMapMarkerAlt />
                   <span>{CONFIG.personal.location}</span>
                 </div>
               </div>
               <div className="flex justify-center lg:justify-end">
-                <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full hover:shadow-xl hover:shadow-[#ff9100] overflow-hidden -2  bg-neutral-900 shadow-lg">
-                  <img src={profileimg} alt={CONFIG.personal.name} className="w-full h-full object-cover grayscale transition-all duration-500 hover:grayscale-0 hover:scale-105" />
+                <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full hover:shadow-xl hover:shadow-[#121212] overflow-hidden -2  bg-neutral-900 shadow-lg">
+                  <img src={profileimg} alt={CONFIG.personal.name} className="w-full h-full object-cover transition-all duration-500 hover:scale-105" />
                 </div>
               </div>
             </div>
@@ -329,7 +329,7 @@ export default function CloudPortfolio() {
             <SectionHeader icon={FaAward} title="Certifications & Badges" />
             <div className="space-y-3">
               {CONFIG.certifications.map((cert) => (
-                <div key={cert.title} className="p-4 transition-all  rounded-md  border-l-5 border-blue-500 duration-300 ">
+                <div key={cert.title} className="p-4 transition-all  rounded-3xl  bg-[#151515] duration-300 ">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                     <div className="flex-1 space-y-3">
                       <div className="flex items-center gap-3 flex-wrap">
@@ -365,7 +365,7 @@ export default function CloudPortfolio() {
                     {skills.map((skill) => {
                       const Icon = skill.icon
                       return (
-                        <div key={skill.name} className="flex items-center   rounded-md  border-l-3 border-blue-500  gap-3 p-3 ">
+                        <div key={skill.name} className="flex items-center   rounded-2xl  bg-[#151515]  gap-3 p-3 ">
                           <Icon className="w-6 h-6 text-white flex-shrink-0" />
                           <span className="text-sm font-medium text-white truncate">{skill.name}</span>
                         </div>
@@ -382,11 +382,11 @@ export default function CloudPortfolio() {
             <SectionHeader icon={FaCode} title="Featured Projects" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {CONFIG.projects.map((project) => (
-                <div key={project.title} className="flex flex-col p-4  rounded-2xl border-l-3 border-blue-500 transition-all duration-300">
+                <div key={project.title} className="flex flex-col p-4  rounded-3xl bg-[#151515] transition-all duration-300">
                   <div className="flex-grow space-y-4">
                     <div className="flex justify-between items-start">
-                      <h4 className="text-2xl font-semibold  text-white">{project.title}</h4>
-                      <span className={`px-3 py-1 text-sm font-bold rounded  ${project.status === "Live" ? "bg-blue-500 text-black rounded-full  " : "bg-neutral-800 text-neutral-300  -neutral-700"}`}>{project.status}</span>
+                      <h4 className="text-2xl   text-white">{project.title}</h4>
+                      <span className={`px-3 py-1 text-sm  rounded  ${project.status === "Live" ? "bg-blue-500 text-black rounded-full  " : "bg-neutral-800 text-neutral-300  -neutral-700"}`}>{project.status}</span>
                     </div>
                     <p className="text-sm text-yellow-200">{project.type} • {project.year}</p>
                     <div className="space-y-2 text-sm text-neutral-100">
@@ -430,10 +430,10 @@ export default function CloudPortfolio() {
           {/* --- Education Section --- */}
           <AnimatedSection>
             <SectionHeader icon={FaGraduationCap} title="Education" />
-            <div className=" p-3 rounded-3xl border-l-3 border-blue-500 shadow-md shadow-black  ">
+            <div className=" p-3 rounded-3xl bg-[#151515] shadow-md shadow-black  ">
               <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                 <div className="space-y-1">
-                  <h4 className="text-xl font-bold  text-white">{CONFIG.education.degree} in {CONFIG.education.field}</h4>
+                  <h4 className="text-2xl   text-white">{CONFIG.education.degree} in {CONFIG.education.field}</h4>
                   <p className="text-neutral-200">{CONFIG.education.institution}</p>
                   <p className="text-md text-neutral-200">{CONFIG.education.location}</p>
                 </div>
