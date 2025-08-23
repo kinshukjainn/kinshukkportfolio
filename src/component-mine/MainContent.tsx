@@ -153,10 +153,10 @@ interface SocialConfig {
   action?: string
 }
 
+// Animated section where the animations are defined 
 const AnimatedSection: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -167,19 +167,16 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; className?: string 
       },
       { threshold: 0.1 }
     )
-
     const currentRef = ref.current
     if (currentRef) {
       observer.observe(currentRef)
     }
-
     return () => {
       if (currentRef) {
         observer.unobserve(currentRef)
       }
     }
   }, [])
-
   return (
     <section ref={ref} className={`${className} transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
       {children}
