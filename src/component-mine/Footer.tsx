@@ -10,22 +10,23 @@ interface SocialLink {
 
 const Footer = () => {
   const socialLinks: SocialLink[] = [
-    { icon: FaGithub, href: "https://github.com/kinshukjainn", label: "GitHub", color: "hover:text-gray-300" },
-    { icon: FaTwitter, href: "https://twitter.com/realkinshuk004", label: "Twitter", color: "hover:text-blue-400" },
-    { icon: FaLinkedin, href: "https://linkedin.com/in/kinshukjainn", label: "LinkedIn", color: "hover:text-blue-500" },
-    { icon: FaInstagram, href: "https://instagram.com/kinshukjainn", label: "Instagram", color: "hover:text-pink-400" },
-    { icon: FaEnvelope, href: "mailto:kinshuk25jan04@gmail.com", label: "Email", color: "hover:text-red-400" },
+    { icon: FaGithub, href: "https://github.com/kinshukjainn", label: "GitHub", color: "hover:text-gray-700" },
+    { icon: FaTwitter, href: "https://twitter.com/realkinshuk004", label: "Twitter", color: "hover:text-blue-600" },
+    { icon: FaLinkedin, href: "https://linkedin.com/in/kinshukjainn", label: "LinkedIn", color: "hover:text-blue-700" },
+    { icon: FaInstagram, href: "https://instagram.com/kinshukjainn", label: "Instagram", color: "hover:text-pink-600" },
+    { icon: FaEnvelope, href: "mailto:kinshuk25jan04@gmail.com", label: "Email", color: "hover:text-red-600" },
   ]
 
   return (
-    <footer className="bg-gradient-to-br from-black via-zinc-900   to-gray-950 text-neutral-100 text-white relative overflow-hidden">
-      {/* Animated background gradient */}
-
-      {/* Floating particles animation */}
+    <footer className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-gray-800 relative overflow-hidden border-t border-gray-200/50 backdrop-blur-xl">
+      {/* Windows 11 style background blur overlay */}
+      <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
+      
+      {/* Subtle floating elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full opacity-20 animate-ping animation-delay-1000"></div>
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-blue-400 rounded-full opacity-30 animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-white rounded-full opacity-25 animate-bounce animation-delay-3000"></div>
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400/20 rounded-full animate-pulse animation-delay-1000"></div>
+        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-indigo-400/30 rounded-full animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-blue-300/25 rounded-full animate-pulse animation-delay-3000"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
@@ -34,23 +35,23 @@ const Footer = () => {
           {/* Logo and brand section */}
           <div className="text-center space-y-6">
             <div className="flex items-center justify-center gap-3 sm:gap-4">
-              <div className="relative">
-                <span className="text-blue-400 animate-pulse">
-                  <FaCloud size={40} className="sm:w-12 sm:h-12 lg:w-14 lg:h-14" />
+              <div className="relative p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 shadow-lg">
+                <span className="text-blue-600">
+                  <FaCloud size={40} className="sm:w-12 sm:h-12 lg:w-14 lg:h-14 drop-shadow-sm" />
                 </span>
-                {/* Glow effect */}
-                <div className="absolute inset-0 text-blue-400 animate-ping opacity-20">
-                  <FaCloud size={40} className="sm:w-12 sm:h-12 lg:w-14 lg:h-14" />
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 text-blue-600/20 animate-pulse opacity-50 rounded-xl">
+                  <FaCloud size={40} className="sm:w-12 sm:h-12 lg:w-14 lg:h-14 mt-3 ml-3" />
                 </div>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-white via-blue-100 to-blue-400 bg-clip-text text-transparent animate-gradient-x">
+              <h2 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-700 bg-clip-text text-transparent">
                 CloudKinshuk
               </h2>
             </div>
 
             {/* Subtitle */}
-            <p className="text-gray-300 text-sm sm:text-base lg:text-lg max-w-md mx-auto opacity-80 animate-fade-in-up animation-delay-500">
+            <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-md mx-auto font-semibold">
               Building the future, one cloud at a time
             </p>
           </div>
@@ -62,23 +63,22 @@ const Footer = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`group relative p-3 sm:p-4  text-gray-100 ${link.color}`}
+                  className={`group relative p-3 sm:p-4 text-gray-600 ${link.color} rounded-xl bg-white/50 backdrop-blur-sm border border-white/30 shadow-sm transition-all duration-300 hover:shadow-md hover:bg-white/70 hover:scale-105`}
                   
                   aria-label={link.label}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {/* Background glow on hover */}
-                  <div className="absolute inset-0"></div>
-
                   <link.icon
                     size={20}
-                    className="sm:w-6 sm:h-6 relative z-10 transition-transform duration-300 group-hover:scale-110"
+                    className="sm:w-6 sm:h-6 relative z-10 transition-transform duration-200"
                   />
 
-                  {/* Tooltip */}
-                  <span className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap border border-gray-700">
+                  {/* Windows 11 style tooltip */}
+                  <span className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900/90 text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 whitespace-nowrap backdrop-blur-sm border border-gray-700/50 shadow-xl">
                     {link.label}
+                    {/* Tooltip arrow */}
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900/90"></div>
                   </span>
 
                   <span className="sr-only">{link.label}</span>
@@ -89,26 +89,26 @@ const Footer = () => {
 
           {/* Divider */}
           <div className="w-full max-w-4xl">
-            <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent animate-fade-in animation-delay-1200"></div>
+            <div className="h-px bg-gradient-to-r from-transparent via-gray-300/50 to-transparent"></div>
           </div>
 
           {/* Copyright section */}
-          <div className="text-center space-y-2 animate-fade-in-up animation-delay-1400">
-            <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-gray-500">
-              <span className="animate-bounce animation-delay-1600">☁️</span>
+          <div className="text-center space-y-2">
+            <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-gray-500 font-light">
+              <span className="animate-pulse animation-delay-1600">☁️</span>
               <span>© {new Date().getFullYear()} Kinshuk Jain. All rights reserved.</span>
-              <span className="animate-bounce animation-delay-1800">☁️</span>
+              <span className="animate-pulse animation-delay-1800">☁️</span>
             </div>
 
-            <p className="text-xs text-gray-600 animate-pulse">Made with ❤️ and lots of ☕</p>
+            <p className="text-xs text-gray-400 font-light">Made with ❤️ and lots of ☕</p>
           </div>
         </div>
       </div>
 
-      {/* Bottom gradient border */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 animate-gradient-x"></div>
+      {/* Windows 11 style accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500/60 via-indigo-500/60 to-blue-500/60"></div>
     </footer>
   )
 }
 
-export default Footer
+export default Footer;

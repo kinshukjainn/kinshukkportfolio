@@ -201,7 +201,7 @@ const CopyButton: React.FC<{ text: string }> = ({ text }) => {
   return (
     <button
       onClick={handleCopy}
-      className="inline-flex items-center gap-2 px-3 py-1.5 text-sm cursor-pointer font-semibold text-black bg-blue-500   rounded-full transition-all duration-200"
+      className="inline-flex items-center gap-2 px-3 py-1.5 text-sm cursor-pointer font-semibold text-black bg-blue-500/50 border border-gray-300 rounded-md transition-all duration-200"
       title="Copy Docker command"
     >
       {copied ? (
@@ -253,8 +253,8 @@ export default function CloudPortfolio() {
 
   // A small reusable component for section headers
   const SectionHeader: React.FC<{ icon: React.ElementType, title: string }> = ({ icon: Icon, title }) => (
-    <h3 className="text-2xl sm:text-3xl font-semibold flex items-center gap-3 text-white mb-8">
-      <Icon className="w-7 h-7 text-blue-500 " />
+    <h3 className="text-2xl sm:text-3xl font-semibold flex items-center gap-3 text-black mb-8">
+      <Icon className="w-7 h-7 text-black " />
       {title}
     </h3>
   );
@@ -265,8 +265,7 @@ export default function CloudPortfolio() {
   );
 
   return (
-    <div className="min-h-screen bg-black text-neutral-100
-">
+    <div className="min-h-screen bg-gray-50 text-neutral-900">
       <main className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
         <div className="space-y-24 md:space-y-32">
 
@@ -274,28 +273,28 @@ export default function CloudPortfolio() {
           <AnimatedSection className="pt-16">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
               <div className="lg:col-span-2 space-y-6">
-                <div className=" text-lg text-red-500">
+                <div className=" text-lg text-black">
                   {typedText}
                   <span className="animate-pulse">_</span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl  heading-kinshuk font-bold tracking-tighter text-blue-600 ">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl   font-bold tracking-tighter text-blue-600 ">
                   {CONFIG.personal.name}
                 </h1>
-                <h2 className="text-xl lg:text-2xl text-white max-w-2xl">
+                <h2 className="text-2xl lg:text-2xl text-black max-w-2xl">
                   {CONFIG.personal.title}
                 </h2>
-                <div className="flex items-center gap-2 p-2 bg-gradient-to-br from-black via-black via-zinc-900 to-zinc-900  hover:border hover:border-blue-500  shadow-lg shadow-black w-max rounded-full  text-white">
+                <div className="flex items-center gap-2 p-2 bg-white border border-gray-500 shadow-lg shadow-gray-300 w-max rounded-md text-black font-semibold">
                   <FaMapMarkerAlt />
                   <span>{CONFIG.personal.location}</span>
                 </div>
               </div>
               <div className="flex justify-center lg:justify-end">
-                <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full hover:shadow-xl hover:shadow-[#121212] overflow-hidden -2  bg-neutral-900 shadow-lg">
+                <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-xl hover:shadow-xl hover:shadow-blue-300 overflow-hidden -2  bg-neutral-900 shadow-lg">
                   <img src={profileimg} alt={CONFIG.personal.name} className="w-full h-full object-cover transition-all duration-500 hover:scale-105" />
                 </div>
               </div>
             </div>
-            <div className="mt-12  text-white space-y-4 text-base md:text-lg max-w-4xl -l-2  pl-6">
+            <div className="mt-12  text-black space-y-4 text-xl md:text-lg max-w-4xl -l-2  pl-6">
               {CONFIG.personal.bio.map((p, i) => <p key={i}>{p}</p>)}
             </div>
           </AnimatedSection>
@@ -307,13 +306,13 @@ export default function CloudPortfolio() {
               {CONFIG.social.map((social) => {
                 const Icon = social.icon
                 return (
-                  <button key={social.platform} onClick={() => handleSocialClick(social)} className="group relative flex   text-neutral-100 border-l-2 border-white shadow-xl items-center gap-4  p-2 cursor-pointer transition-all duration-300 ">
-                    <div className="p-2 bg-blue-500 rounded-full  ">
-                      <Icon className="w-6 h-6 text-black transition-colors" />
+                  <button key={social.platform} onClick={() => handleSocialClick(social)} className="group relative flex   text-neutral-900 bg-white shadow-xl shadow-gray-300 hover:bg-gray-100 rounded-xl  items-center gap-4  p-2 cursor-pointer transition-all duration-300 ">
+                    <div className="p-2 bg-blue-700 rounded-full  ">
+                      <Icon className="w-6 h-6 text-white transition-colors" />
                     </div>
                     <div className="text-left">
-                      <p className=" text-xl hover:text-blue-500 cursor-pointer text-white ">{social.platform}</p>
-                      <p className="text-sm font-mono cursor-pointer  text-yellow-100">{social.handle}</p>
+                      <p className=" text-xl hover:text-blue-900 cursor-pointer text-black ">{social.platform}</p>
+                      <p className="text-sm font-medium font-mono cursor-pointer  text-black">{social.handle}</p>
                     </div>
                   </button>
                 )
@@ -326,22 +325,22 @@ export default function CloudPortfolio() {
             <SectionHeader icon={FaAward} title="Certifications & Badges" />
             <div className="space-y-3">
               {CONFIG.certifications.map((cert) => (
-                <div key={cert.title} className="p-4 transition-all  rounded-3xl  bg-[#151515] duration-300 ">
+                <div key={cert.title} className="p-4 transition-all  rounded-xl  bg-white shadow-lg shadow-gray-300  duration-300 ">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                     <div className="flex-1 space-y-3">
                       <div className="flex items-center gap-3 flex-wrap">
-                        <h4 className="text-lg font-medium  text-white">{cert.title}</h4>
-                        <span className={`px-2 py-0.5 text-xs rounded-xl font-semibold  ${cert.status === "Completed" ? "bg-blue-900 text-white " : "bg-blue-900/50 text-blue-100  -blue-800"}`}>{cert.status}</span>
+                        <h4 className="text-lg font-medium  text-black">{cert.title}</h4>
+                        <span className={`px-2 py-0.5 text-sm rounded-md font-semibold  ${cert.status === "Completed" ? "bg-blue-700 text-white " : "bg-blue-900 text-blue-100  -blue-800"}`}>{cert.status}</span>
                       </div>
-                      <p className="text-sm text-yellow-200 p-1 ">{cert.organization} • {cert.year}</p>
-                      <p className="text-neutral-100 text-md">{cert.description}</p>
+                      <p className="text-md font-medium text-black p-1 ">{cert.organization} • {cert.year}</p>
+                      <p className="text-neutral-900 font-medium">{cert.description}</p>
                       {cert.progress && <p className="text-sm text-blue-200">Progress: {cert.progress}</p>}
                       <div className="flex flex-wrap   gap-3 pt-2">
                         {cert.skills.map(skill  => <TechTag  key={skill}>{skill}</TechTag>)}
                       </div>
                     </div>
                     {cert.url && (
-                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex bg-blue-500 items-center border border-neutral-700      text-black  gap-2 px-2 py-2 text-sm font-semibold rounded-full w-max   transition-colors">
+                      <a href={cert.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 inline-flex bg-blue-400/50 items-center       text-black  gap-2 px-3 py-3 border border-amber-100 text-sm font-semibold rounded-lg w-max   transition-colors">
                         View Credential <FaExternalLinkAlt className="w-4 h-4" />
                       </a>
                     )}
@@ -357,14 +356,14 @@ export default function CloudPortfolio() {
             <div className="space-y-8">
               {Object.entries(CONFIG.skills).map(([category, skills]) => (
                 <div key={category}>
-                  <h4 className="text-xl font-semibold underline   text-white mb-4">{category}</h4>
+                  <h4 className="text-xl font-semibold   text-black mb-4">{category}</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                     {skills.map((skill) => {
                       const Icon = skill.icon
                       return (
-                        <div key={skill.name} className="flex items-center   rounded-2xl  bg-[#151515]  gap-3 p-3 ">
-                          <Icon className="w-6 h-6 text-white flex-shrink-0" />
-                          <span className="text-sm font-medium text-white truncate">{skill.name}</span>
+                        <div key={skill.name} className="flex items-center   rounded-xl  bg-white  gap-3 border border-gray-300 shadow-lg shadow-gray-200 p-5 ">
+                          <Icon className="w-6 h-6 text-black flex-shrink-0" />
+                          <span className="text-lg font-medium text-black truncate">{skill.name}</span>
                         </div>
                       )
                     })}
@@ -379,14 +378,14 @@ export default function CloudPortfolio() {
             <SectionHeader icon={FaCode} title="Featured Projects" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {CONFIG.projects.map((project) => (
-                <div key={project.title} className="flex flex-col p-4  rounded-3xl bg-[#151515] transition-all duration-300">
+                <div key={project.title} className="flex flex-col p-4  rounded-xl bg-white border-gray-200 border shadow-xl shadow-gray-300 transition-all duration-300">
                   <div className="flex-grow space-y-4">
                     <div className="flex justify-between items-start">
-                      <h4 className="text-2xl   text-white">{project.title}</h4>
-                      <span className={`px-3 py-1 text-sm  rounded  ${project.status === "Live" ? "bg-blue-500 text-black rounded-full  " : "bg-neutral-800 text-neutral-300  -neutral-700"}`}>{project.status}</span>
+                      <h4 className="text-3xl font-semibold text-black">{project.title}</h4>
+                      <span className={`px-4 py-1 text-md  rounded  ${project.status === "Live" ? "bg-blue-500/50 border border-gray-300 text-black font-medium rounded-md  " : "bg-neutral-800 text-neutral-900  -neutral-700"}`}>{project.status}</span>
                     </div>
-                    <p className="text-sm text-yellow-200">{project.type} • {project.year}</p>
-                    <div className="space-y-2 text-sm text-neutral-100">
+                    <p className="text-md font-medium text-black">{project.type} • {project.year}</p>
+                    <div className="space-y-2 text-md font-medium text-neutral-900">
                       {project.description.map((p, i) => <p key={i}>{p}</p>)}
                     </div>
                     <div className="flex flex-wrap gap-2 pt-2">
@@ -394,13 +393,13 @@ export default function CloudPortfolio() {
                     </div>
                     
                     {/* Docker Command Section */}
-                    <div className="mt-4 p-3 bg-neutral-900 border-2 border-black rounded-3xl">
+                    <div className="mt-4 p-3 bg-neutral-200 border border-gray-300 rounded-xl">
                       <div className="flex items-center gap-2 mb-2">
                         <FaDocker className="w-4 h-4 text-blue-400" />
                         <span className="text-sm font-mono  font-semibold text-blue-500">Docker Command</span>
                       </div>
                       <div className="flex items-center justify-between gap-3">
-                        <code className="text-sm text-white font-semibold  bg-[#212121] px-2 py-2 rounded-xl border border-black flex-1 overflow-x-auto">
+                        <code className="text-sm text-black font-semibold  bg-white px-2 py-2 rounded-lg  flex-1 overflow-x-auto">
                           {project.dockerCommand}
                         </code>
                         <CopyButton text={project.dockerCommand} />
@@ -409,12 +408,12 @@ export default function CloudPortfolio() {
                   </div>
                   <div className="flex items-center gap-4 mt-6 pt-4 -t ">
                     {project.links.live && (
-                      <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-full hover:bg-blue-500 border-2 border-blue-500 hover:text-black  p-2  gap-2 text-sm font-semibold text-neutral-100  transition-colors">
+                      <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-lg bg-blue-500 border-2 border-blue-400 hover:bg-blue-600  text-black  p-2  gap-2 text-lg font-semibold  transition-colors">
                         <FaGlobe /> Live Demo
                       </a>
                     )}
                     {project.links.repo && (
-                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2  p-2 rounded-full text-black text-sm font-semibold  bg-blue-500  hover:text-black transition-colors">
+                      <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2  p-2 rounded-lg hover:bg-blue-700 text-black text-lg font-semibold  bg-blue-500  hover:text-black transition-colors">
                         <FaGithub /> Source Code
                       </a>
                     )}
@@ -427,19 +426,19 @@ export default function CloudPortfolio() {
           {/* --- Education Section --- */}
           <AnimatedSection>
             <SectionHeader icon={FaGraduationCap} title="Education" />
-            <div className=" p-3 rounded-3xl bg-[#151515] shadow-md shadow-black  ">
+            <div className=" p-3 rounded-2xl bg-white shadow-md shadow-gray-300 border border-gray-300">
               <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-4">
                 <div className="space-y-1">
-                  <h4 className="text-2xl   text-white">{CONFIG.education.degree} in {CONFIG.education.field}</h4>
-                  <p className="text-neutral-200">{CONFIG.education.institution}</p>
-                  <p className="text-md text-neutral-200">{CONFIG.education.location}</p>
+                  <h4 className="text-2xl   text-black">{CONFIG.education.degree} in {CONFIG.education.field}</h4>
+                  <p className="text-neutral-900 font-medium">{CONFIG.education.institution}</p>
+                  <p className="text-md text-neutral-900 font-medium">{CONFIG.education.location}</p>
                 </div>
                 <div className="text-left sm:text-right space-y-2 flex-shrink-0">
-                  <p className="text-sm font-medium  text-yellow-200">{CONFIG.education.period}</p>
-                  <p className="inline-block px-2.5 py-1 text-xs font-semibold rounded  text-neutral-100  ">{CONFIG.education.status}</p>
+                  <p className="text-md font-medium  text-blue-900 ">{CONFIG.education.period}</p>
+                  <p className="inline-block px-2 py-1 text-md font-semibold rounded bg-blue-300  text-neutral-900  ">{CONFIG.education.status}</p>
                 </div>
               </div>
-              <p className="mt-4 pt-4 -t  text-neutral-300">{CONFIG.education.description}</p>
+              <p className="mt-4 pt-4 -t text-lg font-medium text-neutral-900">{CONFIG.education.description}</p>
             </div>
           </AnimatedSection>
         </div>

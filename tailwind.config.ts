@@ -13,6 +13,7 @@ const config: Config = {
         poppins: ["Poppins", "sans-serif"],
         Inter: ["Inter", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
+        segoe: ["Segoe UI", "sans-serif"],
         "source-code": ["Source Code Pro", "monospace"],
         "ibm-plex": ["IBM Plex Sans", "sans-serif"],
         rubik: ["Rubik", "sans-serif"],
