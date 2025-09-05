@@ -293,9 +293,9 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
     }, []);
 
     return (
-      <article className="group bg-white text-neutral-900  border border-gray-300 shadow-xl shadow-gray-300 rounded-xl  transition-all duration-200">
+      <article className="group bg-[#252525] text-neutral-900  border border-[#444444] rounded-md  transition-all duration-200">
         {/* Cover Image */}
-        <div className="relative h-32 sm:h-36 overflow-hidden bg-neutral-900 rounded-xl">
+        <div className="relative h-32 sm:h-36 overflow-hidden bg-[#252525] rounded-md">
           {post.coverImage && !imageError ? (
             <>
               <img
@@ -312,13 +312,13 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
               />
               {!imageLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <FaSpinner className="animate-spin text-black text-lg" />
+                  <FaSpinner className="animate-spin text-white text-lg" />
                 </div>
               )}
             </>
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-neutral-900">
-              <FaExternalLinkAlt className="text-black text-2xl opacity-50" />
+              <FaExternalLinkAlt className="text-white text-2xl opacity-50" />
             </div>
           )}
         </div>
@@ -326,28 +326,28 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
         {/* Content */}
         <div className="p-3">
           {/* Title */}
-          <h2 className="text-lg lg:text-base font-medium text-black leading-tight mb-2 line-clamp-2 group-hover:text-blue-900 transition-colors duration-200">
+          <h2 className="text-lg lg:text-base font-medium text-white leading-tight mb-2 line-clamp-2 group-hover:text-blue-200 transition-colors duration-200">
             {highlightText(post.title, searchQuery)}
           </h2>
 
           {/* Author & Date */}
-          <div className="flex items-center gap-2 mb-2 text-xs text-neutral-400">
-            <span className="font-medium  text-black">
+          <div className="flex items-center gap-2 mb-2 text-xs text-blue-500">
+            <span className="font-medium  text-blue-500">
               {highlightText(post.author.name, searchQuery)}
             </span>
             <span>•</span>
-            <span className="flex text-black font-medium items-center gap-1">
-              <FaCalendarAlt className="w-2 h-2 text-black" />
+            <span className="flex text-green-500 font-medium items-center gap-1">
+              <FaCalendarAlt className="w-2 h-2 text-white" />
               {formatDate(post.publishedAt)}
             </span>
           </div>
 
           {/* Meta Info */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 text-sm font-medium text-neutral-900">
+            <div className="flex items-center gap-3 text-sm font-medium text-neutral-100">
               {post.readTimeInMinutes && (
                 <span className="flex items-center gap-1">
-                  <FaClock className="w-2 h-2 text-black" />
+                  <FaClock className="w-2 h-2 text-white" />
                   {post.readTimeInMinutes}m
                 </span>
               )}
@@ -368,7 +368,7 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-3 py-2 bg-blue-500 border border-gray-200 text-gray-100 text-lg font-semibold rounded-lg hover:text-gray-900 transition-all duration-200"
+              className="inline-flex items-center gap-1 px-2 py-1 bg-[#181818] border border-[#444444]  text-white hover:text-gray-200 text-lg font-normal rounded-md transition-all duration-200"
             >
               Read
               <FaExternalLinkAlt className="w-3 h-3" />
@@ -499,7 +499,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="w-full pl-10 pr-10 py-4 border border-gray-200 shadow-xl shadow-gray-300 rounded-2xl bg-white text-black outline-none placeholder-neutral-900 text-lg"
+          className="w-full pl-10 pr-10 py-2 border border-[#444444]  rounded-md bg-[#303030] text-white outline-none placeholder-neutral-200 text-md"
         />
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {searchInput && (
@@ -509,12 +509,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 setSearchInput("");
                 setShowSuggestions(false);
               }}
-              className="text-neutral-900 hover:text-black transition-colors duration-200"
+              className="text-neutral-100 hover:text-white transition-colors duration-200"
             >
               <FaTimes className="w-3 h-3" />
             </button>
           )}
-          <div className="hidden sm:flex items-center gap-1 text-md text-black font-medium bg-blue-50 px-3 py-2 rounded-xl shadow-lg shadow-gray-300 focus:animate-pulse border border-gray-200">
+          <div className="hidden sm:flex items-center gap-1 text-md text-white font-medium bg-[#303030] px-3 py-2 rounded-md  border border-[#444444]">
             <FaKeyboard className="w-3 h-3" />
             ⌘K
           </div>
@@ -523,23 +523,23 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
       {/* Suggestions */}
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded-xl shadow-2xl shadow-gray-300 z-50 max-h-60 overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-1 bg-[#252525] border border-[#444444] rounded-md  z-50 max-h-60 overflow-y-auto">
           {suggestions.map((suggestion, index) => (
             <button
               key={`${suggestion.type}-${suggestion.value}`}
               onClick={() => handleSuggestionClick(suggestion)}
-              className={`w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-100 transition-colors duration-150 ${
-                index === selectedIndex ? "bg-neutral-200" : ""
-              } border-b border-neutral-300 last:border-b-0`}
+              className={`w-full flex items-center gap-2 px-3 py-2 cursor pointer text-left hover:bg-gray-900 transition-colors duration-150 ${
+                index === selectedIndex ? "bg-neutral-900" : ""
+              } border-b border-neutral-800 last:border-b-0`}
             >
               <div className="p-2 bg-neutral-200 rounded-md text-black">
                 {getSuggestionIcon(suggestion.type)}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-black text-sm font-medium truncate">
+                <div className="text-white text-sm font-medium truncate">
                   {suggestion.label}
                 </div>
-                <div className="text-xs text-neutral-500 capitalize">
+                <div className="text-xs text-neutral-200 capitalize">
                   {suggestion.type === "recent" ? "Recent search" : "Article"}
                 </div>
               </div>
@@ -550,7 +550,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
       {/* Results indicator */}
       {searchInput && (
-        <div className="absolute -bottom-5 left-0 text-xs text-neutral-500">
+        <div className="absolute -bottom-5 left-0 text-xs text-neutral-100">
           {resultsCount} of {totalCount} articles
         </div>
       )}
@@ -598,10 +598,10 @@ const BlogPageContent: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-white text-neutral-900 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-neutral-900 text-neutral-100 flex items-center justify-center p-4">
         <div className="text-center max-w-md">
-          <FaExclamationTriangle className="text-neutral-900 text-4xl mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-neutral-900 mb-2">
+          <FaExclamationTriangle className="text-neutral-100 text-4xl mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-neutral-100 mb-2">
             Failed to Load Blog Posts
           </h2>
           <p className="text-neutral-500 text-sm mb-4">
@@ -619,18 +619,18 @@ const BlogPageContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 text-black pt-20">
+    <div className="min-h-screen bg-neutral-900 text-neutral-100 pt-20">
       {/* Hero Section */}
-      <section className="bg-gray-100 text-neutral-900">
+      <section className="bg-neutral-900 text-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl heading-kinshuk font-bold text-blue-900 mb-4 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl heading-kinshuk font-bold text-blue-100 mb-4 leading-tight">
               Minimal{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 via-neutral-900 to-neutral-900">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 via-neutral-100 to-neutral-100">
                 Minds
               </span>
             </h1>
-            <p className="text-base sm:text-lg text-neutral-900 leading-relaxed max-w-2xl font-medium mx-auto">
+            <p className="text-base sm:text-lg text-neutral-100 leading-relaxed max-w-2xl font-medium mx-auto">
               Exploring cloud computing, DevOps, and React development through
               curiosity and real-world experience.
             </p>
@@ -655,24 +655,24 @@ const BlogPageContent: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-16">
-            <FaSpinner className="animate-spin text-black text-3xl mb-4" />
-            <h3 className="text-lg text-black mb-2">Loading articles...</h3>
-            <p className="text-neutral-900 text-sm">
+            <FaSpinner className="animate-spin text-white text-3xl mb-4" />
+            <h3 className="text-lg text-white mb-2">Loading articles...</h3>
+            <p className="text-neutral-100 text-sm">
               Fetching the latest insights
             </p>
           </div>
         ) : filteredPosts.length === 0 ? (
           <div className="text-center py-16">
-            <FaSearch className="text-black text-4xl mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-black mb-2">
+            <FaSearch className="text-white text-4xl mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-white mb-2">
               No articles found
             </h3>
-            <p className="text-neutral-900 mb-6 max-w-md mx-auto">
+            <p className="text-neutral-100 mb-6 max-w-md mx-auto">
               Try different search terms to discover more content
             </p>
             <button
               onClick={() => setSearchInput("")}
-              className="px-4 py-2 bg-white text-black font-medium hover:bg-neutral-200 transition-colors duration-200 rounded-md"
+              className="px-4 py-2 bg-[#303030] text-white font-medium transition-colors duration-200 rounded-md"
             >
               Clear Search
             </button>

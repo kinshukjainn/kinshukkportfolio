@@ -18,15 +18,14 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-gray-800 relative overflow-hidden border-t border-gray-200/50 backdrop-blur-xl">
+    <footer className="bg-neutral-900 text-gray-100 relative overflow-hidden  backdrop-blur-xl">
       {/* Windows 11 style background blur overlay */}
-      <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
       
       {/* Subtle floating elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400/20 rounded-full animate-pulse animation-delay-1000"></div>
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-indigo-400/30 rounded-full animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-blue-300/25 rounded-full animate-pulse animation-delay-3000"></div>
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full animate-pulse animation-delay-1000"></div>
+        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-white rounded-full animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-white rounded-full animate-pulse animation-delay-3000"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
@@ -45,13 +44,13 @@ const Footer = () => {
                 </div>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-700 bg-clip-text text-transparent">
+              <h2 className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold text-white">
                 CloudKinshuk
               </h2>
             </div>
 
             {/* Subtitle */}
-            <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-md mx-auto font-semibold">
+            <p className="text-gray-200 text-sm sm:text-base lg:text-lg max-w-md mx-auto font-semibold">
               Building the future, one cloud at a time
             </p>
           </div>
@@ -63,7 +62,7 @@ const Footer = () => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`group relative p-3 sm:p-4 text-gray-600 ${link.color} rounded-xl bg-white/50 backdrop-blur-sm border border-white/30 shadow-sm transition-all duration-300 hover:shadow-md hover:bg-white/70 hover:scale-105`}
+                  className={`group relative p-3 sm:p-4 text-gray-100 ${link.color}  shadow-sm transition-all duration-300  hover:scale-105`}
                   
                   aria-label={link.label}
                   target="_blank"

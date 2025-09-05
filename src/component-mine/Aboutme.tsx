@@ -136,16 +136,16 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       whileHover={{ scale: 1, y: -2 }}
-      className=" border-2 bg-white text-neutral-900 border-gray-200 shadow-xl shadow-gray-200 rounded-2xl p-4 h-full flex flex-col cursor-pointer"
+      className=" border-2 bg-[#252525] text-neutral-100 border-[#444444] rounded-md p-4 h-full flex flex-col cursor-pointer"
     >
       {/* Section Header */}
       <div className="flex items-center gap-4 mb-6">
-        <div className="p-4 bg-blue-400 rounded-lg">
-          <section.icon className="w-5 h-5 text-black" />
+        <div className="p-4 bg-neutral-900 rounded-lg">
+          <section.icon className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-neutral-900">{section.title}</h2>
-          <p className="text-sm text-neutral-900 ">
+          <h2 className="text-2xl font-bold text-neutral-100">{section.title}</h2>
+          <p className="text-sm text-neutral-100 ">
             {section.items.length} item{section.items.length !== 1 ? "s" : ""}
           </p>
         </div>
@@ -156,12 +156,12 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
         {section.items.map((item) => (
           <div key={item.name}>
             {item.category && (
-              <div className="text-lg  text-black font-medium uppercase tracking-wider mb-1.5">
+              <div className="text-lg  text-white font-medium uppercase tracking-wider mb-1.5">
                 {item.category}
               </div>
             )}
-            <h3 className="font-semibold text-neutral-900">{item.name}</h3>
-            <p className="text-sm text-neutral-700 leading-relaxed">{item.description}</p>
+            <h3 className="font-semibold text-white">{item.name}</h3>
+            <p className="text-sm text-neutral-100 leading-relaxed">{item.description}</p>
           </div>
         ))}
       </div>
@@ -172,7 +172,7 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
 // --- MAIN COMPONENT ---
 export default function DevSetup() {
   return (
-    <main className="min-h-screen bg-gray-50 text-neutral-100 ">
+    <main className="min-h-screen bg-neutral-900 text-neutral-100 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
         {/* Header Section */}
         <motion.div
@@ -182,15 +182,15 @@ export default function DevSetup() {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 mb-4">
-            <Monitor className="w-6 h-6 text-neutral-900" />
-            <span className="text-sm  font-semibold text-neutral-900 uppercase tracking-wider">
+            <Monitor className="w-6 h-6 text-neutral-100" />
+            <span className="text-sm  font-semibold text-neutral-100 uppercase tracking-wider">
               My Digital Workspace
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold  text-black heading-kinshuk ">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold  text-white">
             Development Setup
           </h1>
-          <p className="mt-4 max-w-xl mx-auto text-lg text-neutral-900 font-medium">
+          <p className="mt-4 max-w-xl mx-auto text-lg text-neutral-100 ">
             The tools, software, and hardware I use daily to code and design.
           </p>
         </motion.div>
@@ -212,30 +212,30 @@ export default function DevSetup() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
-          className="mt-20 pt-10 border-t border-neutral-900"
+          className="mt-20 pt-10"
         >
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-xl shadow-gray-200 text-center">
-              <div className="text-2xl font-bold text-black ">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-2xl mx-auto">
+            <div className="bg-[#252525] border border-[#444444] rounded-md p-2 text-center">
+              <div className="text-2xl font-bold text-white ">
                 {setupData.reduce((acc, section) => acc + section.items.length, 0)}
               </div>
-              <div className="text-sm text-black  uppercase tracking-wider mt-1">
+              <div className="text-sm text-white uppercase tracking-wider mt-1">
                 Total Items
               </div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-xl shadow-gray-200 text-center">
-              <div className="text-2xl font-bold text-black ">{setupData.length}</div>
-              <div className="text-sm text-black   uppercase tracking-wider mt-1">
+            <div className="bg-[#252525] border border-[#444444] rounded-md p-2 text-center">
+              <div className="text-2xl font-bold text-white ">{setupData.length}</div>
+              <div className="text-sm text-white uppercase tracking-wider mt-1">
                 Categories
               </div>
             </div>
-            
-             <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-xl shadow-gray-200 text-center col-span-2">
-              <div className="text-2xl font-bold text-black ">
+
+            <div className="bg-[#252525] border border-[#444444] rounded-md p-2 text-center col-span-2">
+              <div className="text-2xl font-bold text-white ">
                 2025
               </div>
-              <div className="text-sm text-black  uppercase tracking-wider mt-1">
+              <div className="text-sm text-white uppercase tracking-wider mt-1">
                 Last Updated
               </div>
             </div>

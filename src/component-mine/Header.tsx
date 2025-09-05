@@ -2,24 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { motion, useScroll } from "framer-motion"
+import { motion} from "framer-motion"
 import { FiMenu, FiX } from "react-icons/fi"
 import { UserButton, useUser, SignOutButton } from "@clerk/clerk-react"
 import Profile from "../assets/image.jpg"
 
-const useScrollPosition = (threshold: number = 10): boolean => {
-  const [scrolled, setScrolled] = useState<boolean>(false)
-  const { scrollY } = useScroll()
-  
-  useEffect(() => {
-    const unsubscribe = scrollY.onChange((latest: number) => {
-      setScrolled(latest > threshold)
-    })
-    return unsubscribe
-  }, [scrollY, threshold])
-  
-  return scrolled
-}
+
 
 interface NavItem {
   path: string
@@ -37,16 +25,16 @@ const NavLink = ({ to, isActive, label, onClick }: NavLinkProps) => (
   <Link to={to} onClick={onClick}>
     <motion.div
       className={`relative px-6 py-3 rounded-lg transition-all duration-200 ${
-        isActive 
-          ? "bg-blue-50/80 text-blue-600 border border-blue-200/50 shadow-sm" 
-          : "text-gray-700 hover:text-blue-600 hover:bg-gray-50/60"
+        isActive
+          ? "bg-[#252525] text-blue-600 shadow-sm"
+          : "text-gray-100 hover:text-green-500 hover:bg-[#252525]"
       }`}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
       {isActive && (
         <motion.div
-          className="absolute inset-0 bg-blue-50/60 rounded-lg border border-blue-200/30"
+          className="absolute inset-0 bg-[#252525] rounded-lg text-green-500"
           layoutId="activeBackground"
           transition={{ type: "spring", bounce: 0.1, duration: 0.3 }}
         />
@@ -60,7 +48,6 @@ const Header = () => {
   const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const [imageError, setImageError] = useState<boolean>(false)
-  const scrolled = useScrollPosition(20)
   const { isSignedIn } = useUser()
 
   const protectedRoutes: string[] = ["/blog", "/sources"]
@@ -71,11 +58,11 @@ const Header = () => {
 
   const getPathText = (): string => {
     const { pathname } = location
-    if (pathname === "/") return "Cloudkinshuk"
     if (pathname.startsWith("/gears")) return "Gears I Use"
     if (pathname.startsWith("/blog")) return "Minimal Mind"
     if (pathname.startsWith("/sources")) return "Learning Sources"
-    return "Cloudkinshuk"
+    if (pathname.startsWith("/sign-in")) return "Verify"
+    return "Home"
   }
 
   const isActiveRoute = (path: string): boolean =>
@@ -101,28 +88,16 @@ const Header = () => {
     <>
       {/* Header */}
       <motion.header
-        className="fixed top-0 left-0 right-0 z-50"
+        className="fixed top-0 left-0 right-0 z-[9999]"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <motion.div
-          className="relative backdrop-blur-xl border-b"
-          style={{
-            background: scrolled
-              ? "rgba(243, 244, 246, 0.85)"
-              : "rgba(249, 250, 251, 0.75)",
-            backdropFilter: "blur(20px) saturate(180%)",
-          }}
-          animate={{
-            borderBottomColor: scrolled
-              ? "rgba(229, 231, 235, 0.8)"
-              : "rgba(229, 231, 235, 0.4)",
-          }}
-          transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="relative backdrop-blur-xl"
         >
           {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-50/20 via-transparent to-blue-50/20" />
+          <div className="absolute inset-0" />
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16 sm:h-20">
@@ -133,8 +108,8 @@ const Header = () => {
                 transition={{ duration: 0.4, delay: 0.1 }}
                 className="flex items-center gap-3 sm:gap-4"
               >
-                <motion.div 
-                  className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden ring-1 ring-gray-200/60 shadow-sm"
+                <motion.div
+                  className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-md overflow-hidden shadow-sm"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
@@ -154,11 +129,11 @@ const Header = () => {
                 
                 <Link to="/" onClick={closeMenu}>
                   <motion.h1 
-                    className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800"
+                    className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white"
                     whileHover={{ scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 400, damping: 25 }}
                   >
-                    {getPathText()}
+                    Cloudkinshuk {"/"} {getPathText()}
                   </motion.h1>
                 </Link>
               </motion.div>
@@ -200,7 +175,7 @@ const Header = () => {
                         />
                         <SignOutButton>
                           <motion.button 
-                            className="px-5 py-2.5 bg-red-500 text-white text-lg font-medium rounded-lg hover:bg-red-600 transition-all duration-200 shadow-sm"
+                            className="px-3 py-1 bg-blue-600 text-black text-lg  rounded-md transition-all duration-200 shadow-sm"
                             whileHover={{ scale: 1.02, y: -1 }}
                             whileTap={{ scale: 0.98 }}
                           >
@@ -227,7 +202,7 @@ const Header = () => {
               <div className="lg:hidden">
                 <motion.button
                   onClick={toggleMenu}
-                  className="relative p-3 text-gray-700 hover:bg-gray-100/60 rounded-lg transition-all duration-200"
+                  className="relative p-2 text-white bg-[#252525] border border-[#444444] rounded-lg transition-all duration-200"
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.div
@@ -245,7 +220,7 @@ const Header = () => {
 
       {/* Mobile Menu Overlay */}
       <motion.div
-        className="lg:hidden fixed inset-0 z-40"
+        className="lg:hidden fixed inset-0 z-[9998]"
         initial={{ opacity: 0 }}
         animate={{ opacity: isMenuOpen ? 1 : 0 }}
         transition={{ duration: 0.2 }}
@@ -262,7 +237,7 @@ const Header = () => {
 
         {/* Mobile Menu Content */}
         <motion.div
-          className="absolute top-16 sm:top-20 left-0 right-0 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-lg"
+          className="absolute top-16 sm:top-20 left-0 right-0 text-white bg-neutral-900 backdrop-blur-xl"
           initial={{ y: -50, opacity: 0 }}
           animate={{ 
             y: isMenuOpen ? 0 : -50, 
@@ -315,7 +290,7 @@ const Header = () => {
                           }
                         }}
                       />
-                      <span className="text-gray-600 text-sm">Signed in</span>
+                      <span className="text-gray-100 text-sm">Signed in</span>
                     </div>
                     <SignOutButton>
                       <motion.button 
@@ -335,9 +310,9 @@ const Header = () => {
                     className="block"
                   >
                     <motion.div
-                      className="w-full px-6 py-3 bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition-all duration-200 shadow-sm text-center"
-                      whileHover={{ scale: 1.01 }}
-                      whileTap={{ scale: 0.99 }}
+                      className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       Sign In
                     </motion.div>

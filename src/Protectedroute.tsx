@@ -8,6 +8,8 @@ interface ProtectedRouteProps {
   redirectTo?: string;
 }
 
+
+
 const LoadingSpinner: React.FC = () => (
   <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center">
     <div className="text-center space-y-6">

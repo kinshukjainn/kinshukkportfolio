@@ -362,11 +362,11 @@ export default function TerminalLearningHub() {
   }, [searchTerm, selectedCategory, selectedDifficulty, sortBy]);
 
   return (
-    <div className="min-h-screen pt-28 bg-gray-50 text-neutral-900">
+    <div className="min-h-screen pt-28 bg-neutral-900 text-neutral-900">
       {/* Terminal Header */}
       <div className=" p-4">
-        <div className="flex items-center space-x-2 text-black font-medium">
-          <span className="text-4xl ">Learning-hub</span>
+        <div className="flex items-center space-x-2 text-green-500 font-medium">
+          <span className="text-6xl ">Learning-hub</span>
           <span className="animate-pulse">_</span>
         </div>
       </div>
@@ -379,13 +379,13 @@ export default function TerminalLearningHub() {
           className="mb-8"
         >
           <div className="relative mb-4">
-            <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-900" />
+            <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-100" />
             <input
               type="text"
               placeholder="search your resources...technology...."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white border border-gray-300 shadow-gray-200 shadow-xl pl-12 pr-4 rounded-xl py-4 text-black placeholder-gray-900 outline-none"
+              className="w-full bg-[#303030] pl-12 pr-4 rounded-md py-2 border-2 border-[#444444] text-white placeholder-gray-200 outline-none"
             />
           </div>
 
@@ -393,13 +393,13 @@ export default function TerminalLearningHub() {
           <div className="flex items-center justify-between mb-4">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center space-x-2 px-5 py-3 bg-white rounded-xl border text-lg border-gray-300 shadow-xl shadow-gray-200  transition-colors outline-none"
+              className="flex items-center space-x-2 px-2 py-1 bg-[#262626] rounded-md border border-[#444444] text-md  transition-colors outline-none"
             >
-              <FaFilter className="text-black" />
-              <span>Filters</span>
+              <FaFilter className="text-white" />
+              <span className="text-white">Filters</span>
             </button>
 
-            <div className="text-lg text-gray-900">
+            <div className="text-lg bg-[#303030] p-2 border border-[#444444] rounded-md text-gray-100">
               {filteredAndSortedResources.length} resources found
             </div>
           </div>
@@ -411,17 +411,17 @@ export default function TerminalLearningHub() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 p-4 bg-white shadow-xl shadow-gray-200 border border-gray-300 rounded-3xl"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 p-4 bg-[#252525]  border border-[#444444] rounded-md"
               >
                 <div>
-                  <label className="block text-lg text-gray-900 mb-2">
+                  <label className="block text-lg text-gray-100 mb-2">
                     Category
                   </label>
                   <select
                     title="Category"
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full bg-gray-100  rounded-full  px-3 py-3 text-black font-medium focus:border-yellow-400 focus:outline-none"
+                    className="w-full bg-[#202020] border-2 border-[#444444]  rounded-md  px-1 py-2 text-white font-medium focus:outline-none"
                   >
                     {categories.map((category) => (
                       <option key={category} value={category}>
@@ -432,14 +432,14 @@ export default function TerminalLearningHub() {
                 </div>
 
                 <div>
-                  <label className="block text-lg text-gray-900 mb-2">
+                  <label className="block text-lg text-gray-100 mb-2">
                     Difficulty
                   </label>
                   <select
                     title="Difficulty"
                     value={selectedDifficulty}
                     onChange={(e) => setSelectedDifficulty(e.target.value)}
-                    className="w-full bg-gray-100  rounded-full  px-3 py-3 text-black font-medium focus:border-yellow-400 focus:outline-none"
+                    className="w-full bg-[#202020] border-2 border-[#444444]  rounded-md  px-1 py-2 text-white font-medium focus:outline-none"
                   >
                     {difficulties.map((difficulty) => (
                       <option key={difficulty} value={difficulty}>
@@ -450,14 +450,14 @@ export default function TerminalLearningHub() {
                 </div>
 
                 <div>
-                  <label className="block text-lg text-gray-900 mb-2">
+                  <label className="block text-lg text-gray-100 mb-2">
                     Sort By
                   </label>
                   <select
                     title="Sort By"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="w-full bg-gray-100  rounded-lg  px-3 py-3 text-black font-medium focus:border-yellow-400 focus:outline-none"
+                    className="w-full bg-[#202020] border-2 border-[#444444]  rounded-md  px-1 py-2 text-white font-medium focus:outline-none"
                   >
                     {sortOptions.map((option) => (
                       <option key={option} value={option}>
@@ -485,28 +485,28 @@ export default function TerminalLearningHub() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white  text-neutral-900 rounded-2xl border-2 border-gray-200 shadow-xl shadow-gray-300 p-6  outline-none transition-colors group"
+                className="bg-[#252525]  text-neutral-100 rounded-md border-2 border-[#444444]  p-4 outline-none transition-colors group"
               >
                 {/* Header */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="text-yellow-400">{resource.icon}</div>
+                    <div className="text-white">{resource.icon}</div>
                     <div>
-                      <h3 className="text-lg font-semibold text-black">
+                      <h3 className="text-lg font-semibold text-white">
                         {resource.title}
                       </h3>
                       <div className="flex items-center space-x-2 text-sm">
-                        <span className="text-gray-900">
+                        <span className="text-gray-100">
                           {resource.category}
                         </span>
-                        <span className="text-gray-900">|</span>
+                        <span className="text-gray-100">|</span>
                         <span
                           className={`px-2 py-1 rounded text-sm ${
                             resource.difficulty === "Beginner"
                               ? "text-white font-semibold"
                               : resource.difficulty === "Intermediate"
-                              ? " font-semibold text-blue-900"
-                              : "font-semibold text-red-300"
+                              ? " font-semibold text-blue-500"
+                              : "font-semibold text-white"
                           }`}
                         >
                           {resource.difficulty}
@@ -517,7 +517,7 @@ export default function TerminalLearningHub() {
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-900 font-medium text-md mb-4 leading-relaxed">
+                <p className="text-gray-100 font-medium text-md mb-4 leading-relaxed">
                   {resource.description}
                 </p>
 
@@ -526,7 +526,7 @@ export default function TerminalLearningHub() {
                   {resource.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-1  text-sm text-blue-900"
+                      className="px-2 py-1  text-sm text-blue-300"
                     >
                       #{tag}
                     </span>
@@ -545,15 +545,15 @@ export default function TerminalLearningHub() {
                       className="flex items-center justify-between p-2    transition-colors group/link"
                     >
                       <div className="flex items-center space-x-2">
-                        <span className="text-black  text-sm">
+                        <span className="text-white text-sm">
                           {link.type === "documentation" && <FaCode />}
                           {link.type === "tutorial" && <FaTerminal />}
                           {link.type === "course" && <FaShare />}
                           {link.type === "practice" && <FaGitAlt />}
                         </span>
-                        <span className="text-black bg-white p-2 rounded-md border-gray-300 border shadow-xl shadow-gray-300 text-md">{link.title}</span>
+                        <span className="text-white  p-2 rounded-md font-bold underline   text-md">{link.title}</span>
                       </div>
-                      <FaExternalLinkAlt className="text-black text-md opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                      <FaExternalLinkAlt className="text-white text-md opacity-0 group-hover/link:opacity-100 transition-opacity" />
                     </motion.a>
                   ))}
                 </div>
