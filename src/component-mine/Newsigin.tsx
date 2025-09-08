@@ -111,11 +111,11 @@ const NewsignIn: React.FC = () => {
 
               <div className="space-y-4">
                 <h1
-                  className={`text-3xl sm:text-4xl font-semibold text-white leading-tight tracking-tight`}
+                  className="text-3xl sm:text-4xl font-semibold heading-kinshuk text-green-500 leading-tight tracking-tight"
                 >
                   {routeInfo.title}
                 </h1>
-                <p className="text-base sm:text-lg text-gray-100 leading-relaxed font-medium">{routeInfo.subtitle}</p>
+                <p className="text-base sm:text-lg text-white leading-relaxed font-medium">{routeInfo.subtitle}</p>
                 <p className="text-sm text-gray-100 leading-relaxed max-w-xs mx-auto">{routeInfo.description}</p>
               </div>
             </motion.div>
@@ -148,12 +148,12 @@ const NewsignIn: React.FC = () => {
 
             <div className="space-y-6">
               <h1
-                className={`text-5xl xl:text-6xl font-semibold text-white leading-tight tracking-tight`}
+                className={`text-5xl xl:text-6xl font-semibold text-green-500 heading-kinshuk leading-tight tracking-tight`}
               >
                 {routeInfo.title}
               </h1>
-              <p className="text-xl xl:text-2xl text-gray-100 leading-relaxed font-medium">{routeInfo.subtitle}</p>
-              <p className="text-lg text-gray-100 leading-relaxed max-w-lg">{routeInfo.description}</p>
+              <p className="text-xl xl:text-2xl text-white leading-relaxed font-medium">{routeInfo.subtitle}</p>
+              <p className="text-lg text-white leading-relaxed max-w-lg">{routeInfo.description}</p>
             </div>
 
             <motion.div

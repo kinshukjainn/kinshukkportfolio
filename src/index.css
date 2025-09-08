@@ -23,16 +23,21 @@ html {
 }
 
 
+@layer base {
+  html {
+    font-family: 'Open Sans', sans-serif;
+  }
+}
 
 
 
 
 .heading-kinshuk { 
-  font-family: "Varela Round", sans-serif;
+  font-family: "Mozilla Headline", sans-serif;
 }
 
 body {
-  font-family: "Inter",sans-serif;
+  font-family: "Open Sans",sans-serif;
 
   margin: 0;
   padding: 0;

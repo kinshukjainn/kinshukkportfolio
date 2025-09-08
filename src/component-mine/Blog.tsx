@@ -490,7 +490,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className="relative">
       <div className="relative">
-        <FaSearch className="absolute  left-3 top-1/2 transform -translate-y-1/2 text-neutral-900 text-lg" />
+        <FaSearch className="absolute  left-3 top-1/2 transform -translate-y-1/2 text-white text-lg" />
         <input
           ref={inputRef}
           type="text"
@@ -499,7 +499,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="w-full pl-10 pr-10 py-2 border border-[#444444]  rounded-md bg-[#303030] text-white outline-none placeholder-neutral-200 text-md"
+          className="w-full pl-10 pr-10 py-2.5 border border-[#444444]  rounded-sm bg-[#252525] text-white outline-none placeholder-neutral-200 text-md"
         />
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {searchInput && (
@@ -514,7 +514,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               <FaTimes className="w-3 h-3" />
             </button>
           )}
-          <div className="hidden sm:flex items-center gap-1 text-md text-white font-medium bg-[#303030] px-3 py-2 rounded-md  border border-[#444444]">
+          <div className="hidden sm:flex items-center gap-1 text-sm w-max text-white font-semibold bg-[#303030] px-2 py-1 rounded-sm  border border-[#444444]">
             <FaKeyboard className="w-3 h-3" />
             ⌘K
           </div>
@@ -523,7 +523,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
       {/* Suggestions */}
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-[#252525] border border-[#444444] rounded-md  z-50 max-h-60 overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-4 bg-[#252525] border border-[#444444] rounded-md  z-50 max-h-60 overflow-y-auto">
           {suggestions.map((suggestion, index) => (
             <button
               key={`${suggestion.type}-${suggestion.value}`}
@@ -624,11 +624,8 @@ const BlogPageContent: React.FC = () => {
       <section className="bg-neutral-900 text-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl heading-kinshuk font-bold text-blue-100 mb-4 leading-tight">
-              Minimal{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 via-neutral-100 to-neutral-100">
-                Minds
-              </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl heading-kinshuk font-bold text-green-500 mb-4 leading-loose">
+              Blogs 
             </h1>
             <p className="text-base sm:text-lg text-neutral-100 leading-relaxed max-w-2xl font-medium mx-auto">
               Exploring cloud computing, DevOps, and React development through
@@ -689,24 +686,6 @@ const BlogPageContent: React.FC = () => {
           </div>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-neutral-800 bg-black py-8 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-neutral-400 text-sm mb-2">
-            © 2025 Kinshuk Jain. Engineering the future, one post at a time.
-          </p>
-          <a
-            href="https://blog.cloudkinshuk.in"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-white hover:text-neutral-300 text-sm transition-colors duration-200"
-          >
-            <FaExternalLinkAlt className="w-3 h-3" />
-            Visit Original Blog
-          </a>
-        </div>
-      </footer>
     </div>
   );
 };

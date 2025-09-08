@@ -24,9 +24,9 @@ interface NavLinkProps {
 const NavLink = ({ to, isActive, label, onClick }: NavLinkProps) => (
   <Link to={to} onClick={onClick}>
     <motion.div
-      className={`relative px-6 py-3 rounded-lg transition-all duration-200 ${
+      className={`relative px-3 py-1 rounded-sm transition-all duration-200 ${
         isActive
-          ? "bg-[#252525] text-blue-600 shadow-sm"
+          ? "bg-[#252525] text-green-500 shadow-sm border border-[#444444]"
           : "text-gray-100 hover:text-green-500 hover:bg-[#252525]"
       }`}
       whileHover={{ scale: 1.02 }}
@@ -59,8 +59,8 @@ const Header = () => {
   const getPathText = (): string => {
     const { pathname } = location
     if (pathname.startsWith("/gears")) return "Gears I Use"
-    if (pathname.startsWith("/blog")) return "Minimal Mind"
-    if (pathname.startsWith("/sources")) return "Learning Sources"
+    if (pathname.startsWith("/blog")) return "Blogs"
+    if (pathname.startsWith("/sources")) return "Learning"
     if (pathname.startsWith("/sign-in")) return "Verify"
     return "Home"
   }
@@ -80,7 +80,7 @@ const Header = () => {
 
   const navItems: NavItem[] = [
     { path: "/blog", label: "Blogs" },
-    { path: "/gears", label: "Gear I Use" },
+    { path: "/gears", label: "Dev Setup" },
     { path: "/sources", label: "Learning Sources" },
   ]
 
@@ -175,7 +175,7 @@ const Header = () => {
                         />
                         <SignOutButton>
                           <motion.button 
-                            className="px-3 py-1 bg-blue-600 text-black text-lg  rounded-md transition-all duration-200 shadow-sm"
+                            className="px-2 py-1 bg-[#252525] border border-[#444444] text-white text-lg  rounded-sm transition-all cursor-pointer duration-200 shadow-sm"
                             whileHover={{ scale: 1.02, y: -1 }}
                             whileTap={{ scale: 0.98 }}
                           >
@@ -202,7 +202,7 @@ const Header = () => {
               <div className="lg:hidden">
                 <motion.button
                   onClick={toggleMenu}
-                  className="relative p-2 text-white bg-[#252525] border border-[#444444] rounded-lg transition-all duration-200"
+                  className="relative p-2 text-white bg-[#252525] border border-[#444444] rounded-sm outline-none transition-all cursor-pointer duration-200"
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.div
@@ -294,7 +294,7 @@ const Header = () => {
                     </div>
                     <SignOutButton>
                       <motion.button 
-                        className="w-full px-6 py-3 bg-red-500 text-white text-sm font-medium rounded-lg hover:bg-red-600 transition-all duration-200 shadow-sm"
+                        className="w-full px-6 py-3 bg-[#252525] text-white text-sm font-medium rounded-sm border border-[#444444] hover:bg-[#222222] transition-all cursor-pointer duration-200 shadow-sm"
                         whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.99 }}
                         onClick={closeMenu}

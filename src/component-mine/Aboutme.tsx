@@ -140,7 +140,7 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
     >
       {/* Section Header */}
       <div className="flex items-center gap-4 mb-6">
-        <div className="p-4 bg-neutral-900 rounded-lg">
+        <div className="p-4 bg-[#303030] rounded-md border-2 border-[#444444]">
           <section.icon className="w-5 h-5 text-white" />
         </div>
         <div>
@@ -181,14 +181,14 @@ export default function DevSetup() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 mb-4">
-            <Monitor className="w-6 h-6 text-neutral-100" />
-            <span className="text-sm  font-semibold text-neutral-100 uppercase tracking-wider">
+          <div className="inline-flex items-center bg-[#252525] border-2 border-[#444444] rounded-md  p-2 gap-2 mb-4">
+            <Monitor className="w-6 h-6 text-green-500" />
+            <span className="text-sm  font-bold text-neutral-100 uppercase tracking-wider">
               My Digital Workspace
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold  text-white">
-            Development Setup
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold heading-kinshuk  text-green-500">
+            Development Setup 
           </h1>
           <p className="mt-4 max-w-xl mx-auto text-lg text-neutral-100 ">
             The tools, software, and hardware I use daily to code and design.
