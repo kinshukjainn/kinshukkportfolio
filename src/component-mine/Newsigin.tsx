@@ -111,7 +111,7 @@ const NewsignIn: React.FC = () => {
 
               <div className="space-y-4">
                 <h1
-                  className="text-3xl sm:text-4xl font-semibold heading-kinshuk text-green-500 leading-tight tracking-tight"
+                  className="text-3xl sm:text-4xl font-semibold heading-kinshuk text-yellow-200 leading-tight tracking-tight"
                 >
                   {routeInfo.title}
                 </h1>
@@ -148,7 +148,7 @@ const NewsignIn: React.FC = () => {
 
             <div className="space-y-6">
               <h1
-                className={`text-5xl xl:text-6xl font-semibold text-green-500 heading-kinshuk leading-tight tracking-tight`}
+                className={`text-5xl xl:text-6xl font-semibold text-yellow-200 heading-kinshuk leading-tight tracking-tight`}
               >
                 {routeInfo.title}
               </h1>
@@ -171,7 +171,7 @@ const NewsignIn: React.FC = () => {
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   whileHover={{ x: 4 }}
                 >
-                  <div className={`bg-[#252525] p-2.5 rounded-md shadow-md`}>
+                  <div className={` p-2.5 rounded-md shadow-md`}>
                     <feature.icon className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-base font-medium">{feature.text}</span>

@@ -136,11 +136,11 @@ const AnimatedCard: React.FC<{ section: SetupSection }> = ({ section }) => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       whileHover={{ scale: 1, y: -2 }}
-      className=" border-2 bg-[#252525] text-neutral-100 border-[#444444] rounded-md p-4 h-full flex flex-col cursor-pointer"
+      className="  text-neutral-100  rounded-md p-4 h-full flex flex-col cursor-pointer"
     >
       {/* Section Header */}
       <div className="flex items-center gap-4 mb-6">
-        <div className="p-4 bg-[#303030] rounded-md border-2 border-[#444444]">
+        <div className="p-4 bg-[#303030] rounded-md ">
           <section.icon className="w-5 h-5 text-white" />
         </div>
         <div>
@@ -181,13 +181,13 @@ export default function DevSetup() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center bg-[#252525] border-2 border-[#444444] rounded-md  p-2 gap-2 mb-4">
-            <Monitor className="w-6 h-6 text-green-500" />
+          <div className="inline-flex items-center  border-2 border-[#444444] rounded-md  p-2 gap-2 mb-4">
+            <Monitor className="w-6 h-6 text-yellow-200" />
             <span className="text-sm  font-bold text-neutral-100 uppercase tracking-wider">
               My Digital Workspace
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold heading-kinshuk  text-green-500">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold heading-kinshuk  text-yellow-200">
             Development Setup 
           </h1>
           <p className="mt-4 max-w-xl mx-auto text-lg text-neutral-100 ">
@@ -215,7 +215,7 @@ export default function DevSetup() {
           className="mt-20 pt-10"
         >
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-2xl mx-auto">
-            <div className="bg-[#252525] border border-[#444444] rounded-md p-2 text-center">
+            <div className="  rounded-md p-2 text-center">
               <div className="text-2xl font-bold text-white ">
                 {setupData.reduce((acc, section) => acc + section.items.length, 0)}
               </div>
@@ -224,14 +224,14 @@ export default function DevSetup() {
               </div>
             </div>
 
-            <div className="bg-[#252525] border border-[#444444] rounded-md p-2 text-center">
+            <div className="  rounded-md p-2 text-center">
               <div className="text-2xl font-bold text-white ">{setupData.length}</div>
               <div className="text-sm text-white uppercase tracking-wider mt-1">
                 Categories
               </div>
             </div>
 
-            <div className="bg-[#252525] border border-[#444444] rounded-md p-2 text-center col-span-2">
+            <div className="  rounded-md p-2 text-center col-span-2">
               <div className="text-2xl font-bold text-white ">
                 2025
               </div>

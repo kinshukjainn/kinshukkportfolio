@@ -293,9 +293,9 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
     }, []);
 
     return (
-      <article className="group bg-[#252525] text-neutral-900  border border-[#444444] rounded-md  transition-all duration-200">
+      <article className="group  text-neutral-900   rounded-md  transition-all duration-200">
         {/* Cover Image */}
-        <div className="relative h-32 sm:h-36 overflow-hidden bg-[#252525] rounded-md">
+        <div className="relative h-32 sm:h-36 overflow-hidden  rounded-md">
           {post.coverImage && !imageError ? (
             <>
               <img
@@ -336,7 +336,7 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
               {highlightText(post.author.name, searchQuery)}
             </span>
             <span>•</span>
-            <span className="flex text-green-500 font-medium items-center gap-1">
+            <span className="flex text-yellow-200 font-medium items-center gap-1">
               <FaCalendarAlt className="w-2 h-2 text-white" />
               {formatDate(post.publishedAt)}
             </span>
@@ -368,7 +368,7 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
               href={post.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-2 py-1 bg-[#181818] border border-[#444444]  text-white hover:text-gray-200 text-lg font-normal rounded-md transition-all duration-200"
+              className="inline-flex items-center gap-1 px-2 py-1 bg-[#303030]   text-white hover:text-gray-200 text-lg font-normal rounded-md transition-all duration-200"
             >
               Read
               <FaExternalLinkAlt className="w-3 h-3" />
@@ -499,7 +499,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-          className="w-full pl-10 pr-10 py-2.5 border border-[#444444]  rounded-sm bg-[#252525] text-white outline-none placeholder-neutral-200 text-md"
+          className="w-full pl-10 pr-10 py-2.5 border-2 border-[#444444]   rounded-sm  text-white outline-none placeholder-neutral-200 text-md"
         />
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           {searchInput && (
@@ -514,7 +514,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               <FaTimes className="w-3 h-3" />
             </button>
           )}
-          <div className="hidden sm:flex items-center gap-1 text-sm w-max text-white font-semibold bg-[#303030] px-2 py-1 rounded-sm  border border-[#444444]">
+          <div className="hidden sm:flex items-center gap-1 text-sm w-max text-white font-semibold bg-[#303030] px-2 py-1 rounded-sm  ">
             <FaKeyboard className="w-3 h-3" />
             ⌘K
           </div>
@@ -523,12 +523,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
       {/* Suggestions */}
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-4 bg-[#252525] border border-[#444444] rounded-md  z-50 max-h-60 overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 mt-4   rounded-md  z-50 max-h-60 overflow-y-auto">
           {suggestions.map((suggestion, index) => (
             <button
               key={`${suggestion.type}-${suggestion.value}`}
               onClick={() => handleSuggestionClick(suggestion)}
-              className={`w-full flex items-center gap-2 px-3 py-2 cursor pointer text-left hover:bg-gray-900 transition-colors duration-150 ${
+              className={`w-full flex items-center gap-2 px-3 py-2 cursor pointer text-left bg-neutral-800 rounded-md hover:bg-gray-900 transition-colors duration-150 ${
                 index === selectedIndex ? "bg-neutral-900" : ""
               } border-b border-neutral-800 last:border-b-0`}
             >
@@ -624,7 +624,7 @@ const BlogPageContent: React.FC = () => {
       <section className="bg-neutral-900 text-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl heading-kinshuk font-bold text-green-500 mb-4 leading-loose">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl heading-kinshuk font-bold text-yellow-200 mb-4 leading-loose">
               Blogs 
             </h1>
             <p className="text-base sm:text-lg text-neutral-100 leading-relaxed max-w-2xl font-medium mx-auto">
