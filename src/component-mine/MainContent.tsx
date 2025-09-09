@@ -39,7 +39,7 @@ import profileimg from "../assets/mainweb.jpg"
 const CONFIG = {
   personal: {
     name: " Kinshuk",
-    title: "Just Building and Learning adequate Infrastructures ! ",
+    title: "Just Building and Learning  ",
     email: "kinshuk25jan04@gmail.com",
     whatsappNumber: "919172702501",
     location: "Ghaziabad, UP, India",
@@ -280,7 +280,7 @@ export default function CloudPortfolio() {
                 <h2 className="text-2xl lg:text-2xl text-white max-w-2xl">
                   {CONFIG.personal.title}
                 </h2>
-                <div className="flex items-center gap-2 p-2 text-lg  w-max rounded-md text-white ">
+                <div className="flex items-center gap-2 p-2 text-lg  w-max rounded-md border border-[#444444] bg-[#252525] text-white ">
                   <FaMapMarkerAlt />
                   <span>{CONFIG.personal.location}</span>
                 </div>
