@@ -122,7 +122,7 @@ const Header = () => {
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-white text-sm sm:text-lg font-semibold bg-gradient-to-br from-blue-500 to-blue-600">
-                      KJ
+                      kinshuk jain
                     </div>
                   )}
                 </motion.div>
