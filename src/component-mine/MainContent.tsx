@@ -3,8 +3,6 @@ import { useState, useEffect, useRef } from "react"
 import {
   SiTerraform,
   SiKubernetes,
-  SiPostgresql,
-  SiPostman,
   SiVite,
   SiTypescript,
   SiAwslambda,
