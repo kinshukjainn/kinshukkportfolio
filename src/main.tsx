@@ -8,6 +8,8 @@ import "./index.css";
 // Get the publishable key from environment variables
 const clerkPublishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as string;
 
+
+// this will throw error if the publisable key is present in the code base 
 if (!clerkPublishableKey) {
   throw new Error("Missing Publishable Key")
 }
@@ -26,7 +28,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           colorBackground: "#0f172a", // slate-900
           colorInputBackground: "#1e293b", // slate-800
           colorInputText: "#ffffff",
-          borderRadius: "0.75rem", // rounded-xl
+          borderRadius: "0.75rem", 
         },
         elements: {
           formButtonPrimary: 

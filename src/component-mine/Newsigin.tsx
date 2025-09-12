@@ -42,10 +42,10 @@ const NewsignIn: React.FC = () => {
   const routeInfo = useMemo((): RouteInfo => {
     if (getRedirectUrl.startsWith("/blog")) {
       return {
-        title: isSignUp ? "Join Minimal Minds" : "Welcome to Minimal Minds",
+        title: isSignUp ? "Join Minimal Minds" : "Authenticate yourself to read my blogs",
         subtitle: isSignUp
-          ? "Create your account to access exclusive blog content and insights"
-          : "Sign in to access exclusive blog content and thought-provoking insights",
+          ? "Create your account to access normal blog content and insights"
+          : "Sign in to continue reading  blog content and thought-provoking insights",
         description: "Dive deep into thoughts, ideas, and explorations that shape the digital landscape.",
         icon: Newspaper,
         bgGradient: "from-blue-50 via-blue-100 to-indigo-50",
@@ -57,7 +57,7 @@ const NewsignIn: React.FC = () => {
       }
     } else if (getRedirectUrl.startsWith("/sources")) {
       return {
-        title: isSignUp ? "Join Learning Sources" : "Welcome to Learning Sources",
+        title: isSignUp ? "Join Learning Sources" : "Learn every tech deeply with my personal picks",
         subtitle: isSignUp
           ? "Create your account to explore curated learning resources and materials"
           : "Sign in to explore curated learning resources and expert recommendations",
@@ -111,7 +111,7 @@ const NewsignIn: React.FC = () => {
 
               <div className="space-y-4">
                 <h1
-                  className="text-3xl sm:text-4xl font-semibold heading-kinshuk text-yellow-200 leading-tight tracking-tight"
+                  className="text-xl sm:text-2xl font-semibold  text-white leading-tight tracking-tight"
                 >
                   {routeInfo.title}
                 </h1>
@@ -148,11 +148,11 @@ const NewsignIn: React.FC = () => {
 
             <div className="space-y-6">
               <h1
-                className={`text-5xl xl:text-6xl font-semibold text-yellow-200 heading-kinshuk leading-tight tracking-tight`}
+                className={`text-2xl xl:text-3xl font-semibold text-white  leading-tight tracking-tight`}
               >
                 {routeInfo.title}
               </h1>
-              <p className="text-xl xl:text-2xl text-white leading-relaxed font-medium">{routeInfo.subtitle}</p>
+              <p className="text-lg xl:text-xl text-white leading-relaxed font-normal">{routeInfo.subtitle}</p>
               <p className="text-lg text-white leading-relaxed max-w-lg">{routeInfo.description}</p>
             </div>
 

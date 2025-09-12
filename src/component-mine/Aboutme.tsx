@@ -181,13 +181,13 @@ export default function DevSetup() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center  border-2 border-[#444444] rounded-md  p-2 gap-2 mb-4">
-            <Monitor className="w-6 h-6 text-yellow-200" />
-            <span className="text-sm  font-bold text-neutral-100 uppercase tracking-wider">
+          <div className="inline-flex items-center bg-yellow-500 rounded-full  p-2 gap-2 mb-4">
+            <Monitor className="w-6 h-6 text-black" />
+            <span className="text-sm  font-bold text-black uppercase tracking-wider">
               My Digital Workspace
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold heading-kinshuk  text-yellow-200">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold   text-white">
             Development Setup 
           </h1>
           <p className="mt-4 max-w-xl mx-auto text-lg text-neutral-100 ">

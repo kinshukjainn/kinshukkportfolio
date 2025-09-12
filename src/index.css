@@ -26,7 +26,7 @@ html {
 
 @layer base {
   html {
-    font-family: 'Noto Serif', serif;
+    font-family: 'Verdana', sans-serif;
   }
 }
 
@@ -37,12 +37,12 @@ html {
 
 
 
-.heading-kinshuk { 
+.heading-font { 
   font-family: "Mozilla Headline", sans-serif;
 }
 
 body {
-  font-family: "Noto Serif",serif;
+  font-family: "Verdana",sans-serif;
   outline: none;
   margin: 0;
   padding: 0;

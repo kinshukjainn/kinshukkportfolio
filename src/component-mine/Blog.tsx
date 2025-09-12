@@ -336,7 +336,7 @@ const BlogCard: React.FC<BlogCardProps> = React.memo(
               {highlightText(post.author.name, searchQuery)}
             </span>
             <span>•</span>
-            <span className="flex text-yellow-200 font-medium items-center gap-1">
+            <span className="flex text-white font-medium items-center gap-1">
               <FaCalendarAlt className="w-2 h-2 text-white" />
               {formatDate(post.publishedAt)}
             </span>
@@ -624,7 +624,7 @@ const BlogPageContent: React.FC = () => {
       <section className="bg-neutral-900 text-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl heading-kinshuk font-bold text-yellow-200 mb-4 leading-loose">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl  font-bold text-white mb-4 leading-loose">
               Blogs 
             </h1>
             <p className="text-base sm:text-lg text-neutral-100 leading-relaxed max-w-2xl font-medium mx-auto">

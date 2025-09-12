@@ -364,7 +364,7 @@ export default function TerminalLearningHub() {
     <div className="min-h-screen pt-28 bg-neutral-900 text-neutral-900">
       {/* Terminal Header */}
       <div className=" p-4">
-        <div className="flex items-center space-x-2 text-yellow-200 heading-kinshuk font-semibold">
+        <div className="flex items-center space-x-2 text-white  font-semibold">
           <span className="text-6xl ">Learning-hub</span>
           <span className="animate-pulse">_</span>
         </div>

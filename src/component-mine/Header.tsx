@@ -34,7 +34,7 @@ const NavLink = ({ to, isActive, label, onClick }: NavLinkProps) => (
     >
       {isActive && (
         <motion.div
-          className="absolute inset-0  rounded-lg text-yellow-200"
+          className="absolute inset-0  rounded-lg text-white"
           layoutId="activeBackground"
           transition={{ type: "spring", bounce: 0.1, duration: 0.3 }}
         />
@@ -129,7 +129,7 @@ const Header = () => {
                 
                 <Link to="/" onClick={closeMenu}>
                   <motion.h1 
-                    className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white"
+                    className="text-xl sm:text-2xl lg:text-3xl font-medium text-white"
                     whileHover={{ scale: 1.01 }}
                     transition={{ type: "spring", stiffness: 400, damping: 25 }}
                   >

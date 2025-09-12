@@ -83,7 +83,7 @@ const Customauth: React.FC<AuthComponentProps> = ({ className = "", redirectTo =
               <FaUser className="text-gray-100 text-2xl" />
             )}
           </div>
-          <h2 className="text-2xl font-semibold text-yellow-200  mb-2">Welcome back!</h2>
+          <h2 className="text-2xl font-semibold text-white  mb-2">Welcome back!</h2>
           <p className="text-gray-100 text-sm">{user.emailAddresses[0]?.emailAddress || user.username || "User"}</p>
         </motion.div>
 
@@ -137,7 +137,7 @@ const Customauth: React.FC<AuthComponentProps> = ({ className = "", redirectTo =
       </motion.div>
 
       <motion.div className="text-center mb-8" variants={itemVariants}>
-        <h1 className="text-3xl font-semibold text-yellow-200 heading-kinshuk mb-2">
+        <h1 className="text-3xl font-semibold text-white  mb-2">
           {isSignUp ? "Create your Account" : "Welcome Back !"}
         </h1>
         <p className="text-gray-100">{isSignUp ? "Sign up to get started" : "Login to continue with your account"}</p>
